@@ -14,7 +14,7 @@ import com.example.jpetstore.domain.Product;
  * @author Juergen Hoeller
  * @since 30.11.2003
  */
-public interface PetStoreFacade {
+public interface SosoMarketFacade {
 
 	Account getAccount(String username);
 

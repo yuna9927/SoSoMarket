@@ -16,7 +16,7 @@ import org.springframework.web.util.WebUtils;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.AccountFormValidator;
-import com.example.jpetstore.service.PetStoreFacade;
+import com.example.jpetstore.service.SosoMarketFacade;
 
 /**
  * @author Juergen Hoeller
@@ -24,7 +24,7 @@ import com.example.jpetstore.service.PetStoreFacade;
  * @modified by Changsup Park
  */
 @Controller
-@RequestMapping({"/shop/newAccount.do","/shop/editAccount.do"})
+@RequestMapping({"/user/newAccount.do","/user/editAccount.do"})
 public class AccountFormController { 
 
 	@Value("EditAccountForm")
@@ -34,8 +34,8 @@ public class AccountFormController {
 	private static final String[] LANGUAGES = {"english", "japanese"};
 	
 	@Autowired
-	private PetStoreFacade petStore;
-	public void setPetStore(PetStoreFacade petStore) {
+	private SosoMarketFacade petStore;
+	public void setPetStore(SosoMarketFacade petStore) {
 		this.petStore = petStore;
 	}
 
@@ -52,7 +52,7 @@ public class AccountFormController {
 			(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 		if (userSession != null) {	// edit an existing account
 			return new AccountForm(
-				petStore.getAccount(userSession.getAccount().getUsername()));
+				petStore.getAccount(userSession.getAccount().getAccountId()));
 		}
 		else {	// create a new account
 			return new AccountForm();
@@ -80,14 +80,14 @@ public class AccountFormController {
 			@ModelAttribute("accountForm") AccountForm accountForm,
 			BindingResult result) throws Exception {
 
-		if (request.getParameter("account.listOption") == null) {
-			accountForm.getAccount().setListOption(false);
-		}
-		if (request.getParameter("account.bannerOption") == null) {
-			accountForm.getAccount().setBannerOption(false);
-		}
+//		if (request.getParameter("account.listOption") == null) {
+//			accountForm.getAccount().setListOption(false);
+//		}
+//		if (request.getParameter("account.bannerOption") == null) {
+//			accountForm.getAccount().setBannerOption(false);
+//		}
 		
-		validator.validate(accountForm, result);
+//		validator.validate(accountForm, result);
 		
 		if (result.hasErrors()) return formViewName;
 		try {
@@ -105,11 +105,11 @@ public class AccountFormController {
 		}
 		
 		UserSession userSession = new UserSession(
-			petStore.getAccount(accountForm.getAccount().getUsername()));
-		PagedListHolder<Product> myList = new PagedListHolder<Product>(
-			petStore.getProductListByCategory(accountForm.getAccount().getFavouriteCategoryId()));
-		myList.setPageSize(4);
-		userSession.setMyList(myList);
+			petStore.getAccount(accountForm.getAccount().getAccountId()));
+//		PagedListHolder<Product> myList = new PagedListHolder<Product>(
+//			petStore.getProductListByCategory(accountForm.getAccount().getFavouriteCategoryId()));
+//		myList.setPageSize(4);
+//		userSession.setMyList(myList);
 		session.setAttribute("userSession", userSession);
 		return successViewName;  
 	}

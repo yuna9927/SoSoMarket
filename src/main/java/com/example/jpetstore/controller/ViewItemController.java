@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.jpetstore.domain.Item;
-import com.example.jpetstore.service.PetStoreFacade;
+import com.example.jpetstore.service.SosoMarketFacade;
 
 /**
  * @author Juergen Hoeller
@@ -17,10 +17,10 @@ import com.example.jpetstore.service.PetStoreFacade;
 @Controller
 public class ViewItemController { 
 
-	private PetStoreFacade petStore;
+	private SosoMarketFacade petStore;
 
 	@Autowired
-	public void setPetStore(PetStoreFacade petStore) {
+	public void setPetStore(SosoMarketFacade petStore) {
 		this.petStore = petStore;
 	}
 

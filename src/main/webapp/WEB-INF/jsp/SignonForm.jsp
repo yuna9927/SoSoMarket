@@ -29,7 +29,7 @@
       </tr>
     </table>
   </form>
-  <a href='<c:url value="/shop/newAccount.do"/>'> 
+  <a href='<c:url value="/user/newAccount.do"/>'> 
     <img border="0" src="../images/button_register_now.gif" alt="" />
   </a>
 </div>

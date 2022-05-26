@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.jpetstore.service.PetStoreFacade;
+import com.example.jpetstore.service.SosoMarketFacade;
 
 /**
  * @author Juergen Hoeller
@@ -18,10 +18,10 @@ import com.example.jpetstore.service.PetStoreFacade;
 @SessionAttributes("userSession")
 public class ListOrdersController {
 
-	private PetStoreFacade petStore;
+	private SosoMarketFacade petStore;
 
 	@Autowired
-	public void setPetStore(PetStoreFacade petStore) {
+	public void setPetStore(SosoMarketFacade petStore) {
 		this.petStore = petStore;
 	}
 

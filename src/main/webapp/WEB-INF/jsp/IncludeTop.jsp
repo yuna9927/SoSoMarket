@@ -17,7 +17,7 @@
 <table class="top">
   <tr>
     <td>
-      <a href="<c:url value="/shop/index.do"/>">
+      <a href="<c:url value="/user/index.do"/>">
         <img border="0" src="../images/logo-topbar.gif" /></a>
     </td>
     <td style="text-align:right">
@@ -32,7 +32,7 @@
         <a href="<c:url value="/shop/signoff.do"/>">
           <img border="0" name="img_signout" src="../images/sign-out.gif" /></a>
         <img border="0" src="../images/separator.gif" />
-        <a href="<c:url value="/shop/editAccount.do"/>">
+        <a href="<c:url value="/user/editAccount.do"/>">
           <img border="0" name="img_myaccount" src="../images/my_account.gif" /></a>
       </c:if>
       <img border="0" src="../images/separator.gif" />&nbsp;

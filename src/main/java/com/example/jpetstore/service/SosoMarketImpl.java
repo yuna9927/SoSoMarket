@@ -53,7 +53,7 @@ import com.example.jpetstore.domain.Product;
  */
 @Service
 @Transactional
-public class PetStoreImpl implements PetStoreFacade { 
+public class SosoMarketImpl implements SosoMarketFacade { 
 	@Autowired
 	private AccountDao accountDao;
 	@Autowired
