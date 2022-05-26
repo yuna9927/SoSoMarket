@@ -26,22 +26,14 @@ import com.example.jpetstore.domain.Account;
  */
 public interface AccountMapper {
 
-  Account getAccountByUsername(String username);
+	Account getAccount(String accountId);
 
-  Account getAccountByUsernameAndPassword(String username, String password);
+	  Account getAccountLogIn(String accountId, String password);
+	  
+	  void insertAccount(Account account);
+	  
+	  void updateAccount(Account account);
 
-  List<String> getUsernameList();
-  
-  void insertAccount(Account account);
-  
-  void insertProfile(Account account);
-  
-  void insertSignon(Account account);
-
-  void updateAccount(Account account);
-
-  void updateProfile(Account account);
-
-  void updateSignon(Account account);
+	  void deleteAccount(String accountId);
 
 }
