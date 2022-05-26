@@ -4,123 +4,65 @@
 <mapper namespace="com.example.jpetstore.dao.mybatis.mapper.AccountMapper">
   <cache />
 
-  <select id="getAccountByUsername" resultType="Account">
-    SELECT SIGNON.USERNAME,
-          ACCOUNT.EMAIL,
-          ACCOUNT.FIRSTNAME,
-          ACCOUNT.LASTNAME,
-          ACCOUNT.STATUS,
-          ACCOUNT.ADDR1 AS address1,
-          ACCOUNT.ADDR2 AS address2,
-          ACCOUNT.CITY,
-          ACCOUNT.STATE,
-          ACCOUNT.ZIP,
-          ACCOUNT.COUNTRY,
-          ACCOUNT.PHONE,
-          PROFILE.LANGPREF AS languagePreference,
-          PROFILE.FAVCATEGORY AS favouriteCategoryId,
-          PROFILE.MYLISTOPT AS listOption,
-          PROFILE.BANNEROPT AS bannerOption,
-          BANNERDATA.BANNERNAME
-    FROM ACCOUNT, PROFILE, SIGNON, BANNERDATA
-    WHERE ACCOUNT.USERID = #{username}
-      AND SIGNON.USERNAME = ACCOUNT.USERID
-      AND PROFILE.USERID = ACCOUNT.USERID
-      AND PROFILE.FAVCATEGORY = BANNERDATA.FAVCATEGORY
+  <select id="getAccount" resultType="Account">
+    SELECT 
+        PASSWORD AS password,
+        PHONE_NUMBER AS phoneNumber,
+        EMAIL_ADDRESS AS email,
+        ACCOUNT_ID AS accountId,
+        NICKNAME AS nickname,
+        JOIN_DATE AS joinDate,
+        MY_ADDRESS AS address,
+        MY_ZIPCODE AS zipcode,
+        BANK_NAME AS bankName,
+        BANK_NUMBER AS bankNumber,
+        WITHDRAW AS withdraw
+    FROM ACCOUNT
+    WHERE ACCOUNT_ID = #{accountId}
   </select>
 
-  <select id="getAccountByUsernameAndPassword" resultType="Account">
-    SELECT SIGNON.USERNAME,
-      ACCOUNT.EMAIL,
-      ACCOUNT.FIRSTNAME,
-      ACCOUNT.LASTNAME,
-      ACCOUNT.STATUS,
-      ACCOUNT.ADDR1 AS address1,
-      ACCOUNT.ADDR2 AS address2,
-      ACCOUNT.CITY,
-      ACCOUNT.STATE,
-      ACCOUNT.ZIP,
-      ACCOUNT.COUNTRY,
-      ACCOUNT.PHONE,
-      PROFILE.LANGPREF AS languagePreference,
-      PROFILE.FAVCATEGORY AS favouriteCategoryId,
-      PROFILE.MYLISTOPT AS listOption,
-      PROFILE.BANNEROPT AS bannerOption,
-      BANNERDATA.BANNERNAME
-    FROM ACCOUNT, PROFILE, SIGNON, BANNERDATA
-    WHERE ACCOUNT.USERID = #{param1}
-      AND SIGNON.PASSWORD = #{param2}
-      AND SIGNON.USERNAME = ACCOUNT.USERID
-      AND PROFILE.USERID = ACCOUNT.USERID
-      AND PROFILE.FAVCATEGORY = BANNERDATA.FAVCATEGORY
+  <select id="getAccountLogIn" resultType="Account">
+    SELECT
+        PASSWORD AS password,
+        PHONE_NUMBER AS phoneNumber,
+        EMAIL_ADDRESS AS email,
+        ACCOUNT_ID AS accountId,
+        NICKNAME AS nickname,
+        JOIN_DATE AS joinDate,
+        MY_ADDRESS AS address,
+        MY_ZIPCODE AS zipcode,
+        BANK_NAME AS bankName,
+        BANK_NUMBER AS bankNumber,
+        WITHDRAW AS withdraw
+    FROM ACCOUNT
+    WHERE ACCOUNT_ID = #{accountId} AND PASSWORD = #{password}
   </select>
-
-  <select id="getUsernameList" resultType="java.lang.String">
-    SELECT USERNAME AS VALUE FROM SIGNON
-  </select>
-
-  <update id="updateAccount" parameterType="Account">
-    UPDATE ACCOUNT SET
-      EMAIL = #{email},
-      FIRSTNAME = #{firstName},
-      LASTNAME = #{lastName},
-      STATUS = #{status},
-      ADDR1 = #{address1},
-      ADDR2 = #{address2,jdbcType=VARCHAR},
-      CITY = #{city},
-      STATE = #{state},
-      ZIP = #{zip},
-      COUNTRY = #{country},
-      PHONE = #{phone}
-    WHERE USERID = #{username}
-  </update>
 
   <insert id="insertAccount" parameterType="Account">
     INSERT INTO ACCOUNT
-      (EMAIL, FIRSTNAME, LASTNAME, STATUS, ADDR1, ADDR2, CITY, STATE, ZIP, COUNTRY, PHONE, USERID)
+      (PASSWORD, PHONE_NUMBER, EMAIL_ADDRESS, ACCOUNT_ID, NICKNAME,
+       MY_ADDRESS, MY_ZIPCODE, BANK_NAME, BANK_NUMBER)
     VALUES
-      (#{email}, #{firstName}, #{lastName}, #{status}, #{address1}, #{address2,jdbcType=VARCHAR}, #{city}, #{state}, #{zip}, #{country}, #{phone}, #{username})
+      (#{password}, #{phoneNumber}, #{email}, #{accountId}, #{nickname},
+       #{address}, #{zipcode}, #{bankName}, #{bankNumber})
   </insert>
 
-  <!--  
-  TODO MyBatis 3 does not map booleans to integers
-  <update id="updateProfile" parameterType="Account">
-    UPDATE PROFILE SET
-      LANGPREF = #{languagePreference},
-      FAVCATEGORY = #{favouriteCategoryId},
-      MYLISTOPT = #{listOption},
-      BANNEROPT = #{bannerOption}
-    WHERE USERID = #{username}
-  </update>
-  -->
-
-  <update id="updateProfile" parameterType="Account">
-    UPDATE PROFILE SET
-      LANGPREF = #{languagePreference},
-      FAVCATEGORY = #{favouriteCategoryId}
-    WHERE USERID = #{username}
+  <update id="updateAccount" parameterType="Account">
+    UPDATE ACCOUNT
+    SET
+        PASSWORD = #{password},
+        PHONE_NUMBER = #{phoneNumber},
+        EMAIL_ADDRESS = #{email},
+        NICKNAME = #{nickname},
+        MY_ADDRESS = #{address},
+        MY_ZIPCODE = #{zipcode},
+        BANK_NAME = #{bankName},
+        BANK_NUMBER = #{bankNumber}
+    WHERE ACCOUNT_ID = #{accountId}
   </update>
 
-  <!--  
-  TODO MyBatis 3 does not map booleans to integers
-  <insert id="insertProfile" parameterType="Account">
-    INSERT INTO PROFILE (LANGPREF, FAVCATEGORY, MYLISTOPT, BANNEROPT, USERID)
-    VALUES (#{languagePreference}, #{favouriteCategoryId}, #{listOption}, #{bannerOption}, #{username})
-  </insert>
-  -->
-
-  <insert id="insertProfile" parameterType="Account">
-    INSERT INTO PROFILE (LANGPREF, FAVCATEGORY, USERID)
-    VALUES (#{languagePreference}, #{favouriteCategoryId}, #{username})
-  </insert>
-
-  <update id="updateSignon" parameterType="Account">
-    UPDATE SIGNON SET PASSWORD = #{password}
-    WHERE USERNAME = #{username}
-  </update>
-
-  <insert id="insertSignon" parameterType="Account">
-    INSERT INTO SIGNON (PASSWORD,USERNAME)
-    VALUES (#{password}, #{username})
-  </insert>
+  <delete id="deleteAccount" parameterType="String">
+    DELETE FROM ACCOUNT
+    WHERE ACCOUNT_ID = #{accountId}
+  </delete>
 </mapper>
