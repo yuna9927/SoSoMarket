@@ -74,7 +74,7 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 
 	public Account getAccount(String accountId, String password) {
-		return accountDao.getAccount(accountId, password);
+		return accountDao.getAccountLogIn(accountId, password);
 	}
 
 	public void insertAccount(Account account) {
@@ -85,9 +85,9 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		accountDao.updateAccount(account);
 	}
 
-	public void deleteAccount(Account accountId) {
-		accountDao.deleteAccount(accountId);
-	}
+//	public void deleteAccount(Account accountId) {
+//		accountDao.deleteAccount(accountId);
+//	}
 
 //	public void updateWithdraw(Account accountId) {
 //		accountDao.updateWithdraw(accountId);

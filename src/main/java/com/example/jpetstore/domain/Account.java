@@ -114,6 +114,15 @@ public class Account implements Serializable {
 	public void setWithdraw(int withdraw) {
 		this.withdraw = withdraw;
 	}
+
+	@Override
+	public String toString() {
+		return "Account [accountId=" + accountId + ", password=" + password + ", nickname=" + nickname + ", joinDate="
+				+ joinDate + ", phoneNumber=" + phoneNumber + ", email=" + email + ", bankNumber=" + bankNumber
+				+ ", bankName=" + bankName + ", address=" + address + ", zipcode=" + zipcode + ", withdraw=" + withdraw
+				+ "]";
+	}
+	
 	
 	
 

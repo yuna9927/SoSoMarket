@@ -25,7 +25,7 @@ public interface SosoMarketFacade {
 
 	void updateAccount(Account account);
 
-	void deleteAccount(String accountId);
+//	void deleteAccount(String accountId);
 
 
 //	List<Category> getCategoryList();
