@@ -15,11 +15,11 @@
             <td>User ID:</td>
             <td>
             <c:if test="${accountForm.newAccount}">
-              <form:input path="account.username" htmlEscape="false"/>
-              <B><form:errors path="account.username" cssClass="error" /></B>
+              <form:input path="account.accountId" htmlEscape="false"/>
+              <B><form:errors path="account.accountId" cssClass="error" /></B>
             </c:if> 
             <c:if test="${!accountForm.newAccount}">
-              <c:out value="${accountForm.account.username}" />
+              <c:out value="${accountForm.account.accountId}" />
             </c:if>
             </td>
           </tr>
