@@ -5,7 +5,7 @@
 </c:if>
 
 <div align="center">
-  <form action='<c:url value="/shop/signon.do"/>' method="POST">
+  <form action='<c:url value="/main/signon.do"/>' method="POST">
     <c:if test="${!empty signonForwardAction}">
       <input type="hidden" name="forwardAction"
         value='<c:url value="${signonForwardAction}"/>' />
@@ -17,7 +17,7 @@
       </tr>
       <tr>
         <td>Username:</td>
-        <td><input type="text" name="username" size="20" value="j2ee" /></td>
+        <td><input type="text" name="accountId" size="20" value="j2ee" /></td>
       </tr>
       <tr>
         <td>Password:</td>

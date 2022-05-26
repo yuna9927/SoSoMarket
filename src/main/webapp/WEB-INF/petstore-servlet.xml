@@ -27,7 +27,7 @@
 	</bean>
 	
 	<mvc:view-controller path="/user/index.do" view-name="index"/>
-	<mvc:view-controller path="/shop/signonForm.do" view-name="SignonForm"/> 
+	<mvc:view-controller path="/main/signonForm.do" view-name="SignonForm"/> 
 	
 	<mvc:interceptors>
 		<mvc:interceptor>

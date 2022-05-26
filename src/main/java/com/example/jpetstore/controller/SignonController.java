@@ -30,7 +30,7 @@ public class SignonController {
 		this.petStore = petStore;
 	}
 
-	@RequestMapping("/shop/signon.do")
+	@RequestMapping("/main/signon.do")
 	public ModelAndView handleRequest(HttpServletRequest request,
 			@RequestParam("username") String username,
 			@RequestParam("password") String password,

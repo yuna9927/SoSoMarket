@@ -34,9 +34,9 @@ public class AccountFormController {
 	private static final String[] LANGUAGES = {"english", "japanese"};
 	
 	@Autowired
-	private SosoMarketFacade petStore;
+	private SosoMarketFacade sosomarket;
 	public void setPetStore(SosoMarketFacade petStore) {
-		this.petStore = petStore;
+		this.sosomarket = petStore;
 	}
 
 	@Autowired
@@ -52,7 +52,7 @@ public class AccountFormController {
 			(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 		if (userSession != null) {	// edit an existing account
 			return new AccountForm(
-				petStore.getAccount(userSession.getAccount().getAccountId()));
+				sosomarket.getAccount(userSession.getAccount().getAccountId()));
 		}
 		else {	// create a new account
 			return new AccountForm();
@@ -66,7 +66,7 @@ public class AccountFormController {
 
 	@ModelAttribute("categories")
 	public List<Category> getCategoryList() {
-		return petStore.getCategoryList();
+		return sosomarket.getCategoryList();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -92,10 +92,10 @@ public class AccountFormController {
 		if (result.hasErrors()) return formViewName;
 		try {
 			if (accountForm.isNewAccount()) {
-				petStore.insertAccount(accountForm.getAccount());
+				sosomarket.insertAccount(accountForm.getAccount());
 			}
 			else {
-				petStore.updateAccount(accountForm.getAccount());
+				sosomarket.updateAccount(accountForm.getAccount());
 			}
 		}
 		catch (DataIntegrityViolationException ex) {
@@ -105,7 +105,7 @@ public class AccountFormController {
 		}
 		
 		UserSession userSession = new UserSession(
-			petStore.getAccount(accountForm.getAccount().getAccountId()));
+			sosomarket.getAccount(accountForm.getAccount().getAccountId()));
 //		PagedListHolder<Product> myList = new PagedListHolder<Product>(
 //			petStore.getProductListByCategory(accountForm.getAccount().getFavouriteCategoryId()));
 //		myList.setPageSize(4);
