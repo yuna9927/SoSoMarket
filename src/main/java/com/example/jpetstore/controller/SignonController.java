@@ -24,19 +24,19 @@ import org.springframework.ui.Model;
 @SessionAttributes("userSession")
 public class SignonController { 
 
-	private SosoMarketFacade petStore;
+	private SosoMarketFacade sosomarket;
 	@Autowired
-	public void setPetStore(SosoMarketFacade petStore) {
-		this.petStore = petStore;
+	public void setSosomarket(SosoMarketFacade petStore) {
+		this.sosomarket = petStore;
 	}
 
 	@RequestMapping("/main/signon.do")
 	public ModelAndView handleRequest(HttpServletRequest request,
-			@RequestParam("username") String username,
+			@RequestParam("accountId") String accountId,
 			@RequestParam("password") String password,
 			@RequestParam(value="forwardAction", required=false) String forwardAction,
 			Model model) throws Exception {
-		Account account = petStore.getAccount(username, password);
+		Account account = sosomarket.getAccount(accountId, password);
 		if (account == null) {
 			return new ModelAndView("Error", "message", 
 					"Invalid username or password.  Signon failed.");

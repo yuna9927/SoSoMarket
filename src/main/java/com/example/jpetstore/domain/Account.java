@@ -1,6 +1,7 @@
 package com.example.jpetstore.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @SuppressWarnings("serial")
 public class Account implements Serializable {
@@ -10,12 +11,14 @@ public class Account implements Serializable {
 	private String accountId;
 	private String password;
 	private String nickname;
+	private Date joinDate;
 	private String phoneNumber;
 	private String email;
 	private String bankNumber;
 	private String bankName;
 	private String address;
 	private String zipcode;
+	private int withdraw;
 //  private String favouriteCategoryId;
 //  private String languagePreference;
 //  private boolean listOption;
@@ -95,6 +98,24 @@ public class Account implements Serializable {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+
+	public Date getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Date joinDate) {
+		this.joinDate = joinDate;
+	}
+
+	public int getWithdraw() {
+		return withdraw;
+	}
+
+	public void setWithdraw(int withdraw) {
+		this.withdraw = withdraw;
+	}
+	
+	
 
 //
 //  public String getFavouriteCategoryId() { return favouriteCategoryId; }

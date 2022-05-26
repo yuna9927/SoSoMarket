@@ -69,12 +69,12 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	// Operation methods, implementing the PetStoreFacade interface
 	//-------------------------------------------------------------------------
 
-	public Account getAccount(String username) {
-		return accountDao.getAccount(username);
+	public Account getAccount(String accountId) {
+		return accountDao.getAccount(accountId);
 	}
 
-	public Account getAccount(String username, String password) {
-		return accountDao.getAccount(username, password);
+	public Account getAccount(String accountId, String password) {
+		return accountDao.getAccount(accountId, password);
 	}
 
 	public void insertAccount(Account account) {
@@ -85,13 +85,19 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		accountDao.updateAccount(account);
 	}
 
-	public List<String> getUsernameList() {
-		return accountDao.getUsernameList();
+	public void deleteAccount(Account accountId) {
+		accountDao.deleteAccount(accountId);
 	}
 
-	public List<Category> getCategoryList() {
-		return categoryDao.getCategoryList();
-	}
+//	public void updateWithdraw(Account accountId) {
+//		accountDao.updateWithdraw(accountId);
+//	}
+//	
+	//
+
+//	public List<Category> getCategoryList() {
+//		return categoryDao.getCategoryList();
+//	}
 
 	public Category getCategory(String categoryId) {
 		return categoryDao.getCategory(categoryId);

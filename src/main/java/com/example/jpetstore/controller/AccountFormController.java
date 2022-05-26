@@ -35,8 +35,9 @@ public class AccountFormController {
 	
 	@Autowired
 	private SosoMarketFacade sosomarket;
-	public void setPetStore(SosoMarketFacade petStore) {
-		this.sosomarket = petStore;
+	
+	public void setSosomarket(SosoMarketFacade sosomarket) {
+		this.sosomarket = sosomarket;
 	}
 
 	@Autowired
@@ -64,10 +65,10 @@ public class AccountFormController {
 		return LANGUAGES;
 	}
 
-	@ModelAttribute("categories")
-	public List<Category> getCategoryList() {
-		return sosomarket.getCategoryList();
-	}
+//	@ModelAttribute("categories")
+//	public List<Category> getCategoryList() {
+//		return sosomarket.getCategoryList();
+//	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String showForm() {
@@ -87,7 +88,7 @@ public class AccountFormController {
 //			accountForm.getAccount().setBannerOption(false);
 //		}
 		
-//		validator.validate(accountForm, result);
+		validator.validate(accountForm, result);
 		
 		if (result.hasErrors()) return formViewName;
 		try {
