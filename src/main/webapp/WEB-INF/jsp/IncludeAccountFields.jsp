@@ -16,18 +16,18 @@
   </tr>
   <tr>
     <td>Email:</td>
-    <td><form:input path="account.emailAddress" htmlEscape="false"/>
-      <form:errors path="account.emailAddress" cssClass="error" /></td>
+    <td><form:input path="account.email" htmlEscape="false"/>
+      <form:errors path="account.email" cssClass="error" /></td>
   </tr>
   <tr>
     <td>Address :</td>
-    <td><form:input path="account.myAddress" /> 
-      <form:errors path="account.myAddress" cssClass="error" /></td>
+    <td><form:input path="account.address" /> 
+      <form:errors path="account.address" cssClass="error" /></td>
   </tr>
   <tr>
     <td>Zipcode :</td>
-    <td><form:input path="account.myZipcode" htmlEscape="false"/>
-      <form:errors path="account.myZipcode" cssClass="error" /></td>
+    <td><form:input path="account.zipcode" htmlEscape="false"/>
+      <form:errors path="account.zipcode" cssClass="error" /></td>
   </tr>
   <tr>
     <td>Bank Name :</td>

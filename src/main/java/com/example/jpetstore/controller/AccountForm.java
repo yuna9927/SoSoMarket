@@ -42,4 +42,12 @@ public class AccountForm implements Serializable {
 	public String getRepeatedPassword() {
 		return repeatedPassword;
 	}
+
+	@Override
+	public String toString() {
+		return "AccountForm [account=" + account + ", newAccount=" + newAccount + ", repeatedPassword="
+				+ repeatedPassword + "]";
+	}
+	
+	
 }

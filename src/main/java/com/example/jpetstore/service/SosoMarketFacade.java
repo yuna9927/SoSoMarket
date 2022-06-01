@@ -14,20 +14,21 @@ import com.example.jpetstore.domain.Product;
  * @author Juergen Hoeller
  * @since 30.11.2003
  */
-public interface PetStoreFacade {
+public interface SosoMarketFacade {
 
-	Account getAccount(String username);
+	/* Account */
+	Account getAccount(String accountId);
 
-	Account getAccount(String username, String password);
+	Account getAccount(String accountId, String password);
 
 	void insertAccount(Account account);
 
 	void updateAccount(Account account);
 
-	List<String> getUsernameList();
+//	void deleteAccount(String accountId);
 
 
-	List<Category> getCategoryList();
+//	List<Category> getCategoryList();
 
 	Category getCategory(String categoryId);
 	

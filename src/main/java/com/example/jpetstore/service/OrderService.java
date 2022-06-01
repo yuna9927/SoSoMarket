@@ -12,8 +12,8 @@ import com.example.jpetstore.domain.Order;
  *
  * @author Juergen Hoeller
  * @since 26.12.2003
- * @see PetStoreFacade
- * @see PetStoreImpl
+ * @see SosoMarketFacade
+ * @see SosoMarketImpl
  * @see OrderServiceImpl
  */
 //@WebService(name = "OrderService") 
