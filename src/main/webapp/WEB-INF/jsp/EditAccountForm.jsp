@@ -47,8 +47,10 @@
       value="Save Account Information" />
 </form:form>
 <p></p>
-  <h3><b><a href='<c:url value="/shop/listOrders.do"/>'>My Orders</a></b></h3>
-  
+<c:if test="${!accountForm.newAccount}">
+  <h3><b><a href='<c:url value="/user/viewAccount.do"/>'>User VIew</a></b></h3>
+  <h3><b><a href='<c:url value="/user/deleteUser.do"/>'>User Delete</a></b></h3>
+</c:if>
 </div>
 
 <%@ include file="IncludeBottom.jsp"%>
