@@ -11,17 +11,19 @@
   <table class="n23">
     <tr bgcolor="#CCCCCC">
       <td>&nbsp;</td>
-      <td><b>productId</b></td>
       <td><b>title</b></td>
+      <td><b>desc</b></td>
       <!--<td><b>desc</b></td>  -->
     </tr>
-    <c:forEach var="product" items="${productList.pageList}">
+    <c:forEach var="product" items="${productList}">
       <tr bgcolor="#FFFF88">
-        <td><a
-          href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>
-            <c:out value="${product.description}" escapeXml="false" />
-        </a></td>
-        <td><c:out value="${product.name}" /></td>
+        <td><b><a
+            href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>
+              <font color="BLACK"><c:out value="${product.name}" /></font>
+          </a></b></td>
+        <td><c:out value="${product.desc}" /></td>
+        <td><c:out value="${product.price}" /></td>
+        <td><c:out value="${product.productStatus}" /></td>
       </tr>
     </c:forEach>
   </table>
