@@ -99,21 +99,45 @@ public class SosoMarketImpl implements SosoMarketFacade {
 //		return categoryDao.getCategoryList();
 //	}
 
-	public Category getCategory(String categoryId) {
-		return categoryDao.getCategory(categoryId);
-	}
+	/* Product */
 
 	public List<Product> getProductListByCategory(String categoryId) {
 		return productDao.getProductListByCategory(categoryId);
 	}
 
-	public List<Product> searchProductList(String keywords) {
+	public List<Product> getProductListByUser(String accountId) {
+		return productDao.getProductListByUser(accountId);
+	}
+
+	public List<Product> searchProductList(String keyword) {
 		return productDao.searchProductList(keywords);
 	}
 
-	public Product getProduct(String productId) {
+	public Product getProduct(int productId) {
 		return productDao.getProduct(productId);
 	}
+
+	public List<Product> getAllProduct() {
+		return productDao.getAllProduct();
+	}
+
+	public void updateProduct(int productId) {
+		productDao.updateProduct(productId);
+	}
+
+	public void insertProduct(Product product) {
+		productDao.insertProduct(product);
+	}
+
+	public void deleteProduct(int productId) {
+		productDao.deleteProduct(productId);
+	}
+
+	public void updateProductStatus(Product product) {
+		productDao.updateProductStatus(product);
+	}
+
+	
 
 	public List<Item> getItemListByProduct(String productId) {
 		return itemDao.getItemListByProduct(productId);

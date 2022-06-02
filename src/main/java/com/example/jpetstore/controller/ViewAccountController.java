@@ -30,7 +30,7 @@ public class ViewAccountController {
 	public ModelAndView handleRequest(
 			@ModelAttribute("userSession") UserSession userSession
 			) throws Exception {
-		Account account = this.sosomarket.getAccount(userSession.getAccount().getUsername());
+		Account account = this.sosomarket.getAccount(userSession.getAccount().getAccountId());
 		if (account != null) {
 			return new ModelAndView("ViewUser", "account", account);
 		}
