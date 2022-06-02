@@ -38,6 +38,7 @@ public class ViewCartController {
 		UserSession userSession = 
 			(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 		handleRequest(page, cart, userSession);
+		
 		return new ModelAndView("Cart", "cart", cart);
 	}
 

@@ -21,6 +21,11 @@
         <img border="0" src="../images/logo-topbar.gif" /></a>
     </td>
     <td style="text-align:right">
+     <a href='<c:url value="/shop/viewProduct.do">
+              <c:param name="productId" value="5"/></c:url>'>
+              <font color="black"><c:out value="5" /></font>
+            </a>
+            
       <a href="<c:url value="/shop/viewCart.do"/>">
         <img border="0" name="img_cart" src="../images/cart.gif" /></a>
       <img border="0" src="../images/separator.gif" />

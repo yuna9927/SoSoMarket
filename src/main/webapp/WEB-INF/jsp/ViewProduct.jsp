@@ -36,10 +36,15 @@
     <tr>
       <td>shippingFee</td>
       <td><c:out value="${product.shippingFee}" /></td>
+      <tr>
+      <td>productId</td>
+      <td><c:out value="${product.productId}" /></td>
   </table>
   <br>
-  <h3><b><a href='<c:url value="/shop/updateProduct.do"/>'>Product Edit</a></b></h3>
-  <h3><b><a href='<c:url value="/shop/deleteProduct.do"/>'>Product Delete</a></b></h3>
+  <h3><b><a href='<c:url value="/shop/updateProduct.do"/>
+  '>Product Edit</a></b></h3>
+  <h3><b><a href='<c:url value="/shop/deleteProduct.do">
+  	<c:param name="productId" value="${product.productId}"/></c:url>'>Product Delete</a></b></h3>
 </div>
 
 
