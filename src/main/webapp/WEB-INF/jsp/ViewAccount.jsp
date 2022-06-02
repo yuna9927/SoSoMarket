@@ -3,9 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div align="center">
-<form:form modelAttribute="accountForm" method="post">
-  <form:errors cssClass="error" /> <br><br>
-  
+
   <table id="account">
     <tr>
       <td>
@@ -14,41 +12,80 @@
           <tr>
             <td>User ID:</td>
             <td>
-            <c:if test="${accountForm.newAccount}">
-              <form:input path="account.accountId" htmlEscape="false"/>
-              <B><form:errors path="account.accountId" cssClass="error" /></B>
-            </c:if> 
-            <c:if test="${!accountForm.newAccount}">
-              <c:out value="${accountForm.account.accountId}" />
-            </c:if>
+              <c:out value="${account.accountId}" />
             </td>
           </tr>
           <tr>
-            <td>New password:</td>
+            <td>User Password:</td>
             <td>
-              <form:password path="account.password" /> 
-              <B><form:errors path="account.password" cssClass="error" /></B></td>
+              <c:out value="${account.password}" />
+            </td>
           </tr>
           <tr>
-            <td>Repeat password:</td>
+            <td>User Nickname</td>
             <td>
-              <form:password path="repeatedPassword" /> 
-              <B><form:errors path="repeatedPassword" cssClass="error" /></B></td>
+              <c:out value="${account.nickname}" />
+            </td>
           </tr>
+          <tr>
+            <td>joinDate:</td>
+              <td><fmt:formatDate value="${account.joinDate}"
+            pattern="yyyy/MM/dd hh:mm:ss" /></td>
+          </tr>
+          <tr>
+            <td>Phone Number:</td>
+            <td>
+              <c:out value="${account.phoneNumber}" />
+            </td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>
+              <c:out value="${account.email}" />
+            </td>
+          </tr>
+          <tr>
+            <td>Bank Name:</td>
+            <td>
+              <c:out value="${account.bankName}" />
+            </td>
+          </tr>
+          <tr>
+            <td>Bank Number:</td>
+            <td>
+              <c:out value="${account.bankNumber}" />
+            </td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td>
+              <c:out value="${account.address}" />
+            </td>
+          </tr>
+          <tr>
+            <td>Zipcode:</td>
+            <td>
+              <c:out value="${account.zipcode}" />
+            </td>
+          </tr>
+          <tr>
+            <td>Your number of withdrawals:</td>
+            <td>
+              <c:out value="${account.withdraw}" />
+            </td>
+          </tr>
+          
         </table> 
-        
-        <%@ include file="IncludeAccountFields.jsp"%>
 
       </td>
     </tr>
   </table>
   <br />
-    <input type="image" src="../images/button_submit.gif" name="submit"
-      value="Save Account Information" />
-</form:form>
+
 <p></p>
-  <h3><b><a href='<c:url value="/shop/listOrders.do"/>'>My Orders</a></b></h3>
-  
+<h3><b><a href='<c:url value="/user/deleteUser.do"/>'>User Delete</a></b></h3>
 </div>
+
+
 
 <%@ include file="IncludeBottom.jsp"%>
