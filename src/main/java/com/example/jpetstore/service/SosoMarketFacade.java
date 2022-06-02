@@ -47,6 +47,8 @@ public interface SosoMarketFacade {
 	void updateProduct(int productId);
 
 	void insertProduct(Product product);
+	
+//	void insertAuction(Auction auction);
 
 	void deleteProduct(int productId);
 
