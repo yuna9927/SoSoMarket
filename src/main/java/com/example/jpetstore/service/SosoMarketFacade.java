@@ -33,12 +33,26 @@ public interface SosoMarketFacade {
 	Category getCategory(String categoryId);
 	
 
-	List<Product> getProductListByCategory(String categoryId);
+	/* Product */
+	List<Product> getProductListByUser(String accountId);
 
-	List<Product> searchProductList(String keywords);
+	List<Product> getProductListByCategory(int categoryId);
 
-	Product getProduct(String productId);
+	List<Product> searchProductList(String keyword);
 
+	Product getProduct(int productId);
+
+	List<Product> getAllProduct();
+
+	void updateProduct(int productId);
+
+	void insertProduct(Product product);
+
+	void deleteProduct(int productId);
+
+	void updateProductStatus(Product product);
+	
+	
 
 	List<Item> getItemListByProduct(String productId);
 

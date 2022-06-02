@@ -65,6 +65,6 @@
   </tr>
 </table>
 
-<%@ include file="IncludeBanner.jsp" %>
+
 
 <%@ include file="IncludeBottom.jsp" %>
