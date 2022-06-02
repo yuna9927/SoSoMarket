@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndViewDefiningException;
 import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Cart;
 import com.example.jpetstore.service.OrderValidator;
-import com.example.jpetstore.service.PetStoreFacade;
+import com.example.jpetstore.service.SosoMarketFacade;
 
 /**
  * @author Juergen Hoeller
@@ -29,7 +29,7 @@ import com.example.jpetstore.service.PetStoreFacade;
 @SessionAttributes({"sessionCart", "orderForm"})
 public class OrderController {
 	@Autowired
-	private PetStoreFacade petStore;
+	private SosoMarketFacade petStore;
 	@Autowired
 	private OrderValidator orderValidator;
 	

@@ -11,7 +11,7 @@
               <tr>
                 <td>
                 <c:if test="${!empty userSession.account}">
-			       <b><i><font size="4" color="RED">Welcome ${userSession.account.firstName}!</font></i></b>
+			       <b><i><font size="4" color="RED">Welcome ${userSession.account.accountId}!</font></i></b>
                 </c:if>&nbsp;
                 </td>
               </tr>

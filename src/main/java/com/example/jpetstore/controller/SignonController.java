@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Product;
-import com.example.jpetstore.service.PetStoreFacade;
+import com.example.jpetstore.service.SosoMarketFacade;
 
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.ui.Model;
@@ -24,28 +24,28 @@ import org.springframework.ui.Model;
 @SessionAttributes("userSession")
 public class SignonController { 
 
-	private PetStoreFacade petStore;
+	private SosoMarketFacade sosomarket;
 	@Autowired
-	public void setPetStore(PetStoreFacade petStore) {
-		this.petStore = petStore;
+	public void setSosomarket(SosoMarketFacade petStore) {
+		this.sosomarket = petStore;
 	}
 
-	@RequestMapping("/shop/signon.do")
+	@RequestMapping("/main/signon.do")
 	public ModelAndView handleRequest(HttpServletRequest request,
-			@RequestParam("username") String username,
+			@RequestParam("accountId") String accountId,
 			@RequestParam("password") String password,
 			@RequestParam(value="forwardAction", required=false) String forwardAction,
 			Model model) throws Exception {
-		Account account = petStore.getAccount(username, password);
+		Account account = sosomarket.getAccount(accountId, password);
 		if (account == null) {
 			return new ModelAndView("Error", "message", 
 					"Invalid username or password.  Signon failed.");
 		}
 		else {
 			UserSession userSession = new UserSession(account);
-			PagedListHolder<Product> myList = new PagedListHolder<Product>(this.petStore.getProductListByCategory(account.getFavouriteCategoryId()));
-			myList.setPageSize(4);
-			userSession.setMyList(myList);
+//			PagedListHolder<Product> myList = new PagedListHolder<Product>(this.petStore.getProductListByCategory(account.getFavouriteCategoryId()));
+//			myList.setPageSize(4);
+//			userSession.setMyList(myList);
 			model.addAttribute("userSession", userSession);
 			if (forwardAction != null) 
 				return new ModelAndView("redirect:" + forwardAction);
