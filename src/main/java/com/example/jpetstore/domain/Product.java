@@ -17,7 +17,8 @@ public class Product implements Serializable {
 	private Date createdTime;
 	private String shipping;
 	private int shippingFee;
-
+	private int price;
+	
 	public int getProductId() {
 		return productId;
 	}
@@ -89,12 +90,20 @@ public class Product implements Serializable {
 	public void setShippingFee(int shippingFee) {
 		this.shippingFee = shippingFee;
 	}
+	
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", categoryId=" + categoryId + ", sellerId=" + sellerId + ", name="
 				+ name + ", description=" + description + ", productStatus=" + productStatus + ", createdTime="
-				+ createdTime + ", shipping=" + shipping + ", shippingFee=" + shippingFee + "]";
+				+ createdTime + ", shipping=" + shipping + ", shippingFee=" + shippingFee + ", price=" + price + "]";
 	}
 
 }

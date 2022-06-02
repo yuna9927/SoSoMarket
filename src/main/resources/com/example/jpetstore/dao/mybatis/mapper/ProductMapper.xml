@@ -5,34 +5,120 @@
 
   <cache />
 
-  <select id="getProduct" resultType="Product">
-    SELECT
-      PRODUCTID,
-      NAME,
-      DESCN as description,
-      CATEGORY as categoryId
-    FROM PRODUCT
-    WHERE PRODUCTID = #{productId}
-  </select>
-
   <select id="getProductListByCategory" resultType="Product">
     SELECT
-      PRODUCTID,
-      NAME,
-      DESCN as description,
-      CATEGORY as categoryId
+      PRODUCT_ID as productId,
+      TITLE as name,
+      DESCRIPTION as description,
+      SHIPPING as shipping,
+      SHIPPING_FEE as shippingFee,
+      IMAGE as image,
+      CREATED_TIME as createdTime,
+      CATEGORY_ID as categoryId,
+      PRODUCT_STATUS as productStatus,
+      ACCOUNT_ID as sellerId,
+      PRICE as price
     FROM PRODUCT
-    WHERE CATEGORY = #{value}
+    WHERE CATEGORY_ID = #{categoryId}
+  </select>
+  
+  <select id="getProductListByUser" resultType="Product">
+    SELECT
+      PRODUCT_ID as productId,
+      TITLE as name,
+      DESCRIPTION as description,
+      SHIPPING as shipping,
+      SHIPPING_FEE as shippingFee,
+      IMAGE as image,
+      CREATED_TIME as createdTime,
+      CATEGORY_ID as categoryId,
+      PRODUCT_STATUS as productStatus,
+      ACCOUNT_ID as sellerId,
+      PRICE as price
+    FROM PRODUCT
+    WHERE ACCOUNT_ID = #{sellerId}
   </select>
 
   <select id="searchProductList" resultType="Product">
     select
-      PRODUCTID,
-      NAME,
-      DESCN as description,
-      CATEGORY as categoryId
+      PRODUCT_ID as productId,
+      TITLE as name,
+      DESCRIPTION as description,
+      SHIPPING as shipping,
+      SHIPPING_FEE as shippingFee,
+      IMAGE as image,
+      CREATED_TIME as createdTime,
+      CATEGORY_ID as categoryId,
+      PRODUCT_STATUS as productStatus,
+      ACCOUNT_ID as sellerId,
+      PRICE as price
     from PRODUCT
-    WHERE lower(name) like #{value}
+    WHERE lower(title) like #{keyword}
   </select>
+  
+  <select id="getAllProductList" resultType="Product">
+    SELECT
+      PRODUCT_ID as productId,
+      TITLE as name,
+      DESCRIPTION as description,
+      SHIPPING as shipping,
+      SHIPPING_FEE as shippingFee,
+      IMAGE as image,
+      CREATED_TIME as createdTime,
+      CATEGORY_ID as categoryId,
+      PRODUCT_STATUS as productStatus,
+      ACCOUNT_ID as sellerId,
+      PRICE as price
+    FROM PRODUCT
+  </select>
+  
+  <select id="getProduct" resultType="Product">
+    SELECT
+      PRODUCT_ID as productId,
+      TITLE as name,
+      DESCRIPTION as description,
+      SHIPPING as shipping,
+      SHIPPING_FEE as shippingFee,
+      IMAGE as image,
+      CREATED_TIME as createdTime,
+      CATEGORY_ID as categoryId,
+      PRODUCT_STATUS as productStatus,
+      ACCOUNT_ID as sellerId,
+      PRICE as price
+    FROM PRODUCT
+    WHERE PRODUCT_ID = #{productId}
+  </select>
+  
+  <update id="updateProduct" parameterType="Product">
+    UPDATE PRODUCT SET
+      TITLE = #{name},
+      DESCRIPTION = #{description},
+      SHIPPING = #{shipping},
+      SHIPPING_FEE = #{shippingFee},
+      IMAGE = #{image},
+      CATEGORY_ID = #{categoryId},
+	  PRICE = #{price}
+    WHERE PRODUCT_ID = #{productId}
+  </update>
 
+  <insert id="insertProduct" parameterType="Product">
+    INSERT INTO PRODUCT
+      (PRODUCT_ID, TITLE, DESCRIPTION, SHIPPING, SHIPPING_FEE, IMAGE,
+        CATEGORY_ID, ACCOUNT_ID, PRICE)
+    VALUES
+      (pk_sequence.NEXTVAL, #{name}, #{description}, #{shipping}, #{shipping_fee},
+        #{image}, #{categoryId}, #{sellerId}, #{price})
+  </insert>
+
+  <delete id="deleteProduct" parameterType="int">
+    DELETE FROM PRODUCT
+    WHERE PRODUCT_ID = #{productId}
+  </delete>
+  
+  <update id="updateProductStatus" parameterType="Product">
+    UPDATE PRODUCT SET
+      PRODUCT_STATUS = #{status}
+    WHERE PRODUCT_ID = #{productId}
+  </update>
+  
 </mapper>
