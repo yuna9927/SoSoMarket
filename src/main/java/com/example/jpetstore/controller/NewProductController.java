@@ -17,7 +17,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
 @RequestMapping({"/shop/newProduct.do","/shop/newProductForm.do"})
 public class NewProductController { 
 
-	@Value("EditProductForm")
+	@Value("NewProductForm")
 	private String formViewName;
 	
 	@Value("index")
@@ -36,19 +36,16 @@ public class NewProductController {
 //		this.validator = validator;
 //	}
 		
-	@ModelAttribute("auctionForm")
-	public Product formBackingObject(HttpServletRequest request) 
+	@ModelAttribute("productForm")
+	public ProductForm formBackingObject(HttpServletRequest request) 
 			throws Exception {
 		
-		
 		if(request.getMethod().equalsIgnoreCase("GET")) {
-			Product product = new Product();
-			
-			return product;
-			
+			return new ProductForm();
 		} else {
-			return new Product();
+			return null;
 		}
+				
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -59,7 +56,7 @@ public class NewProductController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(
 			HttpServletRequest request, HttpSession session,
-			@ModelAttribute("auction") Product product,
+			@ModelAttribute("product") Product product,
 			BindingResult result) throws Exception {
 
 			
