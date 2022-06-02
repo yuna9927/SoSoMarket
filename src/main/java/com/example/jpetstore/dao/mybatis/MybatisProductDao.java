@@ -17,21 +17,20 @@ public class MybatisProductDao implements ProductDao {
 	@Autowired
 	private ProductMapper productMapper;
 
-	public List<Product> getProductListByCategory(String categoryId) 
-			throws DataAccessException {
-	    return productMapper.getProductListByCategory(categoryId);
+	public List<Product> getProductListByCategory(int categoryId) throws DataAccessException {
+		return productMapper.getProductListByCategory(categoryId);
 	}
 
-	public Product getProduct(String productId) throws DataAccessException {
-	    return productMapper.getProduct(productId);
+	public List<Product> getProductListByUser(String accountId) throws DataAccessException {
+		return productMapper.getProductListByUser(accountId);
 	}
-
+	
 	public List<Product> searchProductList(String keywords) 
 			throws DataAccessException {
 	    return productMapper.searchProductList(
 	    	"%" + keywords.toLowerCase() + "%");
 	}
-
+	
 	/* Inner Classes */
 	public static class ProductSearch {
 
@@ -46,5 +45,29 @@ public class MybatisProductDao implements ProductDao {
 		public List<String> getKeywordList() {
 			return keywordList;
 		}
+	}
+	
+	public List<Product> getAllProductList() throws DataAccessException {
+		return productMapper.getAllProductList();
+	}
+	
+	public Product getProduct(int productId) throws DataAccessException {
+	    return productMapper.getProduct(productId);
+	}
+
+	public void updateProduct(Product product) throws DataAccessException {
+		productMapper.updateProduct(product);
+	}
+
+	public void insertProduct(Product product) throws DataAccessException {
+		productMapper.insertProduct(product);
+	}
+
+	public void deleteProduct(int productId) throws DataAccessException {
+		productMapper.deleteProduct(productId);
+	}
+
+	public void updateProductStatus(Product product) throws DataAccessException {
+		productMapper.updateProductStatus(product);
 	}	
 }

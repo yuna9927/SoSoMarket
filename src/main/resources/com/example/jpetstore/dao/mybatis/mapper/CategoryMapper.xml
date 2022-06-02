@@ -7,18 +7,16 @@
   
   <select id="getCategory" resultType="Category">
     SELECT
-      CATID AS categoryId,
-      NAME,
-      DESCN AS description
+      CATEGORY_ID AS categoryId,
+      CATEGORY_NAME AS name,
     FROM CATEGORY
-    WHERE CATID = #{categoryId}
+    WHERE CATEGORY_ID = #{categoryId}
   </select>
 
   <select id="getCategoryList" resultType="Category">
     SELECT
       CATID AS categoryId,
-      NAME,
-      DESCN AS description
+      CATEGORY_NAME AS name
     FROM CATEGORY
   </select>
 
