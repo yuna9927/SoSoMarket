@@ -117,9 +117,9 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		return productDao.getProduct(productId);
 	}
 
-//	public List<Product> getAllProduct() {
-//		return productDao.getAllProduct();
-//	}
+	public List<Product> getAllProduct() {
+		return productDao.getAllProductList();
+	}
 
 	public void updateProduct(Product product) {
 		productDao.updateProduct(product);
@@ -138,53 +138,57 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 
 	/* auction */
-/*
-	public List<Auction> getAuctionListByUser(String accountId) {
-		return auctionDao.getAuctionListByUser(accountId);
-	}
 
-	public List<Auction> getAuctionListByCategory(int categoryId) {
-		return auctionDao.getAuctionListByCategory(categoryId);
-	}
-
-	public List<Auction> searchAuctionList(String keyword) {
-		return auctionDao.searchAuctionList(keywords);
-	}
-
-	public Auction getAuction(int auctionId) {
-		return auctionDao.getAuction(auctionId);
-	}
-	
-	public void insertAuction(Auction auction) {
-		auctionDao.insertAuction(auction);
-	}
-
-	public void deleteAuction(int auctionId) {
-		auctionDao.deleteAuction(auctionId);
-	}
-
-	public void updateAuctionStatus(Auction auction) {
-		auctionDao.updateAuctionStatus(auction);
-	}
+//	public List<Auction> getAuctionListByUser(String accountId) {
+//		return auctionDao.getAuctionListByUser(accountId);
+//	}
+//
+//	public List<Auction> getAuctionListByCategory(int categoryId) {
+//		return auctionDao.getAuctionListByCategory(categoryId);
+//	}
+//
+//	public List<Auction> searchAuctionList(String keyword) {
+//		return auctionDao.searchAuctionList(keywords);
+//	}
+//	
+//	public List<Auction> getAllAuction() {
+//		return auctionDao.getAllAuction();
+//	}
+//
+//	public Auction getAuction(int auctionId) {
+//		return auctionDao.getAuction(auctionId);
+//	}
+//	
+//	public void insertAuction(Auction auction) {
+//		auctionDao.insertAuction(auction);
+//	}
+//
+//	public void deleteAuction(int auctionId) {
+//		auctionDao.deleteAuction(auctionId);
+//	}
+//
+//	public void updateAuctionStatus(Auction auction) {
+//		auctionDao.updateAuctionStatus(auction);
+//	}
 
 	/* Bidding */
-/*
-	public void insertBidding(Auction bidding) {
-		biddingDao.insertBidding(bidding);
-	}
 
-	public Bidding getBidding(int biddingId) {
-		return biddingDao.getBidding(biddingId);
-	}
+//	public void insertBidding(Auction bidding) {
+//		biddingDao.insertBidding(bidding);
+//	}
+//
+//	public Bidding getBidding(int biddingId) {
+//		return biddingDao.getBidding(biddingId);
+//	}
+//
+//	public List<Bidding> getBiddingsByUser(String accountId) {
+//		return biddingDao.getBiddingsByUser(accountId);
+//	}
+//
+//	public List<Bidding> getBiddingsByAuction(int auctionId) {
+//		return biddingDao.getBiddingsByProduct(auctionId);
+//	}
 
-	public List<Bidding> getBiddingsByUser(String accountId) {
-		return biddingDao.getBiddingsByUser(accountId);
-	}
-
-	public List<Bidding> getBiddingsByProduct(int auctionId) {
-		return biddingDao.getBiddingsByProduct(auctionId);
-	}
-	*/
 
 	public List<Item> getItemListByProduct(String productId) {
 		return itemDao.getItemListByProduct(productId);

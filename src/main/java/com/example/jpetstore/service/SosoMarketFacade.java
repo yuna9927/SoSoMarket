@@ -28,6 +28,8 @@ public interface SosoMarketFacade {
 	void updateAccount(Account account);
 
 //	void deleteAccount(String accountId);
+	
+// void updateWithdraw(Account accountId);
 
 
 //	List<Category> getCategoryList();
@@ -44,7 +46,7 @@ public interface SosoMarketFacade {
 
 	Product getProduct(int productId);
 
-//	List<Product> getAllProduct();
+	List<Product> getAllProduct();
 
 	void updateProduct(Product product);
 
@@ -55,38 +57,36 @@ public interface SosoMarketFacade {
 	void updateProductStatus(Product product);
 	
 	/* auction */
-	/*
-	List<Auction> getAuctionListByUser(String accountId);
-
-	List<Auction> getAuctionListByCategory(int categoryId);
-
-	List<Auction> searchAuctionList(String keyword);
-
-	Auction getAuction(int auctionId);
-
-	List<Auction> getAllAuction();
-
-	void updateAuction(int auctionId);
-
-	void insertAuction(Auction auction);
-
-	void deleteAuction(int auctionId);
-
-	void updateAuctionStatus(Auction auction);
-
-	void updateWithdraw(Account accountId);
-*/
-	/* Bidding */
-/*
-	void insertBidding(Auction bidding);
-
-	Bidding getBidding(int biddingId);
-
-	List<Bidding> getBiddingsByUser(String accountId);
-
-	List<Bidding> getBiddingsByProduct(int auctionId);
 	
-	*/
+//	List<Auction> getAuctionListByUser(String accountId);
+//
+//	List<Auction> getAuctionListByCategory(int categoryId);
+//
+//	List<Auction> searchAuctionList(String keyword);
+//
+//	Auction getAuction(int auctionId);
+//
+//	List<Auction> getAllAuction();
+//
+//	void updateAuction(int auctionId);
+//
+//	void insertAuction(Auction auction);
+//
+//	void deleteAuction(int auctionId);
+//
+//	void updateAuctionStatus(Auction auction);
+
+	/* Bidding */
+
+//	void insertBidding(Auction bidding);
+//
+//	Bidding getBidding(int biddingId);
+//
+//	List<Bidding> getBiddingsByUser(String accountId);
+//
+//	List<Bidding> getBiddingsByAuction(int auctionId);
+//	
+//	
 
 	List<Item> getItemListByProduct(String productId);
 
