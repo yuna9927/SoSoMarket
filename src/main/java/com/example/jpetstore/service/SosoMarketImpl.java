@@ -198,17 +198,26 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		return itemDao.isItemInStock(itemId);
 	}
 
+	/* order */
+
 	public void insertOrder(Order order) {
-		itemDao.updateQuantity(order);	    
 		orderDao.insertOrder(order);
 	}
-	
+
 	public Order getOrder(int orderId) {
 		return orderDao.getOrder(orderId);
 	}
 
-	public List<Order> getOrdersByUsername(String username) {
-		return orderDao.getOrdersByUsername(username);
+	public List<Order> getOrderListByBuyer(String accountId) {
+		return orderDao.getOrderListByBuyer(accountId);
+	}
+
+	public List<Order> getOrderListBySeller(String accountId) {
+		return orderDao.getOrderListBySeller(accountId);
+	}
+
+	public void updateOrderStatus(Order order) {
+		orderDao.updateOrderStatus(order);
 	}
 
 	

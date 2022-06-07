@@ -95,10 +95,17 @@ public interface SosoMarketFacade {
 	boolean isItemInStock(String itemId);
 
 
+	/* order */
+	
 	void insertOrder(Order order);
 
 	Order getOrder(int orderId);
 
-	List<Order> getOrdersByUsername(String username);
+	List<Order> getOrderListByBuyer(String accountId);
+
+	List<Order> getOrderListBySeller(String accountId);
+
+	void updateOrderStatus(Order order);
+	
 
 }
