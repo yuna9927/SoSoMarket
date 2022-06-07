@@ -1,15 +1,30 @@
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
 <%@ include file="IncludeTop.jsp"%>
 
-<table id="main-menu">
-  <tr><td>
-    <a href='<c:url value="/shop/index.do"/>'>
-      <b><font color="black" size="2">&lt;&lt; Main Menu</font></b></a>
-  </td></tr>
+<!-- order summary -->
+<h2>주문 상품 정보</h2>
+<table class="n25">
+  <tr bgcolor="#CCCCCC">
+    <td><b>이름</b></td>
+    <td><b>가격</b></td>
+    <td><b>배송비</b></td>
+    <td><b>배송방법</b></td>
+  </tr>
+  <tr bgcolor="#FFFF88">
+    <td><c:out value="${product.name}" /></td>
+    <td align="right"><fmt:formatNumber
+        value="${product.price}" pattern="$#,##0.00" /></td>
+    <td align="right"><fmt:formatNumber
+        value="${product.shippingFee}" pattern="$#,##0.00" /></td>
+    <td><c:out value="${product.shipping}" /></td>
+  </tr>
 </table>
 
+<!-- Order Info Check -->
 <div align="center">
   <p>
-    <b>Please confirm the information below and then press continue...</b>
+    <b>아래의 입력 정보가 맞나면 '다음으로' 버튼을 클릭해주세요.</b>
   </p>
   <p></p>
   <table class="n13">
@@ -23,75 +38,27 @@
     </tr>
     <tr>
       <td colspan="2">
-        <font color="GREEN" size="4"><b>Billing Address</b></font></td>
+        <font color="GREEN" size="4"><b>결제 정보</b></font></td>
     </tr>
     <tr>
-      <td>First name:</td>
-      <td>${orderForm.order.billToFirstName}</td>
+      <td>은행: </td>
+      <td>${orderForm.order.bankName}</td>
     </tr>
     <tr>
-      <td>Last name:</td>
-      <td>${orderForm.order.billToLastName}</td>
-    </tr>
-    <tr>
-      <td>Address 1:</td>
-      <td>${orderForm.order.billAddress1}</td>
-    </tr>
-    <tr>
-      <td>Address 2:</td>
-      <td>${orderForm.order.billAddress2}</td>
-    </tr>
-    <tr>
-      <td>City:</td>
-      <td>${orderForm.order.billCity}</td>
-    </tr>
-    <tr>
-      <td>State:</td>
-      <td>${orderForm.order.billState}</td>
-    </tr>
-    <tr>
-      <td>Zip:</td>
-      <td>${orderForm.order.billZip}</td>
-    </tr>
-    <tr>
-      <td>Country:</td>
-      <td>${orderForm.order.billCountry}</td>
+      <td>계좌번호: </td>
+      <td>${orderForm.order.bankNumber}</td>
     </tr>
     <tr>
       <td colspan="2">
-        <font color="GREEN" size="4"><b>Shipping Address</b></font></td>
+        <font color="GREEN" size="4"><b>배송지</b></font></td>
     </tr>
     <tr>
-      <td>First name:</td>
-      <td>${orderForm.order.shipToFirstName}</td>
+      <td>우편번호: </td>
+      <td>${orderForm.order.shippingZipCode}</td>
     </tr>
     <tr>
-      <td>Last name:</td>
-      <td>${orderForm.order.shipToLastName}</td>
-    </tr>
-    <tr>
-      <td>Address 1:</td>
-      <td>${orderForm.order.shipAddress1}</td>
-    </tr>
-    <tr>
-      <td>Address 2:</td>
-      <td>${orderForm.order.shipAddress2}</td>
-    </tr>
-    <tr>
-      <td>City:</td>
-      <td>${orderForm.order.shipCity}</td>
-    </tr>
-    <tr>
-      <td>State:</td>
-      <td>${orderForm.order.shipState}</td>
-    </tr>
-    <tr>
-      <td>Zip:</td>
-      <td>${orderForm.order.shipZip}</td>
-    </tr>
-    <tr>
-      <td>Country:</td>
-      <td>${orderForm.order.shipCountry}</td>
+      <td>집주소: </td>
+      <td>${orderForm.order.shippingAddress}</td>
     </tr>
   </table>
   <p>
