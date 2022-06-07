@@ -17,8 +17,6 @@
               <c:param name="productId" value="${product.productId}"/></c:url>'>
               <font color="black"><c:out value="${product.title}" /></font>
             </a></b></td>
-        <td>
-          <c:out value="${product.title}" /></td>
         <td><fmt:formatDate value="${product.createdTime}"
             pattern="yyyy/MM/dd hh:mm:ss" /></td>
         <td>
