@@ -22,8 +22,8 @@
     </td>
     <td style="text-align:right">
      <a href='<c:url value="/shop/viewProduct.do">
-              <c:param name="productId" value="5"/></c:url>'>
-              <font color="black"><c:out value="5" /></font>
+              <c:param name="productId" value="9"/></c:url>'>
+              <font color="black"><c:out value="9" /></font>
             </a>
             
       <a href="<c:url value="/shop/viewCart.do"/>">

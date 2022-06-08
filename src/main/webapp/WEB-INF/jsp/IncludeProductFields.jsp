@@ -8,19 +8,9 @@
     <td>카테고리 - dao 후 적용</td>
   </tr>
   <tr>
-    <td>id</td>
-    <td><form:input path="product.productId" htmlEscape="false"/> 
-      <form:errors path="product.productId" cssClass="error" /></td>
-  </tr>
-  <tr>
     <td>categoryId</td>
     <td><form:input path="product.categoryId" htmlEscape="false"/>
       <form:errors path="product.categoryId" cssClass="error" /></td>
-  </tr>
-  <tr>
-    <td>sellerId</td>
-    <td><form:input path="product.sellerId" /> 
-      <form:errors path="product.sellerId" cssClass="error" /></td>
   </tr>
   <tr>
     <td>name</td>
@@ -36,11 +26,6 @@
     <td>productStatus</td>
     <td><form:input path="product.productStatus" htmlEscape="false"/>
       <form:errors path="product.productStatus" cssClass="error" /></td>
-  </tr>
-  <tr>
-    <td>createdTime</td>
-    <td><form:input path="product.createdTime" htmlEscape="false"/>
-      <form:errors path="product.createdTime" cssClass="error" /></td>
   </tr>
   <tr>
     <td>shipping</td>

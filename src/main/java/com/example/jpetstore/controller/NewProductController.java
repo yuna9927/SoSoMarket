@@ -57,7 +57,12 @@ public class NewProductController {
 	public String onSubmit(
 			HttpServletRequest request, HttpSession session,
 			@ModelAttribute("product") Product product,
+			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
+		
+		String accountId = userSession.getAccount().getAccountId();
+		
+		product.setSellerId(accountId);
 
 			
 //		new ProductValidator().validate(product, result);

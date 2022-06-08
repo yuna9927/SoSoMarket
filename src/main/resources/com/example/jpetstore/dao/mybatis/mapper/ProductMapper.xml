@@ -107,7 +107,7 @@
         CATEGORY_ID, ACCOUNT_ID, PRICE)
     VALUES
       (pk_sequence.NEXTVAL, #{name}, #{description}, #{shipping}, #{shipping_fee},
-        #{image}, #{categoryId}, #{sellerId}, #{price})
+        'hi', #{categoryId}, #{sellerId}, #{price})
   </insert>
 
   <delete id="deleteProduct" parameterType="int">
