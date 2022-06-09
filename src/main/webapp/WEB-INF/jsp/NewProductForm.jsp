@@ -9,7 +9,7 @@
   <table id="product">
     <tr>
       <td>
-        <h3><font color="darkgreen">어떤 상품을 올리시나요?</font></h3>
+        <h3><font color="darkgreen">insertProduct</font></h3>
         
         <%@ include file="IncludeProductFields.jsp"%>
 
