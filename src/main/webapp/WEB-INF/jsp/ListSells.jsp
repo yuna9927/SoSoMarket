@@ -20,6 +20,7 @@
         <td><fmt:formatDate value="${product.createdTime}"
             pattern="yyyy/MM/dd hh:mm:ss" /></td>
         <td>
+        	<!-- 추후 변경 -->
           <c:out value="${product.productStatus}" /></td>
       </tr>
     </c:forEach>
