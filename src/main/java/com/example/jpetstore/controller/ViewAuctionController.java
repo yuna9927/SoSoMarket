@@ -36,7 +36,7 @@ public class ViewAuctionController {
 			ModelMap model) throws Exception {
 //		PagedListHolder<Item> itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
 //		itemList.setPageSize(4);
-		Product product = this.petStore.getProduct(Integer.parseInt(productId));
+		Product product = this.petStore.getProduct(Integer.parseInt(auctionId));
 		return new ModelAndView("ViewProduct", "product", product);
 	}
 	

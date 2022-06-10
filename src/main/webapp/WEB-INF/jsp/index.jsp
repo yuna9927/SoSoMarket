@@ -2,6 +2,9 @@
 
 <%@ include file="IncludeTop.jsp" %>
 
+<a href="<c:url value="/shop/viewProductList.do"/>">
+                   상품리스트</a>
+
 <table style="border:none;border-collapse:collapse;width:100%">
   <tr>
     <td style="text-align:left;vertical-align:top;width:100%">
@@ -47,6 +50,7 @@
                     <img border="0" src="../images/birds_icon.gif" /></a>
                 </td>
               </tr>
+              
             </table>
           </td>
           <td style="text-align:center;background-color:white;height:300;width:100%">

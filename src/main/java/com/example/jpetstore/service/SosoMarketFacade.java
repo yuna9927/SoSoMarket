@@ -58,35 +58,35 @@ public interface SosoMarketFacade {
 	
 	/* auction */
 	
-//	List<Auction> getAuctionListByUser(String accountId);
-//
-//	List<Auction> getAuctionListByCategory(int categoryId);
-//
-//	List<Auction> searchAuctionList(String keyword);
-//
-//	Auction getAuction(int auctionId);
-//
-//	List<Auction> getAllAuction();
-//
-//	void updateAuction(int auctionId);
-//
-//	void insertAuction(Auction auction);
-//
-//	void deleteAuction(int auctionId);
-//
-//	void updateAuctionStatus(Auction auction);
+	List<Auction> getAuctionListByUser(String accountId);
+
+	List<Auction> getAuctionListByCategory(int categoryId);
+
+	List<Auction> searchAuctionList(String keyword);
+
+	Auction getAuction(int auctionId);
+
+	List<Auction> getAllAuction();
+
+	void updateAuction(int auctionId);
+
+	void insertAuction(Auction auction);
+
+	void deleteAuction(int auctionId);
+
+	void updateAuctionStatus(Auction auction);
 
 	/* Bidding */
 
-//	void insertBidding(Auction bidding);
-//
-//	Bidding getBidding(int biddingId);
-//
-//	List<Bidding> getBiddingsByUser(String accountId);
-//
-//	List<Bidding> getBiddingsByAuction(int auctionId);
-//	
-//	
+	void insertBidding(Auction bidding);
+
+	Bidding getBidding(int biddingId);
+
+	List<Bidding> getBiddingsByUser(String accountId);
+
+	List<Bidding> getBiddingsByAuction(int auctionId);
+	
+	
 
 	List<Item> getItemListByProduct(String productId);
 

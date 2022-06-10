@@ -15,13 +15,13 @@
       <td><b>desc</b></td>
       <!--<td><b>desc</b></td>  -->
     </tr>
-    <c:forEach var="product" items="${productList}">
+    <c:forEach var="product" items="${productList.pageList}">
       <tr bgcolor="#FFFF88">
         <td><b><a
             href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>
               <font color="BLACK"><c:out value="${product.name}" /></font>
           </a></b></td>
-        <td><c:out value="${product.desc}" /></td>
+        <td><c:out value="${product.description}" /></td>
         <td><c:out value="${product.price}" /></td>
         <td><c:out value="${product.productStatus}" /></td>
       </tr>

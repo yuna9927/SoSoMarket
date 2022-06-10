@@ -35,8 +35,9 @@ public class ViewProductListController {
 			) throws Exception {
 		PagedListHolder<Product> productList = new PagedListHolder<Product>(this.sosomarket.getAllProduct());
 		productList.setPageSize(4);
+		System.out.println(productList);
 		model.put("productList", productList);
-		return "ViewProductList";
+		return "SearchProductList";
 	}
 
 	//페이지 넘김
@@ -50,7 +51,7 @@ public class ViewProductListController {
 		}
 		if ("next".equals(page)) { productList.nextPage(); }
 		else if ("previous".equals(page)) { productList.previousPage(); }
-		return "ViewProductList";
+		return "SearchProductList";
 	}
 	
 	//경매 상품 리스트
