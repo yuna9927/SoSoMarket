@@ -15,7 +15,7 @@ public class DeleteAccountController {
 	public ModelAndView handleRequest(
 			@RequestParam("accountId") String accountId,
 			@ModelAttribute("sosoMarket") SosoMarketFacade sosoMarket
-//			HttpSession session
+//			HttpSession session test
 		) throws Exception {
 		
 //		Account account = sosoMarket.getAccount(accountId);
