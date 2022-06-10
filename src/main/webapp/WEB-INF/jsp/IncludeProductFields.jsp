@@ -5,7 +5,7 @@
 
 <table class="n13">
   <tr>
-    <td>카테고리 - dao 후 적용</td>
+    <td>category</td>
   </tr>
   <tr>
     <td>categoryId</td>
@@ -43,6 +43,6 @@
       <form:errors path="product.price" cssClass="error" /></td>
   </tr>
   <tr>
-    <td>이미지 - 방법을 모름</td>
+    <td>image</td>
   </tr>
 </table>

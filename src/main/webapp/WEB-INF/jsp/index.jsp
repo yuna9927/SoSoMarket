@@ -65,7 +65,7 @@
   </tr>
 </table>
 
-<a href="<c:url value="/shop/newProductForm.do"/>">일반상품을 등록하려면 여기를 클릭하세요~ </a>
+<a href="<c:url value="/shop/newProductForm.do"/>">go to new product form </a>
 
 
 <%@ include file="IncludeBottom.jsp" %>
