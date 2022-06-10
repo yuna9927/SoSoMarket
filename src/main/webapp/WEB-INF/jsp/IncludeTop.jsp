@@ -1,10 +1,11 @@
-<%@ page contentType="text/html" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
   <title>JPetStore</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; utf-8" />
   <meta http-equiv="Cache-Control" content="max-age=0">
   <meta http-equiv="Cache-Control" content="no-cache">
   <meta http-equiv="expires" content="0">
