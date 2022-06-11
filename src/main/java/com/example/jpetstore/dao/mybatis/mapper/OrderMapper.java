@@ -24,14 +24,17 @@ import com.example.jpetstore.domain.Order;
  * @author Eduardo Macarron
  */
 public interface OrderMapper {
+	
+	Order getOrderBySeller(int orderId);
+	
+	Order getOrderByBuyer(int orderId);
 
-  List<Order> getOrdersByUsername(String username);
+	void insertOrder(Order order);
+	
+	void updateOrderStatus(Order order);
+	
+	List<Order> getOrderListBySeller(String accountId);
+	
+	List<Order> getOrderListByBuyer(String accountId);
 
-  Order getOrder(int orderId);
-  
-  void insertOrder(Order order);
-  
-  void insertOrderStatus(Order order);
-
-  int msSqlServerInsertOrder(Order order);
 }
