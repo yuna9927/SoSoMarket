@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.jpetstore.dao.mybatis.mapper.AuctionMapper">
+  <cache />
+
+  <select id="getAuction" resultType="Auction">
+    SELECT 
+    	P.PRODUCT_ID as auctionId,
+    	P.TITLE as name,
+    	P.DESCRIPTION as description,
+		P.SHIPPING as shipping,
+		P.SHIPPING_FEE as shippingFee,
+		P.IMAGE as image,
+		P.CREATED_TIME as createdTime,
+		P.CATEGORY_ID as categoryId,
+		P.PRODUCT_STATUS as productStatus,
+		P.ACCOUNT_ID as sellerId,
+		A.PRESENT_PRICE as currentPrice,
+    	A.START_PRICE as startPrice,
+    	A.DEADLINE as deadLine
+    FROM AUCTION A, PRODUCT P
+    WHERE P.PRODUCT_ID = A.PRODUCT_ID AND A.PRODUCT_ID = #{auctionId}
+  </select>
+  
+  <select id="getAuctionListByUser" resultType="Auction">
+    SELECT
+		P.PRODUCT_ID AS auctionId,
+    	P.TITLE AS name,
+    	P.DESCRIPTION AS description,
+		P.SHIPPING AS shipping,
+		P.SHIPPING_FEE AS shippingFee,
+		P.IMAGE AS image,
+		P.CREATED_TIME AS createdTime,
+		P.CATEGORY_ID AS categoryId,
+		P.PRODUCT_STATUS AS productStatus,
+		P.ACCOUNT_ID AS sellerId,
+		A.PRESENT_PRICE as currentPrice,
+    	A.START_PRICE as startPrice,
+    	A.DEADLINE as deadLine
+    FROM AUCTION A, PRODUCT P
+    WHERE P.PRODUCT_ID = A.PRODUCT_ID AND P.ACCOUNT_ID = #{sellerId}
+  </select>
+  
+  <select id="getAuctionListByCategory" resultType="Auction">
+    SELECT
+		P.PRODUCT_ID as auctionId,
+    	P.TITLE as name,
+    	P.DESCRIPTION as description,
+		P.SHIPPING as shipping,
+		P.SHIPPING_FEE as shippingFee,
+		P.IMAGE as image,
+		P.CREATED_TIME as createdTime,
+		P.CATEGORY_ID as categoryId,
+		P.PRODUCT_STATUS as productStatus,
+		P.ACCOUNT_ID as sellerId,
+		A.PRESENT_PRICE as currentPrice,
+    	A.START_PRICE as startPrice,
+    	A.DEADLINE as deadLine
+    FROM AUCTION A, PRODUCT P
+    WHERE P.PRODUCT_ID = A.PRODUCT_ID AND P.CATEGORY_ID = #{categoryId}
+  </select>
+  
+  <select id="searchAuctionList" resultType="Auction">
+    SELECT
+		P.PRODUCT_ID as auctionId,
+    	P.TITLE as name,
+    	P.DESCRIPTION as description,
+		P.SHIPPING as shipping,
+		P.SHIPPING_FEE as shippingFee,
+		P.IMAGE as image,
+		P.CREATED_TIME as createdTime,
+		P.CATEGORY_ID as categoryId,
+		P.PRODUCT_STATUS as productStatus,
+		P.ACCOUNT_ID as sellerId,
+		A.PRESENT_PRICE as currentPrice,
+    	A.START_PRICE as startPrice,
+    	A.DEADLINE as deadLine
+    FROM AUCTION A, PRODUCT P
+    WHERE P.PRODUCT_ID = A.PRODUCT_ID AND lower(title) like #{keyword}
+  </select>
+  
+  <select id="getAllAuctionList" resultType="Auction">
+    SELECT
+		P.PRODUCT_ID as auctionId,
+    	P.TITLE as name,
+    	P.DESCRIPTION as description,
+		P.SHIPPING as shipping,
+		P.SHIPPING_FEE as shippingFee,
+		P.IMAGE as image,
+		P.CREATED_TIME as createdTime,
+		P.CATEGORY_ID as categoryId,
+		P.PRODUCT_STATUS as productStatus,
+		P.ACCOUNT_ID as sellerId,
+		A.PRESENT_PRICE as currentPrice,
+    	A.START_PRICE as startPrice,
+    	A.DEADLINE as deadLine
+    FROM AUCTION A, PRODUCT P
+    WHERE P.PRODUCT_ID = A.PRODUCT_ID
+  </select>
+
+  <insert id="insertAuction" parameterType="Auction">
+    INSERT INTO AUCTION
+      (PRESENT_PRICE, START_PRICE, DEADLINE, PRODUCT_ID)
+    VALUES
+      (#{currentPrice}, #{startPrice}, #{deadLine}, #{auctionId})
+  </insert>
+
+  <delete id="deleteAuction" parameterType="int">
+    DELETE FROM AUCTION
+    WHERE PRODUCT_ID = #{auctionId}
+  </delete>
+  
+</mapper>
