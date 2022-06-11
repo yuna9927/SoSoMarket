@@ -101,28 +101,28 @@ public class SosoMarketImpl implements SosoMarketFacade {
 
 	/* Product */
 
-	public List<Product> getProductListByCategory(String categoryId) {
-		return productDao.getProductListByCategory(categoryId);
-	}
+//	public List<Product> getProductListByCategory(String categoryId) {
+//		return productDao.getProductListByCategory(categoryId);
+//	}
 
 	public List<Product> getProductListByUser(String accountId) {
 		return productDao.getProductListByUser(accountId);
 	}
 
 	public List<Product> searchProductList(String keyword) {
-		return productDao.searchProductList(keywords);
+		return productDao.searchProductList(keyword);
 	}
 
 	public Product getProduct(int productId) {
 		return productDao.getProduct(productId);
 	}
 
-	public List<Product> getAllProduct() {
-		return productDao.getAllProduct();
-	}
+//	public List<Product> getAllProduct() {
+//		return productDao.getAllProduct();
+//	}
 
-	public void updateProduct(int productId) {
-		productDao.updateProduct(productId);
+	public void updateProduct(Product product) {
+		productDao.updateProduct(product);
 	}
 
 	public void insertProduct(Product product) {
@@ -137,7 +137,54 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		productDao.updateProductStatus(product);
 	}
 
+	/* auction */
+/*
+	public List<Auction> getAuctionListByUser(String accountId) {
+		return auctionDao.getAuctionListByUser(accountId);
+	}
+
+	public List<Auction> getAuctionListByCategory(int categoryId) {
+		return auctionDao.getAuctionListByCategory(categoryId);
+	}
+
+	public List<Auction> searchAuctionList(String keyword) {
+		return auctionDao.searchAuctionList(keywords);
+	}
+
+	public Auction getAuction(int auctionId) {
+		return auctionDao.getAuction(auctionId);
+	}
 	
+	public void insertAuction(Auction auction) {
+		auctionDao.insertAuction(auction);
+	}
+
+	public void deleteAuction(int auctionId) {
+		auctionDao.deleteAuction(auctionId);
+	}
+
+	public void updateAuctionStatus(Auction auction) {
+		auctionDao.updateAuctionStatus(auction);
+	}
+
+	/* Bidding */
+/*
+	public void insertBidding(Auction bidding) {
+		biddingDao.insertBidding(bidding);
+	}
+
+	public Bidding getBidding(int biddingId) {
+		return biddingDao.getBidding(biddingId);
+	}
+
+	public List<Bidding> getBiddingsByUser(String accountId) {
+		return biddingDao.getBiddingsByUser(accountId);
+	}
+
+	public List<Bidding> getBiddingsByProduct(int auctionId) {
+		return biddingDao.getBiddingsByProduct(auctionId);
+	}
+	*/
 
 	public List<Item> getItemListByProduct(String productId) {
 		return itemDao.getItemListByProduct(productId);
@@ -163,4 +210,6 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	public List<Order> getOrdersByUsername(String username) {
 		return orderDao.getOrdersByUsername(username);
 	}
+
+	
 }

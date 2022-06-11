@@ -15,7 +15,6 @@
       <td>Status: </td>
       <td><c:out value="${product.productStatus}" /></td>
     </tr>
-    <tr> 
     <tr>
       <td>Price: </td>
       <td><fmt:formatNumber value="${product.price}"
@@ -30,13 +29,23 @@
     <tr>
       <td>seller: </td>
       <td><c:out value="${product.sellerId}" /></td>
-    <tr> 
+    </tr> 
+    <tr>
       <td>shipping: </td> 
       <td><c:out value="${product.shipping}" /></td>
+    </tr>
     <tr>
       <td>shippingFee</td>
       <td><c:out value="${product.shippingFee}" /></td>
+    </tr>
   </table>
+  <br>
+  <h3><b><a href='<c:url value="/shop/updateProduct.do"/>'>Product Edit</a></b></h3>
+  <h3><b><a href='<c:url value="/shop/deleteProduct.do"/>'>Product Delete</a></b></h3>
+  <br>
+  <h3><b><a href='<c:url value="/user/newOrder.do"/>'>Order Product</a></b></h3>
 </div>
+
+
 
 <%@ include file="IncludeBottom.jsp"%>
