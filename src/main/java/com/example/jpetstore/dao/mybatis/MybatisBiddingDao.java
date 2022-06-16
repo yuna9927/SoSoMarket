@@ -3,11 +3,13 @@ package com.example.jpetstore.dao.mybatis;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Repository;
 
 import com.example.jpetstore.dao.BiddingDao;
 import com.example.jpetstore.dao.mybatis.mapper.BiddingMapper;
 import com.example.jpetstore.domain.Bidding;
 
+@Repository
 public class MybatisBiddingDao implements BiddingDao {
 	
 	@Autowired
