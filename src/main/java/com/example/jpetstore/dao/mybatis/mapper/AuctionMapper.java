@@ -13,28 +13,29 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-
 package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
 
-import com.example.jpetstore.domain.Order;
-
+import com.example.jpetstore.domain.Auction;
 /**
  * @author Eduardo Macarron
+ *
  */
-public interface OrderMapper {
-	
-	Order getOrderBySeller(int orderId);
-	
-	Order getOrderByBuyer(int orderId);
+public interface AuctionMapper {
 
-	void insertOrder(Order order);
-	
-	void updateOrderStatus(Order order);
-	
-	List<Order> getOrderListBySeller(String accountId);
-	
-	List<Order> getOrderListByBuyer(String accountId);
+	Auction getAuction(int productId);
 
+	void insertAuction(Auction auction);
+	  
+	void deleteAuction(int productId);
+
+	List<Auction> getAuctionByUser(String accountId);
+	
+	List<Auction> getAuctionListByCategory(int categoryId);
+
+	List<Auction> searchAuctionList(String keywords);
+
+	List<Auction> getAllAuctionList();
+	
 }

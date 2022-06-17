@@ -1,5 +1,7 @@
 package com.example.jpetstore.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 /**
@@ -39,8 +42,10 @@ public class ListOrderController {
 		@ModelAttribute("userSession") UserSession userSession
 		) throws Exception {
 		String accountId = userSession.getAccount().getAccountId();
-		return new ModelAndView("/user/orderListOnBuy", "buyOrderList", 
-				sosomarket.getOrderListByBuyer(accountId));
+		List<Order> buyOrderList = sosomarket.getOrderListByBuyer(accountId);
+		System.out.println("odrerlist: " + buyOrderList);
+		return new ModelAndView("ListOrders", "buyOrderList", 
+				buyOrderList);
 	}
 
 }

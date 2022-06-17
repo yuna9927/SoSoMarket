@@ -35,10 +35,9 @@ public class ViewMyProductListController {
 		) throws Exception {
 		String accountId = userSession.getAccount().getAccountId();
 		List<Product> productList = sosomarket.getProductListByUser(accountId);
-		List<Auction> auctionList = sosomarket.getAuctionListByUser(accountId);
+		//List<Auction> auctionList = sosomarket.getAuctionListByUser(accountId);
 
-		return new ModelAndView("/user/orderListOnSell", "sellOrderList", 
-				sosomarket.getOrderListBySeller(accountId));
+		return new ModelAndView("ListSells", "productList", productList);
 	}
 	
 	
