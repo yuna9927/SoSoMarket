@@ -1,10 +1,7 @@
 package com.example.jpetstore.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 @SuppressWarnings("serial")
 public class Order implements Serializable {
@@ -123,6 +120,5 @@ public class Order implements Serializable {
     bankName = account.getBankName();
   
   }
-
-
+  
 }

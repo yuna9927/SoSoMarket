@@ -7,11 +7,17 @@ import org.springframework.dao.DataAccessException;
 import com.example.jpetstore.domain.Order;
 
 public interface OrderDao {
+	
+	Order getOrderBySeller(int orderId) throws DataAccessException;
+	
+	Order getOrderByBuyer(int orderId) throws DataAccessException;
 
-  List<Order> getOrdersByUsername(String username) throws DataAccessException;
+	void insertOrder(Order order) throws DataAccessException;
 
-  Order getOrder(int orderId) throws DataAccessException;
+	void updateOrderStatus(Order order) throws DataAccessException;
 
-  void insertOrder(Order order) throws DataAccessException;
+	List<Order> getOrderListBySeller(String accountId) throws DataAccessException;
+	
+	List<Order> getOrderListByBuyer(String accountId) throws DataAccessException;
 
 }

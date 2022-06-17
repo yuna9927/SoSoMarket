@@ -67,9 +67,8 @@ public class Auction implements Serializable {
 		return biddingList;
 	}
 	
-	// ±¸ÇöÇÊ¿ä
+	//êµ¬í˜„í•„ìš”
 	public boolean getPriceValidate(String auctionId, int biddingPrice) {
 		return true;
 	}
-
 }

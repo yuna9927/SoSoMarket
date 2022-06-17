@@ -17,9 +17,6 @@
 package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
-
-import org.springframework.dao.DataAccessException;
-
 import com.example.jpetstore.domain.Product;
 
 /**
@@ -28,22 +25,22 @@ import com.example.jpetstore.domain.Product;
  */
 public interface ProductMapper {
 	
-	List<Product> getProductListByCategory(int categoryId) throws DataAccessException;
+	List<Product> getProductListByCategory(int categoryId);
 
-	List<Product> getProductListByUser(String accountId) throws DataAccessException;
+	List<Product> getProductListByUser(String accountId);
 
-	List<Product> searchProductList(String keywords) throws DataAccessException;
+	List<Product> searchProductList(String keywords);
 
-	List<Product> getAllProductList() throws DataAccessException;
+	List<Product> getAllProductList();
 
-	Product getProduct(int productId) throws DataAccessException;
+	Product getProduct(int productId);
 
-	void updateProduct(Product product) throws DataAccessException;
+	void updateProduct(Product product);
 
-	void insertProduct(Product product) throws DataAccessException;
+	void insertProduct(Product product);
 
-	void deleteProduct(int productId) throws DataAccessException;
+	void deleteProduct(int productId);
 
-	void updateProductStatus(Product product) throws DataAccessException;
+	void updateProductStatus(Product product);
 
 }
