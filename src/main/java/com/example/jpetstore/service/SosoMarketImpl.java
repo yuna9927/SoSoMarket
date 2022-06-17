@@ -209,10 +209,11 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 
 	@Override
-	public List<Bidding> getBiddingsByProduct(int auctionId) {
+	public void insertBidding(Auction bidding) {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
+
 
 	
 }
