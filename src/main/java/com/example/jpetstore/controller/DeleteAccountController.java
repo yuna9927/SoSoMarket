@@ -1,37 +1,33 @@
 package com.example.jpetstore.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 01.12.2003
- * @modified by Changsup Park
- */
 @Controller
 @SessionAttributes("userSession")
-public class ListOrdersController {
+public class DeleteAccountController { 
 
-	private SosoMarketFacade petStore;
-
+	
+	private SosoMarketFacade sosoMarket;
+	
 	@Autowired
-	public void setPetStore(SosoMarketFacade petStore) {
-		this.petStore = petStore;
+	public void setSosomarket(SosoMarketFacade sosoMarket) {
+		this.sosoMarket = sosoMarket;
 	}
-
-	@RequestMapping("/shop/listOrders.do")
+	
+	@RequestMapping("/user/deleteUser.do")
 	public ModelAndView handleRequest(
-		@ModelAttribute("userSession") UserSession userSession
+			@ModelAttribute("userSession") UserSession userSession
 		) throws Exception {
-		String username = userSession.getAccount().getUsername();
-		return new ModelAndView("ListOrders", "orderList", 
-				petStore.getOrdersByUsername(username));
+		
+		String accountId = userSession.getAccount().getAccountId();
+//		Account account = sosoMarket.getAccount(accountId);
+		sosoMarket.deleteAccount(accountId);
+		
+		return new ModelAndView("index");
 	}
-
 }
