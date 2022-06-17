@@ -8,7 +8,7 @@
   <select id="getProductListByCategory" resultType="Product">
     SELECT
       PRODUCT_ID as productId,
-      TITLE as name,
+      TITLE as title,
       DESCRIPTION as description,
       SHIPPING as shipping,
       SHIPPING_FEE as shippingFee,
@@ -25,7 +25,7 @@
   <select id="getProductListByUser" resultType="Product">
     SELECT
       PRODUCT_ID as productId,
-      TITLE as name,
+      TITLE as title,
       DESCRIPTION as description,
       SHIPPING as shipping,
       SHIPPING_FEE as shippingFee,
@@ -42,7 +42,7 @@
   <select id="searchProductList" resultType="Product">
     select
       PRODUCT_ID as productId,
-      TITLE as name,
+      TITLE as title,
       DESCRIPTION as description,
       SHIPPING as shipping,
       SHIPPING_FEE as shippingFee,
@@ -59,7 +59,7 @@
   <select id="getAllProductList" resultType="Product">
     SELECT
       PRODUCT_ID as productId,
-      TITLE as name,
+      TITLE as title,
       DESCRIPTION as description,
       SHIPPING as shipping,
       SHIPPING_FEE as shippingFee,
@@ -75,7 +75,7 @@
   <select id="getProduct" resultType="Product">
     SELECT
       PRODUCT_ID as productId,
-      TITLE as name,
+      TITLE as title,
       DESCRIPTION as description,
       SHIPPING as shipping,
       SHIPPING_FEE as shippingFee,
@@ -91,7 +91,7 @@
   
   <update id="updateProduct" parameterType="Product">
     UPDATE PRODUCT SET
-      TITLE = #{name},
+      TITLE = #{title},
       DESCRIPTION = #{description},
       SHIPPING = #{shipping},
       SHIPPING_FEE = #{shippingFee},
@@ -106,7 +106,7 @@
       (PRODUCT_ID, TITLE, DESCRIPTION, SHIPPING, SHIPPING_FEE, IMAGE,
         CATEGORY_ID, ACCOUNT_ID, PRICE)
     VALUES
-      (pk_sequence.NEXTVAL, #{name}, #{description}, #{shipping}, #{shipping_fee},
+      (pk_sequence.NEXTVAL, #{title}, #{description}, #{shipping}, #{shipping_fee},
         #{image}, #{categoryId}, #{sellerId}, #{price})
   </insert>
 
