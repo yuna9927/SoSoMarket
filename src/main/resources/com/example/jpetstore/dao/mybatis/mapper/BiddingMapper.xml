@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.jpetstore.dao.mybatis.mapper.BiddingMapper">
+  <cache />
+
+  <select id="getBidding" resultType="Bidding">
+    SELECT 
+   		UPDATE_DATE as updateDate,
+   		BIDDING_PRICE as biddingPrice,
+    	PRODUCT_ID as productId, 
+        BIDDING_ID as biddingId,
+	    ACCOUNT_ID as buyerId
+    FROM BIDDING
+    WHERE BIDDING_ID = #{biddingId}
+  </select>
+
+  <insert id="insertBidding" parameterType="Bidding">
+    INSERT INTO BIDDING
+      (BIDDING_PRICE, PRODUCT_ID, BIDDING_ID, ACCOUNT_ID)
+    VALUES
+      (#{price}, #{productId}, pk_sequence.NEXTVAL, #{accountId})
+  </insert>
+
+  <update id="updateBidding" parameterType="Bidding">
+    UPDATE BIDDING
+    SET
+        UPDATE_DATE = TO_DATE(SYSDATE),
+   		BIDDING_PRICE = #{price},
+    	PRODUCT_ID = #{productId}, 
+	    ACCOUNT_ID = #{accountId}
+    WHERE BIDDING_ID = #{biddingId}
+  </update>
+  
+  <select id="getBiddingsByUser" resultType="Bidding">
+    SELECT
+    	UPDATE_DATE as updateDate,
+   		BIDDING_PRICE as biddingPrice,
+    	PRODUCT_ID as productId, 
+        BIDDING_ID as biddingId,
+	    ACCOUNT_ID as buyerId
+    FROM BIDDING
+    WHERE ACCOUNT_ID = #{buyerId}
+  </select>
+  
+  <select id="getBiddingsByProduct" resultType="Bidding">
+    SELECT
+      	UPDATE_DATE as updateDate,
+   		BIDDING_PRICE as biddingPrice,
+    	PRODUCT_ID as productId, 
+        BIDDING_ID as biddingId,
+	    ACCOUNT_ID as buyerId
+    FROM BIDDING
+    WHERE PRODUCT_ID = #{productId}
+  </select>
+</mapper>
