@@ -5,11 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.jpetstore.dao.AccountDao;
+import com.example.jpetstore.dao.AuctionDao;
+import com.example.jpetstore.dao.BiddingDao;
 import com.example.jpetstore.dao.CategoryDao;
 import com.example.jpetstore.dao.ItemDao;
 import com.example.jpetstore.dao.OrderDao;
 import com.example.jpetstore.dao.ProductDao;
 import com.example.jpetstore.domain.Account;
+import com.example.jpetstore.domain.Auction;
+import com.example.jpetstore.domain.Bidding;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
@@ -60,6 +64,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	private CategoryDao categoryDao;
 	@Autowired
 	private ProductDao productDao;
+	@Autowired
+	private AuctionDao auctionDao;
+	@Autowired
+	private BiddingDao biddingDao;
 	@Autowired
 	private ItemDao itemDao;
 	@Autowired
@@ -117,9 +125,9 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		return productDao.getProduct(productId);
 	}
 
-//	public List<Product> getAllProduct() {
-//		return productDao.getAllProduct();
-//	}
+	public List<Product> getAllProduct() {
+		return productDao.getAllProductList();
+	}
 
 	public void updateProduct(Product product) {
 		productDao.updateProduct(product);
@@ -138,9 +146,9 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 
 	/* auction */
-/*
+
 	public List<Auction> getAuctionListByUser(String accountId) {
-		return auctionDao.getAuctionListByUser(accountId);
+		return auctionDao.getAuctionByUser(accountId);
 	}
 
 	public List<Auction> getAuctionListByCategory(int categoryId) {
@@ -148,7 +156,11 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 
 	public List<Auction> searchAuctionList(String keyword) {
-		return auctionDao.searchAuctionList(keywords);
+		return auctionDao.searchAuctionList(keyword);
+	}
+	
+	public List<Auction> getAllAuction() {
+		return auctionDao.getAllAuctionList();
 	}
 
 	public Auction getAuction(int auctionId) {
@@ -163,13 +175,13 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		auctionDao.deleteAuction(auctionId);
 	}
 
-	public void updateAuctionStatus(Auction auction) {
-		auctionDao.updateAuctionStatus(auction);
-	}
+//	public void updateAuctionStatus(Auction auction) {
+//		auctionDao.updateAuctionStatus(auction);
+//	}
 
 	/* Bidding */
-/*
-	public void insertBidding(Auction bidding) {
+
+	public void insertBidding(Bidding bidding) {
 		biddingDao.insertBidding(bidding);
 	}
 
@@ -181,10 +193,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		return biddingDao.getBiddingsByUser(accountId);
 	}
 
-	public List<Bidding> getBiddingsByProduct(int auctionId) {
-		return biddingDao.getBiddingsByProduct(auctionId);
+	public List<Bidding> getBiddingsByAuction(int auctionId) {
+		return biddingDao.getBiddingsByAuction(auctionId);
 	}
-	*/
+
 
 	public List<Item> getItemListByProduct(String productId) {
 		return itemDao.getItemListByProduct(productId);
@@ -204,11 +216,29 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 	
 	public Order getOrder(int orderId) {
-		return orderDao.getOrder(orderId);
+		return orderDao.getOrderBySeller(orderId);
 	}
 
 	public List<Order> getOrdersByUsername(String username) {
 		return orderDao.getOrdersByUsername(username);
+	}
+
+	@Override
+	public void updateAuction(int auctionId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateAuctionStatus(Auction auction) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Bidding> getBiddingsByProduct(int auctionId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

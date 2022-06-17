@@ -26,7 +26,7 @@ public class ViewAccountController {
 		this.sosomarket = sosomarket;
 	}
 
-	@RequestMapping("/user/viewUser.do")
+	@RequestMapping("/user/viewAccount.do")
 	public ModelAndView handleRequest(
 			@ModelAttribute("userSession") UserSession userSession
 			) throws Exception {
