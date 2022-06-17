@@ -19,7 +19,7 @@
       <tr bgcolor="#FFFF88">
         <td><b><a
             href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>
-              <font color="BLACK"><c:out value="${product.name}" /></font>
+              <font color="BLACK"><c:out value="${product.title}" /></font>
           </a></b></td>
         <td><c:out value="${product.desc}" /></td>
         <td><c:out value="${product.price}" /></td>
