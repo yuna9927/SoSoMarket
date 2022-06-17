@@ -51,7 +51,7 @@ public interface SosoMarketFacade {
 	void updateProductStatus(Product product);
 	
 	/* auction */
-	/*
+	
 	List<Auction> getAuctionListByUser(String accountId);
 
 	List<Auction> getAuctionListByCategory(int categoryId);
@@ -70,10 +70,9 @@ public interface SosoMarketFacade {
 
 	void updateAuctionStatus(Auction auction);
 
-	void updateWithdraw(Account accountId);
-*/
+
 	/* Bidding */
-/*
+
 	void insertBidding(Auction bidding);
 
 	Bidding getBidding(int biddingId);
@@ -82,7 +81,7 @@ public interface SosoMarketFacade {
 
 	List<Bidding> getBiddingsByProduct(int auctionId);
 	
-	*/
+	
 
 	List<Item> getItemListByProduct(String productId);
 
@@ -91,10 +90,17 @@ public interface SosoMarketFacade {
 	boolean isItemInStock(String itemId);
 
 
+	/* order */
+	
 	void insertOrder(Order order);
 
 	Order getOrder(int orderId);
 
-	List<Order> getOrdersByUsername(String username);
+	List<Order> getOrderListByBuyer(String accountId);
+
+	List<Order> getOrderListBySeller(String accountId);
+
+	void updateOrderStatus(Order order);
+	
 
 }
