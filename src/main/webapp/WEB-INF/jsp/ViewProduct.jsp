@@ -5,7 +5,7 @@
   <table id="product">
   	<tr>
       <td>Title : </td>
-      <td><c:out value="${product.title}" /></td>
+      <td><c:out value="${product.name}" /></td>
     </tr>
     <tr>
       <td bgcolor="#FFFFFF">

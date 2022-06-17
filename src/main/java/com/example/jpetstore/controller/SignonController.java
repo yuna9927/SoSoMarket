@@ -15,14 +15,19 @@ import com.example.jpetstore.service.SosoMarketFacade;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.ui.Model;
 
+/**
+ * @author Juergen Hoeller
+ * @since 30.11.2003
+ * @modified-by Changsup Park
+ */
 @Controller
 @SessionAttributes("userSession")
 public class SignonController { 
 
 	private SosoMarketFacade sosomarket;
 	@Autowired
-	public void setSosomarket(SosoMarketFacade sosomarket) {
-		this.sosomarket = sosomarket;
+	public void setSosomarket(SosoMarketFacade petStore) {
+		this.sosomarket = petStore;
 	}
 
 	@RequestMapping("/main/signon.do")

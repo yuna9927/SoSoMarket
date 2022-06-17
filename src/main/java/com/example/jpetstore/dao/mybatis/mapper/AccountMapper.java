@@ -22,7 +22,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.example.jpetstore.domain.Account;
 
-
+/**
+ * @author Eduardo Macarron
+ *
+ */
 public interface AccountMapper {
 
 	Account getAccount(String accountId);
