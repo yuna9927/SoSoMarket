@@ -9,6 +9,10 @@ import com.example.jpetstore.dao.AccountDao;
 import com.example.jpetstore.dao.mybatis.mapper.AccountMapper;
 import com.example.jpetstore.domain.Account;
 
+/**
+ * @author Juergen Hoeller
+ * @author Colin Sampaleanu
+ */
 @Repository
 public class MybatisAccountDao implements AccountDao {
 

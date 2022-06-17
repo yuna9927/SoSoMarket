@@ -79,7 +79,7 @@ public interface SosoMarketFacade {
 
 	List<Bidding> getBiddingsByUser(String accountId);
 
-	List<Bidding> getBiddingsByProduct(int auctionId);
+	List<Bidding> getBiddingsByAuction(int auctionId);
 	
 	
 
@@ -95,7 +95,7 @@ public interface SosoMarketFacade {
 	void insertOrder(Order order);
 
 	Order getOrder(int orderId);
-
+	
 	List<Order> getOrderListByBuyer(String accountId);
 
 	List<Order> getOrderListBySeller(String accountId);
