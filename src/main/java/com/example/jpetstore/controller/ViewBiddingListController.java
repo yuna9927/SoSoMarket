@@ -59,7 +59,7 @@ public class ViewBiddingListController {
 		PagedListHolder<Bidding> biddingList = new PagedListHolder<Bidding>(this.sosomarket.getBiddingsByUser(account.getAccountId()));
 		biddingList.setPageSize(4);
 		model.put("biddingList", biddingList);
-		return "biddingList";
+		return "ListBiddings";
 	}
 
 	//페이지 넘김
@@ -73,6 +73,6 @@ public class ViewBiddingListController {
 		}
 		if ("next".equals(page)) { biddingList.nextPage(); }
 		else if ("previous".equals(page)) { biddingList.previousPage(); }
-		return "biddingList";
+		return "ListBiddings";
 	}
 }

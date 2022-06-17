@@ -38,7 +38,7 @@ public interface SosoMarketFacade {
 
 	Product getProduct(int productId);
 
-//	List<Product> getAllProduct();
+	List<Product> getAllProduct();
 
 	void updateProduct(Product product);
 

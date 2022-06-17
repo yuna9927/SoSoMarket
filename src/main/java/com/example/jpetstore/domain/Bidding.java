@@ -10,7 +10,8 @@ public class Bidding implements Serializable {
    private Date updateDate;
    private int biddingPrice;
    private int productId;
-   private int buyerId;
+   private String buyerId;
+   private Product product;
    
    public int getBiddingId() {
       return biddingId;
@@ -36,10 +37,10 @@ public class Bidding implements Serializable {
    public void setProductId(int productId) {
       this.productId = productId;
    }
-   public int getBuyerId() {
+   public String getBuyerId() {
       return buyerId;
    }
-   public void setBuyerId(int buyerId) {
+   public void setBuyerId(String buyerId) {
       this.buyerId = buyerId;
    }   
 }

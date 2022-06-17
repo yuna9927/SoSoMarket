@@ -43,7 +43,7 @@
     WHERE ACCOUNT_ID = #{buyerId}
   </select>
   
-  <select id="getBiddingsByProduct" resultType="Bidding">
+  <select id="getBiddingsByAuction" resultType="Bidding">
     SELECT
       	UPDATE_DATE as updateDate,
    		BIDDING_PRICE as biddingPrice,
