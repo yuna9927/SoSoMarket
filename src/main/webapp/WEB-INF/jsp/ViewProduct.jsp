@@ -40,8 +40,8 @@
     </tr>
   </table>
   <br>
-  <h3><b><a href='<c:url value="/shop/updateProduct.do"/>'>Product Edit</a></b></h3>
-  <h3><b><a href='<c:url value="/shop/deleteProduct.do"/>'>Product Delete</a></b></h3>
+  <h3><b><a href='<c:url value="/shop/updateProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>Product Edit</a></b></h3>
+  <h3><b><a href='<c:url value="/shop/deleteProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>Product Delete</a></b></h3>
   <br>
   <h3><b><a href='<c:url value="/user/newOrder.do"/>'>Order Product</a></b></h3>
 </div>
