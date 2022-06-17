@@ -10,12 +10,6 @@ import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 
-/**
- * JPetStore's central business interface.
- *
- * @author Juergen Hoeller
- * @since 30.11.2003
- */
 public interface SosoMarketFacade {
 
 	/* Account */
