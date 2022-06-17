@@ -36,7 +36,7 @@ public class NewProductController {
 //		this.validator = validator;
 //	}
 		
-	@ModelAttribute("productForm")
+	@ModelAttribute("ProductForm")
 	public ProductForm formBackingObject(HttpServletRequest request) 
 			throws Exception {
 		
@@ -60,9 +60,9 @@ public class NewProductController {
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
 		
-		String accountId = userSession.getAccount().getAccountId();
-		
-		product.setSellerId(accountId);
+//		String accountId = userSession.getAccount().getAccountId();
+//		
+//		product.setSellerId(accountId);
 
 			
 //		new ProductValidator().validate(product, result);
