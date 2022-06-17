@@ -1,10 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-
 <%@ include file="IncludeTop.jsp"%>
 
 <div align="center">
   <p>
-    <font size="4"><b>나의 주문 목록</b></font>
+    <font size="4"><b>구매-상품 주문 목록</b></font>
   </p>
   <table class="n23">
     <tr bgcolor="#CCCCCC">
@@ -13,7 +12,7 @@
     <c:forEach var="order" items="${orderList}">
       <tr bgcolor="#FFFF88">
         <td>
-          <b><a href='<c:url value="/shop/viewOrder.do">
+          <b><a href='<c:url value="/shop/viewBuyerOrder.do">
               <c:param name="orderId" value="${order.orderId}"/></c:url>'>
               <font color="black"><c:out value="${order.orderId}" /></font>
             </a></b></td>
