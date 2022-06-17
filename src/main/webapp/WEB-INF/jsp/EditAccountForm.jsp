@@ -1,6 +1,7 @@
 <%@ include file="IncludeTop.jsp"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <div align="center">
 <form:form modelAttribute="accountForm" method="post">
@@ -51,9 +52,9 @@
   <h3><b><a href='<c:url value="/user/viewAccount.do"/>'>User VIew</a></b></h3>
   <h3><b><a href='<c:url value="/user/deleteUser.do"/>'>User Delete</a></b></h3>
   <br>
-  <h3><b><a href='<c:url value="/user/viewBuyerOrderList.do"/>'>나의 주문 목록</a></b></h3>
+  <h3><b><a href='<c:url value="/user/viewBuyerOrderList.do"/>'>나의 일반 상품 주문 목록</a></b></h3>
   <h3><b><a href='<c:url value="/shop/viewMyBiddingList.do"/>'>나의 입찰 목록</a></b></h3>
-  <h3><b><a href='<c:url value="/user/viewSellerOrderList.do"/>'>나의 판매 목록</a></b></h3>
+  <h3><b><a href='<c:url value="/user/viewMyProductList.do"/>'>나의 일반 판매 목록</a></b></h3>
 </c:if>
 </div>
 
