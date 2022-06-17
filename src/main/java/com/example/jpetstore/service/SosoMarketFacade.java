@@ -10,12 +10,6 @@ import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 
-/**
- * JPetStore's central business interface.
- *
- * @author Juergen Hoeller
- * @since 30.11.2003
- */
 public interface SosoMarketFacade {
 
 	/* Account */
@@ -27,7 +21,7 @@ public interface SosoMarketFacade {
 
 	void updateAccount(Account account);
 
-//	void deleteAccount(String accountId);
+	void deleteAccount(String accountId);
 
 
 //	List<Category> getCategoryList();
@@ -49,6 +43,8 @@ public interface SosoMarketFacade {
 	void updateProduct(Product product);
 
 	void insertProduct(Product product);
+	
+//	void insertAuction(Auction auction);
 
 	void deleteProduct(int productId);
 
