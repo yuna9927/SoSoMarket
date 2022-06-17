@@ -12,18 +12,6 @@
         </font></td>
     </tr>
     <tr>
-      <td colspan="2"><font color="green" size="4"><b>Payment Details</b></font></td>
-    </tr>
-    <tr>
-      <td>Bank Name:</td>
-      <td><c:out value="${order.bankName}" /></td>
-    </tr>
-    <tr>
-      <td>Bank Number:</td>
-      <td><c:out value="${order.bankNumber}" /> 
-        <font color="red" size="2">* Fake number!</font></td>
-    </tr>
-    <tr>
       <td colspan="2"><font color="green" size="4"><b>Shipping Address</b></font></td>
     </tr>
     <tr>
@@ -47,7 +35,7 @@
             <td><b>Description</b></td>
             <td><b>Price</b></td>
             <td><b>shipping Fee</b></td>
-            <td><b>shipping e</b></td>
+            <td><b>shipping</b></td>
           </tr>
           <tr>
 	      	<td>Title : </td>
