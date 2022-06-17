@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <%@ include file="IncludeTop.jsp"%>
 <p>
@@ -7,7 +8,7 @@
   <table id="product">
   	<tr>
       <td>Title : </td>
-      <td><c:out value="${product.name}" /></td>
+      <td><c:out value="${product.title}" /></td>
     </tr>
     <tr>
     	<td> Description: </td>
