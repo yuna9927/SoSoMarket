@@ -39,7 +39,7 @@ public class ViewProductListController {
 	public String productHandleRequest(ModelMap model
 			) throws Exception {
 		PagedListHolder<Product> productList = new PagedListHolder<Product>(this.sosomarket.getAllProduct());
-		productList.setPageSize(4);
+		productList.setPageSize(52);
 		System.out.println(productList);
 		model.put("productList", productList);
 		return "SearchProductList";

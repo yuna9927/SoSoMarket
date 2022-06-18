@@ -46,7 +46,7 @@ public class ViewAuctionController {
 		Auction auction = this.sosomarket.getAuction(Integer.parseInt(auctionId));
 		model.put("biddingList", biddingList);
 		model.put("auction", auction);
-		return "viewAuctionProduct";
+		return "ViewAuctionProduct";
 	}
 
 	

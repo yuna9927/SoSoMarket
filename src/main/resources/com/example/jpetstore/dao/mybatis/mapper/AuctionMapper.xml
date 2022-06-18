@@ -17,6 +17,7 @@
 		P.PRODUCT_STATUS as "product.productStatus",
 		P.ACCOUNT_ID as "product.sellerId",
 		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType",
 		A.PRESENT_PRICE as currentPrice,
     	A.START_PRICE as startPrice,
     	A.DEADLINE as deadLine
@@ -37,6 +38,7 @@
 		P.PRODUCT_STATUS as "product.productStatus",
 		P.ACCOUNT_ID as "product.sellerId",
 		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType",
 		A.PRESENT_PRICE as currentPrice,
     	A.START_PRICE as startPrice,
     	A.DEADLINE as deadLine
@@ -57,6 +59,7 @@
 		P.PRODUCT_STATUS as "product.productStatus",
 		P.ACCOUNT_ID as "product.sellerId",
 		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType",
 		A.PRESENT_PRICE as currentPrice,
     	A.START_PRICE as startPrice,
     	A.DEADLINE as deadLine
@@ -77,6 +80,7 @@
 		P.PRODUCT_STATUS as "product.productStatus",
 		P.ACCOUNT_ID as "product.sellerId",
 		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType",
 		A.PRESENT_PRICE as currentPrice,
     	A.START_PRICE as startPrice,
     	A.DEADLINE as deadLine
@@ -97,6 +101,7 @@
 		P.PRODUCT_STATUS as "product.productStatus",
 		P.ACCOUNT_ID as "product.sellerId",
 		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType",
 		A.PRESENT_PRICE as currentPrice,
     	A.START_PRICE as startPrice,
     	A.DEADLINE as deadLine
