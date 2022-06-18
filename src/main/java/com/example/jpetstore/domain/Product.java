@@ -11,14 +11,23 @@ public class Product implements Serializable {
 	private int productId;
 	private int categoryId;
 	private String sellerId;
-	private String name;
+	private String title;
 	private String description;
 	private String productStatus;
 	private Date createdTime;
 	private String shipping;
 	private int shippingFee;
 	private int price;
+	private String image;
 	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public int getProductId() {
 		return productId;
 	}
@@ -43,12 +52,12 @@ public class Product implements Serializable {
 		this.sellerId = sellerId;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getDescription() {
@@ -102,8 +111,8 @@ public class Product implements Serializable {
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", categoryId=" + categoryId + ", sellerId=" + sellerId + ", name="
-				+ name + ", description=" + description + ", productStatus=" + productStatus + ", createdTime="
-				+ createdTime + ", shipping=" + shipping + ", shippingFee=" + shippingFee + ", price=" + price + "]";
+				+ title + ", description=" + description + ", productStatus=" + productStatus + ", createdTime="
+				+ createdTime + ", shipping=" + shipping + ", shippingFee=" + shippingFee + ", price=" + price + ", image=" + image + "]";
 	}
 
 }

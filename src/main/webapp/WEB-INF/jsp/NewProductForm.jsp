@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div align="center">
-<form:form modelAttribute="ProductForm" method="post">
+<form:form modelAttribute="productForm" method="post">
   <form:errors cssClass="error" /> <br><br>
   
   <table id="product">
@@ -58,6 +58,10 @@
   		</tr>
   		<tr>
     		<td>image</td>
+    			<td>
+    			<form:input path="product.image" htmlEscape="false"/>
+      			<form:errors path="product.image" cssClass="error" />
+      			</td>
   		</tr>
 		</table>
 

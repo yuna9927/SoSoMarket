@@ -98,6 +98,8 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 
 	public void insertProduct(Product product) {
+
+		System.out.println(product.toString()+ "insertdao 직전");
 		productDao.insertProduct(product);
 	}
 

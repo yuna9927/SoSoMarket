@@ -1,7 +1,6 @@
 package com.example.jpetstore.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -9,12 +8,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.util.WebUtils;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
 @RequestMapping({"/shop/newProduct.do","/shop/newProductForm.do"})
+@SessionAttributes("productForm")
 public class NewProductController { 
 
 	@Value("NewProductForm")
@@ -26,6 +27,8 @@ public class NewProductController {
 	@Autowired
 	private SosoMarketFacade sosomarket;
 	
+//	UserSession userSession;
+	
 	public void setSosomarket(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
@@ -36,16 +39,38 @@ public class NewProductController {
 //		this.validator = validator;
 //	}
 		
-	@ModelAttribute("ProductForm")
+//	@ModelAttribute("productForm")
+//	public ProductForm formBackingObject(HttpServletRequest request) 
+//			throws Exception {
+//		
+//		if(request.getMethod().equalsIgnoreCase("GET")) {
+//			return new ProductForm();
+//		} else {
+//			return null;
+//		}
+//				
+//	}
+	
+	@ModelAttribute("productForm")
 	public ProductForm formBackingObject(HttpServletRequest request) 
 			throws Exception {
 		
-		if(request.getMethod().equalsIgnoreCase("GET")) {
-			return new ProductForm();
-		} else {
-			return null;
-		}
-				
+		UserSession userSession = 
+				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
+//		
+//		if (userSession != null) {	
+//			ProductForm pf = new ProductForm();
+//			pf.setSellerId(userSession.getAccount().getAccountId());
+//
+//			return pf;
+//		}
+//		else {
+//			return new ProductForm();
+//		}
+		ProductForm pf = new ProductForm();
+		pf.setSellerId(userSession.getAccount().getAccountId());
+		
+		return pf;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -56,22 +81,15 @@ public class NewProductController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(
 			HttpServletRequest request, HttpSession session,
-			@ModelAttribute("product") Product product,
+			@ModelAttribute("productForm") ProductForm productForm,
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
 		
 //		String accountId = userSession.getAccount().getAccountId();
-//		
-//		product.setSellerId(accountId);
+//		productForm.setSellerId(accountId);
 
-			
-//		new ProductValidator().validate(product, result);
-		
-//		if(result.hasErrors()) {
-//			return formViewName;
-//		}
-		
-		sosomarket.insertProduct(product);		
+		System.out.println(productForm);
+		sosomarket.insertProduct(productForm.getProduct());		
 		return successViewName;  
 	}
 	
