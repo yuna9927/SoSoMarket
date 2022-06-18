@@ -18,17 +18,17 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
-      A.PASSWORD AS account.password,
-      A.PHONE_NUMBER AS account.phoneNumber,
-      A.EMAIL_ADDRESS AS account.email,
-      A.ACCOUNT_ID AS account.accountId,
-      A.NICKNAME AS account.nickname,
-      A.JOIN_DATE AS account.joinDate,
-      A.MY_ADDRESS AS account.address,
-      A.MY_ZIPCODE AS account.zipcode,
-      A.BANK_NAME AS account.bankName,
-      A.BANK_NUMBER AS account.bankNumber,
-      A.WITHDRAW AS account.withdraw
+      A.PASSWORD AS "account.password",
+      A.PHONE_NUMBER AS "account.phoneNumber",
+      A.EMAIL_ADDRESS AS "account.email",
+      A.ACCOUNT_ID AS "account.accountId",
+      A.NICKNAME AS "account.nickname",
+      A.JOIN_DATE AS "account.joinDate",
+      A.MY_ADDRESS AS "account.address",
+      A.MY_ZIPCODE AS "account.zipcode",
+      A.BANK_NAME AS "account.bankName",
+      A.BANK_NUMBER AS "account.bankNumber",
+      A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
     WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.CATEGORY_ID = #{categoryId}
   </select>
@@ -46,17 +46,17 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
-      A.PASSWORD AS account.password,
-      A.PHONE_NUMBER AS account.phoneNumber,
-      A.EMAIL_ADDRESS AS account.email,
-      A.ACCOUNT_ID AS account.accountId,
-      A.NICKNAME AS account.nickname,
-      A.JOIN_DATE AS account.joinDate,
-      A.MY_ADDRESS AS account.address,
-      A.MY_ZIPCODE AS account.zipcode,
-      A.BANK_NAME AS account.bankName,
-      A.BANK_NUMBER AS account.bankNumber,
-      A.WITHDRAW AS account.withdraw
+      A.PASSWORD AS "account.password",
+      A.PHONE_NUMBER AS "account.phoneNumber",
+      A.EMAIL_ADDRESS AS "account.email",
+      A.ACCOUNT_ID AS "account.accountId",
+      A.NICKNAME AS "account.nickname",
+      A.JOIN_DATE AS "account.joinDate",
+      A.MY_ADDRESS AS "account.address",
+      A.MY_ZIPCODE AS "account.zipcode",
+      A.BANK_NAME AS "account.bankName",
+      A.BANK_NUMBER AS "account.bankNumber",
+      A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
     WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.ACCOUNT_ID = #{sellerId}
   </select>
@@ -73,17 +73,17 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
-      A.PASSWORD AS account.password,
-      A.PHONE_NUMBER AS account.phoneNumber,
-      A.EMAIL_ADDRESS AS account.email,
-      A.ACCOUNT_ID AS account.accountId,
-      A.NICKNAME AS account.nickname,
-      A.JOIN_DATE AS account.joinDate,
-      A.MY_ADDRESS AS account.address,
-      A.MY_ZIPCODE AS account.zipcode,
-      A.BANK_NAME AS account.bankName,
-      A.BANK_NUMBER AS account.bankNumber,
-      A.WITHDRAW AS account.withdraw
+      A.PASSWORD AS "account.password",
+      A.PHONE_NUMBER AS "account.phoneNumber",
+      A.EMAIL_ADDRESS AS "account.email",
+      A.ACCOUNT_ID AS "account.accountId",
+      A.NICKNAME AS "account.nickname",
+      A.JOIN_DATE AS "account.joinDate",
+      A.MY_ADDRESS AS "account.address",
+      A.MY_ZIPCODE AS "account.zipcode",
+      A.BANK_NAME AS "account.bankName",
+      A.BANK_NUMBER AS "account.bankNumber",
+      A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
     WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND lower(title) like #{keyword}
   </select>
@@ -100,17 +100,17 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
-      A.PASSWORD AS account.password,
-      A.PHONE_NUMBER AS account.phoneNumber,
-      A.EMAIL_ADDRESS AS account.email,
-      A.ACCOUNT_ID AS account.accountId,
-      A.NICKNAME AS account.nickname,
-      A.JOIN_DATE AS account.joinDate,
-      A.MY_ADDRESS AS account.address,
-      A.MY_ZIPCODE AS account.zipcode,
-      A.BANK_NAME AS account.bankName,
-      A.BANK_NUMBER AS account.bankNumber,
-      A.WITHDRAW AS account.withdraw
+      A.PASSWORD AS "account.password",
+      A.PHONE_NUMBER AS "account.phoneNumber",
+      A.EMAIL_ADDRESS AS "account.email",
+      A.ACCOUNT_ID AS "account.accountId",
+      A.NICKNAME AS "account.nickname",
+      A.JOIN_DATE AS "account.joinDate",
+      A.MY_ADDRESS AS "account.address",
+      A.MY_ZIPCODE AS "account.zipcode",
+      A.BANK_NAME AS "account.bankName",
+      A.BANK_NUMBER AS "account.bankNumber",
+      A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
     WHERE P.ACCOUNT_ID = A.ACCOUNT_ID
   </select>
@@ -128,17 +128,17 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
-      A.PASSWORD AS account.password,
-      A.PHONE_NUMBER AS account.phoneNumber,
-      A.EMAIL_ADDRESS AS account.email,
-      A.ACCOUNT_ID AS account.accountId,
-      A.NICKNAME AS account.nickname,
-      A.JOIN_DATE AS account.joinDate,
-      A.MY_ADDRESS AS account.address,
-      A.MY_ZIPCODE AS account.zipcode,
-      A.BANK_NAME AS account.bankName,
-      A.BANK_NUMBER AS account.bankNumber,
-      A.WITHDRAW AS account.withdraw
+      A.PASSWORD AS "account.password",
+      A.PHONE_NUMBER AS "account.phoneNumber",
+      A.EMAIL_ADDRESS AS "account.email",
+      A.ACCOUNT_ID AS "account.accountId",
+      A.NICKNAME AS "account.nickname",
+      A.JOIN_DATE AS "account.joinDate",
+      A.MY_ADDRESS AS "account.address",
+      A.MY_ZIPCODE AS "account.zipcode",
+      A.BANK_NAME AS "account.bankName",
+      A.BANK_NUMBER AS "account.bankNumber",
+      A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
     WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.PRODUCT_ID = #{productId}
   </select>
