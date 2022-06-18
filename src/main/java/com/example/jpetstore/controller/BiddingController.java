@@ -17,11 +17,8 @@ import com.example.jpetstore.service.SosoMarketFacade;
 @RequestMapping({"/shop/newBidding.do","/shop/insertBidding.do"})
 @SessionAttributes("biddingForm")
 public class BiddingController { 
-
-	@Value("ViewAuctionProduct")
-	private String formViewName;
 	
-	@Value("index")
+	@Value("ViewAuctionProduct")
 	private String successViewName;
 	
 	@Autowired
@@ -38,7 +35,7 @@ public class BiddingController {
 //	}
 		
 	@ModelAttribute("biddingForm")
-	public BiddingForm formBackingObject(HttpServletRequest request, @RequestParam("productId") String productId) 
+	public BiddingForm formBackingObject(HttpServletRequest request, @RequestParam("auctionId") String auctionId) 
 			throws Exception {
 		
 		UserSession userSession = 
@@ -47,14 +44,14 @@ public class BiddingController {
 		BiddingForm bf = new BiddingForm();
 		bf.setBuyerId(userSession.getAccount().getAccountId());
 		
-		int int_productId = Integer.parseInt(productId);
-		bf.setProductId(int_productId);
+		int int_auctionId = Integer.parseInt(auctionId);
+		bf.setProductId(int_auctionId);
 		return bf;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String form() {
-		return formViewName;
+		return "BiddingForm";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)

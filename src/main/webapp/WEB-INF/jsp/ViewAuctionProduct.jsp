@@ -60,6 +60,12 @@
   <br><br>
   
   <h3>Bidding Product</h3>
+  
+  
+  <a href='<c:url value="/shop/newBidding.do">
+              <c:param name="auctionId" value="${auction.auctionId}"/></c:url>'>go to bidding insert form
+            </a>
+  <br>
 
   <br>
   <h3>Bidding List</h3>
