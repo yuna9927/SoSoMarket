@@ -85,7 +85,7 @@
     WHERE B.PRODUCT_ID = P.PRODUCT_ID AND B.ACCOUNT_ID = A.ACCOUNT_ID AND B.ACCOUNT_ID = #{buyerId}
   </select>
   
-  <select id="getBiddingsByProduct" resultType="Bidding">
+  <select id="getBiddingsByAuction" resultType="Bidding">
     SELECT
       	B.UPDATE_DATE as updateDate,
    		B.BIDDING_PRICE as biddingPrice,

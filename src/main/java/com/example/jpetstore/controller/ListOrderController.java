@@ -43,7 +43,9 @@ public class ListOrderController {
 		) throws Exception {
 		String accountId = userSession.getAccount().getAccountId();
 		List<Order> buyOrderList = sosomarket.getOrderListByBuyer(accountId);
-		return new ModelAndView("ListOrders", "buyOrderList", 
+		
+		System.out.println("orderList : " + buyOrderList.get(0));
+		return new ModelAndView("ListBuyerOrders", "buyOrderList", 
 				buyOrderList);
 	}
 

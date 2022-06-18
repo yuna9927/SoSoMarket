@@ -9,10 +9,10 @@
     <tr bgcolor="#CCCCCC">
       <td><b>주문 ID</b></td>  <td><b>상품 이름</b></td> <td><b>날짜</b></td> <td><b>주문 상태</b></td>
     </tr>
-    <c:forEach var="order" items="${orderList}">
+    <c:forEach var="order" items="${buyOrderList}">
       <tr bgcolor="#FFFF88">
         <td>
-          <b><a href='<c:url value="/shop/viewBuyerOrder.do">
+          <b><a href='<c:url value="/user/viewBuyerOrder.do">
               <c:param name="orderId" value="${order.orderId}"/></c:url>'>
               <font color="black"><c:out value="${order.orderId}" /></font>
             </a></b></td>
