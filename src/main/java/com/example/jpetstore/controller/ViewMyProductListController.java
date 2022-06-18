@@ -1,5 +1,7 @@
 package com.example.jpetstore.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -7,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.jpetstore.domain.Account;
+import com.example.jpetstore.domain.Auction;
+import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 /**
@@ -17,7 +20,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
  */
 @Controller
 @SessionAttributes("userSession")
-public class ViewAccountController {
+public class ViewMyProductListController {
 
 	private SosoMarketFacade sosomarket;
 
@@ -26,16 +29,16 @@ public class ViewAccountController {
 		this.sosomarket = sosomarket;
 	}
 
-	@RequestMapping("/user/viewAccount.do")
+	@RequestMapping("/user/viewMyProductList.do")
 	public ModelAndView handleRequest(
-			@ModelAttribute("userSession") UserSession userSession
-			) throws Exception {
-		Account account = this.sosomarket.getAccount(userSession.getAccount().getAccountId());
-		if (account != null) {
-			return new ModelAndView("ViewUser", "account", account);
-		}
-		else {
-			return new ModelAndView("Error", "message", "You have to log in first.");
-		}
+		@ModelAttribute("userSession") UserSession userSession
+		) throws Exception {
+		String accountId = userSession.getAccount().getAccountId();
+		List<Product> productList = sosomarket.getProductListByUser(accountId);
+		//List<Auction> auctionList = sosomarket.getAuctionListByUser(accountId);
+
+		return new ModelAndView("ListSells", "productList", productList);
 	}
+	
+	
 }
