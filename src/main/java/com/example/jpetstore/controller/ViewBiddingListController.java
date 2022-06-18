@@ -37,17 +37,6 @@ public class ViewBiddingListController {
 	public void setPetStore(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
-	
-	//경매 상품 페이지에서 필요한 경매 상품 입찰가 목록 조회
-	@RequestMapping("/shop/viewBiddingListByAuction.do")
-	public String biddingByAuctionHandleRequest(ModelMap model,
-			@RequestParam("auctionId") String auctionId
-			) throws Exception {
-		List<Bidding> biddingList = new ArrayList<Bidding>();
-		biddingList = this.sosomarket.getBiddingsByAuction(Integer.parseInt(auctionId));
-		model.put("biddingList", biddingList);
-		return "viewProduct";
-	}
 
 	//마이페이지에서 필요한 내 입찰 목록 조회
 	@RequestMapping("/shop/viewMyBiddingList.do")
@@ -57,9 +46,9 @@ public class ViewBiddingListController {
 		UserSession userSession = (UserSession) session.getAttribute("userSession");
 		Account account = userSession.getAccount();
 		PagedListHolder<Bidding> biddingList = new PagedListHolder<Bidding>(this.sosomarket.getBiddingsByUser(account.getAccountId()));
-		biddingList.setPageSize(4);
+		biddingList.setPageSize(30);
 		model.put("biddingList", biddingList);
-		return "biddingList";
+		return "ListBiddings";
 	}
 
 	//페이지 넘김
@@ -73,6 +62,6 @@ public class ViewBiddingListController {
 		}
 		if ("next".equals(page)) { biddingList.nextPage(); }
 		else if ("previous".equals(page)) { biddingList.previousPage(); }
-		return "biddingList";
+		return "ListBiddings";
 	}
 }

@@ -1,6 +1,10 @@
 package com.example.jpetstore.controller;
 
 import org.springframework.beans.support.PagedListHolder;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.domain.Auction;
+import com.example.jpetstore.domain.Bidding;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 /**
@@ -34,7 +39,7 @@ public class ViewProductListController {
 	public String productHandleRequest(ModelMap model
 			) throws Exception {
 		PagedListHolder<Product> productList = new PagedListHolder<Product>(this.sosomarket.getAllProduct());
-		productList.setPageSize(4);
+		productList.setPageSize(52);
 		System.out.println(productList);
 		model.put("productList", productList);
 		return "SearchProductList";
@@ -61,7 +66,7 @@ public class ViewProductListController {
 		PagedListHolder<Auction> auctionList = new PagedListHolder<Auction>(this.sosomarket.getAllAuction());
 		auctionList.setPageSize(4);
 		model.put("auctionList", auctionList);
-		return "ViewAuctionList";
+		return "SearchAuctionProductList";
 	}
 
 	//∆‰¿Ã¡ˆ ≥—±Ë
@@ -75,6 +80,7 @@ public class ViewProductListController {
 		}
 		if ("next".equals(page)) { auctionList.nextPage(); }
 		else if ("previous".equals(page)) { auctionList.previousPage(); }
-		return "ViewAuctionList";
+		return "SearchAuctionProductList";
 	}
+	
 }
