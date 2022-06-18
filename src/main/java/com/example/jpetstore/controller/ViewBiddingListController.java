@@ -37,17 +37,6 @@ public class ViewBiddingListController {
 	public void setPetStore(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
-	
-	//경매 상품 페이지에서 필요한 경매 상품 입찰가 목록 조회
-	@RequestMapping("/shop/viewBiddingListByAuction.do")
-	public String biddingByAuctionHandleRequest(ModelMap model,
-			@RequestParam("auctionId") String auctionId
-			) throws Exception {
-		List<Bidding> biddingList = new ArrayList<Bidding>();
-		biddingList = this.sosomarket.getBiddingsByAuction(Integer.parseInt(auctionId));
-		model.put("biddingList", biddingList);
-		return "viewProduct";
-	}
 
 	//마이페이지에서 필요한 내 입찰 목록 조회
 	@RequestMapping("/shop/viewMyBiddingList.do")

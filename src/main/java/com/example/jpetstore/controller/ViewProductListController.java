@@ -1,6 +1,10 @@
 package com.example.jpetstore.controller;
 
 import org.springframework.beans.support.PagedListHolder;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.domain.Auction;
+import com.example.jpetstore.domain.Bidding;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 /**
@@ -77,4 +82,5 @@ public class ViewProductListController {
 		else if ("previous".equals(page)) { auctionList.previousPage(); }
 		return "ViewAuctionList";
 	}
+	
 }
