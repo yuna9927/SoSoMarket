@@ -120,5 +120,15 @@ public class Order implements Serializable {
     bankName = account.getBankName();
   
   }
+
+@Override
+public String toString() {
+	return "Order [orderId=" + orderId + ", buyerId=" + buyerId + ", sellerId=" + sellerId + ", productId=" + productId
+			+ ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", shippingAddress=" + shippingAddress
+			+ ", shippingZipCode=" + shippingZipCode + ", bankNumber=" + bankNumber + ", bankName=" + bankName
+			+ ", product=" + product + "]";
+}
+  
+  
   
 }

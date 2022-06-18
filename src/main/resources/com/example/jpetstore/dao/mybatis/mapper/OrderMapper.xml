@@ -63,7 +63,8 @@
 		ORDER_ID as orderId,
 		ORDER_STATUS as orderStatus,
 		SHIPPING_ADDRESS as shippingAddress,
-		SHIPPING_ZIPCODE as shippingZipcode
+		SHIPPING_ZIPCODE as shippingZipcode,
+		ACCOUNT_ID as buyerId
     FROM ORDERS
     WHERE ACCOUNT_ID = #{buyerId}
   </select>

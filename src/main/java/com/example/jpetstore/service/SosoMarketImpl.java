@@ -180,7 +180,11 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		orderDao.insertOrder(order);
 	}
 
-	public Order getOrder(int orderId) {
+	public Order getOrderByBuyer(int orderId) {
+		return orderDao.getOrderByBuyer(orderId);
+	}
+	
+	public Order getOrderBySeller(int orderId) {
 		return orderDao.getOrderBySeller(orderId);
 	}
 
