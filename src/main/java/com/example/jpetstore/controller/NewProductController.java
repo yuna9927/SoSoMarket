@@ -65,5 +65,4 @@ public class NewProductController {
 		sosomarket.insertProduct(productForm.getProduct());		
 		return successViewName;  
 	}
-	
 }

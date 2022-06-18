@@ -19,21 +19,24 @@ import com.example.jpetstore.service.SosoMarketFacade;
 @SessionAttributes("userSession")
 public class ViewOrderController {
 
-	private SosoMarketFacade petStore;
+	private SosoMarketFacade sosomarket;
 
 	@Autowired
-	public void setPetStore(SosoMarketFacade petStore) {
-		this.petStore = petStore;
+	public void setPetStore(SosoMarketFacade sosomarket) {
+		this.sosomarket = sosomarket;
 	}
 
-	@RequestMapping("/shop/viewOrder.do")
+	@RequestMapping("/user/viewBuyerOrder.do")
 	public ModelAndView handleRequest(
 			@ModelAttribute("userSession") UserSession userSession,
 			@RequestParam("orderId") int orderId
 			) throws Exception {
-		Order order = this.petStore.getOrder(orderId);
-		if (userSession.getAccount().getUsername().equals(order.getUsername())) {
-			return new ModelAndView("ViewOrder", "order", order);
+		Order order = this.sosomarket.getOrderByBuyer(orderId);
+		System.out.println("·Î±×ÀÎid : " + userSession.getAccount().getAccountId());
+		System.out.println("buyerid : " + order.getBuyerId());
+		
+		if (userSession.getAccount().getAccountId().equals(order.getBuyerId())) {
+			return new ModelAndView("ViewBuyerOrder", "order", order);
 		}
 		else {
 			return new ModelAndView("Error", "message", "You may only view your own orders.");

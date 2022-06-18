@@ -15,15 +15,15 @@
       <td><b>desc</b></td>
       <!--<td><b>desc</b></td>  -->
     </tr>
-    <c:forEach var="product" items="${productList.pageList}">
+    <c:forEach var="auction" items="${auctionList.pageList}">
       <tr bgcolor="#FFFF88">
         <td><b><a
-            href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>
-              <font color="BLACK"><c:out value="${product.title}" /></font>
+            href='<c:url value="/shop/viewAuctionProduct.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>'>
+              <font color="BLACK"><c:out value="${auction.product.name}" /></font>
           </a></b></td>
-        <td><c:out value="${product.description}" /></td>
-        <td><c:out value="${product.price}" /></td>
-        <td><c:out value="${product.productStatus}" /></td>
+        <td><c:out value="${auction.product.description}" /></td>
+        <td><c:out value="${auction.product.price}" /></td>
+        <td><c:out value="${auction.product.productStatus}" /></td>
       </tr>
     </c:forEach>
   </table>
