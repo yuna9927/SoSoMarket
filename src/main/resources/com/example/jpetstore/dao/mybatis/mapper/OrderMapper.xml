@@ -7,28 +7,70 @@
   
   <select id="getOrderBySeller" resultType="Order">
     SELECT
-    	ORDER_DATE as orderDate,
-		PRODUCT_ID as productId,
-		ORDER_ID as orderId,
-		ORDER_STATUS as orderStatus,
-		SHIPPING_ADDRESS as shippingAddress,
-		SHIPPING_ZIPCODE as shippingZipcode,
-		ACCOUNT_ID as sellerId
-    FROM ORDERS
-    WHERE ORDER_ID = #{orderId}
+    	O.ORDER_DATE as orderDate,
+		O.PRODUCT_ID as productId,
+		O.ORDER_ID as orderId,
+		O.ORDER_STATUS as orderStatus,
+		O.SHIPPING_ADDRESS as shippingAddress,
+		O.SHIPPING_ZIPCODE as shippingZipcode,
+		O.ACCOUNT_ID as sellerId,
+		P.TITLE as product.title,
+		P.DESCRIPTION as product.description,
+		P.SHIPPING as product.shipping,
+		P.SHIPPING_FEE as product.shippingFee,
+		P.IMAGE as product.image,
+		P.CREATED_TIME as product.createdTime,
+		P.CATEGORY_ID as product.categoryId,
+		P.PRODUCT_STATUS as product.productStatus,
+		P.ACCOUNT_ID as product.sellerId,
+		P.PRICE as product.price,
+		A.PASSWORD AS account.password,
+        A.PHONE_NUMBER AS account.phoneNumber,
+        A.EMAIL_ADDRESS AS account.email,
+        A.ACCOUNT_ID AS account.accountId,
+        A.NICKNAME AS account.nickname,
+        A.JOIN_DATE AS account.joinDate,
+        A.MY_ADDRESS AS account.address,
+        A.MY_ZIPCODE AS account.zipcode,
+        A.BANK_NAME AS account.bankName,
+        A.BANK_NUMBER AS account.bankNumber,
+        A.WITHDRAW AS account.withdraw
+    FROM ORDERS O, PRODUCT P, ACCOUNT A
+    WHERE O.PRODUCT_ID = P.PRODUCT_ID AND O.ACCOUNT_ID = A.ACCOUNT_ID AND O.ORDER_ID = #{orderId}
   </select>
   
   <select id="getOrderByBuyer" resultType="Order">
     SELECT
-    	ORDER_DATE as orderDate,
-		PRODUCT_ID as productId,
-		ORDER_ID as orderId,
-		ORDER_STATUS as orderStatus,
-		SHIPPING_ADDRESS as shippingAddress,
-		SHIPPING_ZIPCODE as shippingZipcode,
-		ACCOUNT_ID as buyerId
-    FROM ORDERS
-    WHERE ORDER_ID = #{orderId}
+    	O.ORDER_DATE as orderDate,
+		O.PRODUCT_ID as productId,
+		O.ORDER_ID as orderId,
+		O.ORDER_STATUS as orderStatus,
+		O.SHIPPING_ADDRESS as shippingAddress,
+		O.SHIPPING_ZIPCODE as shippingZipcode,
+		O.ACCOUNT_ID as buyerId,
+		P.TITLE as product.title,
+		P.DESCRIPTION as product.description,
+		P.SHIPPING as product.shipping,
+		P.SHIPPING_FEE as product.shippingFee,
+		P.IMAGE as product.image,
+		P.CREATED_TIME as product.createdTime,
+		P.CATEGORY_ID as product.categoryId,
+		P.PRODUCT_STATUS as product.productStatus,
+		P.ACCOUNT_ID as product.sellerId,
+		P.PRICE as product.price,
+		A.PASSWORD AS account.password,
+        A.PHONE_NUMBER AS account.phoneNumber,
+        A.EMAIL_ADDRESS AS account.email,
+        A.ACCOUNT_ID AS account.accountId,
+        A.NICKNAME AS account.nickname,
+        A.JOIN_DATE AS account.joinDate,
+        A.MY_ADDRESS AS account.address,
+        A.MY_ZIPCODE AS account.zipcode,
+        A.BANK_NAME AS account.bankName,
+        A.BANK_NUMBER AS account.bankNumber,
+        A.WITHDRAW AS account.withdraw
+    FROM ORDERS O, PRODUCT P, ACCOUNT A
+    WHERE O.PRODUCT_ID = P.PRODUCT_ID AND O.ACCOUNT_ID = A.ACCOUNT_ID AND O.ORDER_ID = #{orderId}
   </select>
   
   <insert id="insertOrder">
@@ -46,26 +88,70 @@
   
   <select id="getOrderListBySeller" resultType="Order">
     SELECT
-    	ORDER_DATE as orderDate,
-		PRODUCT_ID as productId,
-		ORDER_ID as orderId,
-		ORDER_STATUS as orderStatus,
-		SHIPPING_ADDRESS as shippingAddress,
-		SHIPPING_ZIPCODE as shippingZipcode
-    FROM ORDERS
-    WHERE ACCOUNT_ID = #{sellerId}
+    	O.ORDER_DATE as orderDate,
+		O.PRODUCT_ID as productId,
+		O.ORDER_ID as orderId,
+		O.ORDER_STATUS as orderStatus,
+		O.SHIPPING_ADDRESS as shippingAddress,
+		O.SHIPPING_ZIPCODE as shippingZipcode,
+		O.ACCOUNT_ID as sellerId,
+		P.TITLE as product.title,
+		P.DESCRIPTION as product.description,
+		P.SHIPPING as product.shipping,
+		P.SHIPPING_FEE as product.shippingFee,
+		P.IMAGE as product.image,
+		P.CREATED_TIME as product.createdTime,
+		P.CATEGORY_ID as product.categoryId,
+		P.PRODUCT_STATUS as product.productStatus,
+		P.ACCOUNT_ID as product.sellerId,
+		P.PRICE as product.price,
+		A.PASSWORD AS account.password,
+        A.PHONE_NUMBER AS account.phoneNumber,
+        A.EMAIL_ADDRESS AS account.email,
+        A.ACCOUNT_ID AS account.accountId,
+        A.NICKNAME AS account.nickname,
+        A.JOIN_DATE AS account.joinDate,
+        A.MY_ADDRESS AS account.address,
+        A.MY_ZIPCODE AS account.zipcode,
+        A.BANK_NAME AS account.bankName,
+        A.BANK_NUMBER AS account.bankNumber,
+        A.WITHDRAW AS account.withdraw
+    FROM ORDERS O, PRODUCT P, ACCOUNT A
+    WHERE O.PRODUCT_ID = P.PRODUCT_ID AND O.ACCOUNT_ID = A.ACCOUNT_ID AND O.ACCOUNT_ID = #{sellerId}
   </select>
   
   <select id="getOrderListByBuyer" resultType="Order">
     SELECT
-    	ORDER_DATE as orderDate,
-		PRODUCT_ID as productId,
-		ORDER_ID as orderId,
-		ORDER_STATUS as orderStatus,
-		SHIPPING_ADDRESS as shippingAddress,
-		SHIPPING_ZIPCODE as shippingZipcode
-    FROM ORDERS
-    WHERE ACCOUNT_ID = #{buyerId}
+    	O.ORDER_DATE as orderDate,
+		O.PRODUCT_ID as productId,
+		O.ORDER_ID as orderId,
+		O.ORDER_STATUS as orderStatus,
+		O.SHIPPING_ADDRESS as shippingAddress,
+		O.SHIPPING_ZIPCODE as shippingZipcode,
+		O.ACCOUNT_ID as buyerId,
+		P.TITLE as product.title,
+		P.DESCRIPTION as product.description,
+		P.SHIPPING as product.shipping,
+		P.SHIPPING_FEE as product.shippingFee,
+		P.IMAGE as product.image,
+		P.CREATED_TIME as product.createdTime,
+		P.CATEGORY_ID as product.categoryId,
+		P.PRODUCT_STATUS as product.productStatus,
+		P.ACCOUNT_ID as product.sellerId,
+		P.PRICE as product.price,
+		A.PASSWORD AS account.password,
+        A.PHONE_NUMBER AS account.phoneNumber,
+        A.EMAIL_ADDRESS AS account.email,
+        A.ACCOUNT_ID AS account.accountId,
+        A.NICKNAME AS account.nickname,
+        A.JOIN_DATE AS account.joinDate,
+        A.MY_ADDRESS AS account.address,
+        A.MY_ZIPCODE AS account.zipcode,
+        A.BANK_NAME AS account.bankName,
+        A.BANK_NUMBER AS account.bankNumber,
+        A.WITHDRAW AS account.withdraw
+    FROM ORDERS O, PRODUCT P, ACCOUNT A
+    WHERE O.PRODUCT_ID = P.PRODUCT_ID AND O.ACCOUNT_ID = A.ACCOUNT_ID AND O.ACCOUNT_ID = #{buyerId}
   </select>
 
 </mapper>
