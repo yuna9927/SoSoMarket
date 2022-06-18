@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <html>
 <head>
     <title>SoSo Market</title>
@@ -17,8 +18,11 @@
 
     <!-- Template -->
     <link rel="stylesheet" href="../css/graindashboard.css">
-</head>	
+</head>
 
-<c:if test="!${accountForm.newAccount}">
+<c:if test="${!accountForm.newAccount}">
 	<%@ include file="IncludeMypageSide.jsp" %>
+</c:if>
+<c:if test="${accountForm.newAccount}">
+	<main class="main">
 </c:if>

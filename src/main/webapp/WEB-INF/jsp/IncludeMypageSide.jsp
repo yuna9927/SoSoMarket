@@ -103,7 +103,7 @@
                         <a class="side-nav-menu-link" href="<c:url value="/user/viewAccount.do"/>">프로필</a>
                     </li>
                     <li class="side-nav-menu-item">
-                        <a class="side-nav-menu-link" href="<c:url value="/user/viewAccount.do"/>">사용자 정보 수정</a>
+                        <a class="side-nav-menu-link" href="<c:url value="/user/editAccount.do"/>">사용자 정보 수정</a>
                     </li>
                 </ul>
                 <!-- End Users: subUsers -->
