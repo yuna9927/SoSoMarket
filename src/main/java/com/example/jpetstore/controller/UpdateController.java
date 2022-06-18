@@ -13,9 +13,9 @@ import org.springframework.web.util.WebUtils;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
-@RequestMapping({"/shop/newProduct.do","/shop/newProductForm.do"})
+@RequestMapping({"/shop/updateProductForm.do","/shop/updateProduct.do"})
 @SessionAttributes("productForm")
-public class NewProductController { 
+public class UpdateController { 
 
 	@Value("NewProductForm")
 	private String formViewName;
@@ -36,6 +36,7 @@ public class NewProductController {
 //		this.validator = validator;
 //	}
 		
+	
 	@ModelAttribute("productForm")
 	public ProductForm formBackingObject(HttpServletRequest request) 
 			throws Exception {
@@ -61,8 +62,10 @@ public class NewProductController {
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
 		
+
+
 		System.out.println(productForm);
-		sosomarket.insertProduct(productForm.getProduct());		
+		sosomarket.updateProduct(productForm.getProduct());		
 		return successViewName;  
 	}
 	
