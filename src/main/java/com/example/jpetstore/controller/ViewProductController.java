@@ -14,11 +14,6 @@ import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 30.11.2003
- * @modified-by Changsup Park
- */
 @Controller
 //@SessionAttributes({"category", "productList"})
 public class ViewProductController { 
@@ -39,21 +34,4 @@ public class ViewProductController {
 		Product product = this.petStore.getProduct(Integer.parseInt(productId));
 		return new ModelAndView("ViewProduct", "product", product);
 	}
-	
-//	@RequestMapping("/shop/viewProduct2.do")
-//	public String handleRequest2(
-//			@ModelAttribute("product") Product product,
-//			@ModelAttribute("itemList") PagedListHolder<Item> itemList,
-//			@RequestParam("pageName") String page, 
-//			ModelMap model) throws Exception {
-//		if ("next".equals(page)) {
-//			itemList.nextPage();
-//		}
-//		else if ("previous".equals(page)) {
-//			itemList.previousPage();
-//		}
-//		model.put("itemList", itemList);
-//		model.put("product", product);
-//		return "Product";
-//	}
 }

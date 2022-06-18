@@ -8,8 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
+
+import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
@@ -38,8 +41,18 @@ public class UpdateController {
 		
 	
 	@ModelAttribute("productForm")
-	public ProductForm formBackingObject(HttpServletRequest request) 
+	public ProductForm formBackingObject(HttpServletRequest request, @RequestParam("productId") String productId) 
 			throws Exception {
+		
+		if(productId != null) {
+			int int_productId = Integer.parseInt(productId);
+			Product product = sosomarket.getProduct(int_productId);
+			
+			ProductForm pf = new ProductForm();
+			pf.setProductForm(product);
+			
+			return pf;
+		}
 		
 		UserSession userSession = 
 				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
