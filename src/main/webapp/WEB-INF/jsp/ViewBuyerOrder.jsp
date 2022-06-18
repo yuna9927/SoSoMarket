@@ -36,7 +36,7 @@
     </tr>
     <tr>
       <td colspan="2"><b><font color="green" size="4">Status:</font> 
-        <c:out value="${order.status}" /></b></td>
+        <c:out value="${order.orderStatus}" /></b></td>
     </tr>
     <tr>
       <td colspan="2">

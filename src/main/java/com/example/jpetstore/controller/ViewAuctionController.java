@@ -1,5 +1,8 @@
 package com.example.jpetstore.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.jpetstore.domain.Auction;
+import com.example.jpetstore.domain.Bidding;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
@@ -23,22 +28,27 @@ import com.example.jpetstore.service.SosoMarketFacade;
 //@SessionAttributes({"category", "productList"})
 public class ViewAuctionController { 
 
-	private SosoMarketFacade petStore;
+	private SosoMarketFacade sosomarket;
 
 	@Autowired
-	public void setPetStore(SosoMarketFacade petStore) {
-		this.petStore = petStore;
+	public void setSosomarket(SosoMarketFacade sosomarket) {
+		this.sosomarket = sosomarket;
 	}
 
 	@RequestMapping("/shop/viewAuction.do")
-	public ModelAndView handleRequest(
+	public String handleRequest(
 			@RequestParam("auctionId") String auctionId,
 			ModelMap model) throws Exception {
-//		PagedListHolder<Item> itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
-//		itemList.setPageSize(4);
-		Product product = this.petStore.getProduct(Integer.parseInt(auctionId));
-		return new ModelAndView("ViewProduct", "product", product);
+		//경매 상품 페이지에서 필요한 경매 상품 입찰가 목록 조회
+		List<Bidding> biddingList = new ArrayList<Bidding>();
+		biddingList = this.sosomarket.getBiddingsByAuction(Integer.parseInt(auctionId));
+
+		Auction auction = this.sosomarket.getAuction(Integer.parseInt(auctionId));
+		model.put("biddingList", biddingList);
+		model.put("auction", auction);
+		return "viewAuctionProduct";
 	}
+
 	
 //	@RequestMapping("/shop/viewProduct2.do")
 //	public String handleRequest2(

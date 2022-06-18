@@ -2,8 +2,9 @@
 
 <%@ include file="IncludeTop.jsp" %>
 
-<a href="<c:url value="/shop/viewProductList.do"/>">
-                   상품리스트</a>
+<a href="<c:url value="/shop/viewProductList.do"/>">일반상품리스트</a>
+                   
+<a href="<c:url value="/shop/viewAuctionList.do"/>">경매상품리스트</a>
 
 <table style="border:none;border-collapse:collapse;width:100%">
   <tr>
