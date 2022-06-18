@@ -18,10 +18,16 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDao orderDao;
 
 	public Order getOrder(int orderId) {
-		return orderDao.getOrder(orderId);
+		return orderDao.getOrderByBuyer(orderId);
 	}
 
+	@Override
 	public List<Order> getOrdersByUsername(String username) {
-		return orderDao.getOrdersByUsername(username);
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+//	public List<Order> getOrdersByUsername(String username) {
+//		return orderDao.getOrdersByUsername(username);
+//	}
 }

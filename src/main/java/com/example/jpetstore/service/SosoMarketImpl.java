@@ -98,6 +98,8 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 
 	public void insertProduct(Product product) {
+
+		System.out.println(product.toString()+ "insertdao 직전");
 		productDao.insertProduct(product);
 	}
 
@@ -180,7 +182,11 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		orderDao.insertOrder(order);
 	}
 
-	public Order getOrder(int orderId) {
+	public Order getOrderByBuyer(int orderId) {
+		return orderDao.getOrderByBuyer(orderId);
+	}
+	
+	public Order getOrderBySeller(int orderId) {
 		return orderDao.getOrderBySeller(orderId);
 	}
 
