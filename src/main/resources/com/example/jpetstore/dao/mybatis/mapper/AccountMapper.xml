@@ -65,4 +65,11 @@
     DELETE FROM ACCOUNT
     WHERE ACCOUNT_ID = #{accountId}
   </delete>
+  
+  <update id="updateWithdraw" parameterType="String">
+    UPDATE ACCOUNT
+    SET
+        WITHDRAW = WITHDRAW + 1
+    WHERE ACCOUNT_ID = #{accountId}
+  </update>
 </mapper>
