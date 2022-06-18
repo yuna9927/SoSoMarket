@@ -10,12 +10,6 @@ import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 
-/**
- * JPetStore's central business interface.
- *
- * @author Juergen Hoeller
- * @since 30.11.2003
- */
 public interface SosoMarketFacade {
 
 	/* Account */
@@ -27,7 +21,7 @@ public interface SosoMarketFacade {
 
 	void updateAccount(Account account);
 
-//	void deleteAccount(String accountId);
+	void deleteAccount(String accountId);
 
 
 //	List<Category> getCategoryList();
@@ -49,13 +43,15 @@ public interface SosoMarketFacade {
 	void updateProduct(Product product);
 
 	void insertProduct(Product product);
+	
+//	void insertAuction(Auction auction);
 
 	void deleteProduct(int productId);
 
 	void updateProductStatus(Product product);
 	
 	/* auction */
-	/*
+	
 	List<Auction> getAuctionListByUser(String accountId);
 
 	List<Auction> getAuctionListByCategory(int categoryId);
@@ -74,19 +70,18 @@ public interface SosoMarketFacade {
 
 	void updateAuctionStatus(Auction auction);
 
-	void updateWithdraw(Account accountId);
-*/
+
 	/* Bidding */
-/*
+
 	void insertBidding(Auction bidding);
 
 	Bidding getBidding(int biddingId);
 
 	List<Bidding> getBiddingsByUser(String accountId);
 
-	List<Bidding> getBiddingsByProduct(int auctionId);
+	List<Bidding> getBiddingsByAuction(int auctionId);
 	
-	*/
+	
 
 	List<Item> getItemListByProduct(String productId);
 
@@ -95,10 +90,17 @@ public interface SosoMarketFacade {
 	boolean isItemInStock(String itemId);
 
 
+	/* order */
+	
 	void insertOrder(Order order);
 
 	Order getOrder(int orderId);
+	
+	List<Order> getOrderListByBuyer(String accountId);
 
-	List<Order> getOrdersByUsername(String username);
+	List<Order> getOrderListBySeller(String accountId);
+
+	void updateOrderStatus(Order order);
+	
 
 }
