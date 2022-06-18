@@ -11,6 +11,8 @@ public class Bidding implements Serializable {
    private int biddingPrice;
    private int productId;
    private int buyerId;
+   private Product product;
+   private Account account;
    
    public int getBiddingId() {
       return biddingId;
@@ -41,5 +43,17 @@ public class Bidding implements Serializable {
    }
    public void setBuyerId(int buyerId) {
       this.buyerId = buyerId;
-   }   
+   }
+   public Product getProduct() { 
+	   return product; 
+   }
+   public void setProduct(Product product) {
+	   this.product = product;
+   }
+   public Account getAccount() {
+	   return account;
+   }
+   public void setAccount(Account account) {
+	   this.account = account;
+   }
 }
