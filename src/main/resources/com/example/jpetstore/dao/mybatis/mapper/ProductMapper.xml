@@ -62,7 +62,8 @@
   </select>
 
   <select id="searchProductList" resultType="Product">
-    P.PRODUCT_ID as productId,
+	SELECT
+      P.PRODUCT_ID as productId,
       P.TITLE as title,
       P.DESCRIPTION as description,
       P.SHIPPING as shipping,
@@ -89,6 +90,7 @@
   </select>
   
   <select id="getAllProductList" resultType="Product">
+    SELECT
       P.PRODUCT_ID as productId,
       P.TITLE as title,
       P.DESCRIPTION as description,
