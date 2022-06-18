@@ -5,41 +5,41 @@
 <%@ include file="IncludeTop.jsp"%>
 <p>
 <div align="center">
-  <table id="product">
+  <table id="auction">
   	<tr>
       <td>Title : </td>
-      <td><c:out value="${product.title}" /></td>
+      <td><c:out value="${auction.product.title}" /></td>
     </tr>
     <tr>
     	<td> Description: </td>
-        <td><c:out value="${product.description}"  /></td>
+        <td><c:out value="${auction.product.description}"  /></td>
     </tr>
     <tr>
       <td>Status: </td>
-      <td><c:out value="${product.productStatus}" /></td>
+      <td><c:out value="${auction.product.productStatus}" /></td>
     </tr>
     <tr>
       <td>Price: </td>
-      <td><fmt:formatNumber value="${product.price}"
+      <td><fmt:formatNumber value="${auction.product.price}"
             pattern="$#,##0.00" /></td>
     </tr>
     <tr> 
       <td>createdTime: </td>
-      <td><fmt:formatDate value="${product.createdTime}"
+      <td><fmt:formatDate value="${auction.product.createdTime}"
             pattern="yyyy/MM/dd hh:mm:ss" /></td>
     </tr>
     
     <tr>
       <td>seller: </td>
-      <td><c:out value="${product.sellerId}" /></td>
+      <td><c:out value="${auction.product.sellerId}" /></td>
     </tr> 
     <tr>
       <td>shipping: </td> 
-      <td><c:out value="${product.shipping}" /></td>
+      <td><c:out value="${auction.product.shipping}" /></td>
     </tr>
     <tr>
       <td>shippingFee: </td>
-      <td><c:out value="${product.shippingFee}" /></td>
+      <td><c:out value="${auction.product.shippingFee}" /></td>
     </tr>
     <tr>
       <td>Current Price: </td>
@@ -51,7 +51,7 @@
     </tr>
     <tr>
       <td>Dead Line: </td>
-      <td><c:out value="${product.deadLine}" /></td>
+      <td><c:out value="${auction.deadLine}" /></td>
     </tr>
   </table>
   <br>
