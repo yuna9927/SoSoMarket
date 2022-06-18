@@ -1,6 +1,5 @@
 package com.example.jpetstore.dao;
 
-import java.util.List;
 import org.springframework.dao.DataAccessException;
 import com.example.jpetstore.domain.Account;
 
@@ -14,4 +13,6 @@ public interface AccountDao {
 	void updateAccount(Account account) throws DataAccessException;
 	
 	void deleteAccount(String accountId) throws DataAccessException;
+	
+	void updateWithdraw(String accountId) throws DataAccessException;
 }
