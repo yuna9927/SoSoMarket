@@ -18,6 +18,7 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
+      P.PRODUCT_TYPE as productType,
       A.PASSWORD AS "account.password",
       A.PHONE_NUMBER AS "account.phoneNumber",
       A.EMAIL_ADDRESS AS "account.email",
@@ -46,6 +47,7 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
+      P.PRODUCT_TYPE as productType,
       A.PASSWORD AS "account.password",
       A.PHONE_NUMBER AS "account.phoneNumber",
       A.EMAIL_ADDRESS AS "account.email",
@@ -74,6 +76,7 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
+      P.PRODUCT_TYPE as productType,
       A.PASSWORD AS "account.password",
       A.PHONE_NUMBER AS "account.phoneNumber",
       A.EMAIL_ADDRESS AS "account.email",
@@ -102,6 +105,7 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
+      P.PRODUCT_TYPE as productType,
       A.PASSWORD AS "account.password",
       A.PHONE_NUMBER AS "account.phoneNumber",
       A.EMAIL_ADDRESS AS "account.email",
@@ -130,6 +134,7 @@
       P.PRODUCT_STATUS as productStatus,
       P.ACCOUNT_ID as sellerId,
       P.PRICE as price,
+      P.PRODUCT_TYPE as productType,
       A.PASSWORD AS "account.password",
       A.PHONE_NUMBER AS "account.phoneNumber",
       A.EMAIL_ADDRESS AS "account.email",
@@ -160,10 +165,11 @@
   <insert id="insertProduct" parameterType="Product">
     INSERT INTO PRODUCT
       (PRODUCT_ID, TITLE, DESCRIPTION, SHIPPING, SHIPPING_FEE, IMAGE,
-        CATEGORY_ID, ACCOUNT_ID, PRICE)
+        CATEGORY_ID, ACCOUNT_ID, PRICE, PRODUCT_TYPE)
     VALUES
       (pk_sequence.NEXTVAL, #{title, jdbcType=VARCHAR}, #{description, jdbcType=VARCHAR}, #{shipping, jdbcType=VARCHAR}, #{shippingFee, jdbcType=NUMERIC},
-        #{image, jdbcType=VARCHAR}, #{categoryId, jdbcType=NUMERIC}, #{sellerId, jdbcType=VARCHAR}, #{price, jdbcType=NUMERIC})
+        #{image, jdbcType=VARCHAR}, #{categoryId, jdbcType=NUMERIC}, #{sellerId, jdbcType=VARCHAR}, #{price, jdbcType=NUMERIC}, #{productType, jdbcType=VARCHAR})
+
   </insert>
 
   <delete id="deleteProduct" parameterType="int">

@@ -18,8 +18,9 @@ public class Product implements Serializable {
 	private String shipping;
 	private int shippingFee;
 	private int price;
-	private String image;
+	private String productType;
 	private Account account;
+	private String image;
 	
 	public String getImage() {
 		return image;
@@ -107,6 +108,14 @@ public class Product implements Serializable {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	
+	public String getProductType() {
+		return productType;
+	}
+
+	public void setProductType(String productType) {
+		this.productType = productType;
 	}
 	
 	public Account getAccount() {
