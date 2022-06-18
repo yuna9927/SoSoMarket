@@ -7,86 +7,140 @@
 
   <select id="getProductListByCategory" resultType="Product">
     SELECT
-      PRODUCT_ID as productId,
-      TITLE as title,
-      DESCRIPTION as description,
-      SHIPPING as shipping,
-      SHIPPING_FEE as shippingFee,
-      IMAGE as image,
-      CREATED_TIME as createdTime,
-      CATEGORY_ID as categoryId,
-      PRODUCT_STATUS as productStatus,
-      ACCOUNT_ID as sellerId,
-      PRICE as price
-    FROM PRODUCT
-    WHERE CATEGORY_ID = #{categoryId}
+      P.PRODUCT_ID as productId,
+      P.TITLE as title,
+      P.DESCRIPTION as description,
+      P.SHIPPING as shipping,
+      P.SHIPPING_FEE as shippingFee,
+      P.IMAGE as image,
+      P.CREATED_TIME as createdTime,
+      P.CATEGORY_ID as categoryId,
+      P.PRODUCT_STATUS as productStatus,
+      P.ACCOUNT_ID as sellerId,
+      P.PRICE as price,
+      A.PASSWORD AS account.password,
+      A.PHONE_NUMBER AS account.phoneNumber,
+      A.EMAIL_ADDRESS AS account.email,
+      A.ACCOUNT_ID AS account.accountId,
+      A.NICKNAME AS account.nickname,
+      A.JOIN_DATE AS account.joinDate,
+      A.MY_ADDRESS AS account.address,
+      A.MY_ZIPCODE AS account.zipcode,
+      A.BANK_NAME AS account.bankName,
+      A.BANK_NUMBER AS account.bankNumber,
+      A.WITHDRAW AS account.withdraw
+    FROM PRODUCT P, ACCOUNT A
+    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.CATEGORY_ID = #{categoryId}
   </select>
   
   <select id="getProductListByUser" resultType="Product">
     SELECT
-      PRODUCT_ID as productId,
-      TITLE as title,
-      DESCRIPTION as description,
-      SHIPPING as shipping,
-      SHIPPING_FEE as shippingFee,
-      IMAGE as image,
-      CREATED_TIME as createdTime,
-      CATEGORY_ID as categoryId,
-      PRODUCT_STATUS as productStatus,
-      ACCOUNT_ID as sellerId,
-      PRICE as price
-    FROM PRODUCT
-    WHERE ACCOUNT_ID = #{sellerId}
+      P.PRODUCT_ID as productId,
+      P.TITLE as title,
+      P.DESCRIPTION as description,
+      P.SHIPPING as shipping,
+      P.SHIPPING_FEE as shippingFee,
+      P.IMAGE as image,
+      P.CREATED_TIME as createdTime,
+      P.CATEGORY_ID as categoryId,
+      P.PRODUCT_STATUS as productStatus,
+      P.ACCOUNT_ID as sellerId,
+      P.PRICE as price,
+      A.PASSWORD AS account.password,
+      A.PHONE_NUMBER AS account.phoneNumber,
+      A.EMAIL_ADDRESS AS account.email,
+      A.ACCOUNT_ID AS account.accountId,
+      A.NICKNAME AS account.nickname,
+      A.JOIN_DATE AS account.joinDate,
+      A.MY_ADDRESS AS account.address,
+      A.MY_ZIPCODE AS account.zipcode,
+      A.BANK_NAME AS account.bankName,
+      A.BANK_NUMBER AS account.bankNumber,
+      A.WITHDRAW AS account.withdraw
+    FROM PRODUCT P, ACCOUNT A
+    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.ACCOUNT_ID = #{sellerId}
   </select>
 
   <select id="searchProductList" resultType="Product">
-    select
-      PRODUCT_ID as productId,
-      TITLE as title,
-      DESCRIPTION as description,
-      SHIPPING as shipping,
-      SHIPPING_FEE as shippingFee,
-      IMAGE as image,
-      CREATED_TIME as createdTime,
-      CATEGORY_ID as categoryId,
-      PRODUCT_STATUS as productStatus,
-      ACCOUNT_ID as sellerId,
-      PRICE as price
-    from PRODUCT
-    WHERE lower(title) like #{keyword}
+    P.PRODUCT_ID as productId,
+      P.TITLE as title,
+      P.DESCRIPTION as description,
+      P.SHIPPING as shipping,
+      P.SHIPPING_FEE as shippingFee,
+      P.IMAGE as image,
+      P.CREATED_TIME as createdTime,
+      P.CATEGORY_ID as categoryId,
+      P.PRODUCT_STATUS as productStatus,
+      P.ACCOUNT_ID as sellerId,
+      P.PRICE as price,
+      A.PASSWORD AS account.password,
+      A.PHONE_NUMBER AS account.phoneNumber,
+      A.EMAIL_ADDRESS AS account.email,
+      A.ACCOUNT_ID AS account.accountId,
+      A.NICKNAME AS account.nickname,
+      A.JOIN_DATE AS account.joinDate,
+      A.MY_ADDRESS AS account.address,
+      A.MY_ZIPCODE AS account.zipcode,
+      A.BANK_NAME AS account.bankName,
+      A.BANK_NUMBER AS account.bankNumber,
+      A.WITHDRAW AS account.withdraw
+    FROM PRODUCT P, ACCOUNT A
+    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND lower(title) like #{keyword}
   </select>
   
   <select id="getAllProductList" resultType="Product">
-    SELECT
-      PRODUCT_ID as productId,
-      TITLE as title,
-      DESCRIPTION as description,
-      SHIPPING as shipping,
-      SHIPPING_FEE as shippingFee,
-      IMAGE as image,
-      CREATED_TIME as createdTime,
-      CATEGORY_ID as categoryId,
-      PRODUCT_STATUS as productStatus,
-      ACCOUNT_ID as sellerId,
-      PRICE as price
-    FROM PRODUCT
+      P.PRODUCT_ID as productId,
+      P.TITLE as title,
+      P.DESCRIPTION as description,
+      P.SHIPPING as shipping,
+      P.SHIPPING_FEE as shippingFee,
+      P.IMAGE as image,
+      P.CREATED_TIME as createdTime,
+      P.CATEGORY_ID as categoryId,
+      P.PRODUCT_STATUS as productStatus,
+      P.ACCOUNT_ID as sellerId,
+      P.PRICE as price,
+      A.PASSWORD AS account.password,
+      A.PHONE_NUMBER AS account.phoneNumber,
+      A.EMAIL_ADDRESS AS account.email,
+      A.ACCOUNT_ID AS account.accountId,
+      A.NICKNAME AS account.nickname,
+      A.JOIN_DATE AS account.joinDate,
+      A.MY_ADDRESS AS account.address,
+      A.MY_ZIPCODE AS account.zipcode,
+      A.BANK_NAME AS account.bankName,
+      A.BANK_NUMBER AS account.bankNumber,
+      A.WITHDRAW AS account.withdraw
+    FROM PRODUCT P, ACCOUNT A
+    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID
   </select>
   
   <select id="getProduct" resultType="Product">
     SELECT
-      PRODUCT_ID as productId,
-      TITLE as title,
-      DESCRIPTION as description,
-      SHIPPING as shipping,
-      SHIPPING_FEE as shippingFee,
-      IMAGE as image,
-      CREATED_TIME as createdTime,
-      CATEGORY_ID as categoryId,
-      PRODUCT_STATUS as productStatus,
-      ACCOUNT_ID as sellerId,
-      PRICE as price
-    FROM PRODUCT
-    WHERE PRODUCT_ID = #{productId}
+      P.PRODUCT_ID as productId,
+      P.TITLE as title,
+      P.DESCRIPTION as description,
+      P.SHIPPING as shipping,
+      P.SHIPPING_FEE as shippingFee,
+      P.IMAGE as image,
+      P.CREATED_TIME as createdTime,
+      P.CATEGORY_ID as categoryId,
+      P.PRODUCT_STATUS as productStatus,
+      P.ACCOUNT_ID as sellerId,
+      P.PRICE as price,
+      A.PASSWORD AS account.password,
+      A.PHONE_NUMBER AS account.phoneNumber,
+      A.EMAIL_ADDRESS AS account.email,
+      A.ACCOUNT_ID AS account.accountId,
+      A.NICKNAME AS account.nickname,
+      A.JOIN_DATE AS account.joinDate,
+      A.MY_ADDRESS AS account.address,
+      A.MY_ZIPCODE AS account.zipcode,
+      A.BANK_NAME AS account.bankName,
+      A.BANK_NUMBER AS account.bankNumber,
+      A.WITHDRAW AS account.withdraw
+    FROM PRODUCT P, ACCOUNT A
+    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.PRODUCT_ID = #{productId}
   </select>
   
   <update id="updateProduct" parameterType="Product">
