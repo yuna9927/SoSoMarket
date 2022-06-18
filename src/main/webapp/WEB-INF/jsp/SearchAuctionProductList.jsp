@@ -19,7 +19,7 @@
       <tr bgcolor="#FFFF88">
         <td><b><a
             href='<c:url value="/shop/viewAuctionProduct.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>'>
-              <font color="BLACK"><c:out value="${auction.product.name}" /></font>
+              <font color="BLACK"><c:out value="${auction.product.title}" /></font>
           </a></b></td>
         <td><c:out value="${auction.product.description}" /></td>
         <td><c:out value="${auction.product.price}" /></td>
