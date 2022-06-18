@@ -14,6 +14,6 @@ public interface BiddingDao {
 
 	List<Bidding> getBiddingsByUser(String accountId) throws DataAccessException;
 
-	List<Bidding> getBiddingsByProduct(int auctionId) throws DataAccessException; 
+	List<Bidding> getBiddingsByAuction(int auctionId) throws DataAccessException; 
 
 }

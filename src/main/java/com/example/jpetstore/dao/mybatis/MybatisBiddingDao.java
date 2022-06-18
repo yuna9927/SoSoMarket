@@ -31,7 +31,7 @@ public class MybatisBiddingDao implements BiddingDao {
 		return biddingMapper.getBiddingsByUser(accountId);
 	}
 
-	public List<Bidding> getBiddingsByProduct(int auctionId) throws DataAccessException {
-		return biddingMapper.getBiddingsByProduct(auctionId);
+	public List<Bidding> getBiddingsByAuction(int auctionId) throws DataAccessException {
+		return biddingMapper.getBiddingsByAuction(auctionId);
 	}
 }
