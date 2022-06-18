@@ -37,7 +37,6 @@ public class Order implements Serializable {
    public void setBuyerId(String buyerId) {
       this.buyerId = buyerId;
    }
-
    public String getSellerId() {
       return sellerId;
    }
@@ -49,7 +48,6 @@ public class Order implements Serializable {
    public String getProductId() {
       return productId;
    }
-
    public void setProductId(String productId) {
       this.productId = productId;
    }
@@ -61,7 +59,6 @@ public class Order implements Serializable {
    public void setOrderDate(Date orderDate) {
       this.orderDate = orderDate;
    }
-
    public String getOrderStatus() {
       return orderStatus;
    }
@@ -85,7 +82,6 @@ public class Order implements Serializable {
    public void setShippingZipCode(String shippingZipCode) {
       this.shippingZipCode = shippingZipCode;
    }
-
    public String getBankNumber() {
       return bankNumber;
    }
@@ -119,7 +115,6 @@ public class Order implements Serializable {
    }
 
   /* Public Methods */
-
   public void initOrder(Account account) {
      
     orderDate = new Date();
@@ -137,7 +132,4 @@ public String toString() {
 			+ ", shippingZipCode=" + shippingZipCode + ", bankNumber=" + bankNumber + ", bankName=" + bankName
 			+ ", product=" + product + "]";
 }
-  
-  
-  
 }

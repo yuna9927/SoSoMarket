@@ -12,19 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 30.11.2003
- * @modified-by Changsup Park
- */
 @Controller
 public class SearchProductsController { 
 
-	private SosoMarketFacade petStore;
+	private SosoMarketFacade sosoMarket;
 
 	@Autowired
-	public void setPetStore(SosoMarketFacade petStore) {
-		this.petStore = petStore;
+	public void setSoSoMarket(SosoMarketFacade sosoMarket) {
+		this.sosoMarket = sosoMarket;
 	}
 
 	@RequestMapping("/shop/searchProducts.do")
@@ -36,7 +31,7 @@ public class SearchProductsController {
 			if (!StringUtils.hasLength(keyword)) {
 				return new ModelAndView("Error", "message", "Please enter a keyword to search for, then press the search button.");
 			}
-			PagedListHolder<Product> productList = new PagedListHolder<Product>(this.petStore.searchProductList(keyword.toLowerCase()));
+			PagedListHolder<Product> productList = new PagedListHolder<Product>(this.sosoMarket.searchProductList(keyword.toLowerCase()));
 			productList.setPageSize(4);
 			request.getSession().setAttribute("SearchProductsController_productList", productList);
 			return new ModelAndView("SearchProducts", "productList", productList);
