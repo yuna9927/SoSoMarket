@@ -118,7 +118,6 @@
       A.BANK_NUMBER AS "account.bankNumber",
       A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
-    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID
   </select>
   
   <select id="getProduct" resultType="Product">
