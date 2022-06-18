@@ -18,8 +18,17 @@ public class Product implements Serializable {
 	private String shipping;
 	private int shippingFee;
 	private int price;
+	private String image;
 	private Account account;
 	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public int getProductId() {
 		return productId;
 	}
@@ -110,9 +119,9 @@ public class Product implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", categoryId=" + categoryId + ", sellerId=" + sellerId + ", title="
+		return "Product [productId=" + productId + ", categoryId=" + categoryId + ", sellerId=" + sellerId + ", name="
 				+ title + ", description=" + description + ", productStatus=" + productStatus + ", createdTime="
-				+ createdTime + ", shipping=" + shipping + ", shippingFee=" + shippingFee + ", price=" + price + "]";
+				+ createdTime + ", shipping=" + shipping + ", shippingFee=" + shippingFee + ", price=" + price + ", image=" + image + "]";
 	}
 
 }

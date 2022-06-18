@@ -162,8 +162,8 @@
       (PRODUCT_ID, TITLE, DESCRIPTION, SHIPPING, SHIPPING_FEE, IMAGE,
         CATEGORY_ID, ACCOUNT_ID, PRICE)
     VALUES
-      (pk_sequence.NEXTVAL, #{title}, #{description}, #{shipping}, #{shipping_fee},
-        #{image}, #{categoryId}, #{sellerId}, #{price})
+      (pk_sequence.NEXTVAL, #{title, jdbcType=VARCHAR}, #{description, jdbcType=VARCHAR}, #{shipping, jdbcType=VARCHAR}, #{shippingFee, jdbcType=NUMERIC},
+        #{image, jdbcType=VARCHAR}, #{categoryId, jdbcType=NUMERIC}, #{sellerId, jdbcType=VARCHAR}, #{price, jdbcType=NUMERIC})
   </insert>
 
   <delete id="deleteProduct" parameterType="int">
