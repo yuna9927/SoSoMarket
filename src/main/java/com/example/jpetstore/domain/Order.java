@@ -19,6 +19,7 @@ public class Order implements Serializable {
    private String bankNumber;
    private String bankName;
    private Product product;
+   private Account account;
 
    /* JavaBeans Properties */
    public int getOrderId() {
@@ -107,6 +108,14 @@ public class Order implements Serializable {
 
    public void setProduct(Product product) {
       this.product = product;
+   }
+   
+   public Account getAccount() {
+	   return account;
+   }
+   
+   public void setAccount(Account account) {
+	   this.account = account;
    }
 
   /* Public Methods */

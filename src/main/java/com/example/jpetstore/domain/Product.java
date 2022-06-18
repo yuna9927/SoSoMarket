@@ -18,6 +18,7 @@ public class Product implements Serializable {
 	private String shipping;
 	private int shippingFee;
 	private int price;
+	private Account account;
 	
 	public int getProductId() {
 		return productId;
@@ -97,6 +98,14 @@ public class Product implements Serializable {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	
+	public Account getAccount() {
+		return account;
+	}
+	
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	@Override
