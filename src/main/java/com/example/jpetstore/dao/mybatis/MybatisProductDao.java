@@ -7,8 +7,10 @@ import java.util.StringTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.jpetstore.dao.ProductDao;
+import com.example.jpetstore.dao.mybatis.mapper.AccountMapper;
 import com.example.jpetstore.dao.mybatis.mapper.ProductMapper;
 import com.example.jpetstore.domain.Product;
 
@@ -16,7 +18,9 @@ import com.example.jpetstore.domain.Product;
 public class MybatisProductDao implements ProductDao {
 	@Autowired
 	private ProductMapper productMapper;
-
+	@Autowired
+	private AccountMapper accountMapper;
+	
 	public List<Product> getProductListByCategory(int categoryId) throws DataAccessException {
 		return productMapper.getProductListByCategory(categoryId);
 	}
@@ -63,8 +67,11 @@ public class MybatisProductDao implements ProductDao {
 		productMapper.insertProduct(product);
 	}
 
+	@Transactional
 	public void deleteProduct(int productId) throws DataAccessException {
 		productMapper.deleteProduct(productId);
+		String sellerId = productMapper.getProduct(productId).getSellerId();
+		accountMapper.updateWithdraw(sellerId);
 	}
 
 	public void updateProductStatus(Product product) throws DataAccessException {

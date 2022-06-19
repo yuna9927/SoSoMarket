@@ -134,14 +134,14 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	
 	public void insertAuction(Auction auction) {
 		auctionDao.insertAuction(auction);
-		productDao.insertProduct(auction.getProduct());
+//		productDao.insertProduct(auction.getProduct());
 	}
 
 	public void deleteAuction(int auctionId) {
 		auctionDao.deleteAuction(auctionId);
-		productDao.deleteProduct(auctionId);
-		String sellerId = productDao.getProduct(auctionId).getSellerId();
-		accountDao.updateWithdraw(sellerId);
+//		productDao.deleteProduct(auctionId);
+//		String sellerId = productDao.getProduct(auctionId).getSellerId();
+//		accountDao.updateWithdraw(sellerId);
 	}
 
 //	public void updateAuctionStatus(Auction auction) {
