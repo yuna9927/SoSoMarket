@@ -67,11 +67,8 @@ public class MybatisProductDao implements ProductDao {
 		productMapper.insertProduct(product);
 	}
 
-	@Transactional
 	public void deleteProduct(int productId) throws DataAccessException {
 		productMapper.deleteProduct(productId);
-		String sellerId = productMapper.getProduct(productId).getSellerId();
-		accountMapper.updateWithdraw(sellerId);
 	}
 
 	public void updateProductStatus(Product product) throws DataAccessException {
