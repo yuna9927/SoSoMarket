@@ -25,16 +25,13 @@ public class ViewAuctionController {
 	public void setSosomarket(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
-
-	@RequestMapping("shop/viewAuction.do")
+	@RequestMapping("/shop/viewAuctionProduct.do")
 	public String handleRequest(
-			@RequestParam("auctionId") String auctionId,
-			ModelMap model,
-			HttpServletRequest request) throws Exception {
+			@RequestParam("auctionId") int auctionId,
+			ModelMap model) throws Exception {
 		List<Bidding> biddingList = new ArrayList<Bidding>();
-		biddingList = this.sosomarket.getBiddingsByAuction(Integer.parseInt(auctionId));
-
-		Auction auction = this.sosomarket.getAuction(Integer.parseInt(auctionId));
+		biddingList = this.sosomarket.getBiddingsByAuction(auctionId);
+		Auction auction = this.sosomarket.getAuction(auctionId);
 		model.put("biddingList", biddingList);
 		model.put("auction", auction);
 		

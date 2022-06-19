@@ -60,7 +60,7 @@
       A.BANK_NUMBER AS "account.bankNumber",
       A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
-    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.ACCOUNT_ID = #{sellerId}
+    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.ACCOUNT_ID = #{sellerId} AND P.PRODUCT_TYPE = 'product'
   </select>
 
   <select id="searchProductList" resultType="Product">
@@ -118,6 +118,7 @@
       A.BANK_NUMBER AS "account.bankNumber",
       A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
+    WHERE PRODUCT_TYPE = 'product'
   </select>
   
   <select id="getProduct" resultType="Product">

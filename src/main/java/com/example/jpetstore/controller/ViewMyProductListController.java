@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -30,14 +31,32 @@ public class ViewMyProductListController {
 	}
 
 	@RequestMapping("/user/viewMyProductList.do")
-	public ModelAndView handleRequest(
-		@ModelAttribute("userSession") UserSession userSession
+	public String getMyProductList(
+		@ModelAttribute("userSession") UserSession userSession,
+		ModelMap model
 		) throws Exception {
 		String accountId = userSession.getAccount().getAccountId();
+	
 		List<Product> productList = sosomarket.getProductListByUser(accountId);
-		//List<Auction> auctionList = sosomarket.getAuctionListByUser(accountId);
+	
+		
+		model.put("productList", productList);
+		
 
-		return new ModelAndView("ListSells", "productList", productList);
+		return "ListSells";
+	}
+	
+	@RequestMapping("/user/viewMyAuctionProductList.do")
+	public String getMyAuctionProductList(
+		@ModelAttribute("userSession") UserSession userSession,
+		ModelMap model
+		) throws Exception {
+		String accountId = userSession.getAccount().getAccountId();
+		List<Auction> auctionList = sosomarket.getAuctionListByUser(accountId);
+		
+		model.put("auctionList", auctionList);
+
+		return "ListAuctionSells";
 	}
 	
 	

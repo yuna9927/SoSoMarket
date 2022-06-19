@@ -22,6 +22,10 @@ public class MybatisWishDao implements WishDao {
 	public Wish getWish(int wishId) throws DataAccessException {
 		return wishMapper.getWish(wishId);
 	}
+	
+	public Wish getWish(String accountId, int productId) throws DataAccessException {
+		return wishMapper.getWishByAccountAndProduct(accountId, productId);
+	}
 
     public List<Wish> getWishtListByUser(String accountId) throws DataAccessException {
     	return wishMapper.getWishtListByUser(accountId);

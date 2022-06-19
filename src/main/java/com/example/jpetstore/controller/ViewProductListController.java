@@ -39,7 +39,7 @@ public class ViewProductListController {
 	public String productHandleRequest(ModelMap model
 			) throws Exception {
 		PagedListHolder<Product> productList = new PagedListHolder<Product>(this.sosomarket.getAllProduct());
-		productList.setPageSize(52);
+		productList.setPageSize(4);
 		System.out.println(productList);
 		model.put("productList", productList);
 		return "SearchProductList";
@@ -49,13 +49,15 @@ public class ViewProductListController {
 	@RequestMapping("/shop/viewProductList2.do")
 	public String productHandleRequest2(
 			@RequestParam("page") String page,
-			@ModelAttribute("productList") PagedListHolder<Product> productList,
-			BindingResult result) throws Exception {
-		if (productList == null) {
-			throw new IllegalStateException("Cannot find pre-loaded product list");
+			@ModelAttribute("productList") PagedListHolder<Product> productList, 
+			ModelMap model) throws Exception {
+		if ("next".equals(page)) {
+			productList.nextPage();
 		}
-		if ("next".equals(page)) { productList.nextPage(); }
-		else if ("previous".equals(page)) { productList.previousPage(); }
+		else if ("previous".equals(page)) {
+			productList.previousPage();
+		}
+		model.put("productList", productList);
 		return "SearchProductList";
 	}
 	

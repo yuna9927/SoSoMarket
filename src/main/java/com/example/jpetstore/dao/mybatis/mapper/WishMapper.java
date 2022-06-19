@@ -21,6 +21,8 @@ import com.example.jpetstore.domain.Wish;
 public interface WishMapper {
 
 	Wish getWish(int wishId);
+	
+	Wish getWishByAccountAndProduct(String accountId, int productId);
 
     List<Wish> getWishtListByUser(String accountId);
     

@@ -18,7 +18,10 @@ import com.example.jpetstore.service.SosoMarketFacade;
 @SessionAttributes("biddingForm")
 public class BiddingController { 
 	
-	@Value("ViewAuctionProduct")
+	@Value("BiddingForm")
+	private String formViewName;
+	
+	@Value("index")
 	private String successViewName;
 	
 	@Autowired
@@ -27,6 +30,9 @@ public class BiddingController {
 	public void setSosomarket(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
+	
+	UserSession userSession;
+	BiddingForm bf;
 
 //	@Autowired
 //	private ProductFormValidator validator;
@@ -35,32 +41,32 @@ public class BiddingController {
 //	}
 		
 	@ModelAttribute("biddingForm")
-	public BiddingForm formBackingObject(HttpServletRequest request, @RequestParam("auctionId") String auctionId) 
+	public BiddingForm formBackingObject(HttpServletRequest request) 
 			throws Exception {
 		
-		UserSession userSession = 
+		userSession = 
 				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 
-		BiddingForm bf = new BiddingForm();
+		bf = new BiddingForm();
 		bf.setBuyerId(userSession.getAccount().getAccountId());
-		
-		int int_auctionId = Integer.parseInt(auctionId);
-		bf.setProductId(int_auctionId);
 		return bf;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String form() {
-		return "BiddingForm";
+		return formViewName;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(
 			HttpServletRequest request, HttpSession session,
+			@RequestParam("auctionId") String auctionId,
 			@ModelAttribute("biddingForm") BiddingForm biddingForm,
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
 		
+		int int_auctionId = Integer.parseInt(auctionId);
+		bf.setProductId(int_auctionId);
 		System.out.println(biddingForm);
 		sosomarket.insertBidding(biddingForm.getBidding());
 				

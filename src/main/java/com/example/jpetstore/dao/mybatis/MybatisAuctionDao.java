@@ -33,8 +33,8 @@ public class MybatisAuctionDao implements AuctionDao {
 		auctionMapper.deleteAuction(productId);
 	}
 
-	public List<Auction> getAuctionByUser(String accountId) {
-		return auctionMapper.getAuctionByUser(accountId);
+	public List<Auction> getAuctionListByUser(String accountId) {
+		return auctionMapper.getAuctionListByUser(accountId);
 	}
 	
 	public List<Auction> getAuctionListByCategory(int categoryId) {

@@ -5,11 +5,45 @@
   <cache />
 
   <select id="getWish" resultType="Wish">
-    SELECT *
-    FROM WISH
-    WHERE WISH_ID = #{wishId}
+    SELECT
+    	W.WISH_ID as wishId,
+    	W.PRODUCT_ID as productId,
+    	W.ACCOUNT_ID as accountId,
+    	P.TITLE as "product.title",
+    	P.DESCRIPTION as "product.description",
+		P.SHIPPING as "product.shipping",
+		P.SHIPPING_FEE as "product.shippingFee",
+		P.IMAGE as "product.image",
+		P.CREATED_TIME as "product.createdTime",
+		P.CATEGORY_ID as "product.categoryId",
+		P.PRODUCT_STATUS as "product.productStatus",
+		P.ACCOUNT_ID as "product.sellerId",
+		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType"
+    FROM WISH W, PRODUCT P
+    WHERE W.PRODUCT_ID = P.PRODUCT_ID AND W.WISH_ID = #{wishId}
   </select>
-
+  
+  <select id="getWishByAccountAndProduct" resultType="Wish">
+    SELECT
+    	W.WISH_ID as wishId,
+    	W.PRODUCT_ID as productId,
+    	W.ACCOUNT_ID as accountId,
+    	P.TITLE as "product.title",
+    	P.DESCRIPTION as "product.description",
+		P.SHIPPING as "product.shipping",
+		P.SHIPPING_FEE as "product.shippingFee",
+		P.IMAGE as "product.image",
+		P.CREATED_TIME as "product.createdTime",
+		P.CATEGORY_ID as "product.categoryId",
+		P.PRODUCT_STATUS as "product.productStatus",
+		P.ACCOUNT_ID as "product.sellerId",
+		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType"
+    FROM WISH W, PRODUCT P
+    WHERE W.PRODUCT_ID = P.PRODUCT_ID AND W.PRODUCT_ID = #{productId} AND W.ACCOUNT_ID = #{accountId}
+  </select>
+  
   <insert id="insertWish" parameterType="Wish">
     INSERT INTO WISH
       (WISH_ID, PRODUCT_ID, ACCOUNT_ID)
@@ -23,8 +57,22 @@
   </delete>
 
   <select id="getWishListByUser" resultType="Wish">
-    SELECT *
-    FROM WISH
-    WHERE ACCOUNT_ID = #{accountId}
+    SELECT
+		W.WISH_ID as wishId,
+    	W.PRODUCT_ID as productId,
+    	W.ACCOUNT_ID as accountId,
+    	P.TITLE as "product.title",
+    	P.DESCRIPTION as "product.description",
+		P.SHIPPING as "product.shipping",
+		P.SHIPPING_FEE as "product.shippingFee",
+		P.IMAGE as "product.image",
+		P.CREATED_TIME as "product.createdTime",
+		P.CATEGORY_ID as "product.categoryId",
+		P.PRODUCT_STATUS as "product.productStatus",
+		P.ACCOUNT_ID as "product.sellerId",
+		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType"
+    FROM WISH W, PRODUCT P
+    WHERE W.PRODUCT_ID = P.PRODUCT_ID AND W.ACCOUNT_ID = #{accountId}
   </select>
 </mapper>
