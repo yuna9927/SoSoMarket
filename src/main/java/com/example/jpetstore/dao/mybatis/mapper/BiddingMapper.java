@@ -10,6 +10,8 @@ public interface BiddingMapper {
 	void insertBidding(Bidding bidding);
 	
 	void updateBidding(Bidding bidding);
+	
+	void deleteBidding(int biddingId);
 
 	List<Bidding> getBiddingsByUser(String accountId);
 
