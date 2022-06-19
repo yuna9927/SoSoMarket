@@ -10,6 +10,7 @@ public class Wish implements Serializable {
   private int wishId;
   private int productId;
   private int accountId;
+  private Product product;
 
   /* JavaBeans Properties */
 
@@ -21,6 +22,9 @@ public class Wish implements Serializable {
   
   public int getAccountId() { return accountId; }
   public void setAccountId(int accountId) { this.accountId = accountId; }
+  
+  public Product getProduct() { return product; }
+  public void setProduct(Product product) { this.product = product; }
 
   /* Public Methods */
   /*
