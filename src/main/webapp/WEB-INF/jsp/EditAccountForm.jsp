@@ -37,6 +37,8 @@
               <B><form:errors path="repeatedPassword" cssClass="error" /></B></td>
           </tr>
         </table> 
+        <b>철회횟수</b>
+        <c:out value="${accountForm.account.withdraw}" />
         
         <%@ include file="IncludeAccountFields.jsp"%>
 
