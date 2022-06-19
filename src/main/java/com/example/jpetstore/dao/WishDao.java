@@ -7,6 +7,8 @@ import com.example.jpetstore.domain.Wish;
 public interface WishDao {
 	
 	Wish getWish(int wishId) throws DataAccessException;
+	
+	Wish getWish(String accountId, int productId) throws DataAccessException;
 
     List<Wish> getWishtListByUser(String accountId) throws DataAccessException;
     

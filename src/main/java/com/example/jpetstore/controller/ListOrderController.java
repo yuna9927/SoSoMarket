@@ -33,8 +33,10 @@ public class ListOrderController {
 		@ModelAttribute("userSession") UserSession userSession
 		) throws Exception {
 		String accountId = userSession.getAccount().getAccountId();
-		return new ModelAndView("/user/orderListOnSell", "sellOrderList", 
-				sosomarket.getOrderListBySeller(accountId));
+		List<Order> sellOrderList = sosomarket.getOrderListBySeller(accountId);
+	
+		return new ModelAndView("ListSellerOrders", "sellOrderList", 
+				sellOrderList);
 	}
 	
 	@RequestMapping("/user/viewBuyerOrderList.do")
@@ -44,7 +46,6 @@ public class ListOrderController {
 		String accountId = userSession.getAccount().getAccountId();
 		List<Order> buyOrderList = sosomarket.getOrderListByBuyer(accountId);
 		
-		System.out.println("orderList : " + buyOrderList.get(0));
 		return new ModelAndView("ListBuyerOrders", "buyOrderList", 
 				buyOrderList);
 	}

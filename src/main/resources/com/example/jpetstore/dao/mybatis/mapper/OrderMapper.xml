@@ -13,7 +13,7 @@
 		O.ORDER_STATUS as orderStatus,
 		O.SHIPPING_ADDRESS as shippingAddress,
 		O.SHIPPING_ZIPCODE as shippingZipcode,
-		O.ACCOUNT_ID as sellerId,
+		O.ACCOUNT_ID as buyerId,
 		P.TITLE as "product.title",
     	P.DESCRIPTION as "product.description",
 		P.SHIPPING as "product.shipping",
@@ -22,7 +22,7 @@
 		P.CREATED_TIME as "product.createdTime",
 		P.CATEGORY_ID as "product.categoryId",
 		P.PRODUCT_STATUS as "product.productStatus",
-		P.ACCOUNT_ID as "product.sellerId",
+		P.ACCOUNT_ID as "sellerId",
 		P.PRICE as "product.price",
 		P.PRODUCT_TYPE as "product.productType",
 		A.PASSWORD AS "account.password",
@@ -37,7 +37,7 @@
         A.BANK_NUMBER AS "account.bankNumber",
         A.WITHDRAW AS "account.withdraw"
     FROM ORDERS O, PRODUCT P, ACCOUNT A
-    WHERE O.PRODUCT_ID = P.PRODUCT_ID AND O.ACCOUNT_ID = A.ACCOUNT_ID AND O.ORDER_ID = #{orderId}
+    WHERE O.PRODUCT_ID = P.PRODUCT_ID AND  P.ACCOUNT_ID = A.ACCOUNT_ID AND O.ORDER_ID = #{orderId}
   </select>
   
   <select id="getOrderByBuyer" resultType="Order">
@@ -120,7 +120,7 @@
         A.BANK_NUMBER AS "account.bankNumber",
         A.WITHDRAW AS "account.withdraw"
     FROM ORDERS O, PRODUCT P, ACCOUNT A
-    WHERE O.PRODUCT_ID = P.PRODUCT_ID AND O.ACCOUNT_ID = A.ACCOUNT_ID AND O.ACCOUNT_ID = #{sellerId}
+    WHERE O.PRODUCT_ID = P.PRODUCT_ID AND O.ACCOUNT_ID = A.ACCOUNT_ID AND P.ACCOUNT_ID = #{sellerId}
   </select>
   
   <select id="getOrderListByBuyer" resultType="Order">
