@@ -1,37 +1,42 @@
-<%@ include file="IncludeTop.jsp"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:if test="${!empty message}">
-  <b><font color="red"><c:url value="${message}" /></font></b>
-</c:if>
+<%@ include file="IncludeMypageHeader.jsp"%>
+<div class="content">
+	<div class="container-fluid pb-5">
+		<div class="row justify-content-md-center">
+			<div class="card-wrapper col-12 col-md-4 mt-5">
+				<div class="brand text-center mb-3">
+					<a href="<c:url value="/user/index.do"/>"><img src="../img/logo.png"></a>
+				</div>
+				<div class="card">
+					<div class="card-body">
+						<h4 class="card-title">로그인</h4>
+						 <form action='<c:url value="/main/signon.do"/>' method="POST">
+							<div class="form-group">
+								<label for="accountId">아이디</label>
+								<input type="text" class="form-control" name="accountId" required=""
+									autofocus="">
+							</div>
 
-<div align="center">
-  <form action='<c:url value="/main/signon.do"/>' method="POST">
-    <c:if test="${!empty signonForwardAction}">
-      <input type="hidden" name="forwardAction"
-        value='<c:url value="${signonForwardAction}"/>' />
-    </c:if>
-    <table>
-      <tr>
-        <td colspan="2">Please enter your username and password. <br />&nbsp;
-        </td>
-      </tr>
-      <tr>
-        <td>Username:</td>
-        <td><input type="text" name="accountId" size="20" value="j2ee" /></td>
-      </tr>
-      <tr>
-        <td>Password:</td>
-        <td><input type="password" name="password" size="20" value="j2ee" /></td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td><input name="update" type="image" src="../images/button_submit.gif" /></td>
-      </tr>
-    </table>
-  </form>
-  <a href='<c:url value="/user/newAccount.do"/>'> 
-    <img border="0" src="../images/button_register_now.gif" alt="" />
-  </a>
+							<div class="form-group">
+								<label for="password">비밀번호 </label> <input id="password"
+									type="password" class="form-control" name="password"
+									required="">
+							</div>
+
+							<div class="form-group no-margin">
+								<button type="submit" class="btn btn-primary btn-block">로그인</button>
+							</div>
+							<div class="text-center mt-3 small">
+								계정이 없으신가요? <a href="<c:url value="/main/signonForm.do"/>">회원가입</a>
+							</div>
+						</form>
+					</div>
+				</div>
+
+	</div>
+
 </div>
-
-<%@ include file="IncludeBottom.jsp"%>
+<%@ include file="IncludeMypageFooter.jsp"%>

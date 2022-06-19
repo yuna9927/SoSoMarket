@@ -21,9 +21,9 @@
 				
 				<!-- Info -->
 				<div>
-					<table>
+					<table style="width:30%">
 						<tr>
-							<td><b>신용도</b></td>
+							<td colspan="2"><font size="4"><b>신용도</b></font></td>
 						</tr>
 						<tr>
 							<td>철회 횟수:</td>
@@ -31,7 +31,7 @@
 						</tr>
 						<tr><td> &nbsp;</td></tr>
 						<tr>
-							<td><b>사용자 정보</b></td>
+							<td colspan="2"><font size="4"><b>사용자 정보</b></font></td>
 						</tr>
 						<tr>
 							<td>사용자 ID:</td>
@@ -56,7 +56,7 @@
 						</tr>
 						<tr><td> &nbsp;</td></tr>
 						<tr>
-							<td><b>계좌정보</b></td>
+							<td colspan="2"><font size="4"><b>계좌 정보</b></font></td>
 						</tr>
 						<tr>
 							<td>은행:</td>
@@ -68,7 +68,7 @@
 						</tr>
 						<tr><td> &nbsp;</td></tr>
 						<tr>
-							<td><b>배송 정보</b></td>
+							<td colspan="2"><font size="4"><b>배송 정보</b></font></td>
 						</tr>
 						<tr>
 							<td>배송지:</td>
@@ -81,7 +81,7 @@
 
 					</table>
 				</div>
-				<!-- End Form -->
+				<!-- End Info -->
 			</div>
 		</div>
 
