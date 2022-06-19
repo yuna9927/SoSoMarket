@@ -30,7 +30,7 @@ public interface AuctionMapper {
 	  
 	void deleteAuction(int productId);
 
-	List<Auction> getAuctionByUser(String accountId);
+	List<Auction> getAuctionListByUser(String accountId);
 	
 	List<Auction> getAuctionListByCategory(int categoryId);
 
