@@ -60,7 +60,7 @@ public class OrderController {
 		of.setProductId(int_productId);
 		
 		Date orderDate = new Date();
-		of.setDate(orderDate);
+		of.setDate(orderDate); 
 		return of;
 	}
 	
