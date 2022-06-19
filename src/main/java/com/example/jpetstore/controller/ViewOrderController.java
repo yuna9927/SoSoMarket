@@ -26,8 +26,25 @@ public class ViewOrderController {
 		this.sosomarket = sosomarket;
 	}
 
+	@RequestMapping("/user/viewSellerOrder.do")
+	public ModelAndView getSellerOrder(
+			@ModelAttribute("userSession") UserSession userSession,
+			@RequestParam("orderId") int orderId
+			) throws Exception {
+		Order order = this.sosomarket.getOrderBySeller(orderId);
+		System.out.println("·Î±×ÀÎid : " + userSession.getAccount().getAccountId());
+		System.out.println("buyerid : " + order.getBuyerId());
+		
+		if (userSession.getAccount().getAccountId().equals(order.getSellerId())) {
+			return new ModelAndView("ViewSellerOrder", "order", order);
+		}
+		else {
+			return new ModelAndView("Error", "message", "You may only view your own orders.");
+		}
+	}
+	
 	@RequestMapping("/user/viewBuyerOrder.do")
-	public ModelAndView handleRequest(
+	public ModelAndView getBuyerOrder(
 			@ModelAttribute("userSession") UserSession userSession,
 			@RequestParam("orderId") int orderId
 			) throws Exception {

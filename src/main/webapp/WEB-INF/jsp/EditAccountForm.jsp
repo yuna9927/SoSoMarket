@@ -37,6 +37,8 @@
               <B><form:errors path="repeatedPassword" cssClass="error" /></B></td>
           </tr>
         </table> 
+        <b>철회횟수</b>
+        <c:out value="${accountForm.account.withdraw}" />
         
         <%@ include file="IncludeAccountFields.jsp"%>
 
@@ -52,9 +54,11 @@
   <h3><b><a href='<c:url value="/user/viewAccount.do"/>'>User VIew</a></b></h3>
   <h3><b><a href='<c:url value="/user/deleteUser.do"/>'>User Delete</a></b></h3>
   <br>
-  <h3><b><a href='<c:url value="/user/viewBuyerOrderList.do"/>'>나의 일반 상품 주문 목록</a></b></h3>
+  <h3><b><a href='<c:url value="/user/viewBuyerOrderList.do"/>'>내가 구매한 상품 주문 목록</a></b></h3>
+  <h3><b><a href='<c:url value="/user/viewSellerOrderList.do"/>'>내가 판매한 상품 주문 목록</a></b></h3>
   <h3><b><a href='<c:url value="/shop/viewMyBiddingList.do"/>'>나의 입찰 목록</a></b></h3>
   <h3><b><a href='<c:url value="/user/viewMyProductList.do"/>'>나의 일반 판매 목록</a></b></h3>
+  <h3><b><a href='<c:url value="/user/viewMyAuctionProductList.do"/>'>나의 경매 판매 목록</a></b></h3>
 </c:if>
 </div>
 
