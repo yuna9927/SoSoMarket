@@ -68,6 +68,7 @@
       </td>
     </tr>
   </table>
+  <form:hidden path="product.productType" value="product"/>
   <br/>
     <input type="image" src="../images/button_submit.gif" name="submit"
       value="Save Product Information" />
