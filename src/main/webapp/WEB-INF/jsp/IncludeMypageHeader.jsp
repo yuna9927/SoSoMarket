@@ -23,7 +23,6 @@
 <c:if test="${!accountForm.newAccount}">
 	<%@ include file="IncludeMypageSide.jsp" %>
 </c:if>
-
 <c:if test="${accountForm.newAccount}">
 	<main class="main">
 </c:if>
