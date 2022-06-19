@@ -126,26 +126,57 @@
             </li>
             <!-- End Bidding List -->
 
-            <!-- Order List -->
+            <!-- Buyer Order List -->
             <li class="side-nav-menu-item">
-                <a class="side-nav-menu-link media align-items-center" href="/">
+                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewBuyerOrderList.do"/>'>
                 <span class="side-nav-menu-icon d-flex mr-3">
                     
                 <i class="gd-shopping-cart-full"></i>
                 </span>
-                    <span class="side-nav-fadeout-on-closed media-body">Order List</span>
+                    <span class="side-nav-fadeout-on-closed media-body">주문 목록</span>
                 </a>
             </li>
             <!-- End Order List -->
+            
+            <!-- Title -->
+            <li class="sidebar-heading h6">판매</li>
+            <!-- End Title -->
 
             <!-- Selling List -->
             <li class="side-nav-menu-item">
-                <a class="side-nav-menu-link media align-items-center" href="/">
+                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewBuyerOrderList.do"/>'>
                 <span class="side-nav-menu-icon d-flex mr-3">
                     
                 <i class="gd-briefcase"></i>
                 </span>
-                    <span class="side-nav-fadeout-on-closed media-body">Selling List</span>
+                    <span class="side-nav-fadeout-on-closed media-body">일반상품 판매 목록</span>
+                </a>
+            </li>
+            <!-- End Selling List -->
+            
+                        
+            <!-- Selling List -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewBuyerOrderList.do"/>'>
+                <span class="side-nav-menu-icon d-flex mr-3">
+                    
+                <i class="gd-briefcase"></i>
+                </span>
+                    <span class="side-nav-fadeout-on-closed media-body">일반상품 판매 목록</span>
+                </a>
+            </li>
+            <!-- End Selling List -->
+            
+            
+            
+            <!-- Selling List -->
+            <li class="side-nav-menu-item">
+                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewBuyerOrderList.do"/>'>
+                <span class="side-nav-menu-icon d-flex mr-3">
+                    
+                <i class="gd-briefcase"></i>
+                </span>
+                    <span class="side-nav-fadeout-on-closed media-body">일반상품 판매 목록</span>
                 </a>
             </li>
             <!-- End Selling List -->

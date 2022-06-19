@@ -77,9 +77,6 @@
 <a href="<c:url value="/user/deleteUser.do"/>">deleteUser</a>
 
 <br>
-<c:if test="${!empty userSession.account}">
-	<a href="<c:url value="/user/viewAccount.do"/>">MyPage</a>
-</c:if>
 
 
 
