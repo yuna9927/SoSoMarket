@@ -75,7 +75,7 @@
     WHERE O.PRODUCT_ID = P.PRODUCT_ID AND O.ACCOUNT_ID = A.ACCOUNT_ID AND O.ORDER_ID = #{orderId}
   </select>
   
-  <insert id="insertOrder">
+  <insert id="insertOrder" parameterType="Order">
     INSERT INTO ORDERS (ORDER_DATE, PRODUCT_ID, ORDER_ID, ORDER_STATUS, 
     SHIPPING_ADDRESS, SHIPPING_ZIPCODE,	ACCOUNT_ID)
     VALUES (#{orderDate}, #{productId}, #{orderId}, #{orderStatus},
