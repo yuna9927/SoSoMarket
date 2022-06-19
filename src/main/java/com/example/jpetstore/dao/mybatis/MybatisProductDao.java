@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.jpetstore.dao.ProductDao;
 import com.example.jpetstore.dao.mybatis.mapper.AccountMapper;
