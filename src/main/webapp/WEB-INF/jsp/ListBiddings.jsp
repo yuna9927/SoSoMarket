@@ -87,7 +87,7 @@
 						</nav>
 					</div>
 				</div>
-				<!-- End Users -->
+				<!-- End Biddings -->
 			</div>
 		</div>
 

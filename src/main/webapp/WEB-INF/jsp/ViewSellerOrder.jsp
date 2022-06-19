@@ -24,18 +24,13 @@
     </tr>
     <tr>
       <td colspan="2"><b><font color="green" size="4">Status:</font> 
-        <c:out value="${order.status}" /></b></td>
+        <c:out value="${order.orderStatus}" /></b></td>
     </tr>
     <tr>
       <td colspan="2">
       		
         <table class="n23" style="width:100%">
           <tr style="background-color:#CCCCCC;">
-            <td><b>Title</b></td>
-            <td><b>Description</b></td>
-            <td><b>Price</b></td>
-            <td><b>shipping Fee</b></td>
-            <td><b>shipping</b></td>
           </tr>
           <tr>
 	      	<td>Title : </td>

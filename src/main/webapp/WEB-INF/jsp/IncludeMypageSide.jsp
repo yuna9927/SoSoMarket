@@ -144,12 +144,12 @@
 
             <!-- Selling List -->
             <li class="side-nav-menu-item">
-                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewBuyerOrderList.do"/>'>
+                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewSellerOrderList.do"/>'>
                 <span class="side-nav-menu-icon d-flex mr-3">
                     
                 <i class="gd-briefcase"></i>
                 </span>
-                    <span class="side-nav-fadeout-on-closed media-body">일반상품 판매 목록</span>
+                    <span class="side-nav-fadeout-on-closed media-body">요청된 주문 목록</span>
                 </a>
             </li>
             <!-- End Selling List -->
@@ -157,7 +157,7 @@
                         
             <!-- Selling List -->
             <li class="side-nav-menu-item">
-                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewBuyerOrderList.do"/>'>
+                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewMyProductList.do"/>'>
                 <span class="side-nav-menu-icon d-flex mr-3">
                     
                 <i class="gd-briefcase"></i>
@@ -171,12 +171,12 @@
             
             <!-- Selling List -->
             <li class="side-nav-menu-item">
-                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewBuyerOrderList.do"/>'>
+                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewMyAuctionProductList.do"/>'>
                 <span class="side-nav-menu-icon d-flex mr-3">
                     
                 <i class="gd-briefcase"></i>
                 </span>
-                    <span class="side-nav-fadeout-on-closed media-body">일반상품 판매 목록</span>
+                    <span class="side-nav-fadeout-on-closed media-body">경매상품 판매 목록</span>
                 </a>
             </li>
             <!-- End Selling List -->
