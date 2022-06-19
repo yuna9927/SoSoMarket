@@ -18,8 +18,18 @@ public class Product implements Serializable {
 	private String shipping;
 	private int shippingFee;
 	private int price;
+	private String productType;
 	private Account account;
+	private String image;
 	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public int getProductId() {
 		return productId;
 	}
@@ -100,6 +110,14 @@ public class Product implements Serializable {
 		this.price = price;
 	}
 	
+	public String getProductType() {
+		return productType;
+	}
+
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+	
 	public Account getAccount() {
 		return account;
 	}
@@ -110,9 +128,9 @@ public class Product implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", categoryId=" + categoryId + ", sellerId=" + sellerId + ", title="
+		return "Product [productId=" + productId + ", categoryId=" + categoryId + ", sellerId=" + sellerId + ", name="
 				+ title + ", description=" + description + ", productStatus=" + productStatus + ", createdTime="
-				+ createdTime + ", shipping=" + shipping + ", shippingFee=" + shippingFee + ", price=" + price + "]";
+				+ createdTime + ", shipping=" + shipping + ", shippingFee=" + shippingFee + ", price=" + price + ", image=" + image + "]";
 	}
 
 }

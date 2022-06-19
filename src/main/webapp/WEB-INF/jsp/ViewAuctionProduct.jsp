@@ -60,22 +60,10 @@
   <br><br>
   
   <h3>Bidding Product</h3>
-  <form:form modelAttribute="biddingForm" method="post">
-  <form:errors cssClass="error" /> <br><br>
-	  <table class="n13">
-		  <tr>
-		    <td>입찰가:</td>
-		    <td><form:input path="bidding.biddingPrice" htmlEscape="false"/>
-		      <form:errors path="bidding.biddingPrice" cssClass="error" /></td>
-		  </tr>
-	  </table>
-	  <input type="image" src="../images/button_submit.gif" name="submit"
-	      value="Save Account Information" />
-  </form:form>
-  
+
   <br>
   <h3>Bidding List</h3>
-  <table class="n23">
+  <table class="n23">	
     <tr bgcolor="#CCCCCC">
       <td>&nbsp;</td>
       <td><b>date</b></td>
@@ -87,7 +75,6 @@
         <td><fmt:formatDate value="${bidding.updateDate}"
             pattern="yyyy/MM/dd hh:mm:ss" /></td>
         <td><c:out value="${bidding.biddingPrice}" /></td>
-        <td><c:out value="${bidding.productStatus}" /></td>
       </tr>
     </c:forEach>
   </table>

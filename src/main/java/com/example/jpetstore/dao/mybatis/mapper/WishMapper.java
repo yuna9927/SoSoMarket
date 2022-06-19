@@ -13,30 +13,19 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-
 package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
-import com.example.jpetstore.domain.Product;
+import com.example.jpetstore.domain.Wish;
 
-public interface ProductMapper {
+public interface WishMapper {
+
+	Wish getWish(int wishId);
+
+    List<Wish> getWishtListByUser(String accountId);
+    
+    void insertWish(Wish wish);
+
+    void deleteWish(int wishId);
 	
-	List<Product> getProductListByCategory(int categoryId);
-
-	List<Product> getProductListByUser(String accountId);
-
-	List<Product> searchProductList(String keywords);
-
-	List<Product> getAllProductList();
-
-	Product getProduct(int productId);
-
-	void updateProduct(Product product);
-
-	void insertProduct(Product product);
-
-	void deleteProduct(int productId);
-
-	void updateProductStatus(Product product);
-
 }

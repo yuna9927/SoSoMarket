@@ -61,11 +61,9 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		accountDao.deleteAccount(accountId);
 	}
 
-//	public void updateWithdraw(Account accountId) {
-//		accountDao.updateWithdraw(accountId);
-//	}
-//	
-	//
+	public void updateWithdraw(String accountId) {
+		accountDao.updateWithdraw(accountId);
+	}
 
 //	public List<Category> getCategoryList() {
 //		return categoryDao.getCategoryList();
@@ -98,11 +96,14 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 
 	public void insertProduct(Product product) {
+		System.out.println(product.toString()+ "insertdao 직전");
 		productDao.insertProduct(product);
 	}
 
 	public void deleteProduct(int productId) {
 		productDao.deleteProduct(productId);
+//		String sellerId = productDao.getProduct(productId).getSellerId();
+//		accountDao.updateWithdraw(sellerId);
 	}
 
 	public void updateProductStatus(Product product) {
@@ -133,10 +134,14 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	
 	public void insertAuction(Auction auction) {
 		auctionDao.insertAuction(auction);
+//		productDao.insertProduct(auction.getProduct());
 	}
 
 	public void deleteAuction(int auctionId) {
 		auctionDao.deleteAuction(auctionId);
+//		productDao.deleteProduct(auctionId);
+//		String sellerId = productDao.getProduct(auctionId).getSellerId();
+//		accountDao.updateWithdraw(sellerId);
 	}
 
 //	public void updateAuctionStatus(Auction auction) {

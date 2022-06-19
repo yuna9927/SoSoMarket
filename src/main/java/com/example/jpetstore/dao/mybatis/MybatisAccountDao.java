@@ -1,6 +1,5 @@
 package com.example.jpetstore.dao.mybatis;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
@@ -33,5 +32,9 @@ public class MybatisAccountDao implements AccountDao {
 	
 	public void deleteAccount(String accountId) throws DataAccessException {
 		accountMapper.deleteAccount(accountId);
+	}
+	
+	public void updateWithdraw(String accountId) throws DataAccessException {
+		accountMapper.updateWithdraw(accountId);
 	}
 }

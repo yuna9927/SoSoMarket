@@ -24,6 +24,7 @@
 		P.PRODUCT_STATUS as "product.productStatus",
 		P.ACCOUNT_ID as "product.sellerId",
 		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType",
 		A.PASSWORD AS "account.password",
         A.PHONE_NUMBER AS "account.phoneNumber",
         A.EMAIL_ADDRESS AS "account.email",
@@ -58,6 +59,7 @@
 		P.PRODUCT_STATUS as "product.productStatus",
 		P.ACCOUNT_ID as "product.sellerId",
 		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType",
 		A.PASSWORD AS "account.password",
         A.PHONE_NUMBER AS "account.phoneNumber",
         A.EMAIL_ADDRESS AS "account.email",
@@ -73,7 +75,7 @@
     WHERE O.PRODUCT_ID = P.PRODUCT_ID AND O.ACCOUNT_ID = A.ACCOUNT_ID AND O.ORDER_ID = #{orderId}
   </select>
   
-  <insert id="insertOrder">
+  <insert id="insertOrder" parameterType="Order">
     INSERT INTO ORDERS (ORDER_DATE, PRODUCT_ID, ORDER_ID, ORDER_STATUS, 
     SHIPPING_ADDRESS, SHIPPING_ZIPCODE,	ACCOUNT_ID)
     VALUES (#{orderDate}, #{productId}, #{orderId}, #{orderStatus},
@@ -105,6 +107,7 @@
 		P.PRODUCT_STATUS as "product.productStatus",
 		P.ACCOUNT_ID as "product.sellerId",
 		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType",
 		A.PASSWORD AS "account.password",
         A.PHONE_NUMBER AS "account.phoneNumber",
         A.EMAIL_ADDRESS AS "account.email",
@@ -139,6 +142,7 @@
 		P.PRODUCT_STATUS as "product.productStatus",
 		P.ACCOUNT_ID as "product.sellerId",
 		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType",
 		A.PASSWORD AS "account.password",
         A.PHONE_NUMBER AS "account.phoneNumber",
         A.EMAIL_ADDRESS AS "account.email",

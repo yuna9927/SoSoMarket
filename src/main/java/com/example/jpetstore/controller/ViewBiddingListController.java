@@ -46,7 +46,7 @@ public class ViewBiddingListController {
 		UserSession userSession = (UserSession) session.getAttribute("userSession");
 		Account account = userSession.getAccount();
 		PagedListHolder<Bidding> biddingList = new PagedListHolder<Bidding>(this.sosomarket.getBiddingsByUser(account.getAccountId()));
-		biddingList.setPageSize(4);
+		biddingList.setPageSize(30);
 		model.put("biddingList", biddingList);
 		return "ListBiddings";
 	}

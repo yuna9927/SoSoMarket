@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.jpetstore.dao.mybatis.mapper.WishMapper">
+  <cache />
+
+  <select id="getWish" resultType="Wish">
+    SELECT *
+    FROM WISH
+    WHERE WISH_ID = #{wishId}
+  </select>
+
+  <insert id="insertWish" parameterType="Wish">
+    INSERT INTO WISH
+      (WISH_ID, PRODUCT_ID, ACCOUNT_ID)
+    VALUES
+      (pk_sequence.NEXTVAL, #{productId}, #{accountId})
+  </insert>
+
+  <delete id="deleteWish" parameterType="Wish">
+    DELETE FROM WISH
+    WHERE WISH_ID = #{wishId}
+  </delete>
+
+  <select id="getWishListByUser" resultType="Wish">
+    SELECT *
+    FROM WISH
+    WHERE ACCOUNT_ID = #{accountId}
+  </select>
+</mapper>
