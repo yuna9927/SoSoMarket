@@ -1,84 +1,84 @@
 package com.example.jpetstore.controller;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.ModelAndViewDefiningException;
-import com.example.jpetstore.domain.Account;
-import com.example.jpetstore.domain.Cart;
-import com.example.jpetstore.domain.Order;
-import com.example.jpetstore.service.OrderValidator;
+import org.springframework.web.util.WebUtils;
+import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
-@SessionAttributes({"sessionCart", "orderForm"})
-public class OrderController {
+@RequestMapping({"/shop/newOrderForm.do","/shop/newOrder.do"})
+@SessionAttributes("biddingForm")
+public class OrderController { 
+	
+	@Value("NewOrderForm")
+	private String formViewName;
+	
+	@Value("index")
+	private String successViewName;
+	
 	@Autowired
-	private SosoMarketFacade sosoMarket;
-//	@Autowired
-//	private OrderValidator orderValidator;
+	private SosoMarketFacade sosomarket;
 	
-	@ModelAttribute("orderForm")
-	public OrderForm createOrderForm() {
-		return new OrderForm();
+	public void setSosomarket(SosoMarketFacade sosomarket) {
+		this.sosomarket = sosomarket;
 	}
+	
+	UserSession userSession;
+	OrderForm of;
 
-//	@ModelAttribute("creditCardTypes")
-//	public List<String> referenceData() {
-//		ArrayList<String> creditCardTypes = new ArrayList<String>();
-//		creditCardTypes.add("Visa");
-//		creditCardTypes.add("MasterCard");
-//		creditCardTypes.add("American Express");
-//		return creditCardTypes;			
+//	@Autowired
+//	private ProductFormValidator validator;
+//	public void setValidator(ProductFormValidator validator) {
+//		this.validator = validator;
 //	}
-	
-	@RequestMapping("/shop/newOrder.do")
-	public String initNewOrder(HttpServletRequest request,
-			@ModelAttribute("sessionCart") Order order,
-			@ModelAttribute("orderForm") OrderForm orderForm
-			) throws ModelAndViewDefiningException {
 		
-		UserSession userSession = (UserSession) request.getSession().getAttribute("userSession");
+	@ModelAttribute("orderForm")
+	public OrderForm formBackingObject(HttpServletRequest request) 
+			throws Exception {
 		
-		if (order != null) {
-			Account account = sosoMarket.getAccount(userSession.getAccount().getAccountId());
-			orderForm.getOrder().initOrder(account);
-			return "NewOrderForm";	
-		}
-		else {
-			ModelAndView modelAndView = new ModelAndView("Error");
-			modelAndView.addObject("message", "An order could not be created because a cart could not be found.");
-			throw new ModelAndViewDefiningException(modelAndView);
-		}
+		userSession = 
+				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
+
+		of = new OrderForm();
+		of.setBuyerId(userSession.getAccount().getAccountId());
+		System.out.println(userSession.getAccount().getAccountId());
+		
+		String productId = request.getParameter("productId");
+		int int_productId = Integer.parseInt(productId);
+		of.setProductId(int_productId);
+		
+		Date orderDate = new Date();
+		of.setDate(orderDate);
+		return of;
 	}
 	
-	@RequestMapping("/shop/newOrderSubmitted.do")
-	public String bindAndValidateOrder(HttpServletRequest request,
-			@ModelAttribute("orderForm") OrderForm orderForm, 
-			BindingResult result) {
-		
-			if (result.hasErrors()) 
-				return "NewOrderForm";
-			else	
-				return "ConfirmOrder";
+	@RequestMapping(method = RequestMethod.GET)
+	public String form() {
+		return formViewName;
 	}
 	
-	@RequestMapping("/shop/confirmOrder.do")
-	protected ModelAndView confirmOrder(
-			@ModelAttribute("orderForm") OrderForm orderForm, 
-			SessionStatus status) {
-		sosoMarket.insertOrder(orderForm.getOrder());
-		ModelAndView mav = new ModelAndView("ViewOrder");
-		mav.addObject("order", orderForm.getOrder());
-		mav.addObject("message", "Thank you, your order has been submitted.");
-		status.setComplete();  // remove sessionCart and orderForm from session
-		return mav;
+	@RequestMapping(method = RequestMethod.POST)
+	public String onSubmit(
+			HttpServletRequest request, HttpSession session,
+			@ModelAttribute("orderForm") OrderForm orderForm,
+			@ModelAttribute("userSession") UserSession userSession,
+			BindingResult result) throws Exception {
+		
+		System.out.println(orderForm);
+		sosomarket.insertOrder(orderForm.getOrder());
+				
+		return successViewName;  
 	}
 }

@@ -11,7 +11,7 @@ public class Order implements Serializable {
    private int orderId;
    private String buyerId;
    private String sellerId;
-   private String productId;
+   private int productId;
    private Date orderDate;
    private String orderStatus;
    private String shippingAddress;
@@ -45,10 +45,10 @@ public class Order implements Serializable {
       this.sellerId = sellerId;
    }
 
-   public String getProductId() {
+   public int getProductId() {
       return productId;
    }
-   public void setProductId(String productId) {
+   public void setProductId(int productId) {
       this.productId = productId;
    }
 
