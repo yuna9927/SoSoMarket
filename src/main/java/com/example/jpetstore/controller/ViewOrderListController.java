@@ -19,7 +19,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
  */
 @Controller
 @SessionAttributes("userSession")
-public class ListOrderController {
+public class ViewOrderListController {
 
 	private SosoMarketFacade sosomarket;
 
