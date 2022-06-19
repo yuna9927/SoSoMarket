@@ -40,7 +40,7 @@
 									<td class="align-middle py-3">
 										<div class="d-flex align-items-center">
 											<a href='<c:url value="/shop/viewAuctionProduct.do">
-             						 		<c:param name="auctionId" value="${auction.product.productId}"/></c:url>'>
+             						 		<c:param name="auctionId" value="${auction.auctionId}"/></c:url>'>
              						 		<c:out value="${auction.product.title}" />
 											</a>
 										</div>

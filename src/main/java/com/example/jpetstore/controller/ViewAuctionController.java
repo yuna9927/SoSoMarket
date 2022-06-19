@@ -37,12 +37,12 @@ public class ViewAuctionController {
 
 	@RequestMapping("/shop/viewAuctionProduct.do")
 	public String handleRequest(
-			@RequestParam("auctionId") String auctionId,
+			@RequestParam("auctionId") int auctionId,
 			ModelMap model) throws Exception {
 		//경매 상품 페이지에서 필요한 경매 상품 입찰가 목록 조회
 		List<Bidding> biddingList = new ArrayList<Bidding>();
-		biddingList = this.sosomarket.getBiddingsByAuction(Integer.parseInt(auctionId));
-		Auction auction = this.sosomarket.getAuction(Integer.parseInt(auctionId));
+		biddingList = this.sosomarket.getBiddingsByAuction(auctionId);
+		Auction auction = this.sosomarket.getAuction(auctionId);
 		model.put("biddingList", biddingList);
 		model.put("auction", auction);
 		return "ViewAuctionProduct";
