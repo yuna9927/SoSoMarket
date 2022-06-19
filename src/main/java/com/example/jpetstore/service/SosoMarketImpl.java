@@ -113,7 +113,7 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	/* auction */
 
 	public List<Auction> getAuctionListByUser(String accountId) {
-		return auctionDao.getAuctionByUser(accountId);
+		return auctionDao.getAuctionListByUser(accountId);
 	}
 
 	public List<Auction> getAuctionListByCategory(int categoryId) {
