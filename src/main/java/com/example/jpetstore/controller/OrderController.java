@@ -1,20 +1,15 @@
 package com.example.jpetstore.controller;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
-import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
@@ -58,9 +53,6 @@ public class OrderController {
 		String productId = request.getParameter("productId");
 		int int_productId = Integer.parseInt(productId);
 		of.setProductId(int_productId);
-		
-		Date orderDate = new Date();
-		of.setDate(orderDate); 
 		return of;
 	}
 	

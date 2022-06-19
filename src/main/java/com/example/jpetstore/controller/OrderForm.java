@@ -1,8 +1,6 @@
 package com.example.jpetstore.controller;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 
@@ -22,10 +20,6 @@ public class OrderForm implements Serializable {
 	
 	public void setBuyerId(String buyerId) {
 		order.setBuyerId(buyerId);;
-	}
-	
-	public void setDate(Date date) {
-		order.setOrderDate(date);
 	}
 	
 	 @Override
