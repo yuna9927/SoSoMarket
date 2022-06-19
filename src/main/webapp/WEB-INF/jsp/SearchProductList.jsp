@@ -14,6 +14,7 @@
       <td><b>title</b></td>
       <td><b>desc</b></td>
       <td><b>status</b></td>
+      <td>wish</td>
       <!--<td><b>desc</b></td>  -->
     </tr>
     <c:forEach var="product" items="${productList.pageList}">
@@ -25,6 +26,10 @@
         <td><c:out value="${product.description}" /></td>
         <td><c:out value="${product.price}" /></td>
         <td><c:out value="${product.productStatus}" /></td>
+        <c:if test="${!empty userSession.account}">
+        	<td><a class="btn btn-success text-white" href='<c:url value="/user/deleteWish.do">
+        	<c:param name="productId" value="${product.productId}"/></c:url>'><i class="far fa-heart"></i></a></td>
+        </c:if>
       </tr>
     </c:forEach>
     <tr>
