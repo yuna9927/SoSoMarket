@@ -5,7 +5,28 @@
   <cache />
 
   <select id="getWish" resultType="Wish">
-    SELECT *
+    SELECT
+    	WISH_ID as wishId,
+    	PRODUCT_ID as productId,
+    	ACCOUNT_ID as accountId
+    FROM WISH
+    WHERE WISH_ID = #{wishId}
+  </select>
+  
+  <select id="getWishByAccountAndProduct" resultType="Wish">
+    SELECT
+    	WISH_ID as wishId,
+    	PRODUCT_ID as productId,
+    	ACCOUNT_ID as accountId
+    FROM WISH
+    WHERE PRODUCT_ID = #{productId} AND ACCOUNT_ID = #{accountId}
+  </select>
+  
+  <select id="getWish" resultType="Wish">
+    SELECT
+    	WISH_ID as wishId,
+    	PRODUCT_ID as productId,
+    	ACCOUNT_ID as accountId
     FROM WISH
     WHERE WISH_ID = #{wishId}
   </select>
@@ -23,7 +44,10 @@
   </delete>
 
   <select id="getWishListByUser" resultType="Wish">
-    SELECT *
+    SELECT
+		WISH_ID as wishId,
+    	PRODUCT_ID as productId,
+    	ACCOUNT_ID as accountId
     FROM WISH
     WHERE ACCOUNT_ID = #{accountId}
   </select>
