@@ -7,7 +7,7 @@
 	<div class="py-4 px-3 px-md-4">
 		<c:if test="${accountForm.newAccount}">
 			<div class="brand text-center mb-3">
-				<a href="/"><img src="../img/logo.png"></a>
+				<a href="<c:url value="/user/index.do"/>"><img src="../img/logo.png"></a>
 			</div>
 		</c:if>
 		<div class="card mb-3 mb-md-4">

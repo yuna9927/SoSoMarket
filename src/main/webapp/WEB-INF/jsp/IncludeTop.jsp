@@ -38,7 +38,7 @@
         <a href="<c:url value="/main/signoff.do"/>">
           <img border="0" name="img_signout" src="../images/sign-out.gif" /></a>
         <img border="0" src="../images/separator.gif" />
-        <a href="<c:url value="/user/editAccount.do"/>">
+        <a href="<c:url value="/user/viewAccount.do"/>">
           <img border="0" name="img_myaccount" src="../images/my_account.gif" /></a>
       </c:if>
       <img border="0" src="../images/separator.gif" />&nbsp;

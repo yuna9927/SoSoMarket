@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
 <body class="has-sidebar has-fixed-sidebar-and-header">
 <!-- Header -->
 <header class="header bg-body">
@@ -31,9 +32,8 @@
                 <!-- User Avatar -->
                 <div class="dropdown mx-3 dropdown ml-2">
                     <a id="profileMenuInvoker" class="header-complex-invoker" href="#" aria-controls="profileMenu" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-target="#profileMenu" data-unfold-type="css-animation" data-unfold-duration="300" data-unfold-animation-in="fadeIn" data-unfold-animation-out="fadeOut">
-                        <!--img class="avatar rounded-circle mr-md-2" src="#" alt="John Doe"-->
                         <span class="mr-md-2 avatar-placeholder">X</span>
-                        <span class="d-none d-md-block"><c:out value="${account.nickname}" /></span>
+                        <span class="d-none d-md-block"><c:out value="${userSession.account.nickname}" /></span>
                         <i class="gd-angle-down d-none d-md-block ml-2"></i>
                     </a>
 
@@ -70,7 +70,7 @@
             <!-- Title -->
             <li class="sidebar-heading h6">계정</li>
             <!-- End Title -->
-
+	
             <!-- Wish List -->
             <li class="side-nav-menu-item">
                 <a class="side-nav-menu-link media align-items-center" href="/">
@@ -111,17 +111,17 @@
             <!-- End Users -->
 
             <!-- Title -->
-            <li class="sidebar-heading h6">Order</li>
+            <li class="sidebar-heading h6">구매</li>
             <!-- End Title -->
 
             <!-- Bidding List -->
             <li class="side-nav-menu-item">
-                <a class="side-nav-menu-link media align-items-center" href="/">
+                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/shop/viewMyBiddingList.do"/>'>
                 <span class="side-nav-menu-icon d-flex mr-3">
                     
                 <i class="gd-shopping-cart"></i>
                 </span>
-                    <span class="side-nav-fadeout-on-closed media-body">Bidding List</span>
+                    <span class="side-nav-fadeout-on-closed media-body">입찰 목록</span>
                 </a>
             </li>
             <!-- End Bidding List -->
