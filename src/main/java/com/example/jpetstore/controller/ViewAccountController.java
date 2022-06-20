@@ -32,7 +32,7 @@ public class ViewAccountController {
 			) throws Exception {
 		Account account = this.sosomarket.getAccount(userSession.getAccount().getAccountId());
 		if (account != null) {
-			return new ModelAndView("ViewUser", "account", account);
+			return new ModelAndView("ViewAccount", "account", account);
 		}
 		else {
 			return new ModelAndView("Error", "message", "You have to log in first.");

@@ -1,91 +1,89 @@
-<%@ include file="IncludeTop.jsp"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-<div align="center">
+<%@ include file="IncludeMypageHeader.jsp"%>
+<div class="content">
+	<div class="py-4 px-3 px-md-4">
+		<div class="card mb-3 mb-md-4">
 
-  <table id="account">
-    <tr>
-      <td>
-        <h3><font color="darkgreen">User Information</font></h3>
-        <table class="n13">
-          <tr>
-            <td>User ID:</td>
-            <td>
-              <c:out value="${account.accountId}" />
-            </td>
-          </tr>
-          <tr>
-            <td>User Password:</td>
-            <td>
-              <c:out value="${account.password}" />
-            </td>
-          </tr>
-          <tr>
-            <td>User Nickname</td>
-            <td>
-              <c:out value="${account.nickname}" />
-            </td>
-          </tr>
-          <tr>
-            <td>joinDate:</td>
-              <td><fmt:formatDate value="${account.joinDate}"
-            pattern="yyyy/MM/dd hh:mm:ss" /></td>
-          </tr>
-          <tr>
-            <td>Phone Number:</td>
-            <td>
-              <c:out value="${account.phoneNumber}" />
-            </td>
-          </tr>
-          <tr>
-            <td>Email:</td>
-            <td>
-              <c:out value="${account.email}" />
-            </td>
-          </tr>
-          <tr>
-            <td>Bank Name:</td>
-            <td>
-              <c:out value="${account.bankName}" />
-            </td>
-          </tr>
-          <tr>
-            <td>Bank Number:</td>
-            <td>
-              <c:out value="${account.bankNumber}" />
-            </td>
-          </tr>
-          <tr>
-            <td>Address:</td>
-            <td>
-              <c:out value="${account.address}" />
-            </td>
-          </tr>
-          <tr>
-            <td>Zipcode:</td>
-            <td>
-              <c:out value="${account.zipcode}" />
-            </td>
-          </tr>
-          <tr>
-            <td>Your number of withdrawals:</td>
-            <td>
-              <c:out value="${account.withdraw}" />
-            </td>
-          </tr>
-          
-        </table> 
+			<div class="card-body">
+				<!-- Breadcrumb -->
+				<nav class="d-none d-md-block" aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#">사용자</a></li>
+						<li class="breadcrumb-item active" aria-current="page">프로필</li>
+					</ol>
+				</nav>
+				<!-- End Breadcrumb -->
 
-      </td>
-    </tr>
-  </table>
-  <br />
+				<div class="mb-3 mb-md-4 d-flex justify-content-between">
+					<div class="h3 mb-0">프로필</div>
+				</div>
+				
+				<!-- Info -->
+				<div>
+					<table style="width:30%">
+						<tr>
+							<td colspan="2"><font size="4"><b>신용도</b></font></td>
+						</tr>
+						<tr>
+							<td>철회 횟수:</td>
+							<td><c:out value="${account.withdraw}" /></td>
+						</tr>
+						<tr><td> &nbsp;</td></tr>
+						<tr>
+							<td colspan="2"><font size="4"><b>사용자 정보</b></font></td>
+						</tr>
+						<tr>
+							<td>사용자 ID:</td>
+							<td><c:out value="${account.accountId}" /></td>
+						</tr>
+						<tr>
+							<td>닉네임</td>
+							<td><c:out value="${account.nickname}" /></td>
+						</tr>
+						<tr>
+							<td>가입날짜:</td>
+							<td><fmt:formatDate value="${account.joinDate}"
+									pattern="yyyy/MM/dd hh:mm:ss" /></td>
+						</tr>
+						<tr>
+							<td>전화번호:</td>
+							<td><c:out value="${account.phoneNumber}" /></td>
+						</tr>
+						<tr>
+							<td>이메일:</td>
+							<td><c:out value="${account.email}" /></td>
+						</tr>
+						<tr><td> &nbsp;</td></tr>
+						<tr>
+							<td colspan="2"><font size="4"><b>계좌 정보</b></font></td>
+						</tr>
+						<tr>
+							<td>은행:</td>
+							<td><c:out value="${account.bankName}" /></td>
+						</tr>
+						<tr>
+							<td>계좌번호:</td>
+							<td><c:out value="${account.bankNumber}" /></td>
+						</tr>
+						<tr><td> &nbsp;</td></tr>
+						<tr>
+							<td colspan="2"><font size="4"><b>배송 정보</b></font></td>
+						</tr>
+						<tr>
+							<td>배송지:</td>
+							<td><c:out value="${account.address}" /></td>
+						</tr>
+						<tr>
+							<td>우편번호:</td>
+							<td><c:out value="${account.zipcode}" /></td>
+						</tr>
 
-<p></p>
-<h3><b><a href='<c:url value="/user/deleteUser.do"/>'>User Delete</a></b></h3>
-</div>
+					</table>
+				</div>
+				<!-- End Info -->
+			</div>
+		</div>
 
-
-
-<%@ include file="IncludeBottom.jsp"%>
+	</div>
+	<%@ include file="IncludeMypageFooter.jsp"%>

@@ -76,5 +76,8 @@
 
 <a href="<c:url value="/user/deleteUser.do"/>">deleteUser</a>
 
+<br>
+
+
 
 <%@ include file="IncludeBottom.jsp" %>
