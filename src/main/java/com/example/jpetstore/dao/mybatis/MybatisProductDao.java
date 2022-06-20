@@ -54,6 +54,10 @@ public class MybatisProductDao implements ProductDao {
 	public Product getProduct(int productId) throws DataAccessException {
 	    return productMapper.getProduct(productId);
 	}
+	
+	public Product getProduct(String accountId, String title) throws DataAccessException {
+		return productMapper.getProductByUserAndTitle(accountId, title);
+	}
 
 	public void updateProduct(Product product) throws DataAccessException {
 		productMapper.updateProduct(product);
