@@ -87,6 +87,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		return productDao.getProduct(productId);
 	}
 
+	public Product getProduct(String accountId, String title) {
+		return productDao.getProduct(accountId, title);
+	}
+	
 	public List<Product> getAllProduct() {
 		return productDao.getAllProductList();
 	}
