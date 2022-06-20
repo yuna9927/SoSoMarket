@@ -5,34 +5,36 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!-- 먼지 몰라요 -->
-<c:set var="targetUrl"><c:url value="/shop/newOrderSubmitted.do" /></c:set>
+<c:set var="targetUrl"><c:url value="/shop/newOrder.do" /></c:set>
 
 <div align="center">
 
 <!-- order summary -->
-<h2>주문 상품 정보</h2>
-<table class="n25">
-  <tr bgcolor="#CCCCCC">
-    <td><b>이름</b></td>
-    <td><b>가격</b></td>
-    <td><b>배송비</b></td>
-    <td><b>배송방법</b></td>
-  </tr>
-  <tr bgcolor="#FFFF88">
-    <td><c:out value="${product.name}" /></td>
-    <td align="right"><fmt:formatNumber
-        value="${product.price}" pattern="$#,##0.00" /></td>
-    <td align="right"><fmt:formatNumber
-        value="${product.shippingFee}" pattern="$#,##0.00" /></td>
-    <td><c:out value="${product.shipping}" /></td>
-  </tr>
-</table>
-
 <!--  order form -->
-<h2>주문자 정보 작성</h2>
+
 <form:form modelAttribute="orderForm" action="${targetUrl}" method="post">
   <form:errors cssClass="error" /> <br><br>
   
+	<h2>주문자 정보 작성</h2>
+
+	<table class="n25">
+  		<tr bgcolor="#CCCCCC">
+    	<td><b>이름</b></td>
+    	<td><b>가격</b></td>
+    	<td><b>배송비</b></td>
+    	<td><b>배송방법</b></td>
+  		</tr>
+  		<tr bgcolor="#FFFF88">
+    		<td><c:out value="${param.productId}" /></td>
+    		<td align="right"><fmt:formatNumber
+        		value="${param.productPrice}" pattern="$#,##0.00" /></td>
+    		<td align="right"><fmt:formatNumber
+        		value="${param.productShippingFee}" pattern="$#,##0.00" /></td>
+    		<td><c:out value="${param.productShipping}" /></td>
+  		</tr>
+	</table>
+  
+  <h2>주문 상품 정보</h2>  
   <table class="n13">
     <tr>
       <td colspan="2">
@@ -63,7 +65,7 @@
         <form:errors path="order.shippingAddress" /></td>
     </tr>
   </table>
-  <form:hidden path="order.productType" />
+  <!--<form:hidden path="order.product.productType" />-->
   <p>
     <input type="image" src="../images/button_submit.gif">
   </p>

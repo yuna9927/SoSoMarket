@@ -8,18 +8,17 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
-
-import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
-@RequestMapping({"/shop/newOrderForm.do","/shop/newOrder.do"})
+@RequestMapping({"/shop/newBidding.do","/shop/insertBidding.do"})
 @SessionAttributes("biddingForm")
-public class OrderController { 
+public class BiddingController { 
 	
-	@Value("NewOrderForm")
+	@Value("BiddingForm")
 	private String formViewName;
 	
 	@Value("index")
@@ -33,7 +32,7 @@ public class OrderController {
 	}
 	
 	UserSession userSession;
-	OrderForm of;
+	BiddingForm bf;
 
 //	@Autowired
 //	private ProductFormValidator validator;
@@ -41,33 +40,16 @@ public class OrderController {
 //		this.validator = validator;
 //	}
 		
-	@ModelAttribute("orderForm")
-	public OrderForm formBackingObject(HttpServletRequest request) 
+	@ModelAttribute("biddingForm")
+	public BiddingForm formBackingObject(HttpServletRequest request) 
 			throws Exception {
 		
-		int i_productId = -1;
 		userSession = 
 				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 
-		of = new OrderForm();
-		of.setBuyerId(userSession.getAccount().getAccountId());
-		System.out.println(userSession.getAccount().getAccountId());
-		
-		String productId = request.getParameter("productId");
-		System.out.println(productId);
-		
-		try {
-			i_productId = Integer.parseInt(productId);
-		} catch (NumberFormatException e){
-			e.printStackTrace();
-		}
-		Product product = sosomarket.getProduct(int_productId);
-		
-		of.getOrder().setProduct(product);
-				
-				
-		of.setProductId(int_productId);
-		return of;
+		bf = new BiddingForm();
+		bf.setBuyerId(userSession.getAccount().getAccountId());
+		return bf;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -78,12 +60,15 @@ public class OrderController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(
 			HttpServletRequest request, HttpSession session,
-			@ModelAttribute("orderForm") OrderForm orderForm,
+			@RequestParam("auctionId") String auctionId,
+			@ModelAttribute("biddingForm") BiddingForm biddingForm,
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
 		
-		System.out.println(orderForm);
-		sosomarket.insertOrder(orderForm.getOrder());
+		int int_auctionId = Integer.parseInt(auctionId);
+		bf.setProductId(int_auctionId);
+		System.out.println(biddingForm);
+		sosomarket.insertBidding(biddingForm.getBidding());
 				
 		return successViewName;  
 	}

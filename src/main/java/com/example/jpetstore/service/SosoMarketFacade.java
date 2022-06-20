@@ -76,7 +76,7 @@ public interface SosoMarketFacade {
 
 	/* Bidding */
 
-	void insertBidding(Auction bidding);
+	void insertBidding(Bidding bidding);
 
 	Bidding getBidding(int biddingId);
 
