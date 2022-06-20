@@ -1,5 +1,8 @@
 package com.example.jpetstore.controller;
 import java.io.Serializable;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.jpetstore.domain.Product;
 
 @SuppressWarnings("serial")
@@ -29,10 +32,12 @@ public class ProductForm implements Serializable {
 	   product.setSellerId(sellerId);
    }
 
-   @Override
-   public String toString() {
-      return "ProductForm [product=" + product + "]";
-   }
+	@Override
+	public String toString() {
+		return "ProductForm [product=" + product + "]";
+	}
+	
+   
  
    
 }
