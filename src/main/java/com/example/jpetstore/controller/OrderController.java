@@ -34,6 +34,8 @@ public class OrderController {
 	
 	UserSession userSession;
 	OrderForm of;
+	String productId;
+	int i_productId = -1;
 
 //	@Autowired
 //	private ProductFormValidator validator;
@@ -45,7 +47,6 @@ public class OrderController {
 	public OrderForm formBackingObject(HttpServletRequest request) 
 			throws Exception {
 		
-		int i_productId = -1;
 		userSession = 
 				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 
@@ -53,7 +54,7 @@ public class OrderController {
 		of.setBuyerId(userSession.getAccount().getAccountId());
 		System.out.println(userSession.getAccount().getAccountId());
 		
-		String productId = request.getParameter("productId");
+		productId = request.getParameter("productId");
 		System.out.println(productId);
 		
 		try {
@@ -61,12 +62,6 @@ public class OrderController {
 		} catch (NumberFormatException e){
 			e.printStackTrace();
 		}
-		Product product = sosomarket.getProduct(int_productId);
-		
-		of.getOrder().setProduct(product);
-				
-				
-		of.setProductId(int_productId);
 		return of;
 	}
 	
@@ -81,6 +76,13 @@ public class OrderController {
 			@ModelAttribute("orderForm") OrderForm orderForm,
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
+		
+		Product product = sosomarket.getProduct(i_productId);
+		
+		of.getOrder().setProduct(product);
+				
+				
+		of.setProductId(i_productId);
 		
 		System.out.println(orderForm);
 		sosomarket.insertOrder(orderForm.getOrder());
