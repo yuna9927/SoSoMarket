@@ -5,17 +5,17 @@
 <html>
 <head>
 <title>JPetStore</title>
-	<meta http-equiv="Content-Type" content="text/html; utf-8" />
-	<meta http-equiv="Cache-Control" content="max-age=0">
-	<meta http-equiv="Cache-Control" content="no-cache">
-	<meta http-equiv="expires" content="0">
-	<meta http-equiv="Expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
-	<meta http-equiv="Pragma" content="no-cache">
-	<link rel="stylesheet" href="../style/petstore.css" type="text/css" />
-	
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/templatemo.css">
-	<link rel="stylesheet" href="assets/css/custom.css">
+<meta http-equiv="Content-Type" content="text/html; utf-8" />
+<meta http-equiv="Cache-Control" content="max-age=0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="Expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+<meta http-equiv="Pragma" content="no-cache">
+<link rel="stylesheet" href="../style/petstore.css" type="text/css" />
+
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/templatemo.css">
+<link rel="stylesheet" href="assets/css/custom.css">
 </head>
 
 <body bgcolor="white">
@@ -37,7 +37,7 @@
 					<a href="<c:url value="/main/signoff.do"/>"> <img border="0"
 						name="img_signout" src="../images/sign-out.gif" /></a>
 					<img border="0" src="../images/separator.gif" />
-					<a href="<c:url value="/user/editAccount.do"/>"> <img
+					<a href="<c:url value="/user/viewAccount.do"/>"> <img
 						border="0" name="img_myaccount" src="../images/my_account.gif" /></a>
 				</c:if> <img border="0" src="../images/separator.gif" />&nbsp; <a
 				href="../help.html"><img border="0" name="img_help"

@@ -9,68 +9,64 @@
 				<!-- Breadcrumb -->
 				<nav class="d-none d-md-block" aria-label="breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#">판매</a></li>
-						<li class="breadcrumb-item active" aria-current="page">경매상품 판매 목록</li>
+						<li class="breadcrumb-item"><a href="#">계정</a></li>
+						<li class="breadcrumb-item active" aria-current="page">위시리스트</li>
 					</ol>
 				</nav>
 				<!-- End Breadcrumb -->
 
 				<div class="mb-3 mb-md-4 d-flex justify-content-between">
-					<div class="h3 mb-0">경매상품 판매 목록</div>
+					<div class="h3 mb-0">위시리스트</div>
 				</div>
-				<p style="font-size:small;">
-					내가 업로드한 경매상품 목록이 출력됩니다. </p>
+				<p style="font-size: small;">상품 정보에서 ♡ 클릭 시 위시리스트에 저장됩니다.</p>
 
 
-				<!-- Bidding List -->
+				<!-- Wish List -->
 				<div class="table-responsive-xl">
 					<table class="table text-nowrap mb-0">
 						<thead>
 							<tr>
 								<th class="font-weight-semi-bold border-top-0 py-2">상품 이름</th>
-								<th class="font-weight-semi-bold border-top-0 py-2">판매 날짜</th>
-								<th class="font-weight-semi-bold border-top-0 py-2">종류</th>
-								<th class="font-weight-semi-bold border-top-0 py-2">판매 상태</th>
-								<th class="font-weight-semi-bold border-top-0 py-2">상태 변경</th>
+								<th class="font-weight-semi-bold border-top-0 py-2">상품상태</th>
+								<th class="font-weight-semi-bold border-top-0 py-2">삭제</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="auction" items="${auctionList}">
+							<c:forEach var="wish" items="${wishList.pageList}">
 								<tr>
 									<td class="align-middle py-3">
 										<div class="d-flex align-items-center">
-											<a href='<c:url value="/shop/viewAuctionProduct.do">
-             						 		<c:param name="auctionId" value="${auction.auctionId}"/></c:url>'>
-             						 		<c:out value="${auction.product.title}" />
+											<a href='<c:url value="/shop/viewProduct.do">
+             						 		<c:param name="productId" value="${wish.productId}"/></c:url>'>
+												<c:out value="${wish.product.title}" />
 											</a>
 										</div>
 									</td>
-									<td class="py-3"><fmt:formatDate value="${auction.product.createdTime}"
-            								pattern="yyyy/MM/dd hh:mm:ss" /></td>
 									<td class="py-3">
-										<div class="d-flex align-items-center">
-										<c:if test="${auction.product.productType eq 'product'}">
-											일반상품
-										</c:if>
-										<c:if test="${auction.product.productType eq 'auction'}">
-											경매상품
-										</c:if>
-									</div></td>
+										<c:if test="${bidding.product.productStatus eq 'sale'}">
+											<span class="badge badge-pill badge-success">판매중</span>
+										</c:if> <c:if test="${bidding.product.productStatus eq 'done'}">
+											<span class="badge badge-pill badge-secondary">판매완료</span>
+										</c:if></td>
 									<td class="py-3">
-										추후변경
-									</td>
-									<td class="py-3">
-										여긴 버튼
+										<div class="position-relative">
+											<a class="link-dark d-inline-block" href='<c:url value="/user/deleteWish.do">
+             						 		<c:param name="wishId" value="${wish.wishId}"/></c:url>'>
+											<i class="gd-trash icon-text"></i>
+											</a>
+										</div>
 									</td>
 								</tr>
-								
+
 							</c:forEach>
 						</tbody>
 					</table>
-					<div class="card-footer d-block d-md-flex align-items-center d-print-none">
+					<div
+						class="card-footer d-block d-md-flex align-items-center d-print-none">
 						<nav class="d-flex ml-md-auto d-print-none"
-							aria-label="Pagination">				        
-							<ul class="pagination justify-content-end font-weight-semi-bold mb-0">
+							aria-label="Pagination">
+							<ul
+								class="pagination justify-content-end font-weight-semi-bold mb-0">
 								<c:if test="${!biddingList.firstPage}">
 									<li class="page-item"><a id="datatablePaginationPrev"
 										class="page-link" href="?page=previous" aria-label="Previous"><i
@@ -87,7 +83,7 @@
 						</nav>
 					</div>
 				</div>
-				<!-- End Users -->
+				<!-- End Biddings -->
 			</div>
 		</div>
 

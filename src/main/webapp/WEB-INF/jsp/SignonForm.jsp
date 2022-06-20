@@ -1,37 +1,67 @@
-<%@ include file="IncludeTop.jsp"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:if test="${!empty message}">
-  <b><font color="red"><c:url value="${message}" /></font></b>
-</c:if>
+<html>
+<head>
+    <title>SoSo Market</title>
+    <meta http-equiv="Content-Type" content="text/html; utf-8" />
+    <meta http-equiv="Cache-Control" content="max-age=0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../img/favicon.ico">
 
-<div align="center">
-  <form action='<c:url value="/main/signon.do"/>' method="POST">
-    <c:if test="${!empty signonForwardAction}">
-      <input type="hidden" name="forwardAction"
-        value='<c:url value="${signonForwardAction}"/>' />
-    </c:if>
-    <table>
-      <tr>
-        <td colspan="2">Please enter your username and password. <br />&nbsp;
-        </td>
-      </tr>
-      <tr>
-        <td>Username:</td>
-        <td><input type="text" name="accountId" size="20" value="j2ee" /></td>
-      </tr>
-      <tr>
-        <td>Password:</td>
-        <td><input type="password" name="password" size="20" value="j2ee" /></td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td><input name="update" type="image" src="../images/button_submit.gif" /></td>
-      </tr>
-    </table>
-  </form>
-  <a href='<c:url value="/user/newAccount.do"/>'> 
-    <img border="0" src="../images/button_register_now.gif" alt="" />
-  </a>
-</div>
+    <!-- Template -->
+    <link rel="stylesheet" href="../css/graindashboard.css">
+</head>
+<main class="main">
+	<div class="content">
+		<div class="container-fluid pb-5">
+			<div class="row justify-content-md-center">
+				<div class="card-wrapper col-12 col-md-4 mt-5">
+					<div class="brand text-center mb-3">
+						<a href="<c:url value="/user/index.do"/>"><img
+							src="../img/logo.png"></a>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">로그인</h4>
+							<form action='<c:url value="/main/signon.do"/>' method="POST">
+								<div class="form-group">
+									<label for="accountId">아이디</label> <input type="text"
+										class="form-control" name="accountId" required="" autofocus="">
+								</div>
 
-<%@ include file="IncludeBottom.jsp"%>
+								<div class="form-group">
+									<label for="password">비밀번호 </label> <input id="password"
+										type="password" class="form-control" name="password"
+										required="">
+								</div>
+
+								<div class="form-group no-margin">
+									<button type="submit" class="btn btn-primary btn-block">로그인</button>
+								</div>
+								<div class="text-center mt-3 small">
+									계정이 없으신가요? <a href='<c:url value="/user/newAccount.do"/>'>회원가입</a>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			</div>
+		</div>
+</main>
+
+<script src="public/graindashboard/js/graindashboard.js"></script>
+<script src="public/graindashboard/js/graindashboard.vendor.js"></script>
+</body>
+</html>
