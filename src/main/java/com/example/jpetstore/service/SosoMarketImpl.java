@@ -130,14 +130,18 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		return auctionDao.getAuction(auctionId);
 	}
 	
+//	@Override
+//	public void updateAuction(int auctionId) {
+//		
+//	}
+	
 	public void insertAuction(Auction auction) {
-		auctionDao.insertAuction(auction);
-//		productDao.insertProduct(auction.getProduct());
+		productDao.insertProduct(auction.getProduct());
+		auctionDao.insertAuction(auction);	
 	}
 
 	public void deleteAuction(int auctionId) {
 		auctionDao.deleteAuction(auctionId);
-//		productDao.deleteProduct(auctionId);
 	}
 
 //	public void updateAuctionStatus(Auction auction) {
@@ -148,6 +152,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 
 	public void insertBidding(Bidding bidding) {
 		biddingDao.insertBidding(bidding);
+		Auction auction = new Auction();
+		auction.setCurrentPrice(bidding.getBiddingPrice());
+		auction.setAuctionId(bidding.getProductId());
+		auctionDao.updateAuctionCurrentPrice(auction);
 	}
 
 	public Bidding getBidding(int biddingId) {
@@ -199,17 +207,5 @@ public class SosoMarketImpl implements SosoMarketFacade {
 
 	public void updateOrderStatus(Order order) {
 		orderDao.updateOrderStatus(order);
-	}
-
-	@Override
-	public void updateAuction(int auctionId) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateAuctionStatus(Auction auction) {
-		// TODO Auto-generated method stub
-		
 	}
 }

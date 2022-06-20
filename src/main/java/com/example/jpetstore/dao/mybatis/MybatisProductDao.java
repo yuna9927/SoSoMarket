@@ -16,7 +16,7 @@ import com.example.jpetstore.domain.Product;
 public class MybatisProductDao implements ProductDao {
 	@Autowired
 	private ProductMapper productMapper;
-
+	
 	public List<Product> getProductListByCategory(int categoryId) throws DataAccessException {
 		return productMapper.getProductListByCategory(categoryId);
 	}
@@ -53,6 +53,10 @@ public class MybatisProductDao implements ProductDao {
 	
 	public Product getProduct(int productId) throws DataAccessException {
 	    return productMapper.getProduct(productId);
+	}
+	
+	public Product getProduct(String accountId, String title) throws DataAccessException {
+		return productMapper.getProductByUserAndTitle(accountId, title);
 	}
 
 	public void updateProduct(Product product) throws DataAccessException {

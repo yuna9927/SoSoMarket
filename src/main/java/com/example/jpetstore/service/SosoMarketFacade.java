@@ -65,13 +65,13 @@ public interface SosoMarketFacade {
 
 	List<Auction> getAllAuction();
 
-	void updateAuction(int auctionId);
+//	void updateAuction(int auctionId);
 
 	void insertAuction(Auction auction);
 
 	void deleteAuction(int auctionId);
 
-	void updateAuctionStatus(Auction auction);
+//	void updateAuctionStatus(Auction auction);
 
 
 	/* Bidding */

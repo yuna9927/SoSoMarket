@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.example.jpetstore.dao.AuctionDao;
@@ -21,31 +22,35 @@ public class MybatisAuctionDao implements AuctionDao {
 	@Autowired
 	private AuctionMapper auctionMapper;
 
-	public Auction getAuction(int productId) {
+	public Auction getAuction(int productId) throws DataAccessException {
 		return auctionMapper.getAuction(productId);
 	}
 
-	public void insertAuction(Auction auction) {
+	public void insertAuction(Auction auction) throws DataAccessException {
 		auctionMapper.insertAuction(auction);
 	}
-	  
-	public void deleteAuction(int productId) {
+
+	public void deleteAuction(int productId) throws DataAccessException {
 		auctionMapper.deleteAuction(productId);
 	}
 
-	public List<Auction> getAuctionListByUser(String accountId) {
+	public void updateAuctionCurrentPrice(Auction auction) throws DataAccessException {
+		auctionMapper.updateAuctionCurrentPrice(auction);
+	}
+	
+	public List<Auction> getAuctionListByUser(String accountId) throws DataAccessException {
 		return auctionMapper.getAuctionListByUser(accountId);
 	}
 	
-	public List<Auction> getAuctionListByCategory(int categoryId) {
+	public List<Auction> getAuctionListByCategory(int categoryId) throws DataAccessException {
 		return auctionMapper.getAuctionListByCategory(categoryId);
 	}
 
-	public List<Auction> searchAuctionList(String keywords) {
+	public List<Auction> searchAuctionList(String keywords) throws DataAccessException {
 		return auctionMapper.searchAuctionList("%" + keywords.toLowerCase() + "%");
 	}
 
-	public List<Auction> getAllAuctionList() {
+	public List<Auction> getAllAuctionList() throws DataAccessException {
 		return auctionMapper.getAllAuctionList();
 	}
 	

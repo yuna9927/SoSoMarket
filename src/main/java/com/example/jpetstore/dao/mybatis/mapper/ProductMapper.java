@@ -30,6 +30,8 @@ public interface ProductMapper {
 	List<Product> getAllProductList();
 
 	Product getProduct(int productId);
+	
+	Product getProductByUserAndTitle(String accountId, String title);
 
 	void updateProduct(Product product);
 
