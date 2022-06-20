@@ -212,13 +212,4 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void insertBidding(Auction bidding) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
 }

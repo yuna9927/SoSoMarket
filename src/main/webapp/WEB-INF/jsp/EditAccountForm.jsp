@@ -27,7 +27,7 @@
 					</div>
 				</c:if>
 				<c:if test="${accountForm.newAccount}">
-					<h4 class="card-title">Create new account</h4>
+					<h4 class="card-title">소소마켓에 오신 걸 환영합니다!</h4>
 				</c:if>
 
 				<!-- form -->

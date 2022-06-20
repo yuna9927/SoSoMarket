@@ -73,7 +73,7 @@
 	
             <!-- Wish List -->
             <li class="side-nav-menu-item">
-                <a class="side-nav-menu-link media align-items-center" href="/">
+                <a class="side-nav-menu-link media align-items-center" href="<c:url value="/user/viewWishList.do"/>">
               <span class="side-nav-menu-icon d-flex mr-3">
                   
                 <i class="gd-heart"></i>
@@ -104,6 +104,9 @@
                     </li>
                     <li class="side-nav-menu-item">
                         <a class="side-nav-menu-link" href="<c:url value="/user/editAccount.do"/>">사용자 정보 수정</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="<c:url value="/user/deleteUser.do"/>">회원 탈퇴</a>
                     </li>
                 </ul>
                 <!-- End Users: subUsers -->
@@ -147,39 +150,42 @@
                 <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewSellerOrderList.do"/>'>
                 <span class="side-nav-menu-icon d-flex mr-3">
                     
-                <i class="gd-briefcase"></i>
+                <i class="gd-check"></i>
                 </span>
                     <span class="side-nav-fadeout-on-closed media-body">요청된 주문 목록</span>
                 </a>
             </li>
             <!-- End Selling List -->
             
+            <!-- Sellings -->
+            <li class="side-nav-menu-item side-nav-has-menu">
+                <a class="side-nav-menu-link media align-items-center" href="#"
+                    data-target="#subSellings">
+                    <span class="side-nav-menu-icon d-flex mr-3">
+                    <i class="gd-briefcase"></i>
+                    </span>
+                    <span class="side-nav-fadeout-on-closed media-body">판매 목록</span>
+                    <span class="side-nav-control-icon d-flex">
+                <i class="gd-angle-right side-nav-fadeout-on-closed"></i>
+                </span>
+                    <span class="side-nav__indicator side-nav-fadeout-on-closed"></span>
+                </a>
+
+                <!-- Sellings: product -->
+                <ul id="subSellings" class="side-nav-menu side-nav-menu-second-level mb-0">
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="<c:url value="/user/viewMyProductList.do"/>">일반상품</a>
+                    </li>
+                    <li class="side-nav-menu-item">
+                        <a class="side-nav-menu-link" href="<c:url value="/user/viewMyAuctionProductList.do"/>">경매상품</a>
+                    </li>
+                </ul>
+                <!-- End Users: product -->
+            </li>
+            <!-- End Sellings -->
+            
                         
-            <!-- Selling List -->
-            <li class="side-nav-menu-item">
-                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewMyProductList.do"/>'>
-                <span class="side-nav-menu-icon d-flex mr-3">
-                    
-                <i class="gd-briefcase"></i>
-                </span>
-                    <span class="side-nav-fadeout-on-closed media-body">일반상품 판매 목록</span>
-                </a>
-            </li>
-            <!-- End Selling List -->
-            
-            
-            
-            <!-- Selling List -->
-            <li class="side-nav-menu-item">
-                <a class="side-nav-menu-link media align-items-center" href='<c:url value="/user/viewMyAuctionProductList.do"/>'>
-                <span class="side-nav-menu-icon d-flex mr-3">
-                    
-                <i class="gd-briefcase"></i>
-                </span>
-                    <span class="side-nav-fadeout-on-closed media-body">경매상품 판매 목록</span>
-                </a>
-            </li>
-            <!-- End Selling List -->
+
         </ul>
     </aside>
     <!-- End Sidebar Nav -->
