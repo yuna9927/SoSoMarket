@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 
+import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
@@ -30,6 +31,10 @@ public class NewAuctionController {
 	public void setSosomarket(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
+	
+	UserSession userSession;
+	public String sellerId;
+	public Product product;
 
 //	@Autowired
 //	private ProductFormValidator validator;
@@ -45,7 +50,9 @@ public class NewAuctionController {
 				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 
 		AuctionForm af = new AuctionForm();
-		af.setSellerId(userSession.getAccount().getAccountId());
+		product = new Product();
+		
+		sellerId = userSession.getAccount().getAccountId();
 		
 		return af;
 	}
@@ -62,6 +69,17 @@ public class NewAuctionController {
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
 		
+//		System.out.println(userSession.getAccount().getAccountId());
+//		String sellerId = userSession.getAccount().getAccountId();
+//		af.setSellerId(sellerId);
+		auctionForm.setProduct(product);
+		auctionForm.setSellerId(sellerId);
+		
+//		System.out.println(af.toString());
+		System.out.println("1" + auctionForm.getAuction().getProduct().toString());
+		System.out.println("2" + auctionForm.getAuction().toString());
+		
+		sosomarket.get
 		sosomarket.insertProduct(auctionForm.getAuction().getProduct());
 		sosomarket.insertAuction(auctionForm.getAuction());
 		

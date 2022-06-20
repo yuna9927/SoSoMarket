@@ -1,6 +1,7 @@
 package com.example.jpetstore.controller;
 import java.io.Serializable;
 import com.example.jpetstore.domain.Auction;
+import com.example.jpetstore.domain.Product;
 
 @SuppressWarnings("serial")
 public class AuctionForm implements Serializable {
@@ -23,15 +24,24 @@ public class AuctionForm implements Serializable {
 
    public Auction getAuction() {
       return auction;
+      
+      
    }
    
+ public void setProduct(Product product) {
+	 this.auction.setProduct(product);
+ }
+   
    public void setSellerId(String sellerId) {
-	   auction.getProduct().setSellerId(sellerId);
+	   
+//	   System.out.println(auction.getProduct());
+	   
+	   this.auction.getProduct().setSellerId(sellerId);
    }
 
    @Override
    public String toString() {
-      return "AuctionForm [auction=" + auction + "]" ;
+      return "AuctionForm [auction=" + auction.toString() + "]" ;
    }
  
 }

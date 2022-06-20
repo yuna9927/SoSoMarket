@@ -27,7 +27,7 @@
       		</td>
   		</tr>
   		<tr>
-    		<td>name</td>
+    		<td>title</td>
     		<td><form:input path="auction.product.title" htmlEscape="false"/>
       			<form:errors path="auction.product.title" cssClass="error" /></td>
   		</tr>
