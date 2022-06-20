@@ -54,11 +54,6 @@
     WHERE BIDDING_ID = #{biddingId}
   </update>
   
-  <delete id="deleteBidding" parameterType="int">
-    DELETE FROM BIDDING
-    WHERE BIDDING_ID = #{biddingId}
-  </delete>
-  
   <select id="getBiddingsByUser" resultType="Bidding">
     SELECT
     	B.UPDATE_DATE as updateDate,

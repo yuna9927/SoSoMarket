@@ -7,14 +7,10 @@ import java.util.StringTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.jpetstore.dao.AuctionDao;
 import com.example.jpetstore.dao.mybatis.mapper.AuctionMapper;
-import com.example.jpetstore.dao.mybatis.mapper.BiddingMapper;
-import com.example.jpetstore.dao.mybatis.mapper.ProductMapper;
 import com.example.jpetstore.domain.Auction;
-import com.example.jpetstore.domain.Bidding;
 
 /**
  * @author Juergen Hoeller
@@ -25,10 +21,6 @@ public class MybatisAuctionDao implements AuctionDao {
 
 	@Autowired
 	private AuctionMapper auctionMapper;
-	@Autowired
-	private ProductMapper productMapper;
-	@Autowired
-	private BiddingMapper biddingMapper;
 
 	public Auction getAuction(int productId) throws DataAccessException {
 		return auctionMapper.getAuction(productId);

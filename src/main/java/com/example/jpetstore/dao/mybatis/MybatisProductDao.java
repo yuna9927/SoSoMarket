@@ -9,7 +9,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.example.jpetstore.dao.ProductDao;
-import com.example.jpetstore.dao.mybatis.mapper.AccountMapper;
 import com.example.jpetstore.dao.mybatis.mapper.ProductMapper;
 import com.example.jpetstore.domain.Product;
 
@@ -17,8 +16,6 @@ import com.example.jpetstore.domain.Product;
 public class MybatisProductDao implements ProductDao {
 	@Autowired
 	private ProductMapper productMapper;
-	@Autowired
-	private AccountMapper accountMapper;
 	
 	public List<Product> getProductListByCategory(int categoryId) throws DataAccessException {
 		return productMapper.getProductListByCategory(categoryId);
