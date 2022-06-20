@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
+
+import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
@@ -43,6 +45,7 @@ public class OrderController {
 	public OrderForm formBackingObject(HttpServletRequest request) 
 			throws Exception {
 		
+		int i_productId = -1;
 		userSession = 
 				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 
@@ -51,7 +54,18 @@ public class OrderController {
 		System.out.println(userSession.getAccount().getAccountId());
 		
 		String productId = request.getParameter("productId");
-		int int_productId = Integer.parseInt(productId);
+		System.out.println(productId);
+		
+		try {
+			i_productId = Integer.parseInt(productId);
+		} catch (NumberFormatException e){
+			e.printStackTrace();
+		}
+		Product product = sosomarket.getProduct(int_productId);
+		
+		of.getOrder().setProduct(product);
+				
+				
 		of.setProductId(int_productId);
 		return of;
 	}

@@ -65,7 +65,7 @@
         <form:errors path="order.shippingAddress" /></td>
     </tr>
   </table>
-  <form:hidden path="order.productType" />
+  <!--<form:hidden path="order.product.productType" />-->
   <p>
     <input type="image" src="../images/button_submit.gif">
   </p>
