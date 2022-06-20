@@ -41,14 +41,14 @@
     INSERT INTO BIDDING
       (BIDDING_PRICE, PRODUCT_ID, BIDDING_ID, ACCOUNT_ID)
     VALUES
-      (#{price}, #{productId}, pk_sequence.NEXTVAL, #{accountId})
+      (#{biddingPrice}, #{productId}, pk_sequence.NEXTVAL, #{buyerId})
   </insert>
 
   <update id="updateBidding" parameterType="Bidding">
     UPDATE BIDDING
     SET
         UPDATE_DATE = TO_DATE(SYSDATE),
-   		BIDDING_PRICE = #{price},
+   		BIDDING_PRICE = #{biddingPrice},
     	PRODUCT_ID = #{productId}, 
 	    ACCOUNT_ID = #{accountId}
     WHERE BIDDING_ID = #{biddingId}

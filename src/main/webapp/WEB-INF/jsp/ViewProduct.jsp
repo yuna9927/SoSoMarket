@@ -43,7 +43,12 @@
   <h3><b><a href='<c:url value="/shop/updateProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>Product Edit</a></b></h3>
   <h3><b><a href='<c:url value="/shop/deleteProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>Product Delete</a></b></h3>
   <br>
-  <h3><b><a href='<c:url value="/user/newOrder.do"/>'>Order Product</a></b></h3>
+  <h3><b><a href='<c:url value="/shop/newOrderForm.do"> <c:param name="productId" value="${product.productId}"/>
+  					<c:param name="productPrice" value="${product.price}"/>
+  					<c:param name="productShippingFee" value="${product.shippingFee}"/>
+  					<c:param name="productShipping" value="${product.shipping}"/>
+  					
+  					</c:url>'>Order Product</a></b></h3>
 </div>
 
 
