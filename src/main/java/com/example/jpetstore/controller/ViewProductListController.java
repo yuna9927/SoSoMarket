@@ -68,7 +68,7 @@ public class ViewProductListController {
 		PagedListHolder<Auction> auctionList = new PagedListHolder<Auction>(this.sosomarket.getAllAuction());
 		auctionList.setPageSize(4);
 		model.put("auctionList", auctionList);
-		return "SearchAuctionProductList";
+		return "SearchAuctionList";
 	}
 
 	//페이지 넘김
@@ -82,7 +82,7 @@ public class ViewProductListController {
 		}
 		if ("next".equals(page)) { auctionList.nextPage(); }
 		else if ("previous".equals(page)) { auctionList.previousPage(); }
-		return "SearchAuctionProductList";
+		return "SearchAuctionList";
 	}
 	
 }
