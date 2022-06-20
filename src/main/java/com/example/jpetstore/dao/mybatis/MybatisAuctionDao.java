@@ -33,18 +33,11 @@ public class MybatisAuctionDao implements AuctionDao {
 		return auctionMapper.getAuction(productId);
 	}
 
-//	@Transactional
 	public void insertAuction(Auction auction) {
 		auctionMapper.insertAuction(auction);
 	}
-	
-	@Transactional
+
 	public void deleteAuction(int productId) {
-		List<Bidding> biddingList = biddingMapper.getBiddingsByAuction(productId);
-		for (Bidding bidding: biddingList) {
-			biddingMapper.deleteBidding(bidding.getBiddingId());
-		}
-		productMapper.deleteProduct(productId);
 		auctionMapper.deleteAuction(productId);
 	}
 

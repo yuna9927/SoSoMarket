@@ -131,8 +131,8 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	}
 	
 	public void insertAuction(Auction auction) {
-		auctionDao.insertAuction(auction);
-//		productDao.insertProduct(auction.getProduct());
+		productDao.insertProduct(auction.getProduct());
+		auctionDao.insertAuction(auction);	
 	}
 
 	public void deleteAuction(int auctionId) {
@@ -211,13 +211,4 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void insertBidding(Auction bidding) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
 }
