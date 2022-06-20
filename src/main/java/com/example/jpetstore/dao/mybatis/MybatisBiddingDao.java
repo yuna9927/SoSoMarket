@@ -26,7 +26,7 @@ public class MybatisBiddingDao implements BiddingDao {
 	public void updateBidding(Bidding bidding) throws DataAccessException {
 		biddingMapper.updateBidding(bidding);
 	}
-
+	
 	public List<Bidding> getBiddingsByUser(String accountId) throws DataAccessException {
 		return biddingMapper.getBiddingsByUser(accountId);
 	}

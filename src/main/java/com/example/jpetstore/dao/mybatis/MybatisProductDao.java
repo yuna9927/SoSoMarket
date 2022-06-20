@@ -16,7 +16,7 @@ import com.example.jpetstore.domain.Product;
 public class MybatisProductDao implements ProductDao {
 	@Autowired
 	private ProductMapper productMapper;
-
+	
 	public List<Product> getProductListByCategory(int categoryId) throws DataAccessException {
 		return productMapper.getProductListByCategory(categoryId);
 	}
