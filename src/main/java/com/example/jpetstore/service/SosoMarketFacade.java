@@ -40,6 +40,8 @@ public interface SosoMarketFacade {
 	List<Product> searchProductList(String keyword);
 
 	Product getProduct(int productId);
+	
+	Product getProduct(String accountId, String title);
 
 	List<Product> getAllProduct();
 
