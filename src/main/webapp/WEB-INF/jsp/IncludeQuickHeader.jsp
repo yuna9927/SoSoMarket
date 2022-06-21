@@ -1,12 +1,12 @@
 <center>
   <a href="<c:url value="/shop/viewCategory.do?categoryId=0"/>">
-    <img border="0" src="../images/sm_fish.gif" /></a>
+    <b>포토카드</b></a>
   <img border="0" src="../images/separator.gif" />
   <a href="<c:url value="/shop/viewCategory.do?categoryId=1"/>">
-    <img border="0" src="../images/sm_dogs.gif" /></a>
+    <b>포스터</b></a>
   <img border="0" src="../images/separator.gif" />
   <a href="<c:url value="/shop/viewCategory.do?categoryId=2"/>">
-    <img border="0" src="../images/sm_reptiles.gif" /></a>
+    <b>앨범</b></a>
   <img border="0" src="../images/separator.gif" />
 
 </center>

@@ -116,7 +116,7 @@ public interface SosoMarketFacade {
 
 	Wish getWish(int productId);
 	
-	Wish getWishByAccountAndProduct(String accountId, int productId);
+	Wish getWish(String accountId, int productId);
 
     List<Wish> getWishtListByUser(String accountId);
     

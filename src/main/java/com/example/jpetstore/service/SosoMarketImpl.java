@@ -225,7 +225,7 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		return wishDao.getWish(productId);
 	}
 	
-	public Wish getWishByAccountAndProduct(String accountId, int productId) {
+	public Wish getWish(String accountId, int productId) {
 		return wishDao.getWish(accountId, productId);
 	}
 
