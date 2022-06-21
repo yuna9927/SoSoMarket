@@ -6,7 +6,7 @@ import com.example.jpetstore.domain.Wish;
 
 public interface WishDao {
 	
-	Wish getWish(int wishId) throws DataAccessException;
+	Wish getWish(int productId) throws DataAccessException;
 	
 	Wish getWish(String accountId, int productId) throws DataAccessException;
 
@@ -14,6 +14,6 @@ public interface WishDao {
     
     void insertWish(Wish wish) throws DataAccessException;
 
-    void deleteWish(int wishId) throws DataAccessException;
+    void deleteWish(int productId) throws DataAccessException;
     
 }

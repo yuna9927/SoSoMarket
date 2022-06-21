@@ -9,7 +9,7 @@ public class Wish implements Serializable {
 
   private int wishId;
   private int productId;
-  private int accountId;
+  private String accountId;
   private Product product;
 
   /* JavaBeans Properties */
@@ -20,16 +20,16 @@ public class Wish implements Serializable {
   public int getProductId() { return productId; }
   public void setProductId(int productId) { this.productId = productId; }
   
-  public int getAccountId() { return accountId; }
-  public void setAccountId(int accountId) { this.accountId = accountId; }
+  public String getAccountId() { return accountId; }
+  public void setAccountId(String accountId) { this.accountId = accountId; }
   
   public Product getProduct() { return product; }
   public void setProduct(Product product) { this.product = product; }
 
-  /* Public Methods */
-  /*
+  @Override
   public String toString() {
-    return Integer.toString(getWishId());
-  }
-  */
+	  return "Wish [wishId=" + wishId + ", productId=" + productId + ", accountId=" + accountId + ", product=" + product
+			+ "]";
+}  
+  
 }

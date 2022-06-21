@@ -21,7 +21,7 @@
 		P.PRICE as "product.price",
 		P.PRODUCT_TYPE as "product.productType"
     FROM WISH W, PRODUCT P
-    WHERE W.PRODUCT_ID = P.PRODUCT_ID AND W.WISH_ID = #{wishId}
+    WHERE W.PRODUCT_ID = P.PRODUCT_ID AND W.PRODUCT_ID = #{productId}
   </select>
   
   <select id="getWishByAccountAndProduct" resultType="Wish">
@@ -51,9 +51,9 @@
       (pk_sequence.NEXTVAL, #{productId}, #{accountId})
   </insert>
 
-  <delete id="deleteWish" parameterType="Wish">
+  <delete id="deleteWish" parameterType="int">
     DELETE FROM WISH
-    WHERE WISH_ID = #{wishId}
+    WHERE PRODUCT_ID = #{productId}
   </delete>
 
   <select id="getWishListByUser" resultType="Wish">

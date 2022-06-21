@@ -35,7 +35,7 @@ public class MybatisWishDao implements WishDao {
     	wishMapper.insertWish(wish);
     }
 
-    public void deleteWish(int wishId) throws DataAccessException {
-    	wishMapper.deleteWish(wishId);
+    public void deleteWish(int productId) throws DataAccessException {
+    	wishMapper.deleteWish(productId);
     }
 }

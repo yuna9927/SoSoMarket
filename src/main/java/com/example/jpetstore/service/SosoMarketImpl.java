@@ -221,8 +221,8 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	
 	/* Wish */
 	
-	public Wish getWish(int wishId) {
-		return wishDao.getWish(wishId);
+	public Wish getWish(int productId) {
+		return wishDao.getWish(productId);
 	}
 	
 	public Wish getWishByAccountAndProduct(String accountId, int productId) {
@@ -237,7 +237,7 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		wishDao.insertWish(wish);
 	}
 
-	public void deleteWish(int wishId) {
-		wishDao.deleteWish(wishId);
+	public void deleteWish(int productId) {
+		wishDao.deleteWish(productId);
 	}
 }
