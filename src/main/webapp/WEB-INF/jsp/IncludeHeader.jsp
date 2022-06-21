@@ -12,7 +12,7 @@
 	
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/templatemo.css">
-	
+
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="../css/font-awesome.min.css">
 </head>
@@ -60,12 +60,11 @@
 			</button>
 
 			<div
-				class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
-				id="templatemo_main_nav">
+				class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
 				<div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <ul class="nav navbar-nav d-flex">
                         <li class="nav-item">
-                            <a class="nav-link" href="<c:url value="/shop/newAuctionForm.do"/>">경매상품 등록</a>
+                            <a class="nav-link" href="<c:url value="/shop/newAuctionProductForm.do"/>">경매상품 등록</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<c:url value="/shop/newProductForm.do"/>">일반상품 등록</a>
