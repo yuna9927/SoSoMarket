@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div align="center">
-<form:form modelAttribute="productForm" method="post">
+<form:form modelAttribute="productForm" method="post" enctype="multipart/form-data">
   <form:errors cssClass="error" /> <br><br>
   
   <table id="product">
@@ -56,18 +56,14 @@
     			<td><form:input path="product.price" htmlEscape="false"/>
       			<form:errors path="product.price" cssClass="error" /></td>
   		</tr>
-  		<tr>
-    		<td>image</td>
-    			<td>
-    			<form:input path="product.image" htmlEscape="false"/>
-      			<form:errors path="product.image" cssClass="error" />
-      			</td>
-  		</tr>
+  		
 		</table>
 
       </td>
     </tr>
   </table>
+  <input type="file" name="imageFile" />
+	<br/>
   <form:hidden path="product.productType" value="product"/>
   <br/>
     <input type="image" src="../images/button_submit.gif" name="submit"
