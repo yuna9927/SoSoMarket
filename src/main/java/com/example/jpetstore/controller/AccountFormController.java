@@ -88,10 +88,10 @@ public class AccountFormController {
 //         accountForm.getAccount().setBannerOption(false);
 //      }
       System.out.println("accountForm: " + accountForm);
-//      validator.validate(accountForm, result);
       
+      validator.validate(accountForm, result);
+      if (result.hasErrors()) return formViewName;
       
-//      if (result.hasErrors()) return formViewName;
       try {
          if (accountForm.isNewAccount()) {
             System.out.println("account: " + accountForm.getAccount());
