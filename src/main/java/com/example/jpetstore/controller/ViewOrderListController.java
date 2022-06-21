@@ -23,7 +23,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
  * @modified by Changsup Park
  */
 @Controller
-@SessionAttributes("userSession")
+@SessionAttributes({"userSession", "buyOrderList"})
 public class ViewOrderListController {
 
 	private SosoMarketFacade sosomarket;
@@ -42,7 +42,7 @@ public class ViewOrderListController {
 		return new ModelAndView("ListSellerOrders", "sellOrderList", sellOrderList);
 	}
 
-	// ÆäÀÌÁö ³Ñ±è
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½
 	@RequestMapping("/user/viewSellerOrderList2.do")
 	public String getOrderListBySeller2(@RequestParam("page") String page,
 			@ModelAttribute("sellOrderList") PagedListHolder<Order> sellOrderList, BindingResult result)
@@ -56,7 +56,7 @@ public class ViewOrderListController {
 	}
 
 	@RequestMapping("/user/viewBuyerOrderList.do")
-	public String productHandleRequest(@ModelAttribute("userSession") UserSession userSession, ModelMap model)
+	public String getOrderListByBuyer(@ModelAttribute("userSession") UserSession userSession, ModelMap model)
 			throws Exception {
 		String accountId = userSession.getAccount().getAccountId();
 //			System.out.println("Order list:");
@@ -70,14 +70,14 @@ public class ViewOrderListController {
 		return "ListBuyerOrders";
 	}
 
-	// ÆäÀÌÁö ³Ñ±è
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½
 	@RequestMapping("/user/viewBuyerOrderList2.do")
 	public String getOrderListByBuyer2(@RequestParam("page") String page,
 			@ModelAttribute("buyOrderList") PagedListHolder<Order> buyOrderList, 
 			BindingResult result)
 			throws Exception {
 		if ("next".equals(page)) {
-			System.out.println("´ÙÀ½À¸·Î ³Ñ¾î°¡À¯");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½");
 			buyOrderList.nextPage();
 		} else if ("previous".equals(page)) {
 			buyOrderList.previousPage();

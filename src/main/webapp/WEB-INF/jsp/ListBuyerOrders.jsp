@@ -74,26 +74,21 @@
 						class="card-footer d-block d-md-flex align-items-center d-print-none">
 						<nav class="d-flex ml-md-auto d-print-none"
 							aria-label="Pagination">
-							<ul
-								class="pagination justify-content-end font-weight-semi-bold mb-0">
+							<ul class="pagination justify-content-end font-weight-semi-bold mb-0">
+							
 								<c:if test="${!buyOrderList.firstPage}">
-					
-									<li class="page-item"><a id="datatablePaginationPrev"
-										class="page-link"
-										href='<c:url value="/user/viewBuyerOrderList2.do">
-            <c:param name="page" value="previous"/></c:url>'
-										aria-label="Previous"><i
-											class="gd-angle-left icon-text icon-text-xs d-inline-block"></i></a>
+									<li class="page-item">				
+									<a href='<c:url value="/user/viewBuyerOrderList2.do">
+            						<c:param name="page" value="previous"/></c:url>' id="datatablePaginationPrev"
+										class="page-link"><i class="gd-angle-left icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
 								<c:if test="${!buyOrderList.lastPage}">
-									<li class="page-item"><a id="datatablePaginationNext"
-										class="page-link"
-										href='<c:url value="/user/viewBuyerOrderList2.do">
-            <c:param name="page" value="next"/></c:url>'
-										aria-label="Next"><i
-											class="gd-angle-right icon-text icon-text-xs d-inline-block"></i></a>
-									</li>
+									<li class="page-item">
+									<a href='<c:url value="/user/viewBuyerOrderList2.do"> <c:param name="page" value="next"/></c:url>'
+									id="datatablePaginationNext" class="page-link">
+										<i class="gd-angle-right icon-text icon-text-xs d-inline-block"></i></a>
+										</li>
 								</c:if>
 							</ul>
 						</nav>

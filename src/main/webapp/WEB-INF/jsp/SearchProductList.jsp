@@ -93,16 +93,16 @@
             </div>
             <div div="row">
                 <ul class="pagination pagination-lg justify-content-end">
+                <li class="page-item">
                     <c:if test="${!productList.firstPage}">
-                    <li class="page-item disabled">
-                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="?page=previous">&lt;</a>
-                    </li>
-                </c:if>
-                <c:if test="${!productList.lastPage}">
-                    <li class="page-item">
-                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="?page=next">&gt;</a>
-                    </li>
-                </c:if>
+                        <a href='<c:url value="/shop/viewProductList2.do">
+            			<c:param name="page" value="previous"/></c:url>' class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0">&lt;</a>
+	                </c:if>
+	                <c:if test="${!productList.lastPage}">
+	                    <a href='<c:url value="/shop/viewProductList2.do">
+            			<c:param name="page" value="next"/></c:url>' class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark">&gt;</a>        
+	                </c:if>
+	                </li>
                 </ul>
                 
             </div>
