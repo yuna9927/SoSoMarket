@@ -21,20 +21,20 @@ import com.example.jpetstore.service.SosoMarketFacade;
 @Controller
 @SessionAttributes({"category", "productList"})
 public class ViewCategoryController { 
-	private SosoMarketFacade petStore;
+	private SosoMarketFacade sosomarket;
 
 	@Autowired
-	public void setPetStore(SosoMarketFacade petStore) {
-		this.petStore = petStore;
+	public void setSosomarket(SosoMarketFacade sosomarket) {
+		this.sosomarket = sosomarket;
 	}
 	
 	@RequestMapping("/shop/viewCategory.do")
 	public String handleRequest(
-			@RequestParam("categoryId") String categoryId,
+			@RequestParam("categoryId") int categoryId,
 			ModelMap model
 			) throws Exception {
-		Category category = this.petStore.getCategory(categoryId);
-		PagedListHolder<Product> productList = new PagedListHolder<Product>(this.petStore.getProductListByCategory(categoryId));
+		Category category = this.sosomarket.getCategory(categoryId);
+		PagedListHolder<Product> productList = new PagedListHolder<Product>(this.sosomarket.getProductListByCategory(categoryId));
 		productList.setPageSize(4);
 		model.put("category", category);
 		model.put("productList", productList);
