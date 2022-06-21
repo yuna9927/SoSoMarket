@@ -11,6 +11,7 @@ import com.example.jpetstore.dao.CategoryDao;
 import com.example.jpetstore.dao.ItemDao;
 import com.example.jpetstore.dao.OrderDao;
 import com.example.jpetstore.dao.ProductDao;
+import com.example.jpetstore.dao.WishDao;
 import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Bidding;
@@ -18,6 +19,7 @@ import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
+import com.example.jpetstore.domain.Wish;
 
 @Service
 @Transactional
@@ -36,6 +38,8 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	private ItemDao itemDao;
 	@Autowired
 	private OrderDao orderDao;
+	@Autowired
+	private WishDao wishDao;
 
 	//-------------------------------------------------------------------------
 	// Operation methods, implementing the PetStoreFacade interface
@@ -216,5 +220,28 @@ public class SosoMarketImpl implements SosoMarketFacade {
 
 	public void updateOrderStatus(Order order) {
 		orderDao.updateOrderStatus(order);
+	}
+	
+	
+	/* Wish */
+	
+	public Wish getWish(int wishId) {
+		return wishDao.getWish(wishId);
+	}
+	
+	public Wish getWishByAccountAndProduct(String accountId, int productId) {
+		return wishDao.getWish(accountId, productId);
+	}
+
+	public List<Wish> getWishtListByUser(String accountId) {
+		return wishDao.getWishtListByUser(accountId);
+	}
+    
+	public void insertWish(Wish wish) {
+		wishDao.insertWish(wish);
+	}
+
+	public void deleteWish(int wishId) {
+		wishDao.deleteWish(wishId);
 	}
 }
