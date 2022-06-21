@@ -3,6 +3,7 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="IncludeHeader.jsp"%>
 
+
 <!-- Open Content -->
 <section class="bg-light">
     <div class="container pb-5">
@@ -37,6 +38,7 @@
                                 </strong></p>
                             </li>
                         </ul>
+
 
                         <h6>설명:</h6>
                         <p>

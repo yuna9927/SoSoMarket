@@ -41,10 +41,6 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	@Autowired
 	private WishDao wishDao;
 
-	//-------------------------------------------------------------------------
-	// Operation methods, implementing the PetStoreFacade interface
-	//-------------------------------------------------------------------------
-
 	public Account getAccount(String accountId) {
 		return accountDao.getAccount(accountId);
 	}
@@ -156,6 +152,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	public void deleteAuction(int auctionId) {
 		auctionDao.deleteAuction(auctionId);
 	}
+	
+	public void updateAuctionCurrentPrice(int productId, int biddingPrice) {
+		auctionDao.updateAuctionCurrentPrice(productId, biddingPrice);
+	}
 
 //	public void updateAuctionStatus(Auction auction) {
 //		auctionDao.updateAuctionStatus(auction);
@@ -165,10 +165,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 
 	public void insertBidding(Bidding bidding) {
 		biddingDao.insertBidding(bidding);
-		Auction auction = new Auction();
-		auction.setCurrentPrice(bidding.getBiddingPrice());
-		auction.setAuctionId(bidding.getProductId());
-		auctionDao.updateAuctionCurrentPrice(auction);
+//		Auction auction = new Auction();
+//		auction.setCurrentPrice(bidding.getBiddingPrice());
+//		auction.setAuctionId(bidding.getProductId());
+//		auctionDao.updateAuctionCurrentPrice(auction);
 	}
 
 	public Bidding getBidding(int biddingId) {
@@ -225,11 +225,11 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	
 	/* Wish */
 	
-	public Wish getWish(int wishId) {
-		return wishDao.getWish(wishId);
+	public Wish getWish(int productId) {
+		return wishDao.getWish(productId);
 	}
 	
-	public Wish getWishByAccountAndProduct(String accountId, int productId) {
+	public Wish getWish(String accountId, int productId) {
 		return wishDao.getWish(accountId, productId);
 	}
 
@@ -241,7 +241,7 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		wishDao.insertWish(wish);
 	}
 
-	public void deleteWish(int wishId) {
-		wishDao.deleteWish(wishId);
+	public void deleteWish(int productId) {
+		wishDao.deleteWish(productId);
 	}
 }

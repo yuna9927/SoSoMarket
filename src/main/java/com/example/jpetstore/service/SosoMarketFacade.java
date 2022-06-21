@@ -75,6 +75,8 @@ public interface SosoMarketFacade {
 	void deleteAuction(int auctionId);
 
 //	void updateAuctionStatus(Auction auction);
+	
+	void updateAuctionCurrentPrice(int productId, int biddingPrice);
 
 
 	/* Bidding */
@@ -114,13 +116,13 @@ public interface SosoMarketFacade {
 	
 	/* Wish */
 
-	Wish getWish(int wishId);
+	Wish getWish(int productId);
 	
-	Wish getWishByAccountAndProduct(String accountId, int productId);
+	Wish getWish(String accountId, int productId);
 
     List<Wish> getWishtListByUser(String accountId);
     
     void insertWish(Wish wish);
 
-    void deleteWish(int wishId);
+    void deleteWish(int productId);
 }
