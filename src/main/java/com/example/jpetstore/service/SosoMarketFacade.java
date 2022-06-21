@@ -120,7 +120,7 @@ public interface SosoMarketFacade {
 	
 	Wish getWish(String accountId, int productId);
 
-    List<Wish> getWishtListByUser(String accountId);
+    List<Wish> getWishListByUser(String accountId);
     
     void insertWish(Wish wish);
 
