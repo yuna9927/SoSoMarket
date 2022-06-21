@@ -74,6 +74,8 @@
 
 <a href="<c:url value="/shop/newProductForm.do"/>">go to new product form </a> <p></p>
 
+<a href="<c:url value="/shop/newAuctionForm.do"/>">go to new auction form</a> <p></p>
+
 <a href="<c:url value="/user/deleteUser.do"/>">deleteUser</a>
 
 <br>

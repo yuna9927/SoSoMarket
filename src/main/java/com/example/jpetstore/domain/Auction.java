@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.support.PagedListHolder;
-
 @SuppressWarnings("serial")
 public class Auction implements Serializable {
 
@@ -70,5 +68,11 @@ public class Auction implements Serializable {
 	//구현필요
 	public boolean getPriceValidate(String auctionId, int biddingPrice) {
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Auction [auctionId=" + auctionId + ", product=" + product + ", currentPrice=" + currentPrice
+				+ ", startPrice=" + startPrice + ", deadLine=" + deadLine + ", biddingList=" + biddingList + "]";
 	}
 }
