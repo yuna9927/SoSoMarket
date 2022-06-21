@@ -24,25 +24,19 @@
               <tr>
                 <td>
                   <a href="<c:url value="/shop/viewCategory.do?categoryId=0"/>">
-                     <img border="0" src="../images/fish_icon.gif" /></a>
+                    <b>포토카드</b></a>
                 </td>
               </tr>
               <tr>
                 <td>
                   <a href="<c:url value="/shop/viewCategory.do?categoryId=1"/>">
-                    <img border="0" src="../images/dogs_icon.gif" /></a>
+                   <b>포스터</b></a>
                 </td>
               </tr>
               <tr>
                 <td>
                   <a href="<c:url value="/shop/viewCategory.do?categoryId=2"/>">
-                    <img border="0" src="../images/cats_icon.gif" /></a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a href="<c:url value="/shop/viewCategory.do?categoryId=3"/>">
-                    <img border="0" src="../images/birds_icon.gif" /></a>
+                    <b>앨범</b></a>
                 </td>
               </tr>
               
