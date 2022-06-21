@@ -33,13 +33,18 @@
       </tr>
     </c:forEach>
     <tr>
-      <td><c:if test="${!productList.firstPage}">
-          <a href="?page=previous"><font color="white"><B>&lt;&lt;
-                Prev</B></font></a>
-        </c:if> <c:if test="${!productList.lastPage}">
-          <a href="?page=next"><font color="white"><B>Next
-                &gt;&gt;</B></font></a>
-        </c:if></td>
+      <td>
+        <c:if test="${!productList.firstPage}">
+          <a href='<c:url value="/shop/viewProductList2.do">
+            <c:param name="page" value="previous"/></c:url>'>
+              <font color="white"><B>&lt;&lt; Prev</B></font></a>
+        </c:if> 
+        <c:if test="${!productList.lastPage}">
+          <a href='<c:url value="/shop/viewProductList2.do">
+            <c:param name="page" value="next"/></c:url>'>
+              <font color="white"><B>Next &gt;&gt;</B></font></a>
+        </c:if>
+      </td>
     </tr>
   </table>
 </div>

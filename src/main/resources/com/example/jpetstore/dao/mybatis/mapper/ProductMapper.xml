@@ -118,7 +118,7 @@
       A.BANK_NUMBER AS "account.bankNumber",
       A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
-    WHERE PRODUCT_TYPE = 'product'
+    WHERE PRODUCT_TYPE = 'product' AND P.ACCOUNT_ID = A.ACCOUNT_ID
   </select>
   
   <select id="getProduct" resultType="Product">
