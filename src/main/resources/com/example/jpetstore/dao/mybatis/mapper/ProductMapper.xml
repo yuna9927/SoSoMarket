@@ -208,7 +208,7 @@
   
   <update id="updateProductStatus" parameterType="Product">
     UPDATE PRODUCT SET
-      PRODUCT_STATUS = #{status}
+      PRODUCT_STATUS = #{productStatus}
     WHERE PRODUCT_ID = #{productId}
   </update>
   

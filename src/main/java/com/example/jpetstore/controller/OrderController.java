@@ -1,4 +1,5 @@
 package com.example.jpetstore.controller;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,29 +10,30 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
-@RequestMapping({"/shop/newOrderForm.do","/shop/newOrder.do"})
-@SessionAttributes("biddingForm")
-public class OrderController { 
-	
+@RequestMapping({ "/shop/newOrderForm.do", "/shop/newOrder.do" })
+@SessionAttributes({"userSession", "biddingForm"})
+public class OrderController {
+
 	@Value("NewOrderForm")
 	private String formViewName;
-	
+
 	@Value("index")
 	private String successViewName;
-	
+
 	@Autowired
 	private SosoMarketFacade sosomarket;
-	
+
 	public void setSosomarket(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
-	
+
 	UserSession userSession;
 	OrderForm of;
 	String productId;
@@ -42,52 +44,53 @@ public class OrderController {
 //	public void setValidator(ProductFormValidator validator) {
 //		this.validator = validator;
 //	}
-		
+
 	@ModelAttribute("orderForm")
-	public OrderForm formBackingObject(HttpServletRequest request) 
-			throws Exception {
-		
-		userSession = 
-				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
+	public OrderForm formBackingObject(HttpServletRequest request) throws Exception {
+
+		userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
 
 		of = new OrderForm();
 		of.setBuyerId(userSession.getAccount().getAccountId());
 		of.getOrder().initOrder(userSession.getAccount());
 		System.out.println(userSession.getAccount().getAccountId());
-		
+
 		productId = request.getParameter("productId");
 		System.out.println(productId);
-		
+
 		try {
 			i_productId = Integer.parseInt(productId);
-		} catch (NumberFormatException e){
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
 		return of;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String form() {
+
 		return formViewName;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
-	public String onSubmit(
-			HttpServletRequest request, HttpSession session,
-			@ModelAttribute("orderForm") OrderForm orderForm,
-			@ModelAttribute("userSession") UserSession userSession,
+	public String onSubmit(HttpServletRequest request, HttpSession session,
+			@ModelAttribute("orderForm") OrderForm orderForm, @ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
-		
+
 		Product product = sosomarket.getProduct(i_productId);
-		
+
 		of.getOrder().setProduct(product);
-				
-				
+
 		of.setProductId(i_productId);
-		
+
 		System.out.println(orderForm);
+
+		// product ÁÖ¹®½Ã product status: sale->done
+		product.setProductStatus("done");
+		sosomarket.updateProductStatus(product);
+
 		sosomarket.insertOrder(orderForm.getOrder());
-				
-		return successViewName;  
+
+		return successViewName;
 	}
 }
