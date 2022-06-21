@@ -21,7 +21,7 @@ public class ViewAuctionController {
 	public void setSosomarket(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
-	@RequestMapping("/shop/viewAuctionProduct.do")
+	@RequestMapping("/shop/viewAuction.do")
 	public String handleRequest(
 			@RequestParam("auctionId") int auctionId,
 			ModelMap model) throws Exception {
@@ -31,6 +31,6 @@ public class ViewAuctionController {
 		model.put("biddingList", biddingList);
 		model.put("auction", auction);
 		
-		return "ViewAuctionProduct";
+		return "ViewAuction";
 	}
 }
