@@ -51,8 +51,9 @@ public class NewAuctionController {
 
 		AuctionForm af = new AuctionForm();
 		product = new Product();
-		
+		af.setProduct(product);
 		sellerId = userSession.getAccount().getAccountId();
+		af.setSellerId(sellerId);
 		
 		return af;
 	}
@@ -68,19 +69,15 @@ public class NewAuctionController {
 			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
+	
 		
-//		System.out.println(userSession.getAccount().getAccountId());
-//		String sellerId = userSession.getAccount().getAccountId();
-//		af.setSellerId(sellerId);
-		auctionForm.setProduct(product);
-		auctionForm.setSellerId(sellerId);
-		
-//		System.out.println(af.toString());
-		System.out.println("1" + auctionForm.getAuction().getProduct().toString());
-		System.out.println("2" + auctionForm.getAuction().toString());
-		
-		sosomarket.get
 		sosomarket.insertProduct(auctionForm.getAuction().getProduct());
+		
+		String accountId = auctionForm.getAuction().getProduct().getSellerId();
+		String title = auctionForm.getAuction().getProduct().getTitle();
+		Product product2 = sosomarket.getProduct(accountId, title);
+		
+		auctionForm.getAuction().setAuctionId(product2.getProductId());
 		sosomarket.insertAuction(auctionForm.getAuction());
 		
 		return successViewName;  

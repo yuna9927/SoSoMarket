@@ -140,7 +140,7 @@ public class SosoMarketImpl implements SosoMarketFacade {
 //	}
 	
 	public void insertAuction(Auction auction) {
-		productDao.insertProduct(auction.getProduct());
+//		productDao.insertProduct(auction.getProduct());
 		auctionDao.insertAuction(auction);	
 	}
 

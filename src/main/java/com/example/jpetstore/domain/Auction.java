@@ -69,4 +69,10 @@ public class Auction implements Serializable {
 	public boolean getPriceValidate(String auctionId, int biddingPrice) {
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Auction [auctionId=" + auctionId + ", product=" + product + ", currentPrice=" + currentPrice
+				+ ", startPrice=" + startPrice + ", deadLine=" + deadLine + ", biddingList=" + biddingList + "]";
+	}
 }
