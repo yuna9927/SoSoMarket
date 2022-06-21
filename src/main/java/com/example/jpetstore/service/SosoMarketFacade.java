@@ -40,6 +40,8 @@ public interface SosoMarketFacade {
 	List<Product> searchProductList(String keyword);
 
 	Product getProduct(int productId);
+	
+	Product getProduct(String accountId, String title);
 
 	List<Product> getAllProduct();
 
@@ -65,13 +67,13 @@ public interface SosoMarketFacade {
 
 	List<Auction> getAllAuction();
 
-	void updateAuction(int auctionId);
+//	void updateAuction(int auctionId);
 
 	void insertAuction(Auction auction);
 
 	void deleteAuction(int auctionId);
 
-	void updateAuctionStatus(Auction auction);
+//	void updateAuctionStatus(Auction auction);
 
 
 	/* Bidding */

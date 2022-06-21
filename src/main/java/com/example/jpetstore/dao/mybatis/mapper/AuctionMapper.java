@@ -29,6 +29,8 @@ public interface AuctionMapper {
 	void insertAuction(Auction auction);
 	  
 	void deleteAuction(int productId);
+	
+	void updateAuctionCurrentPrice(Auction auction);
 
 	List<Auction> getAuctionListByUser(String accountId);
 	

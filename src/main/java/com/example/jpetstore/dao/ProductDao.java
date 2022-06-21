@@ -17,6 +17,8 @@ public interface ProductDao {
 	List<Product> getAllProductList() throws DataAccessException;
 
 	Product getProduct(int productId) throws DataAccessException;
+	
+	Product getProduct(String accountId, String title) throws DataAccessException;
 
 	void updateProduct(Product product) throws DataAccessException;
 
