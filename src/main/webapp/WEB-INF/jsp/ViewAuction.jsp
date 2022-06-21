@@ -54,10 +54,16 @@
       <td><c:out value="${auction.deadLine}" /></td>
     </tr>
   </table>
+  <img src="<c:url value='${auction.product.image}'/>"/>
   <br>
   <h3><b><a href='<c:url value="/shop/updateAucionProduct.do"/>'>Product Edit 없는거임 </a></b></h3>
   <h3><b><a href='<c:url value="/shop/deleteAuctionProduct.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>'>Auction Delete</a></b></h3>
   <br><br>
+  
+  <button type="button" class="btn btn-success btn-lg"
+                                    onclick="location.href='<c:url value="/shop/newBidding.do">
+                                    <c:param name="auctionId" value="${auction.auctionId}" /></c:url>';">입찰하기
+                                </button>
   
   <h3>Bidding Product</h3>
 

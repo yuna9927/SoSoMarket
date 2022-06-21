@@ -38,6 +38,10 @@ public class ViewProductListController {
 	@RequestMapping("/shop/viewProductList.do")
 	public String productHandleRequest(ModelMap model
 			) throws Exception {
+//		System.out.println("productlist:");
+//		for (Product p : this.sosomarket.getAllProduct()) {
+//			System.out.println(p);
+//		}
 		PagedListHolder<Product> productList = new PagedListHolder<Product>(this.sosomarket.getAllProduct());
 		productList.setPageSize(4);
 		System.out.println(productList);
@@ -50,14 +54,13 @@ public class ViewProductListController {
 	public String productHandleRequest2(
 			@RequestParam("page") String page,
 			@ModelAttribute("productList") PagedListHolder<Product> productList, 
-			ModelMap model) throws Exception {
+			BindingResult result) throws Exception {
 		if ("next".equals(page)) {
 			productList.nextPage();
 		}
 		else if ("previous".equals(page)) {
 			productList.previousPage();
 		}
-		model.put("productList", productList);
 		return "SearchProductList";
 	}
 	
@@ -65,9 +68,12 @@ public class ViewProductListController {
 	@RequestMapping("/shop/viewAuctionList.do")
 	public String auctionHandleRequest(ModelMap model
 			) throws Exception {
+		System.out.println("auction list:");
+		for (Auction a : this.sosomarket.getAllAuction()) {
+			System.out.println(a);
+		}
 		PagedListHolder<Auction> auctionList = new PagedListHolder<Auction>(this.sosomarket.getAllAuction());
 		auctionList.setPageSize(4);
-		System.out.println(this.sosomarket.getAllAuction().get(0));
 		model.put("auctionList", auctionList);
 		return "SearchAuctionList";
 	}
@@ -78,11 +84,12 @@ public class ViewProductListController {
 			@RequestParam("page") String page,
 			@ModelAttribute("auctionList") PagedListHolder<Product> auctionList,
 			BindingResult result) throws Exception {
-		if (auctionList == null) {
-			throw new IllegalStateException("Cannot find pre-loaded auction list");
+		if ("next".equals(page)) {
+			auctionList.nextPage();
 		}
-		if ("next".equals(page)) { auctionList.nextPage(); }
-		else if ("previous".equals(page)) { auctionList.previousPage(); }
+		else if ("previous".equals(page)) {
+			auctionList.previousPage();
+		}
 		return "SearchAuctionList";
 	}
 	

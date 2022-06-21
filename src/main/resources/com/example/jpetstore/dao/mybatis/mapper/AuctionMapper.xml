@@ -121,10 +121,10 @@
     WHERE PRODUCT_ID = #{auctionId}
   </delete>
   
-  <update id="updateAuctionCurrentPrice" parameterType="Auction">
+  <update id="updateAuctionCurrentPrice" parameterType="int">
     UPDATE AUCTION SET
-      PRESENT_PRICE = #{currentPrice}
-    WHERE PRODUCT_ID = #{auctionId}
+      PRESENT_PRICE = #{biddingPrice}
+    WHERE PRODUCT_ID = #{productId}
   </update>
   
 </mapper>
