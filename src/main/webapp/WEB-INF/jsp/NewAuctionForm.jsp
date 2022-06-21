@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div align="center">
-<form:form modelAttribute="auctionForm" method="post">
+<form:form modelAttribute="auctionForm" method="post" enctype="multipart/form-data">
   <form:errors cssClass="error" /> <br><br>
   
   <table id="auction">
@@ -56,13 +56,6 @@
     			<td><form:input path="auction.product.price" htmlEscape="false"/>
       			<form:errors path="auction.product.price" cssClass="error" /></td>
   		</tr>
-  		<tr>
-    		<td>image</td>
-    			<td>
-    			<form:input path="auction.product.image" htmlEscape="false"/>
-      			<form:errors path="auction.product.image" cssClass="error" />
-      			</td>
-  		</tr>
   		
   		<tr>
     		<td>start price</td>
@@ -84,6 +77,8 @@
       </td>
     </tr>
   </table>
+    <input type="file" name="imageFile" />
+    <br/>
   <form:hidden path="auction.product.productType" value="auction"/>
   <br/>
     <input type="image" src="../images/button_submit.gif" name="submit"
