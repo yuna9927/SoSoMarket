@@ -48,7 +48,7 @@
                                 <p class="text-muted"><strong><c:out value="${product.shipping}" /> / <c:out value="${product.shippingFee}" /></strong></p>
                             </li>
                         </ul>
-
+						<c:if test="${!product.sellerId eq userSession.account.accountId}">
                         <div class="row pb-3">
                             <div class="col d-grid">
                                 <button type="button" class="btn btn-success btn-lg"
@@ -61,6 +61,8 @@
                                 </button>
                             </div>
                         </div>
+                        </c:if>
+                        <!-- 본인이 올린 상품 -->
                         <c:if test="${product.sellerId eq userSession.account.accountId}">
                             <div class="row pb-3">
                                 <div class="col d-grid">

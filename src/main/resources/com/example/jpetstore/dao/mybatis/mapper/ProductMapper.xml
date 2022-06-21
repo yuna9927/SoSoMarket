@@ -194,10 +194,10 @@
   <insert id="insertProduct" parameterType="Product">
     INSERT INTO PRODUCT
       (PRODUCT_ID, TITLE, DESCRIPTION, SHIPPING, SHIPPING_FEE, IMAGE,
-        CATEGORY_ID, PRODUCT_STATUS, ACCOUNT_ID, PRICE, PRODUCT_TYPE)
+        CATEGORY_ID, ACCOUNT_ID, PRICE, PRODUCT_TYPE)
     VALUES
       (pk_sequence.NEXTVAL, #{title, jdbcType=VARCHAR}, #{description, jdbcType=VARCHAR}, #{shipping, jdbcType=VARCHAR}, #{shippingFee, jdbcType=NUMERIC},
-        #{image, jdbcType=VARCHAR}, #{categoryId, jdbcType=NUMERIC}, #{productStatus, jdbcType=VARCHAR}, #{sellerId, jdbcType=VARCHAR}, #{price, jdbcType=NUMERIC}, #{productType, jdbcType=VARCHAR})
+        #{image, jdbcType=VARCHAR}, #{categoryId, jdbcType=NUMERIC}, #{sellerId, jdbcType=VARCHAR}, #{price, jdbcType=NUMERIC}, #{productType, jdbcType=VARCHAR})
 
   </insert>
 

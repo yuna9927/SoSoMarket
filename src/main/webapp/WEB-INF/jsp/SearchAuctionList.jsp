@@ -71,23 +71,21 @@
                                         <c:if test="${!empty userSession.account}">
                                             <li><a class="btn btn-success text-white" href='<c:url value="/user/newWish.do"><c:param name="productId" value="${auction.product.productId}"/></c:url>'><i class="fa fa-heart"></i></a></li>
                                         </c:if>
-                                        <li><a class="btn btn-success text-white mt-2" href='<c:url value="/shop/viewAuctionProduct.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>'><i class="fa fa-eye"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href='<c:url value="/shop/viewAuction.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>'><i class="fa fa-eye"></i></a></li>
                                         
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href='<c:url value="/shop/viewAuctionProduct.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>' class="h3 text-decoration-none"><c:out value="${auction.product.title}" /></a>
+                                <a href='<c:url value="/shop/viewAuction.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>' class="h3 text-decoration-none"><c:out value="${auction.product.title}" /></a>
                                 <p class="mb-0"><fmt:formatNumber value="${auction.product.price}"
                                     pattern="$#,##0.00" /></p>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-1">
-                                    <c:if test="${auction.product.productStatus eq 'sale'}">
-										<span class="badge text-bg-primary" style="float:right;">판매중</span>
-									</c:if>
-									<c:if test="${auction.product.productStatus eq 'done'}">
-										<span class="badge text-bg-secondary" style="float:right;">판매완료</span>
-									</c:if>
-                                </ul>
+                                <c:if test="${auction.product.productStatus eq 'sale'}">
+									<span class="badge text-bg-primary" style="float:right;">판매중</span>
+								</c:if>
+								<c:if test="${auction.product.productStatus eq 'done'}">
+									<span class="badge text-bg-secondary" style="float:right;">판매완료</span>
+								</c:if>
                                 
                             </div>
                             

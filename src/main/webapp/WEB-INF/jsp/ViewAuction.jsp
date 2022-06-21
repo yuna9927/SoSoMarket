@@ -33,7 +33,7 @@
                             <li class="list-inline-item">
                                 
                                 <p class="text-muted"><strong>
-                                    <c:out value="${auction.product.account.nickname}" />
+                                    <c:out value="${auction.product.sellerId}" />
                                 </strong></p>
                             </li>
                         </ul>
@@ -47,18 +47,22 @@
                                 <h6>배송방법/배송비:</h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong><c:out value="${auction.product.shipping}" /> / <c:out value="${auction.product.shippingFee}" /></strong></p>
+                                <p class="text-muted"><strong><c:out value="${auction.product.shipping}" /> /
+                                 <fmt:formatNumber value="${auction.product.shippingFee}" pattern="$#,##0.00" /></strong></p>
                             </li>
                         </ul>
-
-                        <div class="row pb-3">
-                            <div class="col d-grid">
-                                <button type="button" class="btn btn-success btn-lg"
-                                    onclick="location.href='<c:url value="/shop/newBidding.do">
-                                    <c:param name="productId" value="${auction.auctionId}" /></c:url>';">입찰하기
-                                </button>
-                            </div>
-                        </div>
+						<c:if test="${auction.product.sellerId ne userSession.account.accountId}">
+	                        <div class="row pb-3">
+	                            <div class="col d-grid">
+	                                <button type="button" class="btn btn-success btn-lg"
+	                                    onclick="location.href='<c:url value="/shop/newBidding.do">
+	                                    <c:param name="productId" value="${auction.auctionId}" /></c:url>';">입찰하기
+	                                </button>
+	                            </div>
+	                        </div>
+                        </c:if>
+                        
+                        <!-- 본인이 올림 -->
                         <c:if test="${auction.product.sellerId eq userSession.account.accountId}">
                             <div class="row pb-3">
                                 <div class="col d-grid">
