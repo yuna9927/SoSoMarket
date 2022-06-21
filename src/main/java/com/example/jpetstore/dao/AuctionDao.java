@@ -12,7 +12,7 @@ public interface AuctionDao {
 	  
 	void deleteAuction(int productId) throws DataAccessException;
 	
-	void updateAuctionCurrentPrice(Auction auction) throws DataAccessException;
+	void updateAuctionCurrentPrice(int productId, int biddingPrice) throws DataAccessException;
 
 	List<Auction> getAuctionListByUser(String accountId) throws DataAccessException;
 	

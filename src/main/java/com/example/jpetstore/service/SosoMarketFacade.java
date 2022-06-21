@@ -75,6 +75,8 @@ public interface SosoMarketFacade {
 	void deleteAuction(int auctionId);
 
 //	void updateAuctionStatus(Auction auction);
+	
+	void updateAuctionCurrentPrice(int productId, int biddingPrice);
 
 
 	/* Bidding */

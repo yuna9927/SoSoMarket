@@ -17,6 +17,8 @@ package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.example.jpetstore.domain.Auction;
 /**
  * @author Eduardo Macarron
@@ -30,7 +32,7 @@ public interface AuctionMapper {
 	  
 	void deleteAuction(int productId);
 	
-	void updateAuctionCurrentPrice(Auction auction);
+	void updateAuctionCurrentPrice(@Param("productId") int productId, @Param("biddingPrice") int biddingPrice);
 
 	List<Auction> getAuctionListByUser(String accountId);
 	

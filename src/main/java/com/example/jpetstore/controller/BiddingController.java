@@ -65,10 +65,22 @@ public class BiddingController {
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
 		
+		
 		int int_auctionId = Integer.parseInt(auctionId);
-		bf.setProductId(int_auctionId);
+		System.out.println("넘어온 auctionId: " + auctionId + "그걸 int로 바꾼 auctionId: " + int_auctionId);
+		
+		biddingForm.setProductId(int_auctionId);
 		System.out.println(biddingForm);
-		sosomarket.insertBidding(biddingForm.getBidding());
+		
+		int presentBiddingPrice = sosomarket.getAuction(int_auctionId).getCurrentPrice();
+		
+		System.out.println("auction의 현재 bidding 가격: " + presentBiddingPrice);
+		System.out.println("form에서 입력한 값: " + biddingForm.getBidding().getBiddingPrice());
+		
+		if(presentBiddingPrice < biddingForm.getBidding().getBiddingPrice()) {
+			sosomarket.insertBidding(biddingForm.getBidding());
+			sosomarket.updateAuctionCurrentPrice(int_auctionId, biddingForm.getBidding().getBiddingPrice());
+		} 
 				
 		return successViewName;  
 	}
