@@ -5,6 +5,7 @@
 <div class="container py-5">
     <div class="row">
 
+
         <div class="col-lg-3">
             <h1 class="h2 pb-4">Categories 편집전</h1>
             <ul class="list-unstyled templatemo-accordion">
@@ -113,6 +114,7 @@
         </div>
 
     </div>
+
 </div>
 <!-- End Content -->
 <%@ include file="IncludeFooter.jsp"%>

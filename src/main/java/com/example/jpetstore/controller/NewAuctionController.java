@@ -15,11 +15,11 @@ import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
-@RequestMapping({"/shop/newOrderForm.do","/shop/newOrder.do"})
-@SessionAttributes("biddingForm")
-public class OrderController { 
-	
-	@Value("NewOrderForm")
+@RequestMapping({"/shop/newAuctionForm.do","/shop/newAuction.do"})
+@SessionAttributes("auctionForm")
+public class NewAuctionController { 
+
+	@Value("NewAuctionForm")
 	private String formViewName;
 	
 	@Value("index")
@@ -33,9 +33,8 @@ public class OrderController {
 	}
 	
 	UserSession userSession;
-	OrderForm of;
-	String productId;
-	int i_productId = -1;
+	public String sellerId;
+	public Product product;
 
 //	@Autowired
 //	private ProductFormValidator validator;
@@ -43,26 +42,20 @@ public class OrderController {
 //		this.validator = validator;
 //	}
 		
-	@ModelAttribute("orderForm")
-	public OrderForm formBackingObject(HttpServletRequest request) 
+	@ModelAttribute("auctionForm")
+	public AuctionForm formBackingObject(HttpServletRequest request) 
 			throws Exception {
 		
-		userSession = 
+		UserSession userSession = 
 				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 
-		of = new OrderForm();
-		of.setBuyerId(userSession.getAccount().getAccountId());
-		System.out.println(userSession.getAccount().getAccountId());
+		AuctionForm af = new AuctionForm();
+		product = new Product();
+		af.setProduct(product);
+		sellerId = userSession.getAccount().getAccountId();
+		af.setSellerId(sellerId);
 		
-		productId = request.getParameter("productId");
-		System.out.println(productId);
-		
-		try {
-			i_productId = Integer.parseInt(productId);
-		} catch (NumberFormatException e){
-			e.printStackTrace();
-		}
-		return of;
+		return af;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
@@ -73,20 +66,20 @@ public class OrderController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(
 			HttpServletRequest request, HttpSession session,
-			@ModelAttribute("orderForm") OrderForm orderForm,
+			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			@ModelAttribute("userSession") UserSession userSession,
 			BindingResult result) throws Exception {
+	
 		
-		Product product = sosomarket.getProduct(i_productId);
+		sosomarket.insertProduct(auctionForm.getAuction().getProduct());
 		
-		of.getOrder().setProduct(product);
-				
-				
-		of.setProductId(i_productId);
+		String accountId = auctionForm.getAuction().getProduct().getSellerId();
+		String title = auctionForm.getAuction().getProduct().getTitle();
+		Product product2 = sosomarket.getProduct(accountId, title);
 		
-		System.out.println(orderForm);
-		sosomarket.insertOrder(orderForm.getOrder());
-				
+		auctionForm.getAuction().setAuctionId(product2.getProductId());
+		sosomarket.insertAuction(auctionForm.getAuction());
+		
 		return successViewName;  
 	}
 }

@@ -27,7 +27,7 @@
       		</td>
   		</tr>
   		<tr>
-    		<td>name</td>
+    		<td>title</td>
     		<td><form:input path="auction.product.title" htmlEscape="false"/>
       			<form:errors path="auction.product.title" cssClass="error" /></td>
   		</tr>
@@ -76,7 +76,7 @@
    			<td>
    			<label for="deadLine-datepicker">Choose a date</label>
     			<b-form-datepicker id="deadLine-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
-   			<form:hidden path="auction.deadLine" value="{{ value }}"/>
+   			<form:hidden path="auction.deadLine" value="2023/12/08"/>
    			</td>
   		</tr>
 		</table>
