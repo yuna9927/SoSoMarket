@@ -8,7 +8,7 @@
   <select id="getCategory" resultType="Category">
     SELECT
       CATEGORY_ID AS categoryId,
-      CATEGORY_NAME AS name,
+      CATEGORY_NAME AS name
     FROM CATEGORY
     WHERE CATEGORY_ID = #{categoryId}
   </select>

@@ -67,6 +67,7 @@ public class ViewProductListController {
 			) throws Exception {
 		PagedListHolder<Auction> auctionList = new PagedListHolder<Auction>(this.sosomarket.getAllAuction());
 		auctionList.setPageSize(4);
+		System.out.println(this.sosomarket.getAllAuction().get(0));
 		model.put("auctionList", auctionList);
 		return "SearchAuctionList";
 	}

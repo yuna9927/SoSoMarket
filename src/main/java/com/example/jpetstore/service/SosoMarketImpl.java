@@ -64,16 +64,21 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	public void updateWithdraw(String accountId) {
 		accountDao.updateWithdraw(accountId);
 	}
+	
 
-//	public List<Category> getCategoryList() {
-//		return categoryDao.getCategoryList();
-//	}
+	public Category getCategory(int categoryId) {
+		return categoryDao.getCategory(categoryId);
+	}
+
+	public List<Category> getCategoryList() {
+		return categoryDao.getCategoryList();
+	}
 
 	/* Product */
 
-//	public List<Product> getProductListByCategory(String categoryId) {
-//		return productDao.getProductListByCategory(categoryId);
-//	}
+	public List<Product> getProductListByCategory(int categoryId) {
+		return productDao.getProductListByCategory(categoryId);
+	}
 
 	public List<Product> getProductListByUser(String accountId) {
 		return productDao.getProductListByUser(accountId);

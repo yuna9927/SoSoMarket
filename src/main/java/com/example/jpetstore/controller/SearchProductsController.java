@@ -34,7 +34,7 @@ public class SearchProductsController {
 			PagedListHolder<Product> productList = new PagedListHolder<Product>(this.sosoMarket.searchProductList(keyword.toLowerCase()));
 			productList.setPageSize(4);
 			request.getSession().setAttribute("SearchProductsController_productList", productList);
-			return new ModelAndView("SearchProducts", "productList", productList);
+			return new ModelAndView("SearchProductList", "productList", productList);
 		}
 		else {
 			@SuppressWarnings("unchecked")
@@ -51,4 +51,6 @@ public class SearchProductsController {
 			return new ModelAndView("SearchProducts", "productList", productList);
 		}
 	}
+	
+
 }
