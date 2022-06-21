@@ -53,7 +53,6 @@ public class NewProductController implements ApplicationContextAware {
 		throws BeansException {
 		this.context = (WebApplicationContext) appContext;
 		this.uploadDir = context.getServletContext().getRealPath(this.uploadDirLocal);
-		System.out.println("파일경로:" + this.uploadDir);
 	}
 
 //	@Autowired
@@ -88,11 +87,10 @@ public class NewProductController implements ApplicationContextAware {
 			MultipartHttpServletRequest multiRequest,
 			BindingResult result) throws Exception {
 		
+		//이미지
 		MultipartFile imageFile = multiRequest.getFile("imageFile");
 		System.out.println(productForm);
 		
-		//이미지
-//		MultipartFile imageFile = productForm.getImageFile();
 		String filename = uploadFile(imageFile);
 		productForm.getProduct().setImage(this.uploadDirLocal + filename);
 		sosomarket.insertProduct(productForm.getProduct());		

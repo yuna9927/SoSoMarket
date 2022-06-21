@@ -52,6 +52,7 @@ public class OrderController {
 
 		of = new OrderForm();
 		of.setBuyerId(userSession.getAccount().getAccountId());
+		of.getOrder().initOrder(userSession.getAccount());
 		System.out.println(userSession.getAccount().getAccountId());
 		
 		productId = request.getParameter("productId");
