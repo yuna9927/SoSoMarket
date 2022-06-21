@@ -37,10 +37,6 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	@Autowired
 	private OrderDao orderDao;
 
-	//-------------------------------------------------------------------------
-	// Operation methods, implementing the PetStoreFacade interface
-	//-------------------------------------------------------------------------
-
 	public Account getAccount(String accountId) {
 		return accountDao.getAccount(accountId);
 	}
