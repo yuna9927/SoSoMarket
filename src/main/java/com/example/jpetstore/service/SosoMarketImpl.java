@@ -152,6 +152,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	public void deleteAuction(int auctionId) {
 		auctionDao.deleteAuction(auctionId);
 	}
+	
+	public void updateAuctionCurrentPrice(int productId, int biddingPrice) {
+		auctionDao.updateAuctionCurrentPrice(productId, biddingPrice);
+	}
 
 //	public void updateAuctionStatus(Auction auction) {
 //		auctionDao.updateAuctionStatus(auction);
@@ -161,10 +165,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 
 	public void insertBidding(Bidding bidding) {
 		biddingDao.insertBidding(bidding);
-		Auction auction = new Auction();
-		auction.setCurrentPrice(bidding.getBiddingPrice());
-		auction.setAuctionId(bidding.getProductId());
-		auctionDao.updateAuctionCurrentPrice(auction);
+//		Auction auction = new Auction();
+//		auction.setCurrentPrice(bidding.getBiddingPrice());
+//		auction.setAuctionId(bidding.getProductId());
+//		auctionDao.updateAuctionCurrentPrice(auction);
 	}
 
 	public Bidding getBidding(int biddingId) {

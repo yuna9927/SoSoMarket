@@ -59,6 +59,11 @@
   <h3><b><a href='<c:url value="/shop/deleteAuctionProduct.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>'>Auction Delete</a></b></h3>
   <br><br>
   
+  <button type="button" class="btn btn-success btn-lg"
+                                    onclick="location.href='<c:url value="/shop/newBidding.do">
+                                    <c:param name="auctionId" value="${auction.auctionId}" /></c:url>';">입찰하기
+                                </button>
+  
   <h3>Bidding Product</h3>
 
   <br>

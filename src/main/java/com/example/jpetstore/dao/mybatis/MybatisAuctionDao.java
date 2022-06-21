@@ -34,8 +34,8 @@ public class MybatisAuctionDao implements AuctionDao {
 		auctionMapper.deleteAuction(productId);
 	}
 
-	public void updateAuctionCurrentPrice(Auction auction) throws DataAccessException {
-		auctionMapper.updateAuctionCurrentPrice(auction);
+	public void updateAuctionCurrentPrice(int productId, int biddingPrice) throws DataAccessException {
+		auctionMapper.updateAuctionCurrentPrice(productId, biddingPrice);
 	}
 	
 	public List<Auction> getAuctionListByUser(String accountId) throws DataAccessException {
