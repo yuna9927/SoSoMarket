@@ -9,6 +9,7 @@ import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
+import com.example.jpetstore.domain.Wish;
 
 public interface SosoMarketFacade {
 
@@ -27,15 +28,15 @@ public interface SosoMarketFacade {
 	
 
 
-//	List<Category> getCategoryList();
+	List<Category> getCategoryList();
 
-//	Category getCategory(String categoryId);
+	Category getCategory(int categoryId);
 	
 
 	/* Product */
 	List<Product> getProductListByUser(String accountId);
 
-//	List<Product> getProductListByCategory(int categoryId);
+	List<Product> getProductListByCategory(int categoryId);
 
 	List<Product> searchProductList(String keyword);
 
@@ -110,5 +111,16 @@ public interface SosoMarketFacade {
 
 	void updateOrderStatus(Order order);
 	
+	
+	/* Wish */
 
+	Wish getWish(int wishId);
+	
+	Wish getWishByAccountAndProduct(String accountId, int productId);
+
+    List<Wish> getWishtListByUser(String accountId);
+    
+    void insertWish(Wish wish);
+
+    void deleteWish(int wishId);
 }

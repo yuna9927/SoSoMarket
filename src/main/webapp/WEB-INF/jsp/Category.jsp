@@ -21,7 +21,7 @@
           <c:param name="productId" value="${product.productId}"/></c:url>'>
             <font color="black"><c:out value="${product.productId}" /></font>
           </a></b></td>
-        <td><c:out value="${product.name}" /></td>
+        <td><c:out value="${product.title}" /></td>
       </tr>
     </c:forEach>
     <tr>

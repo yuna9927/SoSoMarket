@@ -121,7 +121,6 @@
 				<a class="btn btn-success">확인하기</a>
 			</p>
 		</div>
-
 	</div>
 </section>
 <!-- End Categories of The Month -->
