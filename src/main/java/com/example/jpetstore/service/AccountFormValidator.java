@@ -44,19 +44,20 @@ public class AccountFormValidator implements Validator {
 	    if (!account.getEmail().matches("(.*)@(.*)") || !account.getEmail().matches("(.*)\\.(.*)")) {
 	    	errors.reject("EMAIL_MISMATCH", "이메일 형식이 잘못되었습니다.");
 	    }
-
-
+	    if (!account.getPhoneNumber().matches("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$")) {
+	    	errors.reject("EMAIL_MISMATCH", "전화번호 형식이 잘못되었습니다.");
+	    }
 	    if (accountForm.isNewAccount()) {
-//        account.setStatus("OK");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.accountId", "ACCOUNT_ID_REQUIRED", "아이디를 입력해주세요.");
-        if (account.getPassword() == null || account.getPassword().length() < 1
-        		|| !account.getPassword().equals(accountForm.getRepeatedPassword())) {
-           errors.reject("PASSWORD_MISMATCH", "비밀번호가 없거나 일치하지 않습니다.");
-        }
-      } else if (account.getPassword() != null && account.getPassword().length() > 0) {
-    	  if (!account.getPassword().equals(accountForm.getRepeatedPassword())) {
-            errors.rejectValue("repeatedPassword", "PASSWORD_MISMATCH", "비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
-          }
-      }
-   }
+	//        account.setStatus("OK");
+	    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.accountId", "ACCOUNT_ID_REQUIRED", "아이디를 입력해주세요.");
+	        if (account.getPassword() == null || account.getPassword().length() < 1
+	        		|| !account.getPassword().equals(accountForm.getRepeatedPassword())) {
+	        	errors.reject("PASSWORD_MISMATCH", "비밀번호가 없거나 일치하지 않습니다.");
+	        }
+	    } else if (account.getPassword() != null && account.getPassword().length() > 0) {
+	    	if (!account.getPassword().equals(accountForm.getRepeatedPassword())) {
+	    		errors.rejectValue("repeatedPassword", "PASSWORD_MISMATCH", "비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+	    	}
+	    }
+	}
 }
