@@ -114,7 +114,7 @@ public interface SosoMarketFacade {
 	
 	/* Wish */
 
-	Wish getWish(int wishId);
+	Wish getWish(int productId);
 	
 	Wish getWish(String accountId, int productId);
 
@@ -122,5 +122,5 @@ public interface SosoMarketFacade {
     
     void insertWish(Wish wish);
 
-    void deleteWish(int wishId);
+    void deleteWish(int productId);
 }
