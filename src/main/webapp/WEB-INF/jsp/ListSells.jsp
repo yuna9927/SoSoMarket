@@ -31,7 +31,6 @@
 								<th class="font-weight-semi-bold border-top-0 py-2">판매 날짜</th>
 								<th class="font-weight-semi-bold border-top-0 py-2">종류</th>
 								<th class="font-weight-semi-bold border-top-0 py-2">판매 상태</th>
-								<th class="font-weight-semi-bold border-top-0 py-2">상태 변경</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -57,10 +56,12 @@
 										</c:if>
 									</div></td>
 									<td class="py-3">
-										추후변경
-									</td>
-									<td class="py-3">
-										여긴 버튼
+										<c:if test="${product.productStatus eq 'sale'}">
+											<span class="badge badge-pill badge-success">판매중</span>
+										</c:if>
+										<c:if test="${product.productStatus eq 'done'}">
+											<span class="badge badge-pill badge-secondary">판매완료</span>
+										</c:if>
 									</td>
 								</tr>
 								

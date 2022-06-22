@@ -82,9 +82,12 @@ public class Auction implements Serializable {
 	public void setCurrentPriceBuyerId(String currentPriceBuyerId) {
 		this.currentPriceBuyerId = currentPriceBuyerId;
 	}
+
 	@Override
 	public String toString() {
 		return "Auction [auctionId=" + auctionId + ", product=" + product + ", currentPrice=" + currentPrice
-				+ ", startPrice=" + startPrice + ", deadLine=" + deadLine + ", biddingList=" + biddingList + "]";
+				+ ", startPrice=" + startPrice + ", currentPriceBuyerId=" + currentPriceBuyerId + ", deadLine="
+				+ deadLine + ", biddingList=" + biddingList + "]";
 	}
+	
 }

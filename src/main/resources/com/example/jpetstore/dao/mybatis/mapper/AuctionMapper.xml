@@ -20,6 +20,7 @@
 		P.PRODUCT_TYPE as "product.productType",
 		A.PRESENT_PRICE as currentPrice,
     	A.START_PRICE as startPrice,
+    	A.PRESENT_PRICE_ACCOUNTID as "currentPriceBuyerId",
     	A.DEADLINE as deadLine
     FROM AUCTION A, PRODUCT P
     WHERE P.PRODUCT_ID = A.PRODUCT_ID AND A.PRODUCT_ID = #{auctionId}
@@ -121,7 +122,7 @@
     WHERE PRODUCT_ID = #{auctionId}
   </delete>
   
-  <update id="updateAuctionCurrentPrice" parameterType="Bidding">
+  <update id="updateAuctionCurrentPriceAndBuyerId" parameterType="Bidding">
     UPDATE AUCTION SET
       PRESENT_PRICE = #{biddingPrice},
       PRESENT_PRICE_ACCOUNTID = #{buyerId}

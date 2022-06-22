@@ -52,5 +52,3 @@
 			</td>
 		</tr>
 	</table>
-
-	<%@ include file="IncludeQuickHeader.jsp"%>
