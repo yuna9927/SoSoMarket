@@ -26,11 +26,8 @@
                     <form:input class="form-control mt-1" name="title" placeholder="제목" path="auction.product.title" htmlEscape="false"/>
                     <form:errors path="auction.product.title" cssClass="error" />
                 </div>
-                <div class="form-group col-md-6 mb-3">
-                    <label for="categoryId">카테고리</label>
-                    <form:input class="form-control mt-1" name="categoryId" placeholder="카테고리 숫자 입력" path="auction.product.categoryId" htmlEscape="false"/>
-                    <form:errors path="auction.product.categoryId" cssClass="error" />
-                </div>
+                <!-- test -->
+            	<form:hidden path="auction.product.categoryId" value="0"/>
             </div>
             <div class="mb-3">
                 <label for="description">상품 설명</label>

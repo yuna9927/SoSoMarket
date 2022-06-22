@@ -55,10 +55,18 @@
 						<c:if test="${auction.product.sellerId ne userSession.account.accountId}">
 	                        <div class="row pb-3">
 	                            <div class="col d-grid">
-	                                <button type="button" class="btn btn-success btn-lg"
+	                            <c:if test="${empty userSession.account}">
+	                            	<button type="button" class="btn btn-success btn-lg"
+	                                    onclick="location.href='<c:url value="/main/signonForm.do" />';">입찰하기
+	                                </button>
+	                            </c:if>
+	                            <c:if test="${!empty userSession.account}">
+	                            	<button type="button" class="btn btn-success btn-lg"
 	                                    onclick="location.href='<c:url value="/shop/newBidding.do">
 	                                    <c:param name="productId" value="${auction.auctionId}" /></c:url>';">입찰하기
 	                                </button>
+	                            </c:if>
+	                                
 	                            </div>
 	                        </div>
                         </c:if>

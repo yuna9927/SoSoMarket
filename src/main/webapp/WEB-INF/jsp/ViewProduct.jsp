@@ -51,14 +51,21 @@
 						<c:if test="${product.sellerId ne userSession.account.accountId}">
                         <div class="row pb-3">
                             <div class="col d-grid">
-                                <button type="button" class="btn btn-success btn-lg"
-                                    onclick="location.href='<c:url value="/shop/newOrderForm.do">
-                                    <c:param name="productId" value="${product.productId}" />
-                                    <c:param name="productPrice" value="${product.price}" />
-                                    <c:param name="productShippingFee" value="${product.shippingFee}" />
-                                    <c:param name="productShipping" value="${product.shipping}" />
-                                    </c:url>';">주문하기
-                                </button>
+                            	<c:if test="${empty userSession.account}">
+	                            	<button type="button" class="btn btn-success btn-lg"
+	                                    onclick="location.href='<c:url value="/main/signonForm.do" />';">주문하기
+	                                </button>
+	                            </c:if>
+	                            <c:if test="${!empty userSession.account}">
+	                                <button type="button" class="btn btn-success btn-lg"
+	                                    onclick="location.href='<c:url value="/shop/newOrderForm.do">
+	                                    <c:param name="productId" value="${product.productId}" />
+	                                    <c:param name="productPrice" value="${product.price}" />
+	                                    <c:param name="productShippingFee" value="${product.shippingFee}" />
+	                                    <c:param name="productShipping" value="${product.shipping}" />
+	                                    </c:url>';">주문하기
+	                                </button>
+                                </c:if>
                             </div>
                         </div>
                         </c:if>
