@@ -120,10 +120,15 @@
 					aria-label="Close"></button>
 			</div>
 			<form action="<c:url value="/shop/searchProducts.do"/>" method="post"
-				class="modal-content modal-body border-0 p-0">
+				class="modal-content modal-body border-0 p-0" id="myForm">
 				<div class="input-group mb-2">
-					<input type="hidden" name="search" value="true" /> <input
-						type="text" class="form-control" id="inputModalSearch"
+					<input type="hidden" name="search" value="true" />
+					<select name="type" form="myForm">
+					    <option value="product">일반 상품</option>
+					    <option value="auction">경매 상품</option>
+					</select>
+					<p>&nbsp;</p>
+					<input type="text" class="form-control" id="inputModalSearch"
 						name="keyword" placeholder="검색어를 입력해주세요 ...">
 					<button type="submit"
 						class="input-group-text bg-success text-light">
