@@ -42,7 +42,7 @@ public class ViewOrderListController {
 			System.out.println(p);
 		}
 		PagedListHolder<Order> sellOrderList = new PagedListHolder<Order>(
-				this.sosomarket.getOrderListByBuyer(accountId));
+				this.sosomarket.getOrderListBySeller(accountId));
 		sellOrderList.setPageSize(4);
 		model.put("sellOrderList", sellOrderList);
 		return "ListSellerOrders";
