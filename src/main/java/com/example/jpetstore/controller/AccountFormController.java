@@ -88,10 +88,10 @@ public class AccountFormController {
 //         accountForm.getAccount().setBannerOption(false);
 //      }
       System.out.println("accountForm: " + accountForm);
-//      validator.validate(accountForm, result);
       
+      validator.validate(accountForm, result);
+      if (result.hasErrors()) return formViewName;
       
-//      if (result.hasErrors()) return formViewName;
       try {
          if (accountForm.isNewAccount()) {
             System.out.println("account: " + accountForm.getAccount());
@@ -103,8 +103,7 @@ public class AccountFormController {
          }
       }
       catch (DataIntegrityViolationException ex) {
-         result.rejectValue("account.username", "USER_ID_ALREADY_EXISTS",
-               "User ID already exists: choose a different ID.");
+         result.reject("USER_ID_ALREADY_EXISTS", "중복된 아이디입니다. 다른 아이디를 사용하세요.");
          return formViewName; 
       }
       

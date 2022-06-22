@@ -73,6 +73,26 @@
 		P.PRICE as "product.price",
 		P.PRODUCT_TYPE as "product.productType"
     FROM WISH W, PRODUCT P
-    WHERE W.PRODUCT_ID = P.PRODUCT_ID AND W.ACCOUNT_ID = #{accountId}
+    WHERE W.PRODUCT_ID = P.PRODUCT_ID AND W.ACCOUNT_ID = #{accountId} AND P.PRODUCT_TYPE = 'product'
+  </select>
+  
+  <select id="getWishListAuctionByUser" resultType="Wish">
+    SELECT
+		W.WISH_ID as wishId,
+    	W.PRODUCT_ID as productId,
+    	W.ACCOUNT_ID as accountId,
+    	P.TITLE as "product.title",
+    	P.DESCRIPTION as "product.description",
+		P.SHIPPING as "product.shipping",
+		P.SHIPPING_FEE as "product.shippingFee",
+		P.IMAGE as "product.image",
+		P.CREATED_TIME as "product.createdTime",
+		P.CATEGORY_ID as "product.categoryId",
+		P.PRODUCT_STATUS as "product.productStatus",
+		P.ACCOUNT_ID as "product.sellerId",
+		P.PRICE as "product.price",
+		P.PRODUCT_TYPE as "product.productType"
+    FROM WISH W, AUCTION A, PRODUCT P
+    WHERE W.PRODUCT_ID = A.PRODUCT_ID AND A.PRODUCT_ID = P.PRODUCT_ID AND W.ACCOUNT_ID = #{accountId} AND P.PRODUCT_TYPE = 'auction'
   </select>
 </mapper>
