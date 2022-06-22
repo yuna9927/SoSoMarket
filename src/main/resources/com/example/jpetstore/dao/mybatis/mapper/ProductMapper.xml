@@ -31,7 +31,7 @@
       A.BANK_NUMBER AS "account.bankNumber",
       A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
-    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.CATEGORY_ID = #{categoryId}
+    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND P.CATEGORY_ID = #{categoryId} AND P.PRODUCT_TYPE = 'product'
   </select>
   
   <select id="getProductListByUser" resultType="Product">
@@ -89,7 +89,7 @@
       A.BANK_NUMBER AS "account.bankNumber",
       A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
-    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND lower(title) like #{keyword}
+    WHERE P.ACCOUNT_ID = A.ACCOUNT_ID AND lower(title) like #{keyword} AND P.PRODUCT_TYPE = 'product'
   </select>
   
   <select id="getAllProductList" resultType="Product">
@@ -118,7 +118,7 @@
       A.BANK_NUMBER AS "account.bankNumber",
       A.WITHDRAW AS "account.withdraw"
     FROM PRODUCT P, ACCOUNT A
-    WHERE PRODUCT_TYPE = 'product' AND P.ACCOUNT_ID = A.ACCOUNT_ID
+    WHERE PRODUCT_TYPE = 'product' AND P.ACCOUNT_ID = A.ACCOUNT_ID 
   </select>
   
   <select id="getProduct" resultType="Product">
