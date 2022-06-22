@@ -34,12 +34,18 @@ public class ViewOrderListController {
 	}
 
 	@RequestMapping("/user/viewSellerOrderList.do")
-	public ModelAndView getOrderListBySeller(@ModelAttribute("userSession") UserSession userSession) throws Exception {
+	public String getOrderListBySeller(@ModelAttribute("userSession") UserSession userSession, ModelMap model)
+			throws Exception {
 		String accountId = userSession.getAccount().getAccountId();
+//			System.out.println("Order list:");
+		for (Order p : this.sosomarket.getOrderListBySeller(accountId)) {
+			System.out.println(p);
+		}
 		PagedListHolder<Order> sellOrderList = new PagedListHolder<Order>(
-				this.sosomarket.getOrderListBySeller(accountId));
-		sellOrderList.setPageSize(8);
-		return new ModelAndView("ListSellerOrders", "sellOrderList", sellOrderList);
+				this.sosomarket.getOrderListByBuyer(accountId));
+		sellOrderList.setPageSize(4);
+		model.put("sellOrderList", sellOrderList);
+		return "ListSellerOrders";
 	}
 
 	// ������ �ѱ�
