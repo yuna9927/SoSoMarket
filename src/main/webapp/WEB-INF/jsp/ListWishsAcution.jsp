@@ -11,15 +11,15 @@
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="#">계정</a></li>
 						<li class="breadcrumb-item"><a href="<c:url value="/user/viewWishList.do"/>">위시리스트</a></li>
-						<li class="breadcrumb-item active" aria-current="page">일반상품</li>
+						<li class="breadcrumb-item active" aria-current="page">경매상품</li>
 					</ol>
 				</nav>
 				<!-- End Breadcrumb -->
 
 				<div class="mb-3 mb-md-4 d-flex justify-content-between">
-					<div class="h3 mb-0">일반상품 위시리스트</div>
+					<div class="h3 mb-0">경매상품 위시리스트</div>
 				</div>
-				<p style="font-size: small;">일반상품의 ♡를 클릭 시 위시리스트에 저장됩니다.</p>
+				<p style="font-size: small;">경매상품의 ♡를 클릭 시 위시리스트에 저장됩니다.</p>
 
 
 				<!-- Wish List -->
@@ -37,7 +37,7 @@
 								<tr>
 									<td class="align-middle py-3">
 										<div class="d-flex align-items-center">
-											<a href='<c:url value="/shop/viewProduct.do">
+											<a href='<c:url value="/shop/viewAuction.do">
              						 		<c:param name="productId" value="${wish.productId}"/></c:url>'>
 												<c:out value="${wish.product.title}" />
 											</a>
