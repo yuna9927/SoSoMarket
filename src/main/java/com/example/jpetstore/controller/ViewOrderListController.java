@@ -23,7 +23,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
  * @modified by Changsup Park
  */
 @Controller
-@SessionAttributes({"userSession", "buyOrderList"})
+@SessionAttributes({"userSession", "buyOrderList", "sellOrderList"})
 public class ViewOrderListController {
 
 	private SosoMarketFacade sosomarket;
@@ -42,7 +42,7 @@ public class ViewOrderListController {
 			System.out.println(p);
 		}
 		PagedListHolder<Order> sellOrderList = new PagedListHolder<Order>(
-				this.sosomarket.getOrderListByBuyer(accountId));
+				this.sosomarket.getOrderListBySeller(accountId));
 		sellOrderList.setPageSize(4);
 		model.put("sellOrderList", sellOrderList);
 		return "ListSellerOrders";
