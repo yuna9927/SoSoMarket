@@ -35,7 +35,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="auction" items="${auctionList}">
+							<c:forEach var="auction" items="${auctionList.pageList}">
 								<tr>
 									<td class="align-middle py-3">
 										<div class="d-flex align-items-center">
@@ -70,16 +70,19 @@
 					<div class="card-footer d-block d-md-flex align-items-center d-print-none">
 						<nav class="d-flex ml-md-auto d-print-none"
 							aria-label="Pagination">				        
-							<ul class="pagination justify-content-end font-weight-semi-bold mb-0">
-								<c:if test="${!biddingList.firstPage}">
+							<ul
+								class="pagination justify-content-end font-weight-semi-bold mb-0">
+								<c:if test="${!auctionList.firstPage}">
 									<li class="page-item"><a id="datatablePaginationPrev"
-										class="page-link" href="?page=previous" aria-label="Previous"><i
+										class="page-link" href='<c:url value="/user/viewMyAuctionProductList2.do">
+            <c:param name="page" value="previous"/></c:url>' aria-label="Previous"><i
 											class="gd-angle-left icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
-								<c:if test="${!biddingList.lastPage}">
+								<c:if test="${!auctionList.lastPage}">
 									<li class="page-item"><a id="datatablePaginationNext"
-										class="page-link" href="?page=next" aria-label="Next"><i
+										class="page-link" href='<c:url value="/user/viewMyAuctionProductList2.do">
+            <c:param name="page" value="previous"/></c:url>' aria-label="Next"><i
 											class="gd-angle-right icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
