@@ -53,7 +53,7 @@
 										</c:if> <c:if test="${order.orderStatus eq 'check'}">
 											<span class="badge badge-pill badge-warning">배송준비중</span>
 										</c:if> <c:if test="${order.orderStatus eq 'start'}">
-											<span class="badge badge-pill badge-warning">배송중</span>
+											<span class="badge badge-pill badge-success">배송중</span>
 										</c:if></td>
 									<td class="py-3">
 										<div class="d-flex align-items-center">

@@ -102,13 +102,12 @@
 					<c:if test="${empty userSession.account}">
 						<a class="nav-icon position-relative text-decoration-none"
 							href="<c:url value="/main/signonForm.do"/>">
-							<i class="fa fa-fw fa-sign-in text-dark mr-3"></i>
+							로그인</i>
 						</a>
 					</c:if>
 					<c:if test="${!empty userSession.account}">
 						<a class="nav-icon position-relative text-decoration-none"
-							href="<c:url value="/main/signoff.do"/>"> <i
-							class="fa fa-fw fa-sign-out text-dark mr-3"></i>
+							href="<c:url value="/main/signoff.do"/>"> 로그아웃
 						</a>
 						<a class="nav-icon position-relative text-decoration-none"
 							href="<c:url value="/user/viewAccount.do"/>"> <i class="fa fa-fw fa-user text-dark mr-3"></i>

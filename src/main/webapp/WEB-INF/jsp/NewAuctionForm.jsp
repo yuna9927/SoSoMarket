@@ -34,11 +34,6 @@
                 <form:textarea class="form-control mt-1" name="description" placeholder="설명" path="auction.product.description" htmlEscape="false"/>
                   <form:errors path="auction.product.description" cssClass="error" />
             </div>
-            <div class="mb-3">
-                <label for="price">가격</label>
-                <form:input class="form-control mt-1" name="price" placeholder="가격" path="auction.product.price" htmlEscape="false"/>
-                    <form:errors path="auction.product.price" cssClass="error" />
-            </div>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="shipping">배송방법</label>
@@ -65,6 +60,7 @@
             </div>
             <input type="file" name="imageFile" />
             <form:hidden path="auction.product.productType" value="auction"/>
+            <form:hidden path="auction.product.price" value="0"/>
             <div class="row">
                 <div class="col text-end mt-2">
                     <button type="submit" class="btn btn-success btn-lg px-3">확인</button>

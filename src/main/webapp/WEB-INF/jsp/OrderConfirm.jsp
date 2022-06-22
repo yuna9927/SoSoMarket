@@ -67,4 +67,3 @@
   </p>
 </div>
 
-<%@ include file="IncludeBottom.jsp"%>
