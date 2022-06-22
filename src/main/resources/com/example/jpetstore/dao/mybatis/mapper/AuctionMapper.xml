@@ -123,7 +123,7 @@
   
   <update id="updateAuctionCurrentPrice" parameterType="Bidding">
     UPDATE AUCTION SET
-      PRESENT_PRICE = #{biddingPrice}
+      PRESENT_PRICE = #{biddingPrice},
       PRESENT_PRICE_ACCOUNTID = #{buyerId}
     WHERE PRODUCT_ID = #{productId}
   </update>

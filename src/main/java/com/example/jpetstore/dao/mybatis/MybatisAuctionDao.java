@@ -11,11 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.example.jpetstore.dao.AuctionDao;
 import com.example.jpetstore.dao.mybatis.mapper.AuctionMapper;
 import com.example.jpetstore.domain.Auction;
+import com.example.jpetstore.domain.Bidding;
 
-/**
- * @author Juergen Hoeller
- * @author Colin Sampaleanu
- */
 @Repository
 public class MybatisAuctionDao implements AuctionDao {
 
@@ -34,8 +31,8 @@ public class MybatisAuctionDao implements AuctionDao {
 		auctionMapper.deleteAuction(productId);
 	}
 
-	public void updateAuctionCurrentPrice(int productId, int biddingPrice) throws DataAccessException {
-		auctionMapper.updateAuctionCurrentPrice(productId, biddingPrice);
+	public void updateAuctionCurrentPrice(Bidding bidding) throws DataAccessException {
+		auctionMapper.updateAuctionCurrentPrice(bidding);
 	}
 	
 	public List<Auction> getAuctionListByUser(String accountId) throws DataAccessException {
