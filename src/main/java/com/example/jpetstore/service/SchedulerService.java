@@ -27,12 +27,6 @@ public class SchedulerService {
 		this.sosomarket = sosomarket;
 	}
 	
-	private Order order;
-	
-	public void setOrder(Order order) {
-		this.order = order;
-	}
-	
 	public void testScheduler(Date closingTime, int auctionId) {
 		
 		Runnable updateTableRunner = new Runnable() { // anonymous class 정의
@@ -40,18 +34,29 @@ public class SchedulerService {
 			public void run() {   // 스케쥴러에 의해 미래의 특정 시점에 실행될 작업을 정의				
 				Date curTime = new Date();
 				// 실행 시점의 시각을 전달하여 그 시각 이전의 closing time 값을 갖는 event의 상태를 변경 
+				Order order = new Order();
 				
+				System.out.println("시간이 끝났어요..");
 				Auction auction = sosomarket.getAuction(auctionId);
+				System.out.println("auction is: " + auction.toString());
 				Product product = sosomarket.getProduct(auctionId);
+				System.out.println("product is: " + product.toString());
 				String currentPriceBuyerId = auction.getCurrentPriceBuyerId();
-				Account account = sosomarket.getAccount(currentPriceBuyerId);
+				System.out.println("입찰가격을 제시한 buyer 이름: " + currentPriceBuyerId);
 				
+				Account account = sosomarket.getAccount(currentPriceBuyerId);
+				System.out.println("그 buyer의 정보 account is : " + account.toString());
+				
+				System.out.println("경매상품의 id는: " + auction.getAuctionId());
 				
 				order.setProductId(auction.getAuctionId());
 				order.initOrder(account);
 				product.setProductStatus("done");
 				
 				sosomarket.updateProductStatus(product);
+				
+				order.setBuyerId(currentPriceBuyerId);
+				System.out.println(order.toString());
 				sosomarket.insertOrder(order);
 				
 				eventDao.closeEvent(curTime);	// EVENTS 테이블의 레코드 갱신	
