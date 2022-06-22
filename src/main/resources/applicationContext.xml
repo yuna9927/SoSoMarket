@@ -62,8 +62,4 @@
 <bean id="multipartResolver" 
 class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
 
-<bean id="SchedulerService" 
-class="com.example.scheduler.service.SchedulerService"></bean>
-
-
 </beans>

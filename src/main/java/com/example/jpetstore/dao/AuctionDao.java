@@ -3,6 +3,7 @@ package com.example.jpetstore.dao;
 import java.util.List;
 import org.springframework.dao.DataAccessException;
 import com.example.jpetstore.domain.Auction;
+import com.example.jpetstore.domain.Bidding;
 
 public interface AuctionDao {
 	
@@ -12,7 +13,7 @@ public interface AuctionDao {
 	  
 	void deleteAuction(int productId) throws DataAccessException;
 	
-	void updateAuctionCurrentPrice(int productId, int biddingPrice) throws DataAccessException;
+	void updateAuctionCurrentPrice(Bidding bidding) throws DataAccessException;
 
 	List<Auction> getAuctionListByUser(String accountId) throws DataAccessException;
 	

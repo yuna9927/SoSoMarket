@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
 import com.example.jpetstore.domain.Product;
+import com.example.jpetstore.service.SchedulerService;
 import com.example.jpetstore.service.SosoMarketFacade;
-import com.example.scheduler.service.SchedulerService;
 
 @Controller
 @RequestMapping({ "/shop/newAuctionForm.do", "/shop/newAuction.do" })
@@ -51,7 +52,7 @@ public class NewAuctionController implements ApplicationContextAware {
 	public void setSosomarket(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
-@Autowired
+	@Autowired
 	public void setService(SchedulerService service) {
 		this.service = service;
 	}
@@ -96,6 +97,7 @@ public class NewAuctionController implements ApplicationContextAware {
 	public String onSubmit(HttpServletRequest request, HttpSession session,
 			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			@ModelAttribute("userSession") UserSession userSession, MultipartHttpServletRequest multiRequest,
+			ModelMap model,
 			BindingResult result) throws Exception {
 
 		MultipartFile imageFile = multiRequest.getFile("imageFile");
@@ -106,13 +108,14 @@ public class NewAuctionController implements ApplicationContextAware {
 
 		String accountId = auctionForm.getAuction().getProduct().getSellerId();
 		String title = auctionForm.getAuction().getProduct().getTitle();
-		Product product2 = sosomarket.getProduct(accountId, title);
+		Product product2 = sosomarket.getProductByUserAndTitle(accountId, title);
 
 		auctionForm.getAuction().setAuctionId(product2.getProductId());
 		sosomarket.insertAuction(auctionForm.getAuction());
 		date = auctionForm.getAuction().getDeadLine();
 		
-		service.testScheduler(date);
+//		service.setOrder(order);
+		service.testScheduler(date, auctionForm.getAuction().getAuctionId());
 			
 		return successViewName;
 	}
