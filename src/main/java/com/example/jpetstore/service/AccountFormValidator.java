@@ -1,6 +1,5 @@
 package com.example.jpetstore.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -15,9 +14,6 @@ import com.example.jpetstore.domain.Account;
 @Component
 public class AccountFormValidator implements Validator {
 
-	@Autowired
-	private SosoMarketFacade sosomarket;
-	
 	public boolean supports(Class<?> clazz) {
 		return Account.class.isAssignableFrom(clazz);
 	}
@@ -35,20 +31,23 @@ public class AccountFormValidator implements Validator {
 	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.zipcode", "MY_ZIPCODE_REQUIRED", "우편번호를 입력해주세요.");
 	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.bankName", "BANK_NAME_REQUIRED", "은행명을 입력해주세요.");
 	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.bankNumber", "BANK_NUMBER_REQUIRED", "계좌번호를 입력해주세요.");
-   
-//	    sosomarket.getAccount(account.getAccountId()) != NULL;
-//	    if (account.getAccountId())
-	    if (account.getPassword().length() < 6) {
+
+	    if (account.getPassword().length() < 6 && account.getPassword() != null && account.getPassword().length() > 0) {
 	    	errors.rejectValue("account.password", "PASSWORD_LENGTH", "비밀번호는 최소 6자리로 정해주세요.");
 	    }
-	    if (!account.getEmail().matches("(.*)@(.*)") || !account.getEmail().matches("(.*)\\.(.*)")) {
-	    	errors.reject("EMAIL_MISMATCH", "이메일 형식이 잘못되었습니다.");
+	    if (account.getZipcode().length() != 5 && account.getZipcode() != null && account.getZipcode().length() > 0) {
+	    	errors.rejectValue("account.zipcode", "ZIPCODE_LENGTH", "우편번호는 5자리입니다.");
 	    }
-	    if (!account.getPhoneNumber().matches("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$")) {
-	    	errors.reject("EMAIL_MISMATCH", "전화번호 형식이 잘못되었습니다.");
+	    if (account.getEmail() != null && account.getEmail().length() > 0) {
+	    	if (!account.getEmail().matches("(.*)@(.*)") || !account.getEmail().matches("(.*)\\.(.*)")) {
+		    	errors.rejectValue("account.email", "EMAIL_MISMATCH", "이메일 형식이 잘못되었습니다.");
+		    }
+	    }
+	    if (!account.getPhoneNumber().matches("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$")
+	    		&& account.getPhoneNumber() != null && account.getPhoneNumber().length() > 0) {
+	    	errors.rejectValue("account.phoneNumber", "PHONE_NUMBER_MISMATCH", "전화번호 형식이 잘못되었습니다.");
 	    }
 	    if (accountForm.isNewAccount()) {
-	//        account.setStatus("OK");
 	    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.accountId", "ACCOUNT_ID_REQUIRED", "아이디를 입력해주세요.");
 	        if (account.getPassword() == null || account.getPassword().length() < 1
 	        		|| !account.getPassword().equals(accountForm.getRepeatedPassword())) {
@@ -58,6 +57,9 @@ public class AccountFormValidator implements Validator {
 	    	if (!account.getPassword().equals(accountForm.getRepeatedPassword())) {
 	    		errors.rejectValue("repeatedPassword", "PASSWORD_MISMATCH", "비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
 	    	}
+	    }
+	    if (errors.hasFieldErrors() && !errors.hasGlobalErrors()) {
+	    	errors.reject("ERRORS_OCCURED", "입력 과정에서 오류가 발생했습니다. 다시 확인해주세요.");
 	    }
 	}
 }
