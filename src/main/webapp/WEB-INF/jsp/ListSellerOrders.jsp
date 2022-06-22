@@ -77,13 +77,15 @@
 							<ul class="pagination justify-content-end font-weight-semi-bold mb-0">
 								<c:if test="${!sellOrderList.firstPage}">
 									<li class="page-item"><a id="datatablePaginationPrev"
-										class="page-link" href="?page=previous" aria-label="Previous"><i
+										class="page-link" href='<c:url value="/user/viewSellerOrderList2.do">
+            						<c:param name="page" value="previous"/></c:url>' aria-label="Previous"><i
 											class="gd-angle-left icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
 								<c:if test="${!sellOrderList.lastPage}">
 									<li class="page-item"><a id="datatablePaginationNext"
-										class="page-link" href="?page=next" aria-label="Next"><i
+										class="page-link" href='<c:url value="/user/viewSellerOrderList2.do">
+            						<c:param name="page" value="next"/></c:url>' aria-label="Next"><i
 											class="gd-angle-right icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>

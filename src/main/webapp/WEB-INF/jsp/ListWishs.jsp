@@ -69,16 +69,18 @@
 							<ul
 								class="pagination justify-content-end font-weight-semi-bold mb-0">
 								<c:if test="${!wishList.firstPage}">
-									<li class="page-item"><a id="datatablePaginationPrev"
+									<li class="page-item">
+									<a id="datatablePaginationPrev"
 										class="page-link" href='<c:url value="/user/viewWishList2.do">
             <c:param name="page" value="previous"/></c:url>' aria-label="Previous"><i
 											class="gd-angle-left icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
 								<c:if test="${!wishList.lastPage}">
-									<li class="page-item"><a id="datatablePaginationNext"
-										class="page-link" href='<c:url value="/user/viewWishList2.do">
-            <c:param name="page" value="previous"/></c:url>' aria-label="Next"><i
+									<li class="page-item">
+									<a href='<c:url value="/user/viewWishList2.do"> <c:param name="page" value="next"/></c:url>'
+									id="datatablePaginationNext"
+										class="page-link"  aria-label="Next"><i
 											class="gd-angle-right icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
