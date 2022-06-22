@@ -25,7 +25,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
  * @modified-by Changsup Park
  */
 @Controller
-@SessionAttributes({"productList", "auctionList"})
+@SessionAttributes({"productList", "auctionList", "categoryList"})
 public class ViewProductListController { 
 	private SosoMarketFacade sosomarket;
 
@@ -43,8 +43,9 @@ public class ViewProductListController {
 //			System.out.println(p);
 //		}
 		PagedListHolder<Product> productList = new PagedListHolder<Product>(this.sosomarket.getAllProduct());
-		productList.setPageSize(4);
+		productList.setPageSize(6);
 		System.out.println(productList);
+		model.put("categoryList", this.sosomarket.getCategoryList());
 		model.put("productList", productList);
 		return "SearchProductList";
 	}
@@ -73,7 +74,8 @@ public class ViewProductListController {
 			System.out.println(a);
 		}
 		PagedListHolder<Auction> auctionList = new PagedListHolder<Auction>(this.sosomarket.getAllAuction());
-		auctionList.setPageSize(4);
+		auctionList.setPageSize(6);
+		model.put("categoryList", this.sosomarket.getCategoryList());
 		model.put("auctionList", auctionList);
 		return "SearchAuctionList";
 	}

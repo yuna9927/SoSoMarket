@@ -23,7 +23,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
  * @modified by Changsup Park
  */
 @Controller
-@SessionAttributes({"userSession", "buyOrderList"})
+@SessionAttributes({"userSession", "buyOrderList", "sellOrderList"})
 public class ViewOrderListController {
 
 	private SosoMarketFacade sosomarket;
