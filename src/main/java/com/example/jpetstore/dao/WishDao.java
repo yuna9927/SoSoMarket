@@ -10,7 +10,7 @@ public interface WishDao {
 	
 	Wish getWish(String accountId, int productId) throws DataAccessException;
 
-    List<Wish> getWishtListByUser(String accountId) throws DataAccessException;
+    List<Wish> getWishListByUser(String accountId) throws DataAccessException;
     
     void insertWish(Wish wish) throws DataAccessException;
 

@@ -20,7 +20,7 @@
 				</div>
 				<p style="font-size:small;">
 					구매자가 주문 요청한 상품 목록이 경매 상품, 일반 상품에 상관없이 출력됩니다.
-						*** page 넘어가는 부분 구현되면 buyOrderList 로 변경 </p>
+						상품 이름을 클릭하시면 주문 상태를 변경할 수 있습니다. (변경한 주문 상태는 구매자에게도 보여집니다.) </p>
 
 
 				<!-- Order List -->
@@ -32,11 +32,10 @@
 								<th class="font-weight-semi-bold border-top-0 py-2">날짜</th>
 								<th class="font-weight-semi-bold border-top-0 py-2">종류</th>
 								<th class="font-weight-semi-bold border-top-0 py-2">주문 상태</th>
-								<th class="font-weight-semi-bold border-top-0 py-2">상태 변경</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="order" items="${sellOrderList}">
+							<c:forEach var="order" items="${sellOrderList.pageList}">
 								<tr>
 									<td class="align-middle py-3">
 										<div class="d-flex align-items-center">
@@ -58,10 +57,14 @@
 										</c:if>
 									</div></td>
 									<td class="py-3">
-										추후변경
-									</td>
-									<td class="py-3">
-										여긴 버튼
+										<c:if
+											test="${order.orderStatus eq 'waiting'}">
+											<span class="badge badge-pill badge-danger">주문확인중</span>
+										</c:if> <c:if test="${order.orderStatus eq 'check'}">
+											<span class="badge badge-pill badge-warning">배송준비중</span>
+										</c:if> <c:if test="${order.orderStatus eq 'start'}">
+											<span class="badge badge-pill badge-warning">배송중</span>
+										</c:if>
 									</td>
 								</tr>
 								
@@ -72,13 +75,13 @@
 						<nav class="d-flex ml-md-auto d-print-none"
 							aria-label="Pagination">				        
 							<ul class="pagination justify-content-end font-weight-semi-bold mb-0">
-								<c:if test="${!biddingList.firstPage}">
+								<c:if test="${!sellOrderList.firstPage}">
 									<li class="page-item"><a id="datatablePaginationPrev"
 										class="page-link" href="?page=previous" aria-label="Previous"><i
 											class="gd-angle-left icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
-								<c:if test="${!biddingList.lastPage}">
+								<c:if test="${!sellOrderList.lastPage}">
 									<li class="page-item"><a id="datatablePaginationNext"
 										class="page-link" href="?page=next" aria-label="Next"><i
 											class="gd-angle-right icon-text icon-text-xs d-inline-block"></i></a>
