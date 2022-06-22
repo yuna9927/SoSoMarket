@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @SuppressWarnings("serial")
 public class Auction implements Serializable {
 
@@ -14,6 +16,8 @@ public class Auction implements Serializable {
 	private Product product;
 	private int currentPrice;
 	private int startPrice;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:MM")
 	private Date deadLine;
 	private List<Bidding> biddingList = new ArrayList<Bidding>();
 
