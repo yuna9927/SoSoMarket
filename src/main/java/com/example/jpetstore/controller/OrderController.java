@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.example.jpetstore.domain.Product;
+import com.example.jpetstore.service.OrderFormValidator;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
@@ -38,11 +39,11 @@ public class OrderController {
 	String productId;
 	int i_productId = -1;
 
-//	@Autowired
-//	private ProductFormValidator validator;
-//	public void setValidator(ProductFormValidator validator) {
-//		this.validator = validator;
-//	}
+	@Autowired
+	private OrderFormValidator validator;
+	public void setValidator(OrderFormValidator validator) {
+		this.validator = validator;
+	}
 
 	@ModelAttribute("orderForm")
 	public OrderForm formBackingObject(HttpServletRequest request) throws Exception {
@@ -73,8 +74,10 @@ public class OrderController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(HttpServletRequest request, HttpSession session,
-			@ModelAttribute("orderForm") OrderForm orderForm, @ModelAttribute("userSession") UserSession userSession,
+			@ModelAttribute("userSession") UserSession userSession, @ModelAttribute("orderForm") OrderForm orderForm,
 			BindingResult result) throws Exception {
+		validator.validate(orderForm, result);
+	    if (result.hasErrors()) return formViewName;
 
 		Product product = sosomarket.getProduct(i_productId);
 
