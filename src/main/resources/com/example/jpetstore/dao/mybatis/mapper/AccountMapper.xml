@@ -18,7 +18,7 @@
         BANK_NUMBER AS bankNumber,
         WITHDRAW AS withdraw
     FROM ACCOUNT
-    WHERE ACCOUNT_ID = #{accountId}
+    WHERE ACCOUNT_ID = #{accountId, jdbcType=VARCHAR}
   </select>
 
   <select id="getAccountLogIn" resultType="Account">

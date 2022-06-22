@@ -71,7 +71,7 @@ public class BiddingController {
 		
 		if(presentBiddingPrice < biddingForm.getBidding().getBiddingPrice()) {
 			sosomarket.insertBidding(biddingForm.getBidding());
-			sosomarket.updateAuctionCurrentPrice(biddingForm.getBidding());
+			sosomarket.updateAuctionCurrentPriceAndBuyerId(biddingForm.getBidding());
 		} 
 				
 		return successViewName;  

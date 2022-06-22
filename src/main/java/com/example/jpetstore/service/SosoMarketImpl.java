@@ -153,8 +153,8 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		auctionDao.deleteAuction(auctionId);
 	}
 	
-	public void updateAuctionCurrentPrice(Bidding bidding) {
-		auctionDao.updateAuctionCurrentPrice(bidding);
+	public void updateAuctionCurrentPriceAndBuyerId(Bidding bidding) {
+		auctionDao.updateAuctionCurrentPriceAndBuyerId(bidding);
 	}
 
 //	public void updateAuctionStatus(Auction auction) {
