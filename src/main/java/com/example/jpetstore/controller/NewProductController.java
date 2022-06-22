@@ -21,6 +21,8 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
+
+import com.example.jpetstore.service.ProductFormValidator;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
@@ -37,6 +39,11 @@ public class NewProductController implements ApplicationContextAware {
 	@Autowired
 	private SosoMarketFacade sosomarket;
 	
+	@Autowired
+	private ProductFormValidator validator;
+	public void setValidator(ProductFormValidator validator) {
+		this.validator = validator;
+	}
 	
 	@Value("/upload/")
 	private String uploadDirLocal;
@@ -54,12 +61,6 @@ public class NewProductController implements ApplicationContextAware {
 		this.context = (WebApplicationContext) appContext;
 		this.uploadDir = context.getServletContext().getRealPath(this.uploadDirLocal);
 	}
-
-//	@Autowired
-//	private ProductFormValidator validator;
-//	public void setValidator(ProductFormValidator validator) {
-//		this.validator = validator;
-//	}
 		
 	@ModelAttribute("productForm")
 	public ProductForm formBackingObject(HttpServletRequest request) 
@@ -82,10 +83,12 @@ public class NewProductController implements ApplicationContextAware {
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(
 			HttpServletRequest request, HttpSession session,
-			@ModelAttribute("productForm") ProductForm productForm,
-			@ModelAttribute("userSession") UserSession userSession,
+			@ModelAttribute("productForm") ProductForm productForm,			@ModelAttribute("userSession") UserSession userSession,
 			MultipartHttpServletRequest multiRequest,
 			BindingResult result) throws Exception {
+		
+		validator.validate(productForm, result);
+	    if (result.hasErrors()) return formViewName;
 		
 		//¿ÃπÃ¡ˆ
 		MultipartFile imageFile = multiRequest.getFile("imageFile");

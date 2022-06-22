@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
 
 import com.example.jpetstore.domain.Product;
+import com.example.jpetstore.service.AuctionFormValidator;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
@@ -61,11 +62,11 @@ public class NewAuctionController implements ApplicationContextAware {
 		System.out.println("파일경로:" + this.uploadDir);
 	}
 
-//	@Autowired
-//	private ProductFormValidator validator;
-//	public void setValidator(ProductFormValidator validator) {
-//		this.validator = validator;
-//	}
+	@Autowired
+	private AuctionFormValidator validator;
+	public void setValidator(AuctionFormValidator validator) {
+		this.validator = validator;
+	}
 
 	@ModelAttribute("auctionForm")
 	public AuctionForm formBackingObject(HttpServletRequest request) throws Exception {
@@ -91,6 +92,9 @@ public class NewAuctionController implements ApplicationContextAware {
 			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			@ModelAttribute("userSession") UserSession userSession, MultipartHttpServletRequest multiRequest,
 			BindingResult result) throws Exception {
+		
+		validator.validate(auctionForm, result);
+	    if (result.hasErrors()) return formViewName;
 
 		// 이미지
 		MultipartFile imageFile = multiRequest.getFile("imageFile");
