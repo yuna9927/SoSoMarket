@@ -110,7 +110,7 @@
 				class="rounded-circle img-fluid border"></a>
 			<h5 class="text-center mt-3 mb-3">경매 상품</h5>
 			<p class="text-center">
-				<a class="btn btn-success">확인하기</a>
+				<a href="<c:url value="/shop/viewAuctionList.do"/>" class="btn btn-success">확인하기</a>
 			</p>
 		</div>
 		<div class="col-12 col-md-4 p-5 mt-3">
@@ -119,7 +119,7 @@
 				class="rounded-circle img-fluid border"></a>
 			<h2 class="h5 text-center mt-3 mb-3">일반 상품</h2>
 			<p class="text-center">
-				<a class="btn btn-success">확인하기</a>
+				<a href="<c:url value="/shop/viewProductList.do"/>" class="btn btn-success">확인하기</a>
 			</p>
 		</div>
 	</div>
