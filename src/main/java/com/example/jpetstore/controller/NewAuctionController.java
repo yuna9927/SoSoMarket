@@ -96,9 +96,8 @@ public class NewAuctionController implements ApplicationContextAware {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(HttpServletRequest request, HttpSession session,
-			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			@ModelAttribute("userSession") UserSession userSession, MultipartHttpServletRequest multiRequest,
-			ModelMap model,
+			ModelMap model, @ModelAttribute("auctionForm") AuctionForm auctionForm,
 			BindingResult result) throws Exception {
 		
 		validator.validate(auctionForm, result);

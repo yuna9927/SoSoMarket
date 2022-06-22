@@ -29,12 +29,12 @@ public class ProductFormValidator implements Validator {
 	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.shipping", "SHIPPING_REQUIRED", "배송방법을 입력해주세요.");
 	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.shippingFee", "SHIPPING_FEE_REQUIRED", "배송비를 입력해주세요.");
 	    
-//	    if (product.getPrice() < 1000) {
-//        	errors.reject("PRICE_TOO_LOW", "1000원 아래로는 등록이 불가능합니다.");
-//        }
-//	    
-//	    if (errors.hasFieldErrors() && !errors.hasGlobalErrors()) {
-//	    	errors.reject("ERRORS_OCCURED", "입력 과정에서 오류가 발생했습니다. 다시 확인해주세요.");
-//	    }
+	    if (product.getPrice() < 1000) {
+        	errors.rejectValue("product.price", "PRICE_TOO_LOW", "1000원 아래로는 등록이 불가능합니다.");
+        }
+	    
+	    if (errors.hasFieldErrors() && !errors.hasGlobalErrors()) {
+	    	errors.reject("ERRORS_OCCURED", "입력 과정에서 오류가 발생했습니다. 다시 확인해주세요.");
+	    }
 	}
 }

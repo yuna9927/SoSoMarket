@@ -83,8 +83,8 @@ public class NewProductController implements ApplicationContextAware {
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(
 			HttpServletRequest request, HttpSession session,
-			@ModelAttribute("productForm") ProductForm productForm,			@ModelAttribute("userSession") UserSession userSession,
-			MultipartHttpServletRequest multiRequest,
+			@ModelAttribute("userSession") UserSession userSession, MultipartHttpServletRequest multiRequest,
+			@ModelAttribute("productForm") ProductForm productForm,	
 			BindingResult result) throws Exception {
 		
 		validator.validate(productForm, result);
