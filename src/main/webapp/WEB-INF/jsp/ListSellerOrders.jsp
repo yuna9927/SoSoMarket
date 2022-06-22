@@ -36,7 +36,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="order" items="${sellOrderList}">
+							<c:forEach var="order" items="${sellOrderList.pageList}">
 								<tr>
 									<td class="align-middle py-3">
 										<div class="d-flex align-items-center">
@@ -72,13 +72,13 @@
 						<nav class="d-flex ml-md-auto d-print-none"
 							aria-label="Pagination">				        
 							<ul class="pagination justify-content-end font-weight-semi-bold mb-0">
-								<c:if test="${!biddingList.firstPage}">
+								<c:if test="${!sellOrderList.firstPage}">
 									<li class="page-item"><a id="datatablePaginationPrev"
 										class="page-link" href="?page=previous" aria-label="Previous"><i
 											class="gd-angle-left icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
-								<c:if test="${!biddingList.lastPage}">
+								<c:if test="${!sellOrderList.lastPage}">
 									<li class="page-item"><a id="datatablePaginationNext"
 										class="page-link" href="?page=next" aria-label="Next"><i
 											class="gd-angle-right icon-text icon-text-xs d-inline-block"></i></a>
