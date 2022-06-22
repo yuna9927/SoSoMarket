@@ -12,6 +12,8 @@ public interface WishDao {
 
     List<Wish> getWishListByUser(String accountId) throws DataAccessException;
     
+    List<Wish> getWishListAuctionByUser(String accountId) throws DataAccessException;
+    
     void insertWish(Wish wish) throws DataAccessException;
 
     void deleteWish(int productId) throws DataAccessException;

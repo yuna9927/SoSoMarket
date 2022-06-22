@@ -31,6 +31,10 @@ public class MybatisWishDao implements WishDao {
     	return wishMapper.getWishListByUser(accountId);
     }
     
+    public List<Wish> getWishListAuctionByUser(String accountId) throws DataAccessException {
+    	return wishMapper.getWishListAuctionByUser(accountId);
+    }
+    
     public void insertWish(Wish wish) throws DataAccessException {
     	wishMapper.insertWish(wish);
     }
