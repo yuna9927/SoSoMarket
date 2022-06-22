@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,25 +26,28 @@ public class SearchProductsController {
 	}
 
 	@RequestMapping("/shop/searchProducts.do")
-	public ModelAndView handleRequest(HttpServletRequest request,
+	public String handleRequest(HttpServletRequest request,
 			@RequestParam(value = "keyword", required = false) String keyword,
 			@RequestParam(value = "page", required = false) String page,
-			@RequestParam(value = "type", required = false) String type) throws Exception {
+			@RequestParam(value = "type", required = false) String type,
+			ModelMap model) throws Exception {
 		if (keyword != null) {
 			if (!StringUtils.hasLength(keyword)) {
-				return new ModelAndView("Error", "message",
-						"Please enter a keyword to search for, then press the search button.");
+				model.put("message", "Please enter a keyword to search for, then press the search button.");
+				return "Error";
 			}
 
 			System.out.println("type: " + type);
-			
+			model.put("keyword", keyword);
 			//search product
 			if (type.equals("product")) {
 				PagedListHolder<Product> productList = new PagedListHolder<Product>(
 						this.sosoMarket.searchProductList(keyword.toLowerCase()));
 				productList.setPageSize(4);
 				request.getSession().setAttribute("SearchProductsController_productList", productList);
-				return new ModelAndView("SearchProductList", "productList", productList);
+
+				model.put("productList", productList);
+				return "SearchProductList";
 			}
 			//search auction
 			else {
@@ -51,22 +55,42 @@ public class SearchProductsController {
 						this.sosoMarket.searchAuctionList(keyword.toLowerCase()));
 				auctionList.setPageSize(4);
 				request.getSession().setAttribute("SearchProductsController_auctionList", auctionList);
-				return new ModelAndView("SearchAuctionList", "auctionList", auctionList);
+				
+				model.put("auctionList", auctionList);
+				return "SearchAuctionList";
 			}
 			
 		} else {
 			@SuppressWarnings("unchecked")
 			PagedListHolder<Product> productList = (PagedListHolder<Product>) request.getSession()
 					.getAttribute("SearchProductsController_productList");
-			if (productList == null) {
-				return new ModelAndView("Error", "message", "Your session has timed out. Please start over again.");
+			@SuppressWarnings("unchecked")
+			PagedListHolder<Auction> auctionList = (PagedListHolder<Auction>) request.getSession()
+					.getAttribute("SearchProductsController_auctionList");
+			model.put("keyword", keyword);
+			
+			if (productList == null && auctionList == null) {
+				model.put("message", "Your session has timed out. Please start over again.");
+				return "Error";
 			}
-			if ("next".equals(page)) {
-				productList.nextPage();
-			} else if ("previous".equals(page)) {
-				productList.previousPage();
+			else if (productList != null && auctionList == null) {
+				if ("next".equals(page)) {
+					productList.nextPage();
+				} else if ("previous".equals(page)) {
+					productList.previousPage();
+				}
+				model.put("productList", productList);
+				return "SearchProductList";
 			}
-			return new ModelAndView("SearchProducts", "productList", productList);
+			else {
+				if ("next".equals(page)) {
+					auctionList.nextPage();
+				} else if ("previous".equals(page)) {
+					auctionList.previousPage();
+				}
+				model.put("auctionList", auctionList);
+				return "SearchAuctionList";
+			}
 		}
 	}
 

@@ -66,7 +66,7 @@
 						<tr>
 							<td colspan="2"><b><font size="4">주문 상태 변경:</font></b>
 							
-							<form:form modelAttribute="OrderForm" method="post">
+							<form:form method="post">
 							<form:errors cssClass="error" />
 								<form:select path="order.orderStatus">
 									<form:option value="waiting" label="주문 확인 중" />
