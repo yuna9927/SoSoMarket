@@ -38,6 +38,7 @@ public class UpdateOrderStatusController {
 		if (userSession.getAccount().getAccountId().equals(order.getSellerId())) {
 			order.setOrderStatus(orderStatus);
 			this.sosomarket.updateOrderStatus(order);
+			System.out.println("order º¯°æ ÈÄ :" + order);
 			return new ModelAndView("ViewSellerOrder", "order", order);
 		}
 		else {

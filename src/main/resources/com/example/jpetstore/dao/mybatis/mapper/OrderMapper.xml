@@ -98,7 +98,7 @@
   <update id="updateOrderStatus" parameterType="Order">
     UPDATE ORDERS
     SET ORDER_STATUS = #{orderStatus}
-	WHERE ACCOUNT_ID = #{sellerId} AND ORDER_ID = #{orderId}
+	WHERE ACCOUNT_ID = #{buyerId} AND ORDER_ID = #{orderId}
   </update>
   
   <select id="getOrderListBySeller" resultType="Order">
