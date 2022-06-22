@@ -131,5 +131,6 @@ public class NewAuctionController implements ApplicationContextAware {
 			e.printStackTrace();
 		}
 		return filename;
+		
 	}
 }
