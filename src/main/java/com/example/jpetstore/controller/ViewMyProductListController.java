@@ -26,6 +26,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
 @SessionAttributes({"userSession", "productList", "auctionList"})
 public class ViewMyProductListController {
 
+	@Autowired
 	private SosoMarketFacade sosomarket;
 
 	@Autowired
