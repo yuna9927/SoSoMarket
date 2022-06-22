@@ -51,17 +51,32 @@
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-							<td colspan="2"><b><font size="4">주문 상태:</font>
+							<td colspan="2"><b><font size="4">현재 주문 상태:</font>
 							<c:if test="${order.orderStatus eq 'waiting'}">
-									주문확인중</b></td>
+									주문확인중
 							</c:if>
 							<c:if test="${order.orderStatus eq 'check'}">
-								배송준비중</b></td>
+								배송준비중
 							</c:if>
 							<c:if test="${order.orderStatus eq 'start'}">
-								배송중</b></td>
+								배송중
 							</c:if>
+							</b></td>
 						</tr>
+						<tr>
+							<td colspan="2"><b><font size="4">주문 상태 변경:</font></b>
+							
+							<form:form modelAttribute="updateOrderForm" method="post">
+							<form:errors cssClass="error" />
+								<form:select path="order.orderStatus">
+									<form:option value="waiting" label="주문 확인 중" />
+									<form:option value="check" label="배송 준비 중 " />
+									<form:option value="start" label="배송 중 " />
+								</form:select>
+							</form:form>
+							</td>
+							</tr>
+							
 						<tr>
 							<td>&nbsp;</td>
 						</tr>
