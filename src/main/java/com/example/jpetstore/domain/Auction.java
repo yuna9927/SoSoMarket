@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @SuppressWarnings("serial")
 public class Auction implements Serializable {
 
@@ -15,16 +17,8 @@ public class Auction implements Serializable {
 	private int currentPrice;
 	private int startPrice;
 	private String currentPriceBuyerId;
-	
-public String getCurrentPriceBuyerId() {
-		return currentPriceBuyerId;
-	}
 
-	public void setCurrentPriceBuyerId(String currentPriceBuyerId) {
-		this.currentPriceBuyerId = currentPriceBuyerId;
-	}
-
-	//	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date deadLine;
 	private List<Bidding> biddingList = new ArrayList<Bidding>();
 
@@ -81,6 +75,13 @@ public String getCurrentPriceBuyerId() {
 		return true;
 	}
 
+	public String getCurrentPriceBuyerId() {
+		return currentPriceBuyerId;
+	}
+
+	public void setCurrentPriceBuyerId(String currentPriceBuyerId) {
+		this.currentPriceBuyerId = currentPriceBuyerId;
+	}
 	@Override
 	public String toString() {
 		return "Auction [auctionId=" + auctionId + ", product=" + product + ", currentPrice=" + currentPrice

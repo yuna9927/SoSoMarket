@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="deadLine">마감 날짜</label>
-                    <form:input class="form-control mt-1" name="deadLine" placeholder="ex. 2022/06/23 **형식을 맞춰야 합니다" path="auction.deadLine" htmlEscape="false"/>
+                    <form:input class="form-control mt-1" name="deadLine" placeholder="ex. 2022-06-23 13:00 **형식을 맞춰야 합니다" path="auction.deadLine" htmlEscape="false"/>
                     <form:errors path="auction.deadLine" cssClass="error" />
                 </div>
             </div>

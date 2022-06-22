@@ -20,6 +20,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.example.jpetstore.domain.Auction;
+import com.example.jpetstore.domain.Bidding;
 /**
  * @author Eduardo Macarron
  *
@@ -32,7 +33,7 @@ public interface AuctionMapper {
 	  
 	void deleteAuction(int productId);
 	
-	void updateAuctionCurrentPrice(@Param("productId") int productId, @Param("biddingPrice") int biddingPrice);
+	void updateAuctionCurrentPrice(Bidding bidding);
 
 	List<Auction> getAuctionListByUser(String accountId);
 	

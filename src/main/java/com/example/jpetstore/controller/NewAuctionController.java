@@ -114,7 +114,7 @@ public class NewAuctionController implements ApplicationContextAware {
 		sosomarket.insertAuction(auctionForm.getAuction());
 		date = auctionForm.getAuction().getDeadLine();
 		
-//		service.setOrder(order);
+		System.out.println(date);
 		service.testScheduler(date, auctionForm.getAuction().getAuctionId());
 			
 		return successViewName;
@@ -131,5 +131,6 @@ public class NewAuctionController implements ApplicationContextAware {
 			e.printStackTrace();
 		}
 		return filename;
+		
 	}
 }
