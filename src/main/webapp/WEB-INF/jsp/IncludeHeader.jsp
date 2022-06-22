@@ -63,12 +63,22 @@
 				class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
 				<div class="flex-fill">
                     <ul class="nav navbar-nav d-flex">
-                        <li class="nav-item">
-                            <a class="nav-link" href="<c:url value="/shop/newAuctionForm.do"/>">경매상품 등록</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<c:url value="/shop/newProductForm.do"/>">일반상품 등록</a>
-                        </li>
+                    	<c:if test="${empty userSession.account}">
+	                    	<li class="nav-item">
+	                            <a class="nav-link" href="<c:url value="/main/signonForm.do"/>">경매상품 등록</a>
+	                        </li>
+	                        <li class="nav-item">
+	                            <a class="nav-link" href="<c:url value="/main/signonForm.do"/>">일반상품 등록</a>
+	                        </li>
+						</c:if>
+						<c:if test="${!empty userSession.account}">
+	                        <li class="nav-item">
+	                            <a class="nav-link" href="<c:url value="/shop/newAuctionForm.do"/>">경매상품 등록</a>
+	                        </li>
+	                        <li class="nav-item">
+	                            <a class="nav-link" href="<c:url value="/shop/newProductForm.do"/>">일반상품 등록</a>
+	                        </li>
+                        </c:if>
                         <li class="nav-item">
                             <a class="nav-link" href="<c:url value="/shop/viewProductList.do"/>">상품 목록</a>
                         </li>
@@ -92,13 +102,12 @@
 					<c:if test="${empty userSession.account}">
 						<a class="nav-icon position-relative text-decoration-none"
 							href="<c:url value="/main/signonForm.do"/>">
-							<i class="fa fa-fw fa-sign-in text-dark mr-3"></i>
+							로그인</i>
 						</a>
 					</c:if>
 					<c:if test="${!empty userSession.account}">
 						<a class="nav-icon position-relative text-decoration-none"
-							href="<c:url value="/main/signoff.do"/>"> <i
-							class="fa fa-fw fa-sign-out text-dark mr-3"></i>
+							href="<c:url value="/main/signoff.do"/>"> 로그아웃
 						</a>
 						<a class="nav-icon position-relative text-decoration-none"
 							href="<c:url value="/user/viewAccount.do"/>"> <i class="fa fa-fw fa-user text-dark mr-3"></i>

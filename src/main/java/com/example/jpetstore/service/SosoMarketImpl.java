@@ -92,8 +92,8 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		return productDao.getProduct(productId);
 	}
 
-	public Product getProduct(String accountId, String title) {
-		return productDao.getProduct(accountId, title);
+	public Product getProductByUserAndTitle(String accountId, String title) {
+		return productDao.getProductByUserAndTitle(accountId, title);
 	}
 	
 	public List<Product> getAllProduct() {
@@ -153,8 +153,8 @@ public class SosoMarketImpl implements SosoMarketFacade {
 		auctionDao.deleteAuction(auctionId);
 	}
 	
-	public void updateAuctionCurrentPrice(int productId, int biddingPrice) {
-		auctionDao.updateAuctionCurrentPrice(productId, biddingPrice);
+	public void updateAuctionCurrentPriceAndBuyerId(Bidding bidding) {
+		auctionDao.updateAuctionCurrentPriceAndBuyerId(bidding);
 	}
 
 //	public void updateAuctionStatus(Auction auction) {
@@ -201,6 +201,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	public void insertOrder(Order order) {
 		orderDao.insertOrder(order);
 	}
+	
+	public Order getOrder(int orderId) {
+		return orderDao.getOrder(orderId);
+	}	
 
 	public Order getOrderByBuyer(int orderId) {
 		return orderDao.getOrderByBuyer(orderId);

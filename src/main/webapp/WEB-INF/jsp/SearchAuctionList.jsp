@@ -4,15 +4,14 @@
 <!-- Start Content -->
 <div class="container py-5">
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 ">
             <h1 class="h2 pb-4">경매상품 카테고리</h1>
             <ul class="list-unstyled templatemo-accordion">
             	<c:forEach var="category" items="${categoryList}">
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none"
-                    	href='<c:url value="/shop/viewAuctionCategory.do"><c:param name="categoryId" value="${category.categoryId}"/></c:url>'>
-                        <c:out value="${category.name}" />
-                    </a>
+                <li class="d-grid gap-2 col-10">
+                	<button type="button" class="btn btn-light"
+                	onclick="location.href='<c:url value="/shop/viewAuctionCategory.do">
+                	<c:param name="categoryId" value="${category.categoryId}"/></c:url>';"><c:out value="${category.name}" /></button>
                 </li>
                 </c:forEach>
             </ul>
@@ -30,7 +29,13 @@
                         </li>
                     </ul>
                 </div>
-
+            </div>
+             <div class="row">
+            	<div class="col-md-6">
+            		<c:if test="${!empty keyword}">
+	                   	<p><i>[<c:out value="${keyword}" />]를 검색한 결과입니다.</i></p>
+	                </c:if>
+            	</div>
             </div>
             <div class="row">
             <c:forEach var="auction" items="${auctionList.pageList}">
@@ -53,7 +58,7 @@
                             </div>
                             <div class="card-body">
                                 <a href='<c:url value="/shop/viewAuction.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>' class="h3 text-decoration-none"><c:out value="${auction.product.title}" /></a>
-                                <p class="mb-0"><fmt:formatNumber value="${auction.product.price}"
+                                <p class="mb-0"><fmt:formatNumber value="${auction.startPrice}"
                                     pattern="$#,##0.00" /></p>
                                 <c:if test="${auction.product.productStatus eq 'sale'}">
 									<span class="badge text-bg-primary" style="float:right;">판매중</span>
@@ -71,16 +76,20 @@
             </div>
             <div div="row">
                 <ul class="pagination pagination-lg justify-content-end">
-	                <li class="page-item">
-	                 <c:if test="${!auctionList.firstPage}">
-	                    <a href='<c:url value="/shop/viewAuctionList2.do">
+	                
+                 	<c:if test="${!auctionList.firstPage}">
+	                 	<li class="page-item">
+	                    	<a href='<c:url value="/shop/viewAuctionList2.do">
 	          				<c:param name="page" value="previous"/></c:url>' class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0">&lt;</a>
+       					</li>
 	               	</c:if>
 	                <c:if test="${!auctionList.lastPage}">
+	                	<li class="page-item">
 	                   	<a href='<c:url value="/shop/viewAuctionList2.do">
 	            		<c:param name="page" value="next"/></c:url>' class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark">&gt;</a>
+	            		</li>
 	                </c:if>
-	                </li>
+	                
                 </ul>
                 
             </div>

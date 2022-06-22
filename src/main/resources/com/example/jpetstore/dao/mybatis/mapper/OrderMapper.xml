@@ -4,6 +4,19 @@
 <mapper namespace="com.example.jpetstore.dao.mybatis.mapper.OrderMapper">
 
   <cache />
+  <select id="getOrder" resultType="Order">
+    SELECT
+    	O.ORDER_DATE as orderDate,
+		O.PRODUCT_ID as productId,
+		O.ORDER_ID as orderId,
+		O.ORDER_STATUS as orderStatus,
+		O.SHIPPING_ADDRESS as shippingAddress,
+		O.SHIPPING_ZIPCODE as shippingZipcode,
+		O.ACCOUNT_ID as buyerId
+    FROM ORDERS O
+    WHERE O.ORDER_ID = #{orderId}
+  </select>
+  
   
   <select id="getOrderBySeller" resultType="Order">
     SELECT
@@ -85,7 +98,7 @@
   <update id="updateOrderStatus" parameterType="Order">
     UPDATE ORDERS
     SET ORDER_STATUS = #{orderStatus}
-	WHERE ACCOUNT_ID = #{sellerId} AND ORDER_ID = #{orderId}
+	WHERE ACCOUNT_ID = #{buyerId} AND ORDER_ID = #{orderId}
   </update>
   
   <select id="getOrderListBySeller" resultType="Order">

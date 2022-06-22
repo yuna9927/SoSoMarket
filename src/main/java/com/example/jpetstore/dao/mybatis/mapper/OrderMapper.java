@@ -25,6 +25,8 @@ import com.example.jpetstore.domain.Order;
  */
 public interface OrderMapper {
 	
+	Order getOrder(int orderId);
+	
 	Order getOrderBySeller(int orderId);
 	
 	Order getOrderByBuyer(int orderId);

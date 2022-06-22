@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.example.jpetstore.domain.Product;
@@ -85,7 +84,7 @@ public class OrderController {
 
 		System.out.println(orderForm);
 
-		// product аж╧╝╫ц product status: sale->done
+		// product О©╫ж╧О©╫О©╫О©╫ product status: sale->done
 		product.setProductStatus("done");
 		sosomarket.updateProductStatus(product);
 
