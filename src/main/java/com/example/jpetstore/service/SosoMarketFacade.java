@@ -122,6 +122,8 @@ public interface SosoMarketFacade {
 
     List<Wish> getWishListByUser(String accountId);
     
+    List<Wish> getWishListAuctionByUser(String accountId);
+    
     void insertWish(Wish wish);
 
     void deleteWish(int productId);
