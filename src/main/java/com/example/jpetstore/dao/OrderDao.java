@@ -8,6 +8,8 @@ import com.example.jpetstore.domain.Order;
 
 public interface OrderDao {
 	
+	Order getOrder(int orderId) throws DataAccessException;
+	
 	Order getOrderBySeller(int orderId) throws DataAccessException;
 	
 	Order getOrderByBuyer(int orderId) throws DataAccessException;

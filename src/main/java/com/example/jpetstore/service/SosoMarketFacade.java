@@ -101,6 +101,8 @@ public interface SosoMarketFacade {
 	/* order */
 	
 	void insertOrder(Order order);
+	
+	Order getOrder(int orderId);
 
 	Order getOrderByBuyer(int orderId);
 	

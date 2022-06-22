@@ -28,26 +28,7 @@
 
 				<!-- form -->
 				<div>
-					<form:form modelAttribute="accountForm" method="post">
-						<form:errors cssClass="error" />
-
-						<div class="form-row">
-							<div class="form-group col-12 col-md-6">
-								<font size="4"><b>사용자 정보: <c:out
-											value="${userSession.account.accountId}" /></b></font>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-group col-12 col-md-6">
-								<label for="password">비밀번호</label>
-								<form:password path="account.password" class="form-control"
-									placeholder="비밀번호 확인" />
-								<B><form:errors path="account.password" cssClass="error" /></B>
-							</div>
-						</div>
-						<button type="submit" class="btn btn-primary float-right">회원
-							탈퇴</button>
-					</form:form>
+				
 				</div>
 				<!-- End Form -->
 			</div>
