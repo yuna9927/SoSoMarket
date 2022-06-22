@@ -33,6 +33,7 @@ public class UpdateOrderStatusController {
 			@RequestParam("orderStatus") String orderStatus
 			) throws Exception {
 		Order order = this.sosomarket.getOrderBySeller(orderId);
+		System.out.println("order:" + order);
 		//seller can update order
 		if (userSession.getAccount().getAccountId().equals(order.getSellerId())) {
 			order.setOrderStatus(orderStatus);

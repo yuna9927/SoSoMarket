@@ -16,6 +16,10 @@ public class MybatisOrderDao implements OrderDao {
 	
 	@Autowired
 	protected OrderMapper orderMapper;
+	
+	public Order getOrder(int orderId) throws DataAccessException {
+		return orderMapper.getOrder(orderId);
+	}
 
 	public Order getOrderBySeller(int orderId) throws DataAccessException {
 		return orderMapper.getOrderBySeller(orderId);
