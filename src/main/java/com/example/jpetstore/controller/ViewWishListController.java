@@ -66,4 +66,31 @@ public class ViewWishListController {
 		return "ListWishs";
 	}
 	
+	@RequestMapping("/user/viewAuctionWishList.do")
+	public String auctionHandleRequest(@ModelAttribute("userSession") UserSession userSession,
+			ModelMap model
+			) throws Exception {
+		String accountId = userSession.getAccount().getAccountId();
+
+		PagedListHolder<Wish> wishList = new PagedListHolder<Wish>(this.sosomarket.getWishListAuctionByUser(accountId));
+		wishList.setPageSize(8);
+
+		model.put("wishList", wishList);
+		return "ListWishsAuction";
+	}
+
+	@RequestMapping("/user/viewAuctionWishList2.do")
+	public String auctionHandleRequest2(
+			@RequestParam("page") String page,
+			@ModelAttribute("wishList") PagedListHolder<Wish> wishList, 
+			BindingResult result) throws Exception {
+		if ("next".equals(page)) {
+			wishList.nextPage();
+		}
+		else if ("previous".equals(page)) {
+			wishList.previousPage();
+		}
+		return "ListWishsAuction";
+	}
+	
 }

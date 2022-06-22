@@ -62,6 +62,6 @@ public class WishController {
 		}
 		
 //		return new ModelAndView("Wish", "wish", wish2);
-		return "ViewProduct";
+		return "SearchProductList";
 	}
 }

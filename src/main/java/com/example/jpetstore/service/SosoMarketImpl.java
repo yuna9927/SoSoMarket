@@ -236,6 +236,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	public List<Wish> getWishListByUser(String accountId) {
 		return wishDao.getWishListByUser(accountId);
 	}
+	
+	public List<Wish> getWishListAuctionByUser(String accountId) {
+		return wishDao.getWishListAuctionByUser(accountId);
+	}
     
 	public void insertWish(Wish wish) {
 		wishDao.insertWish(wish);
