@@ -21,8 +21,17 @@
                             <c:out value="${auction.product.title}" />
                         </h1>
                         <p class="h3 py-2">
-                            <fmt:formatNumber value="${auction.product.price}" pattern="$#,##0.00" />
+                            <fmt:formatNumber value="${auction.currentPrice}" pattern="$#,##0.00" />
                         </p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>시작가:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class="text-muted"><strong>
+                                 <fmt:formatNumber value="${auction.startPrice}" pattern="$#,##0.00" /></strong></p>
+                            </li>
+                        </ul>
 						<p class="text-muted">
                         	<fmt:formatDate value="${auction.product.createdTime}" pattern="yyyy/MM/dd hh:mm:ss" />
                         </p>
@@ -52,13 +61,34 @@
                                  <fmt:formatNumber value="${auction.product.shippingFee}" pattern="$#,##0.00" /></strong></p>
                             </li>
                         </ul>
+                        <h6>상품 상태:
+	                        <c:if test="${auction.product.productStatus eq 'sale'}">
+								<span class="badge text-bg-primary">판매중</span>
+							</c:if>
+							<c:if test="${auction.product.productStatus eq 'done'}">
+								<span class="badge text-bg-secondary" >판매완료</span>
+							</c:if>
+						</h6>
+						<br><br>
 						<c:if test="${auction.product.sellerId ne userSession.account.accountId}">
 	                        <div class="row pb-3">
 	                            <div class="col d-grid">
-	                                <button type="button" class="btn btn-success btn-lg"
-	                                    onclick="location.href='<c:url value="/shop/newBidding.do">
-	                                    <c:param name="productId" value="${auction.auctionId}" /></c:url>';">입찰하기
-	                                </button>
+                            	<c:choose>
+		                            <c:when test="${auction.product.productStatus eq 'done'}">
+	                                	<button type="button" class="btn btn-secondary btn-lg">판매된 상품입니다.</button>
+	                                </c:when>
+		                            <c:when test="${empty userSession.account}">
+		                            	<button type="button" class="btn btn-success btn-lg"
+		                                    onclick="location.href='<c:url value="/main/signonForm.do" />';">입찰하기
+		                                </button>
+		                            </c:when>
+		                            <c:when test="${!empty userSession.account}">
+		                            	<button type="button" class="btn btn-success btn-lg"
+		                                    onclick="location.href='<c:url value="/shop/newBidding.do">
+		                                    <c:param name="productId" value="${auction.auctionId}" /></c:url>';">입찰하기
+		                                </button>
+		                            </c:when>
+                              	</c:choose>
 	                            </div>
 	                        </div>
                         </c:if>

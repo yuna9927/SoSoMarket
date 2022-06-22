@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
+
 <!-- Start Footer -->
 <footer class="bg-dark" id="tempaltemo_footer">
 	<div class="container">
@@ -20,10 +21,9 @@
 			<div class="col-md-4 pt-5">
 				<h2 class="h2 text-light border-bottom pb-3 border-light">상품</h2>
 				<ul class="list-unstyled text-light footer-link-list">
+					<li><a href="<c:url value="/shop/viewProductList.do"/>" class="text-decoration-none">일반상품</a></li>
 					<li><a class="text-decoration-none"
-						href="/shop/viewProductList.do">일반상품</a></li>
-					<li><a class="text-decoration-none"
-						href="/shop/viewAuctionList.do">경매상품</a></li>
+						href="<c:url value="/shop/viewAuctionList.do"/>">경매상품</a></li>
 				</ul>
 			</div>
 
@@ -31,10 +31,18 @@
 				<h2 class="h2 text-light border-bottom pb-3 border-light">상품 등록
 				</h2>
 				<ul class="list-unstyled text-light footer-link-list">
+				<c:if test="${empty userSession.account}">
+					<li><a class="text-decoration-none"
+						href="<c:url value="/main/signonForm.do"/>">일반상품 등록</a></li>
+					<li><a class="text-decoration-none"
+						href="<c:url value="/main/signonForm.do"/>">경매상품 등록</a></li>
+				</c:if>
+				<c:if test="${!empty userSession.account}">
 					<li><a class="text-decoration-none"
 						href="<c:url value="/shop/newProductForm.do"/>">일반상품 등록</a></li>
 					<li><a class="text-decoration-none"
 						href="<c:url value="/shop/newAuctionForm.do"/>">경매상품 등록</a></li>
+				</c:if>
 				</ul>
 			</div>
 

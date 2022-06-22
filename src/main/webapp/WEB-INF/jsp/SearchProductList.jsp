@@ -8,12 +8,12 @@
         <div class="col-lg-3">
             <h1 class="h2 pb-4">일반상품 카테고리</h1>
             <ul class="list-unstyled templatemo-accordion">
-            	<c:forEach var="category" items="${categoryList}">
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none"
-                    	href='<c:url value="/shop/viewCategory.do"><c:param name="categoryId" value="${category.categoryId}"/></c:url>'>
-                        <c:out value="${category.name}" />
-                    </a>
+
+                <c:forEach var="category" items="${categoryList}">
+                <li class="d-grid gap-2 col-10">
+                	<button type="button" class="btn btn-light"
+                	onclick="location.href='<c:url value="/shop/viewCategory.do">
+                	<c:param name="categoryId" value="${category.categoryId}"/></c:url>';"><c:out value="${category.name}" /></button>
                 </li>
                 </c:forEach>
             </ul>
@@ -36,9 +36,6 @@
             	<div class="col-md-6">
             		<c:if test="${!empty keyword}">
 	                   	<p><i>[<c:out value="${keyword}" />]를 검색한 결과입니다.</i></p>
-	                </c:if>
-	                <c:if test="${!empty category}">
-	                   	<p><i>현재 카테고리는 [<c:out value="${category.name}" />]입니다.</i></p>
 	                </c:if>
             	</div>
             </div>
@@ -79,16 +76,20 @@
             </div>
             <div div="row">
                 <ul class="pagination pagination-lg justify-content-end">
-                <li class="page-item">
+                
                     <c:if test="${!productList.firstPage}">
+                    <li class="page-item">	
                         <a href='<c:url value="/shop/viewProductList2.do">
             			<c:param name="page" value="previous"/></c:url>' class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0">&lt;</a>
+           			</li>
 	                </c:if>
 	                <c:if test="${!productList.lastPage}">
+	                	<li class="page-item">
 	                    <a href='<c:url value="/shop/viewProductList2.do">
-            			<c:param name="page" value="next"/></c:url>' class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark">&gt;</a>        
+            			<c:param name="page" value="next"/></c:url>' class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark">&gt;</a>
+            			</li>        
 	                </c:if>
-	                </li>
+	          	
                 </ul>
                 
             </div>

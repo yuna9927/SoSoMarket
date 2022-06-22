@@ -31,7 +31,6 @@
 								<th class="font-weight-semi-bold border-top-0 py-2">날짜</th>
 								<th class="font-weight-semi-bold border-top-0 py-2">입찰가</th>
 								<th class="font-weight-semi-bold border-top-0 py-2">상품상태</th>
-								<th class="font-weight-semi-bold border-top-0 py-2">주문하기</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -56,11 +55,6 @@
 									<c:if test="${bidding.product.productStatus eq 'done'}">
 										<span class="badge badge-pill badge-secondary">판매완료</span>
 									</c:if>
-									</td>
-									<td class="py-3">
-										<div class="position-relative">
-											<a href="#" class="badge badge-primary">주문하기</a>
-										</div>
 									</td>
 								</tr>
 								

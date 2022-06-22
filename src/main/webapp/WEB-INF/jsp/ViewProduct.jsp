@@ -40,6 +40,7 @@
                         <p>
                             <c:out value="${product.description}" />
                         </p>
+                     
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <h6>배송방법/배송비:</h6>
@@ -48,17 +49,38 @@
                                 <p class="text-muted"><strong><c:out value="${product.shipping}" /> / <c:out value="${product.shippingFee}" /></strong></p>
                             </li>
                         </ul>
+                        <h6>상품 상태: 
+                        	<c:if test="${product.productStatus eq 'sale'}">
+								<span class="badge text-bg-primary">판매중</span>
+							</c:if>
+							<c:if test="${product.productStatus eq 'done'}">
+								<span class="badge text-bg-secondary">판매완료</span>
+							</c:if>
+                        </h6>
+                        <br><br>
 						<c:if test="${product.sellerId ne userSession.account.accountId}">
                         <div class="row pb-3">
                             <div class="col d-grid">
-                                <button type="button" class="btn btn-success btn-lg"
-                                    onclick="location.href='<c:url value="/shop/newOrderForm.do">
-                                    <c:param name="productId" value="${product.productId}" />
-                                    <c:param name="productPrice" value="${product.price}" />
-                                    <c:param name="productShippingFee" value="${product.shippingFee}" />
-                                    <c:param name="productShipping" value="${product.shipping}" />
-                                    </c:url>';">주문하기
-                                </button>
+                            <c:choose>
+                            	<c:when test="${product.productStatus eq 'done'}">
+                                	<button type="button" class="btn btn-secondary btn-lg">판매된 상품입니다.</button>
+                                </c:when>
+                            	<c:when test="${empty userSession.account}">
+	                            	<button type="button" class="btn btn-success btn-lg"
+	                                    onclick="location.href='<c:url value="/main/signonForm.do" />';">주문하기
+	                                </button>
+	                            </c:when>
+	                            <c:when test="${!empty userSession.account}">
+		                                <button type="button" class="btn btn-success btn-lg"
+		                                    onclick="location.href='<c:url value="/shop/newOrderForm.do">
+		                                    <c:param name="productId" value="${product.productId}" />
+		                                    <c:param name="productPrice" value="${product.price}" />
+		                                    <c:param name="productShippingFee" value="${product.shippingFee}" />
+		                                    <c:param name="productShipping" value="${product.shipping}" />
+		                                    </c:url>';">주문하기
+		                                </button>   
+                                </c:when>
+                            </c:choose>
                             </div>
                         </div>
                         </c:if>

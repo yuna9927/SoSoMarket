@@ -10,34 +10,23 @@
 			data-bs-slide-to="0" class="active"></li>
 		<li data-bs-target="#template-mo-zay-hero-carousel"
 			data-bs-slide-to="1"></li>
-		<li data-bs-target="#template-mo-zay-hero-carousel"
-			data-bs-slide-to="2"></li>
 	</ol>
 	<div class="carousel-inner">
 		<div class="carousel-item active">
 			<div class="container">
 				<div class="row p-5">
 					<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-						<img class="img-fluid" src="../img/banner_img_01.jpg" alt="">
+						<img class="img-fluid" src="../img/goods_img_02.jpg" alt="">
 					</div>
 					<div class="col-lg-6 mb-0 d-flex align-items-center">
 						<div class="text-align-left align-self-center">
 							<h1 class="h1 text-success">
-								<b>Zay</b> eCommerce
+								<b>소소마켓</b>
 							</h1>
-							<h3 class="h2">Tiny and Perfect eCommerce Template</h3>
+							<h3 class="h2">안전한 상품 거래 플랫폼</h3>
 							<p>
-								Zay Shop is an eCommerce HTML5 CSS template with latest version
-								of Bootstrap 5 (beta 1). This template is 100% free provided by
-								<a rel="sponsored" class="text-success"
-									href="https://templatemo.com" target="_blank">TemplateMo</a>
-								website. Image credits go to <a rel="sponsored"
-									class="text-success" href="https://stories.freepik.com/"
-									target="_blank">Freepik Stories</a>, <a rel="sponsored"
-									class="text-success" href="https://unsplash.com/"
-									target="_blank">Unsplash</a> and <a rel="sponsored"
-									class="text-success" href="https://icons8.com/" target="_blank">Icons
-									8</a>.
+								소소마켓은 안전한 상품 거래를 지원합니다. 소소한 상품들을 등록해 거래해보세요. 아주 귀여운 것들이 많습니다.
+								상품 가격이 고민된다면 경매 상품으로 등록해보세요. 마지막 입찰가로 낙찰됩니다.
 							</p>
 						</div>
 					</div>
@@ -48,36 +37,16 @@
 			<div class="container">
 				<div class="row p-5">
 					<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-						<img class="img-fluid" src="../img/banner_img_02.jpg" alt="">
+						<img class="img-fluid" src="../img/goods_img_01.jpg" alt="">
 					</div>
 					<div class="col-lg-6 mb-0 d-flex align-items-center">
 						<div class="text-align-left">
-							<h1 class="h1">Proident occaecat</h1>
-							<h3 class="h2">Aliquip ex ea commodo consequat</h3>
+							<h1 class="h1"><b>팀 노에러</b></h1>
+							<h3 class="h2">동덕여대 소프트웨어시스템개발</h3>
 							<p>
-								You are permitted to use this Zay CSS template for your
-								commercial websites. You are <strong>not permitted</strong> to
-								re-distribute the template ZIP file in any kind of template
-								collection websites.
+								팀 노에러는 김경원, 고지수, 오윤아, 이지윤으로 이루어진 팀입니다.
+								이 웹페이지를 만든 사람들입니다. 아주 그냥 열심히 했습니다요. 오류가 난다고요? 그럴 리가 없는데...
 							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="carousel-item">
-			<div class="container">
-				<div class="row p-5">
-					<div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-						<img class="img-fluid" src="../img/banner_img_03.jpg" alt="">
-					</div>
-					<div class="col-lg-6 mb-0 d-flex align-items-center">
-						<div class="text-align-left">
-							<h1 class="h1">Repr in voluptate</h1>
-							<h3 class="h2">Ullamco laboris nisi ut</h3>
-							<p>We bring you 100% free CSS templates for your websites. If
-								you wish to support TemplateMo, please make a small contribution
-								via PayPal or tell your friends about our website. Thank you.</p>
 						</div>
 					</div>
 				</div>
