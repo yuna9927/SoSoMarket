@@ -28,7 +28,14 @@
 
 				<!-- form -->
 				<div>
-				
+					<form action="<c:url value="/user/deleteUser.do"/>" method="post">
+						<div class="input-group mb-2">
+							<input type="password" class="form-control"
+								name="password" placeholder="현재 비밀번호를 다시 입력해주세요.">
+							<button type="submit" class="btn btn-primary float-right">회원탈퇴</button>
+						</div>
+					</form>
+
 				</div>
 				<!-- End Form -->
 			</div>
