@@ -35,7 +35,7 @@
             <div class="row">
             	<div class="col-md-6">
             		<c:if test="${!empty keyword}">
-	                   	<p><i>현재 검색어는 [<c:out value="${keyword}" />]입니다.</i></p>
+	                   	<p><i>[<c:out value="${keyword}" />]를 검색한 결과입니다.</i></p>
 	                </c:if>
 	                <c:if test="${!empty category}">
 	                   	<p><i>현재 카테고리는 [<c:out value="${category.name}" />]입니다.</i></p>
