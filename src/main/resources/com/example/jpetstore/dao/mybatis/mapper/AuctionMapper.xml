@@ -111,9 +111,9 @@
 
   <insert id="insertAuction" parameterType="Auction">
     INSERT INTO AUCTION
-      (PRESENT_PRICE, START_PRICE, DEADLINE, PRODUCT_ID)
+      (PRESENT_PRICE, START_PRICE, DEADLINE, PRODUCT_ID, PRESENT_PRICE_ACCOUNTID)
     VALUES
-      (#{currentPrice}, #{startPrice}, #{deadLine}, #{auctionId})
+      (#{currentPrice}, #{startPrice}, #{deadLine}, #{auctionId}, #{currentPriceBuyerId, jdbcType=VARCHAR})
   </insert>
 
   <delete id="deleteAuction" parameterType="int">
@@ -121,9 +121,10 @@
     WHERE PRODUCT_ID = #{auctionId}
   </delete>
   
-  <update id="updateAuctionCurrentPrice" parameterType="int">
+  <update id="updateAuctionCurrentPrice" parameterType="Bidding">
     UPDATE AUCTION SET
       PRESENT_PRICE = #{biddingPrice}
+      PRESENT_PRICE_ACCOUNTID = #{buyerId}
     WHERE PRODUCT_ID = #{productId}
   </update>
   

@@ -42,7 +42,7 @@ public interface SosoMarketFacade {
 
 	Product getProduct(int productId);
 	
-	Product getProduct(String accountId, String title);
+	Product getProductByUserAndTitle(String accountId, String title);
 
 	List<Product> getAllProduct();
 
@@ -76,7 +76,7 @@ public interface SosoMarketFacade {
 
 //	void updateAuctionStatus(Auction auction);
 	
-	void updateAuctionCurrentPrice(int productId, int biddingPrice);
+	void updateAuctionCurrentPrice(Bidding bidding);
 
 
 	/* Bidding */

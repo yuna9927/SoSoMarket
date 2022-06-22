@@ -14,6 +14,17 @@ public class Auction implements Serializable {
 	private Product product;
 	private int currentPrice;
 	private int startPrice;
+	private String currentPriceBuyerId;
+	
+public String getCurrentPriceBuyerId() {
+		return currentPriceBuyerId;
+	}
+
+	public void setCurrentPriceBuyerId(String currentPriceBuyerId) {
+		this.currentPriceBuyerId = currentPriceBuyerId;
+	}
+
+	//	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date deadLine;
 	private List<Bidding> biddingList = new ArrayList<Bidding>();
 

@@ -1,18 +1,17 @@
 package com.example.jpetstore.controller;
-
+import java.util.Date;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,15 +21,19 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
-
 import com.example.jpetstore.domain.Product;
+import com.example.jpetstore.service.SchedulerService;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
 @RequestMapping({ "/shop/newAuctionForm.do", "/shop/newAuction.do" })
 @SessionAttributes("auctionForm")
+
 public class NewAuctionController implements ApplicationContextAware {
 
+	private SchedulerService service;
+	Date date;
+	
 	@Value("NewAuctionForm")
 	private String formViewName;
 
@@ -49,7 +52,11 @@ public class NewAuctionController implements ApplicationContextAware {
 	public void setSosomarket(SosoMarketFacade sosomarket) {
 		this.sosomarket = sosomarket;
 	}
-
+	@Autowired
+	public void setService(SchedulerService service) {
+		this.service = service;
+	}
+	
 	UserSession userSession;
 	public String sellerId;
 	public Product product;
@@ -58,7 +65,7 @@ public class NewAuctionController implements ApplicationContextAware {
 	public void setApplicationContext(ApplicationContext appContext) throws BeansException {
 		this.context = (WebApplicationContext) appContext;
 		this.uploadDir = context.getServletContext().getRealPath(this.uploadDirLocal);
-		System.out.println("ÆÄÀÏ°æ·Î:" + this.uploadDir);
+		System.out.println("ï¿½ï¿½ï¿½Ï°ï¿½ï¿½:" + this.uploadDir);
 	}
 
 //	@Autowired
@@ -90,12 +97,10 @@ public class NewAuctionController implements ApplicationContextAware {
 	public String onSubmit(HttpServletRequest request, HttpSession session,
 			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			@ModelAttribute("userSession") UserSession userSession, MultipartHttpServletRequest multiRequest,
+			ModelMap model,
 			BindingResult result) throws Exception {
 
-		// ÀÌ¹ÌÁö
 		MultipartFile imageFile = multiRequest.getFile("imageFile");
-//				System.out.println(productForm);
-
 		String filename = uploadFile(imageFile);
 		auctionForm.getAuction().getProduct().setImage(this.uploadDirLocal + filename);
 
@@ -103,18 +108,22 @@ public class NewAuctionController implements ApplicationContextAware {
 
 		String accountId = auctionForm.getAuction().getProduct().getSellerId();
 		String title = auctionForm.getAuction().getProduct().getTitle();
-		Product product2 = sosomarket.getProduct(accountId, title);
+		Product product2 = sosomarket.getProductByUserAndTitle(accountId, title);
 
 		auctionForm.getAuction().setAuctionId(product2.getProductId());
 		sosomarket.insertAuction(auctionForm.getAuction());
-
+		date = auctionForm.getAuction().getDeadLine();
+		
+//		service.setOrder(order);
+		service.testScheduler(date, auctionForm.getAuction().getAuctionId());
+			
 		return successViewName;
 	}
 	
 	private String uploadFile(MultipartFile imageFile) {
 		String filename = UUID.randomUUID().toString() 
 						+ "_" + imageFile.getOriginalFilename();
-		System.out.println("¾÷·Îµå ÇÑ ÆÄÀÏ: "	+ filename);
+		System.out.println("ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: "	+ filename);
 		File file = new File(this.uploadDir + filename);
 		try {
 			imageFile.transferTo(file);
