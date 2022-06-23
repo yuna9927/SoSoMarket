@@ -84,6 +84,8 @@ public interface SosoMarketFacade {
 	void insertBidding(Bidding bidding);
 
 	Bidding getBidding(int biddingId);
+	
+	void deleteBidding(int auctionId);
 
 	List<Bidding> getBiddingsByUser(String accountId);
 
