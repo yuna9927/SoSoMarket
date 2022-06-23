@@ -26,11 +26,9 @@
 			<div class="w-100 d-flex justify-content-between">
 				<div>
 					<i class="fa fa-envelope mx-2"></i> <a
-						class="navbar-sm-brand text-light text-decoration-none"
-						href="20190978@dongduk.ac.kr">20190978@dongduk.ac.kr</a>
+						class="navbar-sm-brand text-light text-decoration-none">20190978@dongduk.ac.kr</a>
 						<i class="fa fa-phone mx-2"></i> <a
-						class="navbar-sm-brand text-light text-decoration-none"
-						href="tel:02-940-4000">02-940-4000</a>
+						class="navbar-sm-brand text-light text-decoration-none">02-940-4000</a>
 				</div>
 				<div>
 					<a class="text-light" href="https://www.dongduk.ac.kr/kor/main.do" target="_blank">

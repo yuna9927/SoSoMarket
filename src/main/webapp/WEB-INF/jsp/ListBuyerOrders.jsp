@@ -19,7 +19,7 @@
 					<div class="h3 mb-0">주문 목록</div>
 				</div>
 				<p style="font-size: small;">주문한 상품 목록이 경매 상품, 일반 상품에 상관없이
-					출력됩니다. *** page 넘어가는 부분 구현되면 buyOrderList 로 변경</p>
+					출력됩니다.</p>
 
 
 				<!-- Order List -->

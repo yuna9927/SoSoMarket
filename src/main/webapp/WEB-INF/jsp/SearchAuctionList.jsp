@@ -30,7 +30,11 @@
                     </ul>
                 </div>
             </div>
-             <div class="row">
+            <div class="row">
+            	<p>상품에 하트를 눌러보세요. 위시리스트에 추가됩니다. 이미 위시리스트에 있는 상품이라면 삭제됩니다.</p>
+            </div>
+            <div class="row">
+
             	<div class="col-md-6">
             		<c:if test="${!empty keyword}">
 	                   	<p><i>[<c:out value="${keyword}" />]를 검색한 결과입니다.</i></p>
