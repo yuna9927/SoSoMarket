@@ -1,5 +1,6 @@
 package com.example.jpetstore.controller;
 import java.util.Date;
+import java.util.List;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
@@ -62,11 +63,10 @@ public class NewAuctionController implements ApplicationContextAware {
 	public String sellerId;
 	public Product product;
 
-	@Override // life-cycle callback method
+	@Override
 	public void setApplicationContext(ApplicationContext appContext) throws BeansException {
 		this.context = (WebApplicationContext) appContext;
 		this.uploadDir = context.getServletContext().getRealPath(this.uploadDirLocal);
-		System.out.println("�뜝�룞�삕�뜝�떦怨ㅼ삕�뜝占�:" + this.uploadDir);
 	}
 
 	@Autowired
@@ -102,27 +102,38 @@ public class NewAuctionController implements ApplicationContextAware {
 			BindingResult result) throws Exception {
 		
 		validator.validate(auctionForm, result);
-	    if (result.hasErrors()) return formViewName;
+	    if (result.hasErrors()) 
+	    	return formViewName;
 
 		MultipartFile imageFile = multiRequest.getFile("imageFile");
 		String filename = uploadFile(imageFile);
 		auctionForm.getAuction().getProduct().setImage(this.uploadDirLocal + filename);
 
-		sosomarket.insertProduct(auctionForm.getAuction().getProduct());
-
 		String accountId = auctionForm.getAuction().getProduct().getSellerId();
 		String title = auctionForm.getAuction().getProduct().getTitle();
-		Product product2 = sosomarket.getProductByUserAndTitle(accountId, title);
+//		Product product2 = sosomarket.getProductByUserAndTitle(accountId, title);
 
-		auctionForm.getAuction().setCurrentPrice(auctionForm.getAuction().getStartPrice());
-		auctionForm.getAuction().setAuctionId(product2.getProductId());
-		sosomarket.insertAuction(auctionForm.getAuction());
-		date = auctionForm.getAuction().getDeadLine();
+		sosomarket.insertProduct(auctionForm.getAuction().getProduct());
+		List<Product> productList = sosomarket.getProductByUserAndTitle(accountId, title);
 		
-		System.out.println(date);
-		service.testScheduler(date, auctionForm.getAuction().getAuctionId());
+		
+		if(productList.size() >= 2) {
+			model.put("message", "같은 이름의 상품을 중복하여 등록할 수 없습니다");
+			return "Error";
+		} else {
 			
-		return successViewName;
+			Product product2 = productList.get(0);
+			auctionForm.getAuction().setAuctionId(product2.getProductId());
+			auctionForm.getAuction().setCurrentPrice(auctionForm.getAuction().getStartPrice());
+			
+			sosomarket.insertAuction(auctionForm.getAuction());
+			date = auctionForm.getAuction().getDeadLine();
+			
+			System.out.println(date);
+			service.testScheduler(date, auctionForm.getAuction().getAuctionId());
+				
+			return successViewName;
+		}
 	}
 	
 	private String uploadFile(MultipartFile imageFile) {
