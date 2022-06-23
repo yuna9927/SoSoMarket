@@ -29,7 +29,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
 @RequestMapping({ "/shop/newAuctionForm.do", "/shop/newAuction.do" })
-@SessionAttributes("auctionForm")
+@SessionAttributes("userSession")
 
 public class NewAuctionController implements ApplicationContextAware {
 
@@ -90,7 +90,8 @@ public class NewAuctionController implements ApplicationContextAware {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String form() {
+	public String form(ModelMap model) {
+		model.put("categoryList", sosomarket.getCategoryList());
 		return formViewName;
 	}
 
@@ -113,8 +114,8 @@ public class NewAuctionController implements ApplicationContextAware {
 //		Product product2 = sosomarket.getProductByUserAndTitle(accountId, title);
 
 		sosomarket.insertProduct(auctionForm.getAuction().getProduct());
-
 		List<Product> productList = sosomarket.getProductByUserAndTitle(accountId, title);
+		
 		
 		if(productList.size() >= 2) {
 			model.put("message", "같은 이름의 상품을 중복하여 등록할 수 없습니다");
@@ -123,6 +124,8 @@ public class NewAuctionController implements ApplicationContextAware {
 			
 			Product product2 = productList.get(0);
 			auctionForm.getAuction().setAuctionId(product2.getProductId());
+			auctionForm.getAuction().setCurrentPrice(auctionForm.getAuction().getStartPrice());
+			
 			sosomarket.insertAuction(auctionForm.getAuction());
 			date = auctionForm.getAuction().getDeadLine();
 			
@@ -136,7 +139,7 @@ public class NewAuctionController implements ApplicationContextAware {
 	private String uploadFile(MultipartFile imageFile) {
 		String filename = UUID.randomUUID().toString() 
 						+ "_" + imageFile.getOriginalFilename();
-		System.out.println("占쏙옙占싸듸옙 占쏙옙 占쏙옙占쏙옙: "	+ filename);
+		System.out.println("�뜝�룞�삕�뜝�떥�벝�삕 �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕: "	+ filename);
 		File file = new File(this.uploadDir + filename);
 		try {
 			imageFile.transferTo(file);

@@ -1,6 +1,5 @@
 package com.example.jpetstore.controller;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,15 +94,14 @@ public class AccountFormController {
       try {
          if (accountForm.isNewAccount()) {
             System.out.println("account: " + accountForm.getAccount());
-            sosomarket.insertAccount(accountForm.getAccount());
-            
+            sosomarket.insertAccount(accountForm.getAccount());     
          }
          else {
             sosomarket.updateAccount(accountForm.getAccount());
          }
       }
       catch (DataIntegrityViolationException ex) {
-         result.reject("USER_ID_ALREADY_EXISTS", "중복된 아이디입니다. 다른 아이디를 사용하세요.");
+         result.reject("USER_ID_ALREADY_EXISTS");
          return formViewName; 
       }
       

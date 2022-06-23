@@ -46,7 +46,7 @@ public class ViewWishListController {
 //			System.out.println(p);
 //		}
 		PagedListHolder<Wish> wishList = new PagedListHolder<Wish>(this.sosomarket.getWishListByUser(accountId));
-		wishList.setPageSize(8);
+		wishList.setPageSize(6);
 		System.out.println(wishList);
 		model.put("wishList", wishList);
 		return "ListWishs";
