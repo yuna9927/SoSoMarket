@@ -35,8 +35,7 @@ public class WishController {
 	public String handleRequest(
 			@RequestParam("productId") String productId,
 			@ModelAttribute("wish") Wish wish,
-			HttpServletRequest request,
-			ModelMap model
+			HttpServletRequest request
 			) throws Exception {
 
 		
@@ -52,11 +51,9 @@ public class WishController {
 			wish2 = wish;
 			wish2.setAccountId(userSession.getAccount().getAccountId());
 			wish2.setProductId(Integer.parseInt(productId));
-			model.put("isIn", "true");
 			sosomarket.insertWish(wish2);
 		} else {
 			sosomarket.deleteWish(Integer.parseInt(productId));
-			model.put("isIn", "false");
 		}
 		
 //		return new ModelAndView("Wish", "wish", wish2);
