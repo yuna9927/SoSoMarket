@@ -45,10 +45,10 @@ public class AccountFormValidator implements Validator {
 	    }
 	    if (!account.getPhoneNumber().matches("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$")
 	    		&& account.getPhoneNumber() != null && account.getPhoneNumber().length() > 0) {
-	    	errors.rejectValue("account.phoneNumber", "PHONE_NUMBER_MISMATCH", "전화번호 형식이 잘못되었습니다. 다시 확인해주세요.");
+	    	errors.rejectValue("account.phoneNumber", "PHONE_NUMBER_MISMATCH");
 	    }
 	    if (accountForm.isNewAccount()) {
-	    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.accountId", "ACCOUNT_ID_REQUIRED", "아이디를 입력해주세요.");
+	    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.accountId", "ACCOUNT_ID_REQUIRED");
 	        if (account.getPassword() == null || account.getPassword().length() < 1
 	        		|| accountForm.getRepeatedPassword() == null || accountForm.getRepeatedPassword().length() < 1) {
 	        	errors.reject("PASSWORD_WRONG");
