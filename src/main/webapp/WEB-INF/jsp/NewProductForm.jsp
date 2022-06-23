@@ -26,7 +26,14 @@
                     <form:errors path="product.title" cssClass="error" />
                 </div>
             <!-- test -->
-            <form:hidden path="product.categoryId" value="0"/>
+           <div class="form-group col-md-6 mb-3">
+                    <label for="categoryId">카테고리</label>
+                    <form:select class="form-select" path="product.categoryId">
+                       <c:forEach var="category" items="${categoryList}">
+                          <form:option value="${category.categoryId}"><c:out value="${category.name}" /></form:option>
+                       </c:forEach>
+                </form:select>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="description">상품 설명</label>

@@ -22,44 +22,46 @@ public class AccountFormValidator implements Validator {
 		AccountForm accountForm = (AccountForm)obj; 
 		Account account = accountForm.getAccount();
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.password", "PASSWORD_REQUIRED", "ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "repeatedPassword", "REPEATED_PASSWORD_REQUIRED", "ºñ¹Ğ¹øÈ£ È®ÀÎÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.nickname", "NICKNAME_REQUIRED", "´Ğ³×ÀÓÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.email", "EMAIL_ADDRESS_REQUIRED", "ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä."); 
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.phoneNumber", "PHONE_NUMBER_REQUIRED", "ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.address", "MY_ADDRESS_REQUIRED", "ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.zipcode", "MY_ZIPCODE_REQUIRED", "¿ìÆí¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.bankName", "BANK_NAME_REQUIRED", "ÀºÇà¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.bankNumber", "BANK_NUMBER_REQUIRED", "°èÁÂ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.password", "PASSWORD_REQUIRED");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "repeatedPassword", "REPEATED_PASSWORD_REQUIRED");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.nickname", "NICKNAME_REQUIRED");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.email", "EMAIL_ADDRESS_REQUIRED"); 
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.phoneNumber", "PHONE_NUMBER_REQUIRED");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.address", "ADDRESS_REQUIRED");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.zipcode", "ZIPCODE_REQUIRED");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.bankName", "BANK_NAME_REQUIRED");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.bankNumber", "BANK_NUMBER_REQUIRED");
 
 	    if (account.getPassword().length() < 6 && account.getPassword() != null && account.getPassword().length() > 0) {
-	    	errors.rejectValue("account.password", "PASSWORD_LENGTH", "ºñ¹Ğ¹øÈ£´Â ÃÖ¼Ò 6ÀÚ¸®·Î Á¤ÇØÁÖ¼¼¿ä.");
+	    	errors.rejectValue("account.password", "PASSWORD_LENGTH");
 	    }
 	    if (account.getZipcode().length() != 5 && account.getZipcode() != null && account.getZipcode().length() > 0) {
-	    	errors.rejectValue("account.zipcode", "ZIPCODE_LENGTH", "¿ìÆí¹øÈ£´Â 5ÀÚ¸®ÀÔ´Ï´Ù.");
+	    	errors.rejectValue("account.zipcode", "ZIPCODE_LENGTH");
 	    }
 	    if (account.getEmail() != null && account.getEmail().length() > 0) {
 	    	if (!account.getEmail().matches("(.*)@(.*)") || !account.getEmail().matches("(.*)\\.(.*)")) {
-		    	errors.rejectValue("account.email", "EMAIL_MISMATCH", "ÀÌ¸ŞÀÏ Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.");
+		    	errors.rejectValue("account.email", "EMAIL_MISMATCH");
 		    }
 	    }
 	    if (!account.getPhoneNumber().matches("^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$")
 	    		&& account.getPhoneNumber() != null && account.getPhoneNumber().length() > 0) {
-	    	errors.rejectValue("account.phoneNumber", "PHONE_NUMBER_MISMATCH", "ÀüÈ­¹øÈ£ Çü½ÄÀÌ Àß¸øµÇ¾ú½À´Ï´Ù.");
+	    	errors.rejectValue("account.phoneNumber", "PHONE_NUMBER_MISMATCH", "ì „í™”ë²ˆí˜¸ í˜•ì‹ì´ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤. ë‹¤ì‹œ í™•ì¸í•´ì£¼ì„¸ìš”.");
 	    }
 	    if (accountForm.isNewAccount()) {
-	    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.accountId", "ACCOUNT_ID_REQUIRED", "¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+	    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "account.accountId", "ACCOUNT_ID_REQUIRED", "ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 	        if (account.getPassword() == null || account.getPassword().length() < 1
-	        		|| !account.getPassword().equals(accountForm.getRepeatedPassword())) {
-	        	errors.reject("PASSWORD_MISMATCH", "ºñ¹Ğ¹øÈ£°¡ ¾ø°Å³ª ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+	        		|| accountForm.getRepeatedPassword() == null || accountForm.getRepeatedPassword().length() < 1) {
+	        	errors.reject("PASSWORD_WRONG");
+	        } else if (!account.getPassword().equals(accountForm.getRepeatedPassword())) {
+	        	errors.rejectValue("repeatedPassword", "PASSWORD_MISMATCH");
 	        }
 	    } else if (account.getPassword() != null && account.getPassword().length() > 0) {
 	    	if (!account.getPassword().equals(accountForm.getRepeatedPassword())) {
-	    		errors.rejectValue("repeatedPassword", "PASSWORD_MISMATCH", "ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù. ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä.");
+	    		errors.rejectValue("repeatedPassword", "PASSWORD_MISMATCH");
 	    	}
 	    }
 	    if (errors.hasFieldErrors() && !errors.hasGlobalErrors()) {
-	    	errors.reject("ERRORS_OCCURED", "ÀÔ·Â °úÁ¤¿¡¼­ ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù. ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä.");
+	    	errors.reject("ERRORS_OCCURED");
 	    }
 	}
 }

@@ -44,6 +44,9 @@ public class DeleteProductController {
 		if (!userSession.getAccount().getAccountId().equals(product.getSellerId()))
 			return new ModelAndView("Error", "message", 
 					"본인이 등록한 상품만 삭제할 수 있습니다.");
+		if (product.getProductStatus().equals("done"))
+			return new ModelAndView("Error", "message", 
+					"주문된 상품은 삭제할 수 없습니다.");
 		//상품 삭제가 가능할 경우 삭제
 		else {
 			this.sosomarket.deleteProduct(productId);

@@ -68,23 +68,21 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<div
-						class="card-footer d-block d-md-flex align-items-center d-print-none">
+					<div class="card-footer d-block d-md-flex align-items-center d-print-none">
 						<nav class="d-flex ml-md-auto d-print-none"
-							aria-label="Pagination">
-							<ul
-								class="pagination justify-content-end font-weight-semi-bold mb-0">
+							aria-label="Pagination">				        
+							<ul class="pagination justify-content-end font-weight-semi-bold mb-0">
 								<c:if test="${!productList.firstPage}">
 									<li class="page-item"><a id="datatablePaginationPrev"
 										class="page-link" href='<c:url value="/user/viewMyProductList2.do">
-            <c:param name="page" value="previous"/></c:url>' aria-label="Previous"><i
+            						<c:param name="page" value="previous"/></c:url>' aria-label="Previous"><i
 											class="gd-angle-left icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
 								<c:if test="${!productList.lastPage}">
 									<li class="page-item"><a id="datatablePaginationNext"
 										class="page-link" href='<c:url value="/user/viewMyProductList2.do">
-            <c:param name="page" value="previous"/></c:url>' aria-label="Next"><i
+            						<c:param name="page" value="next"/></c:url>' aria-label="Next"><i
 											class="gd-angle-right icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>

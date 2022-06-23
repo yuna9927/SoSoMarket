@@ -22,12 +22,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.util.WebUtils;
 import com.example.jpetstore.domain.Product;
+import com.example.jpetstore.service.AuctionFormValidator;
 import com.example.jpetstore.service.SchedulerService;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
 @RequestMapping({ "/shop/newAuctionForm.do", "/shop/newAuction.do" })
-@SessionAttributes("auctionForm")
+@SessionAttributes("userSession")
 
 public class NewAuctionController implements ApplicationContextAware {
 
@@ -65,14 +66,14 @@ public class NewAuctionController implements ApplicationContextAware {
 	public void setApplicationContext(ApplicationContext appContext) throws BeansException {
 		this.context = (WebApplicationContext) appContext;
 		this.uploadDir = context.getServletContext().getRealPath(this.uploadDirLocal);
-		System.out.println("���ϰ��:" + this.uploadDir);
+		System.out.println("�뜝�룞�삕�뜝�떦怨ㅼ삕�뜝占�:" + this.uploadDir);
 	}
 
-//	@Autowired
-//	private ProductFormValidator validator;
-//	public void setValidator(ProductFormValidator validator) {
-//		this.validator = validator;
-//	}
+	@Autowired
+	private AuctionFormValidator validator;
+	public void setValidator(AuctionFormValidator validator) {
+		this.validator = validator;
+	}
 
 	@ModelAttribute("auctionForm")
 	public AuctionForm formBackingObject(HttpServletRequest request) throws Exception {
@@ -89,16 +90,19 @@ public class NewAuctionController implements ApplicationContextAware {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String form() {
+	public String form(ModelMap model) {
+		model.put("categoryList", sosomarket.getCategoryList());
 		return formViewName;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String onSubmit(HttpServletRequest request, HttpSession session,
-			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			@ModelAttribute("userSession") UserSession userSession, MultipartHttpServletRequest multiRequest,
-			ModelMap model,
+			ModelMap model, @ModelAttribute("auctionForm") AuctionForm auctionForm,
 			BindingResult result) throws Exception {
+		
+		validator.validate(auctionForm, result);
+	    if (result.hasErrors()) return formViewName;
 
 		MultipartFile imageFile = multiRequest.getFile("imageFile");
 		String filename = uploadFile(imageFile);
@@ -110,6 +114,7 @@ public class NewAuctionController implements ApplicationContextAware {
 		String title = auctionForm.getAuction().getProduct().getTitle();
 		Product product2 = sosomarket.getProductByUserAndTitle(accountId, title);
 
+		auctionForm.getAuction().setCurrentPrice(auctionForm.getAuction().getStartPrice());
 		auctionForm.getAuction().setAuctionId(product2.getProductId());
 		sosomarket.insertAuction(auctionForm.getAuction());
 		date = auctionForm.getAuction().getDeadLine();
@@ -123,7 +128,7 @@ public class NewAuctionController implements ApplicationContextAware {
 	private String uploadFile(MultipartFile imageFile) {
 		String filename = UUID.randomUUID().toString() 
 						+ "_" + imageFile.getOriginalFilename();
-		System.out.println("���ε� �� ����: "	+ filename);
+		System.out.println("�뜝�룞�삕�뜝�떥�벝�삕 �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕: "	+ filename);
 		File file = new File(this.uploadDir + filename);
 		try {
 			imageFile.transferTo(file);

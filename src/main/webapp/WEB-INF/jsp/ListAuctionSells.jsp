@@ -71,19 +71,31 @@
 					<div class="card-footer d-block d-md-flex align-items-center d-print-none">
 						<nav class="d-flex ml-md-auto d-print-none"
 							aria-label="Pagination">				        
+<<<<<<< HEAD
 							<ul
 								class="pagination justify-content-end font-weight-semi-bold mb-0">
+=======
+							<ul class="pagination justify-content-end font-weight-semi-bold mb-0">
+>>>>>>> branch 'master' of https://github.com/20190942/SoSoMarket.git
 								<c:if test="${!auctionList.firstPage}">
 									<li class="page-item"><a id="datatablePaginationPrev"
 										class="page-link" href='<c:url value="/user/viewMyAuctionProductList2.do">
+<<<<<<< HEAD
             <c:param name="page" value="previous"/></c:url>' aria-label="Previous"><i
+=======
+            						<c:param name="page" value="previous"/></c:url>' aria-label="Previous"><i
+>>>>>>> branch 'master' of https://github.com/20190942/SoSoMarket.git
 											class="gd-angle-left icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
 								<c:if test="${!auctionList.lastPage}">
 									<li class="page-item"><a id="datatablePaginationNext"
 										class="page-link" href='<c:url value="/user/viewMyAuctionProductList2.do">
+<<<<<<< HEAD
             <c:param name="page" value="previous"/></c:url>' aria-label="Next"><i
+=======
+            						<c:param name="page" value="next"/></c:url>' aria-label="Next"><i
+>>>>>>> branch 'master' of https://github.com/20190942/SoSoMarket.git
 											class="gd-angle-right icon-text icon-text-xs d-inline-block"></i></a>
 									</li>
 								</c:if>
