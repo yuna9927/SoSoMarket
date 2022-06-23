@@ -33,7 +33,7 @@
                 <p>가격</p>
             </div>
             <div class="col-md-6">
-                <p><fmt:formatNumber value="${param.productPrice}" pattern="$#,##0.00" /></p>
+                <p><fmt:formatNumber value="${param.productPrice}" pattern="₩#,##0" /></p>
             </div>
         </div>
         <div class="row">
@@ -41,7 +41,7 @@
                 <p>배송비</p>
             </div>
             <div class="col-md-6">
-                <p><fmt:formatNumber value="${param.productShippingFee}" pattern="$#,##0.00" /></p>
+                <p><fmt:formatNumber value="${param.productShippingFee}" pattern="₩#,##0" /></p>
             </div>
         </div>
         <div class="row">

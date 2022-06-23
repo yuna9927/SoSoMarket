@@ -61,7 +61,7 @@
                             <div class="card-body">
                                 <a href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>' class="h3 text-decoration-none" ><c:out value="${product.title}" /></a>
                                 <p class="mb-0"><fmt:formatNumber value="${product.price}"
-                                    pattern="$#,##0.00" /></p>
+                                    pattern="₩#,##0" /></p>
                                 <c:if test="${product.productStatus eq 'sale'}">
 									<span class="badge text-bg-primary" style="float:right;">판매중</span>
 								</c:if>

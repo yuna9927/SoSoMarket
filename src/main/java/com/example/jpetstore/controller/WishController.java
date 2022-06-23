@@ -8,13 +8,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.example.jpetstore.domain.Wish;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
-//@SessionAttributes("wish")
+@SessionAttributes("wish")
 public class WishController { 
 
 	private SosoMarketFacade sosomarket;
@@ -37,22 +38,15 @@ public class WishController {
 			HttpServletRequest request,
 			ModelMap model
 			) throws Exception {
-//		if (cart.containsItemId(workingItemId)) {
-//			cart.incrementQuantityByItemId(workingItemId);
-//		}
-//		else {
-//			// isInStock is a "real-time" property that must be updated
-//			// every time an item is added to the cart, even if other
-//			// item details are cached.
-//			boolean isInStock = this.petStore.isItemInStock(workingItemId);
-//			Item item = this.petStore.getItem(workingItemId);
-//			cart.addItem(item, isInStock);
-//		}
+
 		
 		UserSession userSession = 
 				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 		
+		System.out.println("product id is: " + productId);
+		
 		Wish wish2 = sosomarket.getWish(wish.getProductId());
+		System.out.println("wish.getProductId() is : " + wish.getProductId());
 		
 		if(wish2 == null) {
 			wish2 = wish;

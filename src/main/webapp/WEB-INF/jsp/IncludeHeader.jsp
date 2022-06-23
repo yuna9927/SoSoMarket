@@ -64,19 +64,21 @@
 				<div class="flex-fill">
                     <ul class="nav navbar-nav d-flex">
                     	<c:if test="${empty userSession.account}">
+                    		<li class="nav-item">
+	                            <a class="nav-link" href="<c:url value="/main/signonForm.do"/>">일반상품 등록</a>
+	                        </li>
 	                    	<li class="nav-item">
 	                            <a class="nav-link" href="<c:url value="/main/signonForm.do"/>">경매상품 등록</a>
 	                        </li>
-	                        <li class="nav-item">
-	                            <a class="nav-link" href="<c:url value="/main/signonForm.do"/>">일반상품 등록</a>
-	                        </li>
+	                        
 						</c:if>
 						<c:if test="${!empty userSession.account}">
-	                        <li class="nav-item">
-	                            <a class="nav-link" href="<c:url value="/shop/newAuctionForm.do"/>">경매상품 등록</a>
-	                        </li>
+	                        
 	                        <li class="nav-item">
 	                            <a class="nav-link" href="<c:url value="/shop/newProductForm.do"/>">일반상품 등록</a>
+	                        </li>
+	                        <li class="nav-item">
+	                            <a class="nav-link" href="<c:url value="/shop/newAuctionForm.do"/>">경매상품 등록</a>
 	                        </li>
                         </c:if>
                         <li class="nav-item">

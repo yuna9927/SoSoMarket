@@ -19,7 +19,7 @@
                             <c:out value="${product.title}" />
                         </h1>
                         <p class="h3 py-2">
-                            <fmt:formatNumber value="${product.price}" pattern="$#,##0.00" />
+                            <fmt:formatNumber value="${product.price}" pattern="₩#,##0" />
                         </p>
 						<p class="text-muted">
                         	<fmt:formatDate value="${product.createdTime}" pattern="yyyy/MM/dd hh:mm:ss" />

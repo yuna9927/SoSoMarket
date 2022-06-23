@@ -1,7 +1,6 @@
 package com.example.jpetstore.service;
 
 import java.util.List;
-
 import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Bidding;
@@ -42,7 +41,7 @@ public interface SosoMarketFacade {
 
 	Product getProduct(int productId);
 	
-	Product getProductByUserAndTitle(String accountId, String title);
+	List<Product> getProductByUserAndTitle(String accountId, String title);
 
 	List<Product> getAllProduct();
 
@@ -84,6 +83,8 @@ public interface SosoMarketFacade {
 	void insertBidding(Bidding bidding);
 
 	Bidding getBidding(int biddingId);
+	
+	void deleteBidding(int auctionId);
 
 	List<Bidding> getBiddingsByUser(String accountId);
 

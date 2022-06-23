@@ -45,15 +45,15 @@
 								<c:if test="${accountForm.newAccount}">
 								<form:input type="text"
 									class="form-control" value="" id="id" name="id"
-									placeholder="User ID" path="account.accountId" htmlEscape="false" />
+									placeholder="아이디 입력" path="account.accountId" htmlEscape="false" />
 			              			<B><form:errors path="account.accountId" cssClass="error" /></B>
 			              		</c:if>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-12 col-md-6">
-								<label for="password">비밀번호</label>
-								<form:password path="account.password" class="form-control" placeholder="새로운 비밀번호" /> 
+								<label for="password">비밀번호(*6글자 이상)</label>
+								<form:password path="account.password" class="form-control" placeholder="최소 6글자 이상 입력해야 합니다." /> 
               						<B><form:errors path="account.password" cssClass="error" /></B>
 							</div>
 							<div class="form-group col-12 col-md-6">
@@ -89,7 +89,7 @@
 							</div>
 							<div class="form-group col-12 col-md-6">
 								<label for="zipcode">우편번호</label>
-								<form:input path="account.zipcode" class="form-control" placeholder="우편번호" htmlEscape="false" /> 
+								<form:input path="account.zipcode" class="form-control" placeholder="5자리를 입력해야 합니다." htmlEscape="false" /> 
               						<B><form:errors path="account.zipcode" cssClass="error" /></B>
 							</div>
 						</div>
