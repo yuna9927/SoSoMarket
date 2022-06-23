@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
 @RequestMapping({"/shop/newProduct.do","/shop/newProductForm.do"})
-@SessionAttributes("productForm")
+@SessionAttributes("userSession")
 public class NewProductController implements ApplicationContextAware { 
 
 	@Value("NewProductForm")
@@ -76,7 +77,8 @@ public class NewProductController implements ApplicationContextAware {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String form() {
+	public String form(ModelMap model) {
+		model.put("categoryList", sosomarket.getCategoryList());
 		return formViewName;
 	}
 	

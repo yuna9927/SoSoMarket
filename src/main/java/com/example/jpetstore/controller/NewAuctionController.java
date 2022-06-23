@@ -28,7 +28,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
 @RequestMapping({ "/shop/newAuctionForm.do", "/shop/newAuction.do" })
-@SessionAttributes("auctionForm")
+@SessionAttributes("userSession")
 
 public class NewAuctionController implements ApplicationContextAware {
 
@@ -66,7 +66,7 @@ public class NewAuctionController implements ApplicationContextAware {
 	public void setApplicationContext(ApplicationContext appContext) throws BeansException {
 		this.context = (WebApplicationContext) appContext;
 		this.uploadDir = context.getServletContext().getRealPath(this.uploadDirLocal);
-		System.out.println("占쏙옙占싹곤옙占�:" + this.uploadDir);
+		System.out.println("�뜝�룞�삕�뜝�떦怨ㅼ삕�뜝占�:" + this.uploadDir);
 	}
 
 	@Autowired
@@ -90,7 +90,8 @@ public class NewAuctionController implements ApplicationContextAware {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String form() {
+	public String form(ModelMap model) {
+		model.put("categoryList", sosomarket.getCategoryList());
 		return formViewName;
 	}
 
@@ -113,6 +114,7 @@ public class NewAuctionController implements ApplicationContextAware {
 		String title = auctionForm.getAuction().getProduct().getTitle();
 		Product product2 = sosomarket.getProductByUserAndTitle(accountId, title);
 
+		auctionForm.getAuction().setCurrentPrice(auctionForm.getAuction().getStartPrice());
 		auctionForm.getAuction().setAuctionId(product2.getProductId());
 		sosomarket.insertAuction(auctionForm.getAuction());
 		date = auctionForm.getAuction().getDeadLine();
@@ -126,7 +128,7 @@ public class NewAuctionController implements ApplicationContextAware {
 	private String uploadFile(MultipartFile imageFile) {
 		String filename = UUID.randomUUID().toString() 
 						+ "_" + imageFile.getOriginalFilename();
-		System.out.println("占쏙옙占싸듸옙 占쏙옙 占쏙옙占쏙옙: "	+ filename);
+		System.out.println("�뜝�룞�삕�뜝�떥�벝�삕 �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕: "	+ filename);
 		File file = new File(this.uploadDir + filename);
 		try {
 			imageFile.transferTo(file);
