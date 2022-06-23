@@ -42,7 +42,7 @@
             </div>
             <div class="mb-3">
                 <label for="price">가격</label>
-                <form:input class="form-control mt-1" name="price" placeholder="가격" path="product.price" htmlEscape="false"/>
+                <form:input class="form-control mt-1" name="price" placeholder="최소 1000원 이상부터 등록할 수 있습니다." path="product.price" htmlEscape="false"/>
                     <form:errors path="product.price" cssClass="error" />
             </div>
             <div class="row">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="shippingFee">배송비</label>
-                    <form:input class="form-control mt-1" name="shippingFee" placeholder="배송 비용" path="product.shippingFee" htmlEscape="false"/>
+                    <form:input class="form-control mt-1" name="shippingFee" placeholder="숫자만 입력할 수 있습니다." path="product.shippingFee" htmlEscape="false"/>
                     <form:errors path="product.shippingFee" cssClass="error" />
                 </div>
             </div>
