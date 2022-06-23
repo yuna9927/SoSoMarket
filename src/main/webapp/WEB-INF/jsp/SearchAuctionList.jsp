@@ -49,7 +49,7 @@
                                             <li><a class="btn btn-success text-white" href='<c:url value="/main/signonForm.do"/>'><i class="fa fa-heart"></i></a></li>
                                         </c:if>
                                         <c:if test="${!empty userSession.account}">
-                                            <li><a class="btn btn-success text-white" href='<c:url value="/user/newWish.do"><c:param name="productId" value="${auction.product.productId}"/></c:url>'><i class="fa fa-heart"></i></a></li>
+                                            <li><a class="btn btn-success text-white" href='<c:url value="/user/newWish.do"><c:param name="productId" value="${auction.auctionId}"/></c:url>'><i class="fa fa-heart"></i></a></li>
                                         </c:if>
                                         <li><a class="btn btn-success text-white mt-2" href='<c:url value="/shop/viewAuction.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>'><i class="fa fa-eye"></i></a></li>
                                         

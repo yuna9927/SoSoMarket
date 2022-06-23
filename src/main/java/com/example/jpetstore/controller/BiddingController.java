@@ -33,12 +33,6 @@ public class BiddingController {
 	
 	UserSession userSession;
 	BiddingForm bf;
-
-//	@Autowired
-//	private ProductFormValidator validator;
-//	public void setValidator(ProductFormValidator validator) {
-//		this.validator = validator;
-//	}
 		
 	@ModelAttribute("biddingForm")
 	public BiddingForm formBackingObject(HttpServletRequest request) 
