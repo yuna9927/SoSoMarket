@@ -106,8 +106,8 @@
                             <div class="row pb-3">
                                 <div class="col d-grid">
                                     <button type="button" class="btn btn-success btn-lg" name="submit"
-                                        onclick="location.href='<c:url value="/shop/deleteProduct.do">
-                                        <c:param name="productId" value="${auction.product.productId}" />
+                                        onclick="location.href='<c:url value="/shop/deleteAuctionProduct.do">
+                                        <c:param name="productId" value="${auction.auctionId}" />
                                         </c:url>';">상품 삭제
                                     </button>
                                 </div>
