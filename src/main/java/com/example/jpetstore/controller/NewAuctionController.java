@@ -29,7 +29,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
 @RequestMapping({ "/shop/newAuctionForm.do", "/shop/newAuction.do" })
-@SessionAttributes("userSession")
+@SessionAttributes({"userSession", "categoryList"})
 
 public class NewAuctionController implements ApplicationContextAware {
 
