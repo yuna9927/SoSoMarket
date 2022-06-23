@@ -3,6 +3,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
+
+import com.example.jpetstore.service.BiddingFormValidator;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
@@ -34,11 +37,11 @@ public class BiddingController {
 	UserSession userSession;
 	BiddingForm bf;
 
-//	@Autowired
-//	private ProductFormValidator validator;
-//	public void setValidator(ProductFormValidator validator) {
-//		this.validator = validator;
-//	}
+	@Autowired
+	private BiddingFormValidator validator;
+	public void setValidator(BiddingFormValidator validator) {
+		this.validator = validator;
+	}
 		
 	@ModelAttribute("biddingForm")
 	public BiddingForm formBackingObject(HttpServletRequest request) 
@@ -61,9 +64,11 @@ public class BiddingController {
 	public String onSubmit(
 			HttpServletRequest request, HttpSession session,
 			@RequestParam("productId") String auctionId,
-			@ModelAttribute("biddingForm") BiddingForm biddingForm,
 			@ModelAttribute("userSession") UserSession userSession,
+			@ModelAttribute("biddingForm") BiddingForm biddingForm,
 			BindingResult result) throws Exception {
+		validator.validate(biddingForm, result);
+	      if (result.hasErrors()) return formViewName;
 		
 		int int_auctionId = Integer.parseInt(auctionId);
 		biddingForm.setProductId(int_auctionId);
@@ -72,8 +77,11 @@ public class BiddingController {
 		if(presentBiddingPrice < biddingForm.getBidding().getBiddingPrice()) {
 			sosomarket.insertBidding(biddingForm.getBidding());
 			sosomarket.updateAuctionCurrentPriceAndBuyerId(biddingForm.getBidding());
-		} 
-				
+		} else {
+			result.reject("BIDDINGPRICE_TOO_LOW");
+			return formViewName;
+		}	
+
 		return successViewName;  
 	}
 }
