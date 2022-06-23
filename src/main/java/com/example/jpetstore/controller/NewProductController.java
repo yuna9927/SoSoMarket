@@ -28,7 +28,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
 @RequestMapping({"/shop/newProduct.do","/shop/newProductForm.do"})
-@SessionAttributes("userSession")
+@SessionAttributes({"userSession", "categoryList"})
 public class NewProductController implements ApplicationContextAware { 
 
 	@Value("NewProductForm")

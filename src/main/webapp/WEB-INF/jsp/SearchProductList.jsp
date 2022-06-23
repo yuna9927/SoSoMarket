@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="IncludeHeader.jsp"%>
-
 <!-- Start Content -->
 <div class="container py-5">
     <div class="row">
@@ -33,6 +32,9 @@
                 </div>
             </div>
             <div class="row">
+            	<p>상품에 하트를 눌러보세요. 위시리스트에 추가됩니다. 이미 위시리스트에 있는 상품이라면 삭제됩니다.</p>
+            </div>
+            <div class="row">
             	<div class="col-md-6">
             		<c:if test="${!empty keyword}">
 	                   	<p><i>[<c:out value="${keyword}" />]를 검색한 결과입니다.</i></p>
@@ -51,7 +53,9 @@
                                             <li><a class="btn btn-success text-white" href='<c:url value="/main/signonForm.do"/>'><i class="fa fa-heart"></i></a></li>
                                         </c:if>
                                         <c:if test="${!empty userSession.account}">
-                                            <li><a class="btn btn-success text-white" href='<c:url value="/user/newWish.do"><c:param name="productId" value="${product.productId}"/></c:url>'><i class="fa fa-heart"></i></a></li>
+                                            <li><a class="btn btn-success text-white" href='<c:url value="/user/newWish.do">
+                                            <c:param name="productId" value="${product.productId}"/></c:url>'>
+                                            <i class="fa fa-heart" ></i></a></li>
                                         </c:if>
                                         <li><a class="btn btn-success text-white mt-2" href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'><i class="fa fa-eye"></i></a></li>
                                         

@@ -38,7 +38,7 @@
 								<tr>
 									<td class="align-middle py-3">
 										<div class="d-flex align-items-center">
-											<a href='<c:url value="/shop/viewAuctionProduct.do">
+											<a href='<c:url value="/shop/viewAuction.do">
              						 		<c:param name="auctionId" value="${auction.auctionId}"/></c:url>'>
              						 		<c:out value="${auction.product.title}" />
 											</a>
