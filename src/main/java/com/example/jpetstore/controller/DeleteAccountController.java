@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
-@SessionAttributes("userSession")
 @RequestMapping("/user/deleteUser.do")
 public class DeleteAccountController { 
 
