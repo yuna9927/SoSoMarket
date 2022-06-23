@@ -49,14 +49,14 @@
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="shippingFee">배송비</label>
-                    <form:input class="form-control mt-1" name="shippingFee" placeholder="배송 비용" path="auction.product.shippingFee" htmlEscape="false"/>
+                    <form:input class="form-control mt-1" name="shippingFee" placeholder="숫자만 입력할 수 있습니다." path="auction.product.shippingFee" htmlEscape="false"/>
                     <form:errors path="auction.product.shippingFee" cssClass="error" />
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6 mb-3">
                     <label for="startPrice">시작가</label>
-                    <form:input class="form-control mt-1" name="startPrice" placeholder="시작가" path="auction.startPrice" htmlEscape="false"/>
+                    <form:input class="form-control mt-1" name="startPrice" placeholder="최소 1000원 이상부터 등록할 수 있습니다." path="auction.startPrice" htmlEscape="false"/>
                     <form:errors path="auction.startPrice" cssClass="error" />
                 </div>
                 <div class="form-group col-md-6 mb-3">

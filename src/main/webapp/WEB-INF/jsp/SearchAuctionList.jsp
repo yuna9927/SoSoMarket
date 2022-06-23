@@ -58,8 +58,9 @@
                             </div>
                             <div class="card-body">
                                 <a href='<c:url value="/shop/viewAuction.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>' class="h3 text-decoration-none"><c:out value="${auction.product.title}" /></a>
-                                <p class="mb-0"><fmt:formatNumber value="${auction.startPrice}"
-                                    pattern="$#,##0.00" /></p>
+                                <p class="mb-0"><fmt:formatNumber value="${auction.currentPrice}"
+                                    pattern="₩#,##0" /></p>
+                                <p class="mb-0"><small><fmt:formatDate value="${auction.deadLine}" pattern="yyyy/MM/dd hh:mm:ss" /></small></p>
                                 <c:if test="${auction.product.productStatus eq 'sale'}">
 									<span class="badge text-bg-primary" style="float:right;">판매중</span>
 								</c:if>
