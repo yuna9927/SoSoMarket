@@ -174,6 +174,10 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	public Bidding getBidding(int biddingId) {
 		return biddingDao.getBidding(biddingId);
 	}
+	
+	public void deleteBidding(int auctionId) {
+		biddingDao.deleteBidding(auctionId);
+	}
 
 	public List<Bidding> getBiddingsByUser(String accountId) {
 		return biddingDao.getBiddingsByUser(accountId);

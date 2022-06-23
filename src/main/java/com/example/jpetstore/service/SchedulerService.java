@@ -58,6 +58,7 @@ public class SchedulerService {
 				order.setBuyerId(currentPriceBuyerId);
 				System.out.println(order.toString());
 				sosomarket.insertOrder(order);
+				sosomarket.deleteBidding(auction.getAuctionId());
 				
 				eventDao.closeEvent(curTime);	// EVENTS 테이블의 레코드 갱신	
 				System.out.println("updateTableRunner is executed at " + curTime);
