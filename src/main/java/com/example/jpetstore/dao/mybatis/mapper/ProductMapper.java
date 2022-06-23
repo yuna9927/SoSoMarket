@@ -17,9 +17,7 @@
 package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
-
 import com.example.jpetstore.domain.Product;
 
 public interface ProductMapper {
@@ -34,7 +32,7 @@ public interface ProductMapper {
 
 	Product getProduct(int productId);
 	
-	Product getProductByUserAndTitle(@Param("accountId") String accountId, @Param("title") String title);
+	List<Product> getProductByUserAndTitle(@Param("accountId") String accountId, @Param("title") String title);
 
 	void updateProduct(Product product);
 
