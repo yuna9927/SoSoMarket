@@ -12,7 +12,6 @@ import com.example.jpetstore.domain.Bidding;
 import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
-//@SessionAttributes({"category", "productList"})
 public class ViewAuctionController { 
 
 	private SosoMarketFacade sosomarket;

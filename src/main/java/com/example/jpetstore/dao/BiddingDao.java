@@ -11,8 +11,6 @@ public interface BiddingDao {
 	void insertBidding(Bidding bidding) throws DataAccessException;
 	
 	void updateBidding(Bidding bidding) throws DataAccessException;
-	
-	void deleteBidding(int auctionId) throws DataAccessException;
 
 	List<Bidding> getBiddingsByUser(String accountId) throws DataAccessException;
 

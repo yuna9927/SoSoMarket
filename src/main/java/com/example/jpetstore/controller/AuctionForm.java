@@ -34,7 +34,6 @@ public class AuctionForm implements Serializable {
    
    public void setSellerId(String sellerId) {
 	   
-//	   System.out.println(auction.getProduct());
 	   
 	   this.auction.getProduct().setSellerId(sellerId);
    }

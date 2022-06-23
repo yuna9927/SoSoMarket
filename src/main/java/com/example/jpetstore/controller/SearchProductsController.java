@@ -8,8 +8,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
@@ -18,7 +16,6 @@ import com.example.jpetstore.service.SosoMarketFacade;
 public class SearchProductsController {
 
 	private SosoMarketFacade sosoMarket;
-	private String successViewName;
 
 	@Autowired
 	public void setSoSoMarket(SosoMarketFacade sosoMarket) {
@@ -39,7 +36,7 @@ public class SearchProductsController {
 
 			System.out.println("type: " + type);
 			model.put("keyword", keyword);
-			//search product
+			
 			if (type.equals("product")) {
 				PagedListHolder<Product> productList = new PagedListHolder<Product>(
 						this.sosoMarket.searchProductList(keyword.toLowerCase()));
@@ -49,7 +46,6 @@ public class SearchProductsController {
 				model.put("productList", productList);
 				return "SearchProductList";
 			}
-			//search auction
 			else {
 				PagedListHolder<Auction> auctionList = new PagedListHolder<Auction>(
 						this.sosoMarket.searchAuctionList(keyword.toLowerCase()));

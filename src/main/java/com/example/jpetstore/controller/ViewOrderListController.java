@@ -1,7 +1,5 @@
 package com.example.jpetstore.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
@@ -11,17 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.example.jpetstore.domain.Order;
-import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 01.12.2003
- * @modified by Changsup Park
- */
 @Controller
 @SessionAttributes({"userSession", "buyOrderList", "sellOrderList"})
 public class ViewOrderListController {
@@ -37,7 +27,6 @@ public class ViewOrderListController {
 	public String getOrderListBySeller(@ModelAttribute("userSession") UserSession userSession, ModelMap model)
 			throws Exception {
 		String accountId = userSession.getAccount().getAccountId();
-//			System.out.println("Order list:");
 		for (Order p : this.sosomarket.getOrderListBySeller(accountId)) {
 			System.out.println(p);
 		}
@@ -48,7 +37,6 @@ public class ViewOrderListController {
 		return "ListSellerOrders";
 	}
 
-	// ������ �ѱ�
 	@RequestMapping("/user/viewSellerOrderList2.do")
 	public String getOrderListBySeller2(@RequestParam("page") String page,
 			@ModelAttribute("sellOrderList") PagedListHolder<Order> sellOrderList, BindingResult result)
@@ -65,10 +53,9 @@ public class ViewOrderListController {
 	public String getOrderListByBuyer(@ModelAttribute("userSession") UserSession userSession, ModelMap model)
 			throws Exception {
 		String accountId = userSession.getAccount().getAccountId();
-//			System.out.println("Order list:");
-		for (Order p : this.sosomarket.getOrderListByBuyer(accountId)) {
-			System.out.println(p);
-		}
+//		for (Order p : this.sosomarket.getOrderListByBuyer(accountId)) {
+//			System.out.println(p);
+//		}
 		PagedListHolder<Order> buyOrderList = new PagedListHolder<Order>(
 				this.sosomarket.getOrderListByBuyer(accountId));
 		buyOrderList.setPageSize(4);
@@ -76,14 +63,12 @@ public class ViewOrderListController {
 		return "ListBuyerOrders";
 	}
 
-	// ������ �ѱ�
 	@RequestMapping("/user/viewBuyerOrderList2.do")
 	public String getOrderListByBuyer2(@RequestParam("page") String page,
 			@ModelAttribute("buyOrderList") PagedListHolder<Order> buyOrderList, 
 			BindingResult result)
 			throws Exception {
 		if ("next".equals(page)) {
-			System.out.println("�������� �Ѿ��");
 			buyOrderList.nextPage();
 		} else if ("previous".equals(page)) {
 			buyOrderList.previousPage();

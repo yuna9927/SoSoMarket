@@ -5,7 +5,6 @@ import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Bidding;
 import com.example.jpetstore.domain.Category;
-import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.domain.Wish;
@@ -48,8 +47,6 @@ public interface SosoMarketFacade {
 	void updateProduct(Product product);
 
 	void insertProduct(Product product);
-	
-//	void insertAuction(Auction auction);
 
 	void deleteProduct(int productId);
 
@@ -67,13 +64,9 @@ public interface SosoMarketFacade {
 
 	List<Auction> getAllAuction();
 
-//	void updateAuction(int auctionId);
-
 	void insertAuction(Auction auction);
 
 	void deleteAuction(int auctionId);
-
-//	void updateAuctionStatus(Auction auction);
 	
 	void updateAuctionCurrentPriceAndBuyerId(Bidding bidding);
 
@@ -89,14 +82,6 @@ public interface SosoMarketFacade {
 	List<Bidding> getBiddingsByUser(String accountId);
 
 	List<Bidding> getBiddingsByAuction(int auctionId);
-	
-	
-
-	List<Item> getItemListByProduct(String productId);
-
-	Item getItem(String itemId);
-
-	boolean isItemInStock(String itemId);
 
 
 	/* order */

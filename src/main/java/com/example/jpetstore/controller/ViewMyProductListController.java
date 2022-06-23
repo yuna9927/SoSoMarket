@@ -1,7 +1,5 @@
 package com.example.jpetstore.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
@@ -11,17 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 01.12.2003
- * @modified by Changsup Park
- */
 @Controller
 @SessionAttributes({"userSession", "productList", "auctionList"})
 public class ViewMyProductListController {
@@ -47,7 +38,6 @@ public class ViewMyProductListController {
 		return "ListSells";
 	}
 	
-	//∆‰¿Ã¡ˆ ≥—±Ë
 	@RequestMapping("/user/viewMyProductList2.do")
 	public String productHandleRequest2(
 			@RequestParam("page") String page,
@@ -76,8 +66,6 @@ public class ViewMyProductListController {
 		return "ListAuctionSells";
 	}
 	
-	
-	//∆‰¿Ã¡ˆ ≥—±Ë
 	@RequestMapping("/user/viewMyAuctionProductList2.do")
 	public String getMyAuctionProductList2(
 			@RequestParam("page") String page,

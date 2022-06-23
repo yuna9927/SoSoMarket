@@ -10,11 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 01.12.2003
- * @modified by Changsup Park
- */
 @Controller
 @SessionAttributes("userSession")
 public class ViewOrderController {
@@ -32,8 +27,6 @@ public class ViewOrderController {
 			@RequestParam("orderId") int orderId
 			) throws Exception {
 		Order order = this.sosomarket.getOrderBySeller(orderId);
-		System.out.println("로그인id : " + userSession.getAccount().getAccountId());
-		System.out.println("buyerid : " + order.getBuyerId());
 		
 		if (userSession.getAccount().getAccountId().equals(order.getSellerId())) {
 			return new ModelAndView("ViewSellerOrder", "order", order);
@@ -49,8 +42,6 @@ public class ViewOrderController {
 			@RequestParam("orderId") int orderId
 			) throws Exception {
 		Order order = this.sosomarket.getOrderByBuyer(orderId);
-		System.out.println("로그인id : " + userSession.getAccount().getAccountId());
-		System.out.println("buyerid : " + order.getBuyerId());
 		
 		if (userSession.getAccount().getAccountId().equals(order.getBuyerId())) {
 			return new ModelAndView("ViewBuyerOrder", "order", order);

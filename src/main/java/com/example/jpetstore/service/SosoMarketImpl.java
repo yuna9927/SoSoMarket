@@ -8,7 +8,6 @@ import com.example.jpetstore.dao.AccountDao;
 import com.example.jpetstore.dao.AuctionDao;
 import com.example.jpetstore.dao.BiddingDao;
 import com.example.jpetstore.dao.CategoryDao;
-import com.example.jpetstore.dao.ItemDao;
 import com.example.jpetstore.dao.OrderDao;
 import com.example.jpetstore.dao.ProductDao;
 import com.example.jpetstore.dao.WishDao;
@@ -16,7 +15,6 @@ import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Bidding;
 import com.example.jpetstore.domain.Category;
-import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.domain.Wish;
@@ -34,8 +32,6 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	private AuctionDao auctionDao;
 	@Autowired
 	private BiddingDao biddingDao;
-	@Autowired
-	private ItemDao itemDao;
 	@Autowired
 	private OrderDao orderDao;
 	@Autowired
@@ -173,10 +169,6 @@ public class SosoMarketImpl implements SosoMarketFacade {
 	public Bidding getBidding(int biddingId) {
 		return biddingDao.getBidding(biddingId);
 	}
-	
-	public void deleteBidding(int auctionId) {
-		biddingDao.deleteBidding(auctionId);
-	}
 
 	public List<Bidding> getBiddingsByUser(String accountId) {
 		return biddingDao.getBiddingsByUser(accountId);
@@ -184,19 +176,6 @@ public class SosoMarketImpl implements SosoMarketFacade {
 
 	public List<Bidding> getBiddingsByAuction(int auctionId) {
 		return biddingDao.getBiddingsByAuction(auctionId);
-	}
-
-
-	public List<Item> getItemListByProduct(String productId) {
-		return itemDao.getItemListByProduct(productId);
-	}
-
-	public Item getItem(String itemId) {
-		return itemDao.getItem(itemId);
-	}
-
-	public boolean isItemInStock(String itemId) {
-		return itemDao.isItemInStock(itemId);
 	}
 
 	/* order */
@@ -254,5 +233,11 @@ public class SosoMarketImpl implements SosoMarketFacade {
 
 	public void deleteWish(int productId) {
 		wishDao.deleteWish(productId);
+	}
+
+	@Override
+	public void deleteBidding(int auctionId) {
+		// TODO Auto-generated method stub
+		
 	}
 }
