@@ -22,19 +22,16 @@ public class ProductFormValidator implements Validator {
 		ProductForm productForm = (ProductForm)obj; 
 		Product product = productForm.getProduct();
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.title", "PRODUCT_TITLE_REQUIRED", "Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.categoryId", "CATEGORY_REQUIRED", "Ä«Å×°í¸®¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.description", "DESCRIPTION_REQUIRED", "»óÇ° ¼³¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.price", "PRICE_REQUIRED", "°¡°İÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä."); 
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.shipping", "SHIPPING_REQUIRED", "¹è¼Û¹æ¹ıÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.shippingFee", "SHIPPING_FEE_REQUIRED", "¹è¼Ûºñ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.title", "PRODUCT_TITLE_REQUIRED", "ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.description", "DESCRIPTION_REQUIRED", "ìƒí’ˆ ì„¤ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "product.shipping", "SHIPPING_REQUIRED", "ë°°ì†¡ ë°©ë²•ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 	    
 	    if (product.getPrice() < 1000) {
-        	errors.rejectValue("product.price", "PRICE_TOO_LOW", "1000¿ø ¾Æ·¡·Î´Â µî·ÏÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.");
+        	errors.rejectValue("product.price", "PRICE_TOO_LOW", "1000ì› ì´í•˜ëŠ” ë“±ë¡í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         }
 	    
 	    if (errors.hasFieldErrors() && !errors.hasGlobalErrors()) {
-	    	errors.reject("ERRORS_OCCURED", "ÀÔ·Â °úÁ¤¿¡¼­ ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù. ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä.");
+	    	errors.reject("ERRORS_OCCURED", "ì…ë ¥ í˜•ì‹ì— ì˜¤ë¥˜ê°€ ìƒê²¼ìŠµë‹ˆë‹¤. ë‹¤ì‹œ í™•ì¸í•´ì£¼ì„¸ìš”.");
 	    }
 	}
 }
