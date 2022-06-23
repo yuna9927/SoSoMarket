@@ -10,11 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 01.12.2003
- * @modified by Changsup Park
- */
 @Controller
 @SessionAttributes("userSession")
 public class UpdateOrderStatusController {
@@ -34,11 +29,9 @@ public class UpdateOrderStatusController {
 			) throws Exception {
 		Order order = this.sosomarket.getOrderBySeller(orderId);
 		System.out.println("order:" + order);
-		//seller can update order
 		if (userSession.getAccount().getAccountId().equals(order.getSellerId())) {
 			order.setOrderStatus(orderStatus);
 			this.sosomarket.updateOrderStatus(order);
-			System.out.println("order º¯°æ ÈÄ :" + order);
 			return new ModelAndView("ViewSellerOrder", "order", order);
 		}
 		else {

@@ -8,10 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 import org.springframework.web.util.WebUtils;
 
-/**
- * @author Juergen Hoeller
- * @since 01.12.2003
- */
 public class SignonInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, 

@@ -15,11 +15,6 @@ import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 30.11.2003
- * @modified-by Changsup Park
- */
 @Controller
 @SessionAttributes({"category", "productList", "auctionList"})
 public class ViewCategoryController { 

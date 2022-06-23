@@ -56,7 +56,7 @@ public class NewProductController implements ApplicationContextAware {
 		this.sosomarket = sosomarket;
 	}
 
-	@Override			// life-cycle callback method
+	@Override			
 	public void setApplicationContext(ApplicationContext appContext)
 		throws BeansException {
 		this.context = (WebApplicationContext) appContext;
@@ -92,7 +92,7 @@ public class NewProductController implements ApplicationContextAware {
 		validator.validate(productForm, result);
 	    if (result.hasErrors()) return formViewName;
 		
-		//이미지
+		
 		MultipartFile imageFile = multiRequest.getFile("imageFile");
 		System.out.println(productForm);
 		
@@ -105,7 +105,6 @@ public class NewProductController implements ApplicationContextAware {
 	private String uploadFile(MultipartFile imageFile) {
 		String filename = UUID.randomUUID().toString() 
 						+ "_" + imageFile.getOriginalFilename();
-		System.out.println("업로드 한 파일: "	+ filename);
 		File file = new File(this.uploadDir + filename);
 		try {
 			imageFile.transferTo(file);

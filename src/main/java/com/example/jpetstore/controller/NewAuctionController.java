@@ -111,7 +111,6 @@ public class NewAuctionController implements ApplicationContextAware {
 
 		String accountId = auctionForm.getAuction().getProduct().getSellerId();
 		String title = auctionForm.getAuction().getProduct().getTitle();
-//		Product product2 = sosomarket.getProductByUserAndTitle(accountId, title);
 
 		sosomarket.insertProduct(auctionForm.getAuction().getProduct());
 		List<Product> productList = sosomarket.getProductByUserAndTitle(accountId, title);
@@ -139,7 +138,6 @@ public class NewAuctionController implements ApplicationContextAware {
 	private String uploadFile(MultipartFile imageFile) {
 		String filename = UUID.randomUUID().toString() 
 						+ "_" + imageFile.getOriginalFilename();
-		System.out.println("�뜝�룞�삕�뜝�떥�벝�삕 �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕: "	+ filename);
 		File file = new File(this.uploadDir + filename);
 		try {
 			imageFile.transferTo(file);

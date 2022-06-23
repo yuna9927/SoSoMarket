@@ -41,10 +41,8 @@ public class WishController {
 		UserSession userSession = 
 				(UserSession) WebUtils.getSessionAttribute(request, "userSession");
 		
-		System.out.println("product id is: " + productId);
 		
 		Wish wish2 = sosomarket.getWish(wish.getProductId());
-		System.out.println("wish.getProductId() is : " + wish.getProductId());
 		
 		if(wish2 == null) {
 			wish2 = wish;
@@ -55,7 +53,6 @@ public class WishController {
 			sosomarket.deleteWish(Integer.parseInt(productId));
 		}
 		
-//		return new ModelAndView("Wish", "wish", wish2);
 		return "SearchProductList";
 	}
 }

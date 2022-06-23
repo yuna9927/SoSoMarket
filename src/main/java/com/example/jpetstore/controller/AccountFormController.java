@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.support.PagedListHolder;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -12,16 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.WebUtils;
-import com.example.jpetstore.domain.Category;
-import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.AccountFormValidator;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 01.12.2003
- * @modified by Changsup Park
- */
 @Controller
 @RequestMapping({"/user/newAccount.do","/user/editAccount.do"})
 public class AccountFormController { 
@@ -63,11 +55,6 @@ public class AccountFormController {
    public String[] getLanguages() {
       return LANGUAGES;
    }
-
-//   @ModelAttribute("categories")
-//   public List<Category> getCategoryList() {
-//      return sosomarket.getCategoryList();
-//   }
    
    @RequestMapping(method = RequestMethod.GET)
    public String showForm() {
@@ -79,13 +66,7 @@ public class AccountFormController {
          HttpServletRequest request, HttpSession session,
          @ModelAttribute("accountForm") AccountForm accountForm,
          BindingResult result) throws Exception {
-
-//      if (request.getParameter("account.listOption") == null) {
-//         accountForm.getAccount().setListOption(false);
-//      }
-//      if (request.getParameter("account.bannerOption") == null) {
-//         accountForm.getAccount().setBannerOption(false);
-//      }
+	   
       System.out.println("accountForm: " + accountForm);
       
       validator.validate(accountForm, result);
@@ -107,10 +88,7 @@ public class AccountFormController {
       
       UserSession userSession = new UserSession(
          sosomarket.getAccount(accountForm.getAccount().getAccountId()));
-//      PagedListHolder<Product> myList = new PagedListHolder<Product>(
-//         petStore.getProductListByCategory(accountForm.getAccount().getFavouriteCategoryId()));
-//      myList.setPageSize(4);
-//      userSession.setMyList(myList);
+
       session.setAttribute("userSession", userSession);
       return successViewName;  
    }

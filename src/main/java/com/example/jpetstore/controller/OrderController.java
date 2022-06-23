@@ -84,10 +84,6 @@ public class OrderController {
 		of.getOrder().setProduct(product);
 
 		of.setProductId(i_productId);
-
-		System.out.println(orderForm);
-
-		// product �ֹ��� product status: sale->done
 		product.setProductStatus("done");
 		sosomarket.updateProductStatus(product);
 
