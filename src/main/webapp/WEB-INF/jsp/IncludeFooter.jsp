@@ -10,10 +10,10 @@
 				<h2 class="h2 text-success border-bottom pb-3 border-light logo">소소마켓</h2>
 				<ul class="list-unstyled text-light footer-link-list">
 					<li><i class="fa fa-phone fa-fw"></i> <a
-						class="text-decoration-none" href="tel:02-940-4000">02-940-4000</a>
+						class="text-decoration-none">02-940-4000</a>
 					</li>
 					<li><i class="fa fa-envelope fa-fw"></i> <a
-						class="text-decoration-none" href="20190978@dongduk.ac.kr">20190978@dongduk.ac.kr</a>
+						class="text-decoration-none" >20190978@dongduk.ac.kr</a>
 					</li>
 				</ul>
 			</div>
