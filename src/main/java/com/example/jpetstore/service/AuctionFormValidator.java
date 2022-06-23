@@ -34,20 +34,6 @@ public class AuctionFormValidator implements Validator {
 	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.product.shipping", "SHIPPING_REQUIRED");
 	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.deadLine", "DEADLINE_REQUIRED");
 	    
-	    LocalDateTime now = LocalDateTime.now();
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-	    String formatedNow = now.format(formatter);
-	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	    try {
-			Date date = dateFormat.parse(formatedNow);
-		    if (!auction.getDeadLine().after(date)) {
-		    	errors.rejectValue("auction.deadLine", "DEADLINE_MISMATCH");
-		    }
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	    
-
 	    if (auction.getStartPrice() < 1000) {
         	errors.rejectValue("auction.startPrice", "PRICE_TOO_LOW");
         }

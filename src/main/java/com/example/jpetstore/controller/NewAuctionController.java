@@ -3,6 +3,11 @@ import java.util.Date;
 import java.util.List;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -104,6 +109,21 @@ public class NewAuctionController implements ApplicationContextAware {
 		validator.validate(auctionForm, result);
 	    if (result.hasErrors()) 
 	    	return formViewName;
+
+	    try {
+	    	LocalDateTime now = LocalDateTime.now();
+		    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		    String formatedNow = now.format(formatter);
+		    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			Date date = dateFormat.parse(formatedNow);
+		    if (!auctionForm.getAuction().getDeadLine().after(date)) {
+		    	result.reject("DEADLINE_MISMATCH");
+		    	return formViewName;
+		    }
+		} catch (ParseException e) {
+			result.reject("typeMismatch.bidding.biddingPrice");
+			return formViewName;
+		}
 
 		MultipartFile imageFile = multiRequest.getFile("imageFile");
 		String filename = uploadFile(imageFile);
