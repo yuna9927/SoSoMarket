@@ -3,25 +3,16 @@ package com.example.jpetstore.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.example.jpetstore.domain.Auction;
-import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 30.11.2003
- * @modified-by Changsup Park
- */
 @Controller
 @SessionAttributes({"category", "productList"})
 public class DeleteProductController { 
@@ -37,14 +28,15 @@ public class DeleteProductController {
 	public ModelAndView deleteProduct(HttpSession session,
 			@RequestParam("productId") int productId,
 			ModelMap model) throws Exception {
-		//·Î±×ÀÎ »ç¿ëÀÚ != »óÇ° °Ô½Ã »ç¿ëÀÚÀÏ °æ¿ì error
 		UserSession userSession = (UserSession) session.getAttribute("userSession");
 		Product product = sosomarket.getProduct(productId);
-		System.out.println("ÇöÀç·Î±×ÀÎ id : " + userSession.getAccount().getAccountId() + ", " + product.getSellerId());
+		
 		if (!userSession.getAccount().getAccountId().equals(product.getSellerId()))
 			return new ModelAndView("Error", "message", 
-					"º»ÀÎÀÌ µî·ÏÇÑ »óÇ°¸¸ »èÁ¦ÇÒ ¼ö ÀÖ½À´Ï´Ù.");
-		//»óÇ° »èÁ¦°¡ °¡´ÉÇÒ °æ¿ì »èÁ¦
+					"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.");
+		if (product.getProductStatus().equals("done"))
+			return new ModelAndView("Error", "message", 
+					"ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		else {
 			this.sosomarket.deleteProduct(productId);
 		
@@ -52,24 +44,22 @@ public class DeleteProductController {
 		}
 	}
 	
-	@RequestMapping("//shop/deleteAuctionProduct.do")
+	@RequestMapping("/shop/deleteAuctionProduct.do")
 	public ModelAndView deleteAuctionProduct(HttpSession session,
 			@RequestParam("auctionId") int auctionId,
 			ModelMap model) throws Exception {
-		//·Î±×ÀÎ »ç¿ëÀÚ != »óÇ° °Ô½Ã »ç¿ëÀÚÀÏ °æ¿ì error
 		UserSession userSession = (UserSession) session.getAttribute("userSession");
 		Auction auction = sosomarket.getAuction(auctionId);
 		String loginId = userSession.getAccount().getAccountId();
-		System.out.println("ÇöÀç·Î±×ÀÎ id : " + loginId + ", " + auction.getProduct().getSellerId());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½ï¿½ id : " + loginId + ", " + auction.getProduct().getSellerId());
 		if (!loginId.equals(auction.getProduct().getSellerId()))
 			return new ModelAndView("Error", "message", 
-					"º»ÀÎÀÌ µî·ÏÇÑ »óÇ°¸¸ »èÁ¦ÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+					"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.");
 		if (auction.getProduct().getProductStatus().equals("done"))
 			return new ModelAndView("Error", "message", 
-					"ÁÖ¹®µÈ »óÇ°Àº »èÁ¦ÇÒ ¼ö ¾ø½À´Ï´Ù.");
-		//»óÇ° »èÁ¦°¡ °¡´ÉÇÒ °æ¿ì »èÁ¦
+					"ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		else {
-			this.sosomarket.updateWithdraw(loginId); //Ã¶È¸ È½¼ö Áõ°¡
+			this.sosomarket.updateWithdraw(loginId);
 			this.sosomarket.deleteAuction(auctionId);
 		
 			return new ModelAndView("index");

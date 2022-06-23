@@ -103,7 +103,7 @@
 						<tr>
 							<td>가격:</td>
 							<td><fmt:formatNumber value="${order.product.price}"
-									pattern="$#,##0.00" /></td>
+									pattern="₩#,##0" /></td>
 						</tr>
 						<tr>
 							<td>배송방법:</td>
@@ -112,7 +112,7 @@
 						<tr>
 							<td>배송비:</td>
 							<td><fmt:formatNumber value="${order.product.shippingFee}"
-									pattern="$#,##0.00" /></td>
+									pattern="₩#,##0" /></td>
 						</tr>
 					</table>
 					</td>

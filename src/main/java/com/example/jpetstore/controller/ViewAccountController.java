@@ -10,11 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.service.SosoMarketFacade;
 
-/**
- * @author Juergen Hoeller
- * @since 01.12.2003
- * @modified by Changsup Park
- */
 @Controller
 @SessionAttributes("userSession")
 public class ViewAccountController {

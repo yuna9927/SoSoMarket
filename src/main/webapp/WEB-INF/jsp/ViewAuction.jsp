@@ -21,7 +21,7 @@
                             <c:out value="${auction.product.title}" />
                         </h1>
                         <p class="h3 py-2">
-                            <fmt:formatNumber value="${auction.currentPrice}" pattern="$#,##0.00" />
+                            <fmt:formatNumber value="${auction.currentPrice}" pattern="₩#,##0" />
                         </p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
@@ -29,7 +29,7 @@
                             </li>
                             <li class="list-inline-item">
                                 <p class="text-muted"><strong>
-                                 <fmt:formatNumber value="${auction.startPrice}" pattern="$#,##0.00" /></strong></p>
+                                 <fmt:formatNumber value="${auction.startPrice}" pattern="₩#,##0" /></strong></p>
                             </li>
                         </ul>
 						<p class="text-muted">
@@ -58,7 +58,7 @@
                             </li>
                             <li class="list-inline-item">
                                 <p class="text-muted"><strong><c:out value="${auction.product.shipping}" /> /
-                                 <fmt:formatNumber value="${auction.product.shippingFee}" pattern="$#,##0.00" /></strong></p>
+                                 <fmt:formatNumber value="${auction.product.shippingFee}" pattern="₩#,##0" /></strong></p>
                             </li>
                         </ul>
                         <h6>상품 상태:
@@ -69,6 +69,14 @@
 								<span class="badge text-bg-secondary" >판매완료</span>
 							</c:if>
 						</h6>
+						<ul class="list-inline">
+                            <li class="list-inline-item">
+                                <h6>마감날짜:</h6>
+                            </li>
+                            <li class="list-inline-item">
+                                <p class=""><strong><fmt:formatDate value="${auction.deadLine}" pattern="yyyy/MM/dd hh:mm:ss" /></strong></p>
+                            </li>
+                        </ul>
 						<br><br>
 						<c:if test="${auction.product.sellerId ne userSession.account.accountId}">
 	                        <div class="row pb-3">
@@ -137,7 +145,7 @@
                                 <c:out value="${bidding.account.nickname}" />
                         </div></td>
                         <td class="py-3">
-                            <fmt:formatNumber value="${bidding.biddingPrice}" pattern="$#,##0.00" />
+                            <fmt:formatNumber value="${bidding.biddingPrice}" pattern="₩#,##0" />
                         </td>
                     </tr>
                     

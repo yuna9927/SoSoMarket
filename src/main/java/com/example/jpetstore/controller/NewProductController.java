@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ import com.example.jpetstore.service.SosoMarketFacade;
 
 @Controller
 @RequestMapping({"/shop/newProduct.do","/shop/newProductForm.do"})
-@SessionAttributes("productForm")
+@SessionAttributes({"userSession", "categoryList"})
 public class NewProductController implements ApplicationContextAware { 
 
 	@Value("NewProductForm")
@@ -55,7 +56,7 @@ public class NewProductController implements ApplicationContextAware {
 		this.sosomarket = sosomarket;
 	}
 
-	@Override			// life-cycle callback method
+	@Override			
 	public void setApplicationContext(ApplicationContext appContext)
 		throws BeansException {
 		this.context = (WebApplicationContext) appContext;
@@ -76,7 +77,8 @@ public class NewProductController implements ApplicationContextAware {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String form() {
+	public String form(ModelMap model) {
+		model.put("categoryList", sosomarket.getCategoryList());
 		return formViewName;
 	}
 	
@@ -90,7 +92,7 @@ public class NewProductController implements ApplicationContextAware {
 		validator.validate(productForm, result);
 	    if (result.hasErrors()) return formViewName;
 		
-		//이미지
+		
 		MultipartFile imageFile = multiRequest.getFile("imageFile");
 		System.out.println(productForm);
 		
@@ -103,7 +105,6 @@ public class NewProductController implements ApplicationContextAware {
 	private String uploadFile(MultipartFile imageFile) {
 		String filename = UUID.randomUUID().toString() 
 						+ "_" + imageFile.getOriginalFilename();
-		System.out.println("업로드 한 파일: "	+ filename);
 		File file = new File(this.uploadDir + filename);
 		try {
 			imageFile.transferTo(file);

@@ -30,7 +30,11 @@
                     </ul>
                 </div>
             </div>
-             <div class="row">
+            <div class="row">
+            	<p>상품에 하트를 눌러보세요. 위시리스트에 추가됩니다. 이미 위시리스트에 있는 상품이라면 삭제됩니다.</p>
+            </div>
+            <div class="row">
+
             	<div class="col-md-6">
             		<c:if test="${!empty keyword}">
 	                   	<p><i>[<c:out value="${keyword}" />]를 검색한 결과입니다.</i></p>
@@ -49,7 +53,7 @@
                                             <li><a class="btn btn-success text-white" href='<c:url value="/main/signonForm.do"/>'><i class="fa fa-heart"></i></a></li>
                                         </c:if>
                                         <c:if test="${!empty userSession.account}">
-                                            <li><a class="btn btn-success text-white" href='<c:url value="/user/newWish.do"><c:param name="productId" value="${auction.product.productId}"/></c:url>'><i class="fa fa-heart"></i></a></li>
+                                            <li><a class="btn btn-success text-white" href='<c:url value="/user/newWish.do"><c:param name="productId" value="${auction.auctionId}"/></c:url>'><i class="fa fa-heart"></i></a></li>
                                         </c:if>
                                         <li><a class="btn btn-success text-white mt-2" href='<c:url value="/shop/viewAuction.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>'><i class="fa fa-eye"></i></a></li>
                                         
@@ -58,8 +62,9 @@
                             </div>
                             <div class="card-body">
                                 <a href='<c:url value="/shop/viewAuction.do"><c:param name="auctionId" value="${auction.auctionId}"/></c:url>' class="h3 text-decoration-none"><c:out value="${auction.product.title}" /></a>
-                                <p class="mb-0"><fmt:formatNumber value="${auction.startPrice}"
-                                    pattern="$#,##0.00" /></p>
+                                <p class="mb-0"><fmt:formatNumber value="${auction.currentPrice}"
+                                    pattern="₩#,##0" /></p>
+                                <p class="mb-0"><small><fmt:formatDate value="${auction.deadLine}" pattern="yyyy/MM/dd hh:mm:ss" /></small></p>
                                 <c:if test="${auction.product.productStatus eq 'sale'}">
 									<span class="badge text-bg-primary" style="float:right;">판매중</span>
 								</c:if>
