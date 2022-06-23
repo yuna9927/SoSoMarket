@@ -28,26 +28,17 @@ public class AuctionFormValidator implements Validator {
 		AuctionForm auctionForm = (AuctionForm)obj; 
 		Auction auction = auctionForm.getAuction();
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.product.title", "PRODUCT_TITLE_REQUIRED", "Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.product.categoryId", "CATEGORY_REQUIRED", "Ä«Å×°í¸®¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.product.description", "DESCRIPTION_REQUIRED", "»óÇ° ¼³¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.product.shipping", "SHIPPING_REQUIRED", "¹è¼Û¹æ¹ıÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.product.shippingFee", "SHIPPING_FEE_REQUIRED", "¹è¼Ûºñ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.startPrice", "STARTPRICE_REQUIRED", "½ÃÀÛ°¡¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.deadLine", "DEADLINE_REQUIRED", "¸¶°¨ ³¯Â¥¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.product.title", "PRODUCT_TITLE_REQUIRED", "ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.product.description", "DESCRIPTION_REQUIRED", "ìƒí’ˆ ì„¤ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.product.shipping", "SHIPPING_REQUIRED", "ë°°ì†¡ ë°©ë²•ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+	    ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auction.deadLine", "DEADLINE_REQUIRED", "ë§ˆê°ê¸°í•œì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 	    
 	    if (auction.getStartPrice() < 1000) {
-        	errors.rejectValue("auction.startPrice", "PRICE_TOO_LOW", "1000¿ø ¾Æ·¡·Î´Â µî·ÏÀÌ ºÒ°¡´ÉÇÕ´Ï´Ù.");
+        	errors.rejectValue("auction.startPrice", "PRICE_TOO_LOW", "1000ì› ì´í•˜ëŠ” ë“±ë¡í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         }
 	    
-//	    String date = auction.getDeadLine().toString();
-//	    System.out.println(date);
-//	    if (!date.matches("^(?:\\d{4})-(?:\\d{2})-(?:\\d{2})/s(?:\\d{2}):(?:\\d{2})$")) {
-//	    	errors.rejectValue("auction.deadLine", "DEADLINE_MISMATCH", "³¯Â¥ Çü½ÄÀÌ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.");
-//	    }  // ½ÃµµÇØºÃ´Âµ¥ ¾ÈµÊ....
-	    
 	    if (errors.hasFieldErrors() && !errors.hasGlobalErrors()) {
-	    	errors.reject("ERRORS_OCCURED", "ÀÔ·Â °úÁ¤¿¡¼­ ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù. ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä.");
+	    	errors.reject("ERRORS_OCCURED", "ì…ë ¥ í˜•ì‹ì— ì˜¤ë¥˜ê°€ ìƒê²¼ìŠµë‹ˆë‹¤. ë‹¤ì‹œ í™•ì¸í•´ì£¼ì„¸ìš”.");
 	    }
 	}
 }

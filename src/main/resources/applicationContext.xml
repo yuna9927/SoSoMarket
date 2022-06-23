@@ -25,6 +25,14 @@
 	<context:component-scan base-package="com.example.jpetstore.service" />
 	<context:annotation-config/> 
 	<task:scheduler id="scheduler" pool-size="10" />
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+				<value>errors</value>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
 
 	<!-- Generic validator for Account objects, to be used for example by the Spring web tier -->
 <!-- <bean id="accountValidator" class="com.example.jpetstore.service.AccountFormValidator"/> -->

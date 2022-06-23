@@ -24,17 +24,17 @@ public class OrderFormValidator implements Validator {
 		OrderForm orderForm = (OrderForm)obj;
 		Order order = orderForm.getOrder();
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "order.bankName", "BANK_NAME_REQUIRED", "ÀºÇà¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "order.bankNumber", "BANK_NUMBER_REQUIRED", "°èÁÂ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "order.shippingZipCode", "SHIPPING_ZIPCODE_REQUIRED", "¿ìÆí¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "order.shippingAddress", "SHIPPING_ADDRESS_REQUIRED", "ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "order.bankName", "BANK_NAME_REQUIRED", "ì€í–‰ëª…ì„ ì…ë ¥í•˜ì„¸ìš”.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "order.bankNumber", "BANK_NUMBER_REQUIRED", "ê³„ì¢Œë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "order.shippingZipCode", "SHIPPING_ZIPCODE_REQUIRED", "ìš°í¸ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "order.shippingAddress", "SHIPPING_ADDRESS_REQUIRED", "ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		
 		if (order.getShippingZipCode().length() != 5 && order.getShippingZipCode() != null && order.getShippingZipCode().length() > 0) {
-	    	errors.rejectValue("order.shippingZipCode", "ZIPCODE_LENGTH", "¿ìÆí¹øÈ£´Â 5ÀÚ¸®ÀÔ´Ï´Ù.");
+	    	errors.rejectValue("order.shippingZipCode", "ZIPCODE_LENGTH", "ìš°í¸ë²ˆí˜¸ëŠ” 5ìë¦¬ì…ë‹ˆë‹¤.");
 	    }
 		
 		if (errors.hasFieldErrors() && !errors.hasGlobalErrors()) {
-	    	errors.reject("ERRORS_OCCURED", "ÀÔ·Â °úÁ¤¿¡¼­ ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù. ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä.");
+	    	errors.reject("ERRORS_OCCURED", "ì…ë ¥ í˜•ì‹ì— ì˜¤ë¥˜ê°€ ìƒê²¼ìŠµë‹ˆë‹¤. ë‹¤ì‹œ í™•ì¸í•´ì£¼ì„¸ìš”.");
 	    }
 	}
 }
