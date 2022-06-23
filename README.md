@@ -1,6 +1,6 @@
 # SoSoMarket
 
-##Test용 ID/PW
+Test용 ID/PW
 ID: 20190936
 PW: 20190936
 
